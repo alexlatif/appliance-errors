@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { brands, getCodesByBrand } from '../../utils/data';
+
+const title = 'All Appliance Brands — Error Code Database | ApplianceErrors.com';
+const description = 'Browse appliance error codes by brand. Samsung, LG, Whirlpool, GE, Bosch, KitchenAid, Frigidaire, Maytag and every major appliance manufacturer.';
+
+const brandData = brands.map(b => ({
+  ...b,
+  codeCount: getCodesByBrand(b.slug).length,
+}));
+---
+
+<BaseLayout {title} {description}>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">All Brands</h1>
+    <p class="text-gray-600 mb-8">Select your appliance brand to browse error codes.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {brandData.map(brand => (
+        <a href={`/brands/${brand.slug}/`}
+           class="group flex items-start gap-4 p-5 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-lg transition-all">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center text-white text-2xl font-bold flex-shrink-0"
+               style={`background-color: ${brand.logo_color}`}>
+            {brand.name[0]}
+          </div>
+          <div class="flex-1">
+            <div class="font-bold text-gray-900 text-lg group-hover:text-brand-600">{brand.name}</div>
+            {brand.parent && <div class="text-xs text-gray-400">Part of {brand.parent}</div>}
+            <div class="text-sm text-gray-500 mt-1">{brand.description}</div>
+            <div class="mt-2 flex gap-3 text-xs text-gray-500">
+              <span>{brand.codeCount} error codes</span>
+              <span>·</span>
+              <span>{brand.appliances.length} appliances</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

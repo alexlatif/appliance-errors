@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import SeverityBadge from '../../../../components/SeverityBadge.astro';
+import DifficultyBadge from '../../../../components/DifficultyBadge.astro';
+import BreadcrumbNav from '../../../../components/BreadcrumbNav.astro';
+import CausesList from '../../../../components/CausesList.astro';
+import FixSteps from '../../../../components/FixSteps.astro';
+import AdSlot from '../../../../components/AdSlot.astro';
+import {
+  brands, applianceTypes, errorCodes,
+  getBrand, getApplianceType, getCode, getRelatedCodes, slugifyCode
+} from '../../../../utils/data';
+import { faqSchema, howToSchema, breadcrumbSchema, articleSchema } from '../../../../utils/schema';
+
+export async function getStaticPaths() {
+  return errorCodes.map(c => ({
+    params: {
+      brand: c.brand,
+      appliance: c.appliance,
+      code: slugifyCode(c.code),
+    },
+    props: { errorCode: c },
+  }));
+}
+
+const { brand: brandSlug, appliance: appSlug } = Astro.params;
+const { errorCode } = Astro.props;
+
+const brand = getBrand(brandSlug!)!;
+const appType = getApplianceType(appSlug!);
+const relatedCodes = getRelatedCodes(errorCode);
+const appName = appType?.name ?? appSlug!;
+const brandName = brand.name;
+
+const title = `${brandName} ${appName} Error Code ${errorCode.code} — What It Means & How to Fix | ApplianceErrors.com`;
+const description = `${errorCode.meaning}. Learn the causes, step-by-step fix, parts needed, and when to call a repair person for ${brandName} ${appName.toLowerCase()} error code ${errorCode.code}.`;
+
+const schemas = [
+  faqSchema(errorCode),
+  howToSchema(errorCode, brandName, appName),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Brands', url: '/brands/' },
+    { name: brandName, url: `/brands/${brandSlug}/` },
+    { name: `${appName} Errors`, url: `/brands/${brandSlug}/${appSlug}/` },
+    { name: `Error ${errorCode.code}`, url: `/brands/${brandSlug}/${appSlug}/${slugifyCode(errorCode.code)}/` },
+  ]),
+  articleSchema(errorCode, brandName, appName),
+];
+
+const severityColors: Record<string, string> = {
+  low: 'border-green-200 bg-green-50',
+  medium: 'border-yellow-200 bg-yellow-50',
+  high: 'border-red-200 bg-red-50',
+  critical: 'border-red-900 bg-red-950',
+};
+const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Brands', href: '/brands/' },
+      { label: brandName, href: `/brands/${brandSlug}/` },
+      { label: `${appName} Errors`, href: `/brands/${brandSlug}/${appSlug}/` },
+      { label: `Error ${errorCode.code}` }
+    ]} />
+
+    <!-- H1 + Quick status -->
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+      {brandName} {appName} Error Code <span class="text-brand-600 font-mono">{errorCode.code}</span>
+    </h1>
+
+    <!-- Quick answer box -->
+    <div class={`rounded-xl border-2 p-5 mb-8 ${severityColors[errorCode.severity]}`}>
+      <div class="flex flex-wrap gap-3 mb-3">
+        <SeverityBadge severity={errorCode.severity} large />
+        <DifficultyBadge difficulty={errorCode.diy_difficulty} />
+        {errorCode.aliases.length > 0 && (
+          <span class="text-sm text-gray-500 pt-1">
+            Also shown as: <strong>{errorCode.aliases.join(', ')}</strong>
+          </span>
+        )}
+      </div>
+      <p class="text-gray-800 text-lg font-medium">{errorCode.meaning}</p>
+      <p class="text-gray-600 mt-1">{errorCode.detail}</p>
+      <div class="mt-3 flex flex-wrap gap-6 text-sm text-gray-600">
+        <span>💰 DIY cost: <strong>${errorCode.cost_lo}–${errorCode.cost_hi}</strong></span>
+        <span>👨‍🔧 Pro cost: <strong>${errorCode.pro_cost_lo}–${errorCode.pro_cost_hi}</strong></span>
+        {costSaving > 50 && (
+          <span class="text-green-700 font-medium">Save ${costSaving}+ by doing it yourself</span>
+        )}
+      </div>
+    </div>
+
+    <!-- Top ad -->
+    <AdSlot slot_id="1234567890" style="leaderboard" />
+
+    <!-- Table of contents -->
+    <nav class="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-8">
+      <p class="font-semibold text-gray-700 mb-2 text-sm">ON THIS PAGE</p>
+      <ol class="grid sm:grid-cols-2 gap-1 text-sm">
+        <li><a href="#what-it-means" class="text-brand-600 hover:underline">What this error means</a></li>
+        <li><a href="#causes" class="text-brand-600 hover:underline">Common causes</a></li>
+        <li><a href="#how-to-fix" class="text-brand-600 hover:underline">Step-by-step fix</a></li>
+        <li><a href="#reset" class="text-brand-600 hover:underline">How to reset</a></li>
+        <li><a href="#when-to-call-pro" class="text-brand-600 hover:underline">When to call a pro</a></li>
+        <li><a href="#faqs" class="text-brand-600 hover:underline">FAQs</a></li>
+      </ol>
+    </nav>
+
+    <!-- What it means -->
+    <section id="what-it-means" class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">
+        What Does Error Code {errorCode.code} Mean on a {brandName} {appName}?
+      </h2>
+      <p class="text-gray-700 leading-relaxed text-lg">{errorCode.meaning}.</p>
+      <p class="text-gray-600 mt-3 leading-relaxed">{errorCode.detail}</p>
+
+      {errorCode.models_affected && (
+        <div class="mt-4 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 text-sm text-blue-800">
+          <strong>Models affected:</strong> {errorCode.models_affected}
+        </div>
+      )}
+    </section>
+
+    <!-- Causes -->
+    <section id="causes" class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What Causes Error Code {errorCode.code}?</h2>
+      <p class="text-gray-600 mb-5">
+        Here are the most common causes in order of frequency. Start with the most likely cause before moving to the next:
+      </p>
+      <CausesList causes={errorCode.causes} />
+    </section>
+
+    <!-- Mid-content ad -->
+    <AdSlot slot_id="0987654321" style="rectangle" />
+
+    <!-- Fix steps -->
+    <section id="how-to-fix" class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">
+        How to Fix {brandName} {appName} Error Code {errorCode.code}
+      </h2>
+      <div class="flex flex-wrap gap-3 mb-5">
+        <DifficultyBadge difficulty={errorCode.diy_difficulty} />
+        <span class="text-sm text-gray-500 pt-1">
+          Est. time: {errorCode.diy_difficulty === 'easy' ? '10–20 min' : errorCode.diy_difficulty === 'moderate' ? '30–60 min' : '1–3 hours'}
+        </span>
+      </div>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 mb-6 text-sm text-amber-800">
+        ⚡ <strong>Safety first:</strong> Unplug the appliance before opening any panels or touching internal components.
+      </div>
+
+      <FixSteps steps={errorCode.fixes} />
+    </section>
+
+    <!-- Reset instructions -->
+    <section id="reset" class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">
+        How to Reset Error Code {errorCode.code}
+      </h2>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+        <p class="text-gray-700 leading-relaxed">{errorCode.reset_instructions}</p>
+      </div>
+      <p class="text-sm text-gray-500 mt-3">
+        Note: If the error returns after resetting, the underlying issue has not been resolved. Work through the fix steps above.
+      </p>
+    </section>
+
+    <!-- When to call a pro -->
+    <section id="when-to-call-pro" class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">When to Call a Professional</h2>
+      <div class="border border-gray-200 rounded-xl p-5">
+        <p class="text-gray-700 leading-relaxed">{errorCode.when_to_call_pro}</p>
+        <div class="mt-4 text-sm text-gray-500">
+          Average professional repair cost for this issue: <strong>${errorCode.pro_cost_lo}–${errorCode.pro_cost_hi}</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related codes -->
+    {relatedCodes.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Related Error Codes</h2>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {relatedCodes.map(rc => (
+            <a href={`/brands/${rc.brand}/${rc.appliance}/${slugifyCode(rc.code)}/`}
+               class="flex gap-3 items-start p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+              <span class="font-bold text-brand-600 font-mono w-12 flex-shrink-0">{rc.code}</span>
+              <div>
+                <div class="font-medium text-gray-800">{rc.meaning}</div>
+                <SeverityBadge severity={rc.severity} />
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- FAQs -->
+    <section id="faqs" class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {[
+          {
+            q: `What does error code ${errorCode.code} mean on a ${brandName} ${appName}?`,
+            a: errorCode.meaning
+          },
+          {
+            q: `How do I fix error code ${errorCode.code} on my ${brandName} ${appName}?`,
+            a: `Start by ${errorCode.fixes[0]?.description ?? 'checking the most common cause'}. If that doesn't resolve it, work through each step in the fix guide above.`
+          },
+          {
+            q: `How do I clear or reset error code ${errorCode.code}?`,
+            a: errorCode.reset_instructions
+          },
+          {
+            q: `Is error code ${errorCode.code} serious?`,
+            a: errorCode.severity === 'critical'
+              ? `Yes. This is a critical error. Stop using the appliance immediately to prevent damage or safety hazards.`
+              : errorCode.severity === 'high'
+              ? `This is a high-severity error. You should address it soon. Running the appliance may cause further damage.`
+              : errorCode.severity === 'medium'
+              ? `Medium severity. The appliance may still operate but the issue should be resolved to prevent further damage.`
+              : `Low severity. This is a minor issue that typically doesn't affect appliance operation but should be addressed.`
+          }
+        ].map(faq => (
+          <details class="border border-gray-200 rounded-xl overflow-hidden group">
+            <summary class="px-5 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 list-none flex justify-between items-center">
+              {faq.q}
+              <span class="text-gray-400 text-xl group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-5 py-4 text-gray-700 border-t border-gray-100">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bottom ad -->
+    <AdSlot slot_id="1122334455" style="rectangle" />
+
+    <!-- Back links -->
+    <div class="flex flex-wrap gap-3 mt-6 pt-6 border-t border-gray-200">
+      <a href={`/brands/${brandSlug}/${appSlug}/`}
+         class="text-sm text-brand-600 hover:underline">
+        ← All {brandName} {appName} Error Codes
+      </a>
+      <a href={`/brands/${brandSlug}/`}
+         class="text-sm text-brand-600 hover:underline">
+        ← All {brandName} Error Codes
+      </a>
+    </div>
+  </div>
+</BaseLayout>

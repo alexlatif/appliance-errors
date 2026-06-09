@@ -1,0 +1,114 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  schemas?: object[];
+  noindex?: boolean;
+}
+
+const { title, description, canonical, schemas = [], noindex = false } = Astro.props;
+const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="canonical" href={canonicalURL} />
+  <title>{title}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:site_name" content="ApplianceErrors.com" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <!-- Schemas -->
+  {schemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- Header -->
+  <header class="bg-brand-700 text-white shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-white no-underline">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
+        </svg>
+        <span class="font-bold text-lg">ApplianceErrors.com</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="/brands/" class="text-blue-100 hover:text-white transition-colors">All Brands</a>
+        <a href="/appliances/washer/" class="text-blue-100 hover:text-white transition-colors">Washers</a>
+        <a href="/appliances/dryer/" class="text-blue-100 hover:text-white transition-colors">Dryers</a>
+        <a href="/appliances/dishwasher/" class="text-blue-100 hover:text-white transition-colors">Dishwashers</a>
+        <a href="/appliances/refrigerator/" class="text-blue-100 hover:text-white transition-colors">Fridges</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-white font-semibold mb-3">Top Brands</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="/brands/samsung/" class="hover:text-white">Samsung</a></li>
+          <li><a href="/brands/lg/" class="hover:text-white">LG</a></li>
+          <li><a href="/brands/whirlpool/" class="hover:text-white">Whirlpool</a></li>
+          <li><a href="/brands/ge/" class="hover:text-white">GE</a></li>
+          <li><a href="/brands/bosch/" class="hover:text-white">Bosch</a></li>
+          <li><a href="/brands/" class="hover:text-white text-blue-400">All brands →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white font-semibold mb-3">Appliances</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="/appliances/washer/" class="hover:text-white">Washers</a></li>
+          <li><a href="/appliances/dryer/" class="hover:text-white">Dryers</a></li>
+          <li><a href="/appliances/dishwasher/" class="hover:text-white">Dishwashers</a></li>
+          <li><a href="/appliances/refrigerator/" class="hover:text-white">Refrigerators</a></li>
+          <li><a href="/appliances/oven/" class="hover:text-white">Ovens</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white font-semibold mb-3">Popular Codes</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="/brands/lg/dryer/d80/" class="hover:text-white">LG Dryer D80</a></li>
+          <li><a href="/brands/lg/dryer/d90/" class="hover:text-white">LG Dryer D90</a></li>
+          <li><a href="/brands/samsung/dishwasher/lc/" class="hover:text-white">Samsung Dishwasher LC</a></li>
+          <li><a href="/brands/whirlpool/dryer/f01/" class="hover:text-white">Whirlpool Dryer F01</a></li>
+          <li><a href="/brands/bosch/dishwasher/e15/" class="hover:text-white">Bosch Dishwasher E15</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white font-semibold mb-3">About</h3>
+        <p class="text-sm">
+          Free appliance error code reference. Find what your error code means and how to fix it — for every major brand.
+        </p>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-sm text-center">
+      © {new Date().getFullYear()} ApplianceErrors.com · For informational purposes only · Always unplug before servicing
+    </div>
+  </footer>
+</body>
+</html>

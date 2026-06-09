@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import SeverityBadge from '../../../../components/SeverityBadge.astro';
+import DifficultyBadge from '../../../../components/DifficultyBadge.astro';
+import BreadcrumbNav from '../../../../components/BreadcrumbNav.astro';
+import {
+  brands, applianceTypes, getBrand, getApplianceType,
+  getCodesByBrandAndAppliance
+} from '../../../../utils/data';
+import { breadcrumbSchema } from '../../../../utils/schema';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const brand of brands) {
+    const codes = brand.appliances;
+    for (const appliance of codes) {
+      paths.push({ params: { brand: brand.slug, appliance } });
+    }
+  }
+  return paths;
+}
+
+const { brand: brandSlug, appliance: appSlug } = Astro.params;
+const brand = getBrand(brandSlug!)!;
+const appType = getApplianceType(appSlug!);
+const codes = getCodesByBrandAndAppliance(brandSlug!, appSlug!);
+
+// Group by severity
+const bySeverity: Record<string, typeof codes> = { critical: [], high: [], medium: [], low: [] };
+for (const c of codes) bySeverity[c.severity]?.push(c);
+
+const appName = appType?.name ?? appSlug!;
+const title = `${brand.name} ${appName} Error Codes — Complete List & Fixes | ApplianceErrors.com`;
+const description = `All ${brand.name} ${appName.toLowerCase()} error codes with meanings and step-by-step repair guides. ${codes.length} codes covered.`;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Brands', url: '/brands/' },
+    { name: brand.name, url: `/brands/${brandSlug}/` },
+    { name: `${appName} Error Codes`, url: `/brands/${brandSlug}/${appSlug}/` },
+  ])
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Brands', href: '/brands/' },
+      { label: brand.name, href: `/brands/${brandSlug}/` },
+      { label: `${appName} Error Codes` }
+    ]} />
+
+    <div class="flex items-center gap-4 mb-6">
+      <span class="text-5xl">{appType?.icon ?? '🔧'}</span>
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">{brand.name} {appName} Error Codes</h1>
+        <p class="text-gray-600 mt-1">{codes.length} error codes with causes and step-by-step fixes</p>
+      </div>
+    </div>
+
+    <!-- Quick reference table -->
+    <div class="bg-white border border-gray-200 rounded-xl overflow-hidden mb-10">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 border-b border-gray-200">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold text-gray-700">Code</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-700">Meaning</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-700 hidden sm:table-cell">Severity</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-700 hidden md:table-cell">DIY</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-700 hidden lg:table-cell">Est. Cost</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {codes.map(code => (
+              <tr class="hover:bg-blue-50 transition-colors">
+                <td class="px-4 py-3">
+                  <a href={`/brands/${brandSlug}/${appSlug}/${code.code.toLowerCase().replace(/\s+/g,'-')}/`}
+                     class="font-bold text-brand-600 hover:text-brand-800 font-mono">
+                    {code.code}
+                  </a>
+                </td>
+                <td class="px-4 py-3 text-gray-700">
+                  <a href={`/brands/${brandSlug}/${appSlug}/${code.code.toLowerCase().replace(/\s+/g,'-')}/`}
+                     class="hover:text-brand-600">
+                    {code.meaning}
+                  </a>
+                </td>
+                <td class="px-4 py-3 hidden sm:table-cell">
+                  <SeverityBadge severity={code.severity} />
+                </td>
+                <td class="px-4 py-3 hidden md:table-cell capitalize text-gray-600">
+                  {code.diy_difficulty.replace('_', ' ')}
+                </td>
+                <td class="px-4 py-3 hidden lg:table-cell text-gray-600">
+                  ${code.cost_lo}–${code.cost_hi}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- High priority section -->
+    {(bySeverity.critical.length + bySeverity.high.length) > 0 && (
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-red-700 mb-4">⚠️ Serious Errors — Act Quickly</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {[...bySeverity.critical, ...bySeverity.high].map(code => (
+            <a href={`/brands/${brandSlug}/${appSlug}/${code.code.toLowerCase().replace(/\s+/g,'-')}/`}
+               class="flex gap-3 p-4 bg-red-50 border border-red-200 rounded-xl hover:border-red-400 transition-all">
+              <span class="font-bold text-red-700 font-mono w-14 flex-shrink-0">{code.code}</span>
+              <div>
+                <div class="font-medium text-gray-900">{code.meaning}</div>
+                <div class="text-sm text-gray-600">{code.detail.substring(0, 80)}…</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>

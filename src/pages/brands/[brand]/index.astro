@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SeverityBadge from '../../../components/SeverityBadge.astro';
+import BreadcrumbNav from '../../../components/BreadcrumbNav.astro';
+import {
+  brands, applianceTypes, getBrand, getBrandAppliances,
+  getCodesByBrandAndAppliance, getTopCodesForBrand
+} from '../../../utils/data';
+import { breadcrumbSchema } from '../../../utils/schema';
+
+export async function getStaticPaths() {
+  return brands.map(b => ({ params: { brand: b.slug } }));
+}
+
+const { brand: brandSlug } = Astro.params;
+const brand = getBrand(brandSlug!)!;
+const appliances = getBrandAppliances(brandSlug!);
+const topCodes = getTopCodesForBrand(brandSlug!, 9);
+
+const title = `${brand.name} Appliance Error Codes — Complete Guide | ApplianceErrors.com`;
+const description = `All ${brand.name} appliance error codes in one place. Washer, dryer, dishwasher, refrigerator and oven error codes with plain-English meanings and step-by-step fixes.`;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Brands', url: '/brands/' },
+    { name: brand.name, url: `/brands/${brandSlug}/` },
+  ])
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Brands', href: '/brands/' },
+      { label: brand.name }
+    ]} />
+
+    <!-- Brand header -->
+    <div class="flex items-center gap-5 mb-8">
+      <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white text-2xl font-bold flex-shrink-0"
+           style={`background-color: ${brand.logo_color}`}>
+        {brand.name[0]}
+      </div>
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">{brand.name} Error Codes</h1>
+        <p class="text-gray-600 mt-1">{brand.description}</p>
+      </div>
+    </div>
+
+    <!-- Appliance type cards -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Browse by Appliance</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {appliances.map(appSlug => {
+          const appType = applianceTypes.find(a => a.slug === appSlug);
+          const codes = getCodesByBrandAndAppliance(brandSlug!, appSlug);
+          return (
+            <a href={`/brands/${brandSlug}/${appSlug}/`}
+               class="group bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-md transition-all text-center">
+              <div class="text-3xl mb-2">{appType?.icon ?? '🔧'}</div>
+              <div class="font-semibold text-sm text-gray-800 group-hover:text-brand-600">
+                {appType?.name ?? appSlug}
+              </div>
+              <div class="text-xs text-gray-400 mt-1">{codes.length} codes</div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- Top codes grid -->
+    <section>
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Most Common {brand.name} Error Codes</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {topCodes.map(code => (
+          <a href={`/brands/${code.brand}/${code.appliance}/${code.code.toLowerCase().replace(/\s+/g,'-')}/`}
+             class="group flex items-start gap-3 p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-sm flex-shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+              {code.code}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-gray-800 group-hover:text-brand-600 capitalize">
+                {code.appliance} Error {code.code}
+              </div>
+              <div class="text-sm text-gray-500 truncate">{code.meaning}</div>
+              <div class="mt-1">
+                <SeverityBadge severity={code.severity} />
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brands, applianceTypes, totalCodeCount } from '../utils/data';
+
+const title = 'Appliance Error Code Lookup — All Brands & Models | ApplianceErrors.com';
+const description = `Look up any appliance error code instantly. ${totalCodeCount()}+ error codes for Samsung, LG, Whirlpool, GE, Bosch and every major brand. Plain-English explanations and step-by-step fixes.`;
+---
+
+<BaseLayout {title} {description}>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-brand-700 to-brand-900 text-white py-16 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+        What Does Your Appliance<br class="hidden md:block"/> Error Code Mean?
+      </h1>
+      <p class="text-blue-100 text-lg mb-8 max-w-xl mx-auto">
+        {totalCodeCount()}+ error codes for every major brand. Plain English. Step-by-step fixes. Free.
+      </p>
+
+      <!-- Quick search hint -->
+      <div class="bg-white/10 backdrop-blur rounded-xl p-6 max-w-lg mx-auto text-left">
+        <p class="text-blue-100 text-sm mb-3 font-medium">FIND YOUR CODE:</p>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="/brands/" class="bg-white/20 hover:bg-white/30 text-white rounded-lg p-3 text-sm font-medium text-center transition-colors">
+            Browse by Brand
+          </a>
+          <a href="/appliances/washer/" class="bg-white/20 hover:bg-white/30 text-white rounded-lg p-3 text-sm font-medium text-center transition-colors">
+            Browse by Appliance
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand grid -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      Browse by Brand
+      <span class="ml-2 text-base font-normal text-gray-500">({brands.length} brands)</span>
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      {brands.map(brand => (
+        <a href={`/brands/${brand.slug}/`}
+           class="group border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-md transition-all text-center">
+          <div class="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center text-white text-xl font-bold"
+               style={`background-color: ${brand.logo_color}`}>
+            {brand.name[0]}
+          </div>
+          <div class="font-semibold text-gray-800 group-hover:text-brand-600">{brand.name}</div>
+          <div class="text-xs text-gray-500 mt-1">{brand.appliances.length} appliances</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Appliance type grid -->
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Browse by Appliance</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {applianceTypes.map(type => (
+          <a href={`/appliances/${type.slug}/`}
+             class="group bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-md transition-all text-center">
+            <div class="text-3xl mb-2">{type.icon}</div>
+            <div class="font-semibold text-gray-800 group-hover:text-brand-600 text-sm">{type.name}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular codes -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Most Searched Error Codes</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {[
+        { brand: 'lg', appliance: 'dryer', code: 'd80', label: 'LG Dryer D80', desc: 'Duct blockage detected — 80% blocked' },
+        { brand: 'samsung', appliance: 'dishwasher', code: 'lc', label: 'Samsung Dishwasher LC', desc: 'Leak sensor activated' },
+        { brand: 'lg', appliance: 'dryer', code: 'd90', label: 'LG Dryer D90', desc: 'Duct blockage detected — 90% blocked' },
+        { brand: 'whirlpool', appliance: 'dryer', code: 'f01', label: 'Whirlpool Dryer F01', desc: 'Main control board failure' },
+        { brand: 'bosch', appliance: 'dishwasher', code: 'e15', label: 'Bosch Dishwasher E15', desc: 'Leak protection activated' },
+        { brand: 'samsung', appliance: 'refrigerator', code: '22e', label: 'Samsung Fridge 22E', desc: 'Ice maker fan motor error' },
+        { brand: 'whirlpool', appliance: 'washer', code: 'f8e1', label: 'Whirlpool Washer F8E1', desc: 'Low water fill detected' },
+        { brand: 'lg', appliance: 'washer', code: 'oe', label: 'LG Washer OE', desc: 'Drainage failure' },
+        { brand: 'samsung', appliance: 'washer', code: '4c', label: 'Samsung Washer 4C', desc: 'Water supply issue' },
+      ].map(item => (
+        <a href={`/brands/${item.brand}/${item.appliance}/${item.code}/`}
+           class="group flex items-start gap-3 p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+          <div class="w-10 h-10 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center font-bold text-sm flex-shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+            {item.code.toUpperCase()}
+          </div>
+          <div>
+            <div class="font-semibold text-gray-800 group-hover:text-brand-600">{item.label}</div>
+            <div class="text-sm text-gray-500">{item.desc}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Trust section -->
+  <section class="bg-blue-50 border-t border-blue-100 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid sm:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="text-3xl font-bold text-brand-700">{totalCodeCount()}+</div>
+          <div class="text-gray-600 mt-1">Error Codes</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-brand-700">{brands.length}</div>
+          <div class="text-gray-600 mt-1">Brands Covered</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-brand-700">Free</div>
+          <div class="text-gray-600 mt-1">Always</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

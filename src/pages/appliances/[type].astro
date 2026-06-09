@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SeverityBadge from '../../components/SeverityBadge.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import {
+  brands, applianceTypes, getApplianceType,
+  getCodesByBrandAndAppliance, getBrand
+} from '../../utils/data';
+
+export async function getStaticPaths() {
+  return applianceTypes.map(a => ({ params: { type: a.slug } }));
+}
+
+const { type: typeSlug } = Astro.params;
+const appType = getApplianceType(typeSlug!)!;
+
+// All brands that have this appliance type
+const brandsWithType = brands.filter(b => b.appliances.includes(typeSlug!));
+const allCodes = brandsWithType.flatMap(b => getCodesByBrandAndAppliance(b.slug, typeSlug!));
+
+const title = `${appType.name} Error Codes — All Brands | ApplianceErrors.com`;
+const description = `${appType.name} error codes for every major brand. ${allCodes.length}+ codes from Samsung, LG, Whirlpool, GE, Bosch and more. Plain-English meanings and step-by-step fixes.`;
+---
+
+<BaseLayout {title} {description}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: `${appType.name} Error Codes` }
+    ]} />
+
+    <div class="flex items-center gap-4 mb-8">
+      <span class="text-6xl">{appType.icon}</span>
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">{appType.name} Error Codes</h1>
+        <p class="text-gray-600 mt-1">
+          {allCodes.length} error codes across {brandsWithType.length} brands
+        </p>
+      </div>
+    </div>
+
+    <!-- Brand cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {brandsWithType.map(brand => {
+        const codes = getCodesByBrandAndAppliance(brand.slug, typeSlug!);
+        const highSeverity = codes.filter(c => c.severity === 'high' || c.severity === 'critical');
+        return (
+          <a href={`/brands/${brand.slug}/${typeSlug}/`}
+             class="group border border-gray-200 rounded-xl p-5 hover:border-brand-400 hover:shadow-lg transition-all">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold flex-shrink-0"
+                   style={`background-color: ${brand.logo_color}`}>
+                {brand.name[0]}
+              </div>
+              <div>
+                <div class="font-bold text-gray-900 group-hover:text-brand-600">{brand.name}</div>
+                <div class="text-xs text-gray-500">{codes.length} error codes</div>
+              </div>
+            </div>
+            <div class="space-y-1">
+              {codes.slice(0, 4).map(code => (
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-mono font-bold text-brand-600 w-12 flex-shrink-0">{code.code}</span>
+                  <span class="text-gray-600 truncate">{code.meaning}</span>
+                </div>
+              ))}
+              {codes.length > 4 && (
+                <div class="text-sm text-brand-500 mt-1">+{codes.length - 4} more codes →</div>
+              )}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>

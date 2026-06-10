@@ -260,6 +260,12 @@
       "name": "Freezer",
       "plural": "Freezers",
       "icon": "🧊"
+    },
+    {
+      "slug": "range-hood",
+      "name": "Range Hood",
+      "plural": "Range Hoods",
+      "icon": "💨"
     }
   ],
   "error_codes": [
@@ -13052,6 +13058,286 @@
       "when_to_call_pro": "If keypad replacement doesn't resolve F11, the control board has a shorted keypad input."
     },
     {
+      "id": "frigidaire-oven-f31",
+      "brand": "frigidaire",
+      "appliance": "oven",
+      "code": "F31",
+      "aliases": [],
+      "meaning": "Oven temperature probe short circuit",
+      "detail": "The oven temperature probe is reading near-zero resistance, indicating an internal short. This causes the oven to see a falsely high temperature and prevents safe heating operation.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Probe shorted internally",
+          "frequency": 65
+        },
+        {
+          "description": "Wiring pinched causing short to chassis",
+          "frequency": 25
+        },
+        {
+          "description": "Control board sensor input shorted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the probe",
+          "description": "Disconnect the probe from the control board. At room temperature, it should read approximately 1,100 ohms. Near 0 ohms = shorted probe.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Inspect probe wiring",
+          "description": "Look for pinch points where the wiring passes through the oven cavity. Even slight pressure against the chassis can cause a short."
+        },
+        {
+          "title": "Replace the temperature probe",
+          "description": "A shorted probe cannot be repaired. The probe threads into the upper-rear oven wall — typically 1–2 screws. Pull 2–4 inches of wire slack through and connect the new probe.",
+          "parts": [
+            "Frigidaire oven temperature probe ($25–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 25,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "After replacing probe, run a short 350°F bake cycle to confirm F31 is resolved.",
+      "related_codes": [
+        "F30",
+        "F10"
+      ],
+      "models_affected": "Frigidaire FFEF/FFES/FFGF/FGGF series ranges",
+      "when_to_call_pro": "If probe measures correctly and F31 persists after replacement, the control board sensor input has an internal short."
+    },
+    {
+      "id": "frigidaire-oven-f90",
+      "brand": "frigidaire",
+      "appliance": "oven",
+      "code": "F90",
+      "aliases": [],
+      "meaning": "Door latch failure — lock motor did not reach locked position",
+      "detail": "The door latch motor failed to reach the locked position within the required time. This error appears when starting a self-clean cycle or when the latch sensor does not confirm the lock.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Door latch mechanism jammed by food debris",
+          "frequency": 30
+        },
+        {
+          "description": "Latch switch misaligned or failed",
+          "frequency": 15
+        },
+        {
+          "description": "Wiring to latch motor damaged",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug the range for 10 minutes, then try again. A transient F90 from a timing glitch clears with a power cycle."
+        },
+        {
+          "title": "Inspect the latch mechanism",
+          "description": "Open the oven door and look at the top of the oven cavity. The latch slides into a slot in the oven frame. Clear any debris or baked-on food from the latch slot."
+        },
+        {
+          "title": "Check door closes flush",
+          "description": "If the oven door has slight warping or the hinges are worn, the door may not seat tightly enough for the latch to travel fully. Test: with the door closed, press it from all four edges — it should not flex."
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "The latch assembly is mounted at the top-rear of the oven. Remove the back service panel (typically 4 screws) and disconnect the latch wiring harness. Install the new assembly.",
+          "parts": [
+            "Frigidaire oven door latch assembly ($50–$120)"
+          ],
+          "warning": "Unplug the range before accessing any internal components."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug 10 minutes. If F90 returns, inspect latch for debris, then replace latch assembly.",
+      "related_codes": [
+        "F91"
+      ],
+      "models_affected": "Frigidaire gallery and professional series ranges with self-clean",
+      "when_to_call_pro": "If door latch assembly is new and F90 persists, the control board latch motor relay has failed."
+    },
+    {
+      "id": "frigidaire-oven-f91",
+      "brand": "frigidaire",
+      "appliance": "oven",
+      "code": "F91",
+      "aliases": [],
+      "meaning": "Door latch failure — lock motor did not reach unlocked position",
+      "detail": "The door latch motor ran but failed to fully retract to the unlocked position after a self-clean cycle completed. The oven door may be stuck locked after self-clean.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure (stuck mid-travel)",
+          "frequency": 50
+        },
+        {
+          "description": "Latch mechanism binding after high self-clean temperature",
+          "frequency": 35
+        },
+        {
+          "description": "Control board latch relay failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Let oven cool completely",
+          "description": "If self-clean just finished, the oven may still be above the latch-unlock threshold (typically 375°F / 190°C). Wait 1–2 hours and the door may unlock on its own."
+        },
+        {
+          "title": "Power cycle after cooling",
+          "description": "With oven cool, turn off circuit breaker for 10 minutes. On some models this resets the latch state machine and unlocks the door."
+        },
+        {
+          "title": "Manual latch release",
+          "description": "On most Frigidaire ranges, the latch has a manual release: remove the top rear panel and use a screwdriver to manually slide the latch to the unlocked position. Refer to the service manual for your model number.",
+          "warning": "Range must be cool and unplugged before attempting manual latch release."
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "If the latch motor failed mid-cycle, replace the complete latch assembly.",
+          "parts": [
+            "Frigidaire oven door latch assembly ($50–$120)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Let oven cool fully. Unplug 10 minutes. If door remains locked, use manual latch release.",
+      "related_codes": [
+        "F90"
+      ],
+      "models_affected": "Frigidaire gallery and professional series ranges with self-clean",
+      "when_to_call_pro": "If door remains locked after cooling, power cycling, and manual release attempt, call a professional — do not attempt to force the door."
+    },
+    {
+      "id": "frigidaire-oven-f13",
+      "brand": "frigidaire",
+      "appliance": "oven",
+      "code": "F13",
+      "aliases": [],
+      "meaning": "Control board internal checksum error",
+      "detail": "The Electronic Range Control (ERC) board failed its internal memory self-check. The board's EEPROM or program memory has been corrupted, possibly by a power surge.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Power surge corrupting board EEPROM",
+          "frequency": 50
+        },
+        {
+          "description": "Control board general failure",
+          "frequency": 35
+        },
+        {
+          "description": "Loose connection on board power supply",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 15 minutes. On rare occasions, a transient F13 from a brown-out clears with a full power cycle."
+        },
+        {
+          "title": "Check wiring connections to board",
+          "description": "Disconnect all ribbon cables and wiring harnesses from the ERC board, then reseat them. Loose connections can cause erratic board behavior."
+        },
+        {
+          "title": "Replace the ERC control board",
+          "description": "F13 is almost always a board failure. The ERC board sits behind the control panel — remove the back service panel or the front control panel depending on the model.",
+          "parts": [
+            "Frigidaire oven ERC board ($100–$280)"
+          ],
+          "warning": "Photograph all wiring before disconnecting."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 15 minutes. If F13 returns, ERC board must be replaced.",
+      "related_codes": [
+        "F10",
+        "F30"
+      ],
+      "when_to_call_pro": "Control board replacement involves handling multiple high-voltage connections. Professional installation recommended if you are not comfortable with appliance electronics."
+    },
+    {
+      "id": "frigidaire-oven-f14",
+      "brand": "frigidaire",
+      "appliance": "oven",
+      "code": "F14",
+      "aliases": [],
+      "meaning": "EEPROM error — control board memory fault",
+      "detail": "A variant of the board memory fault. The ERC board has detected an error in its non-volatile storage (EEPROM) that holds calibration and configuration data.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Power surge corrupting EEPROM data",
+          "frequency": 55
+        },
+        {
+          "description": "ERC board age/failure",
+          "frequency": 35
+        },
+        {
+          "description": "Intermittent power causing incomplete write cycles",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 15 minutes."
+        },
+        {
+          "title": "Replace the ERC control board",
+          "description": "F14 is a board-level EEPROM fault and cannot be repaired by resetting alone.",
+          "parts": [
+            "Frigidaire oven ERC board ($100–$280)"
+          ],
+          "warning": "Photograph all wiring before disconnecting."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 15 minutes. If F14 returns, replace ERC board.",
+      "related_codes": [
+        "F13"
+      ],
+      "when_to_call_pro": "Replace the ERC board. This is not a DIY repair unless you are comfortable with oven electronics."
+    },
+    {
       "id": "maytag-washer-f9e1",
       "brand": "maytag",
       "appliance": "washer",
@@ -13424,6 +13710,923 @@
         "F01"
       ],
       "when_to_call_pro": "Drive motor replacement requires significant disassembly."
+    },
+    {
+      "id": "maytag-oven-f1-e0",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F1-E0",
+      "aliases": [
+        "F1E0"
+      ],
+      "meaning": "ERC board EEPROM checksum error — control board memory failure",
+      "detail": "The Electronic Range Control board failed its internal memory checksum. This is usually caused by a power surge or age-related failure of the board's non-volatile memory. The oven will not operate normally with this fault active.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Power surge corrupting EEPROM",
+          "frequency": 50
+        },
+        {
+          "description": "ERC board age-related failure",
+          "frequency": 35
+        },
+        {
+          "description": "Brown-out during a write cycle corrupting memory",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle the range",
+          "description": "Turn off the circuit breaker for 15 minutes. A power cycle occasionally clears a transient F1-E0 caused by a brown-out."
+        },
+        {
+          "title": "Replace the ERC control board",
+          "description": "F1-E0 is almost always a board failure. The ERC board is mounted behind the control panel. Remove the back panel or the control panel housing (2–6 screws depending on model) and disconnect all wiring harnesses.",
+          "parts": [
+            "Maytag oven ERC board ($120–$300)"
+          ],
+          "warning": "Photograph all wiring harness positions before disconnecting."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 120,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 15 minutes. If F1-E0 returns, ERC board must be replaced.",
+      "related_codes": [
+        "F1-E1",
+        "F1-E2"
+      ],
+      "models_affected": "Maytag MER and MGR series ranges",
+      "when_to_call_pro": "Control board replacement requires handling multiple high-voltage connections. Professional installation is recommended."
+    },
+    {
+      "id": "maytag-oven-f1-e1",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F1-E1",
+      "aliases": [
+        "F1E1"
+      ],
+      "meaning": "ERC board keypad stuck key — shorted keypad detected during power-up",
+      "detail": "On power-up, the ERC board detected that a key on the control panel was already pressed (shorted). This prevents normal startup. Distinct from F2-E0 in that it is detected at power-on, not during normal operation.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Keypad membrane failure (key stuck at power-on)",
+          "frequency": 60
+        },
+        {
+          "description": "Food debris bridging keypad contacts",
+          "frequency": 25
+        },
+        {
+          "description": "ERC board keypad scan circuit failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the control panel",
+          "description": "Wipe all keypad buttons with a barely-damp cloth. Pay attention to seams between buttons where grease can accumulate."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 5 minutes, then restore power. If a key was physically stuck, cleaning and power cycling often resolves F1-E1."
+        },
+        {
+          "title": "Replace the keypad membrane",
+          "description": "If F1-E1 returns after cleaning, the keypad membrane has failed internally.",
+          "parts": [
+            "Maytag oven keypad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Wipe panel clean. Turn off circuit breaker 5 minutes. If F1-E1 persists, replace keypad.",
+      "related_codes": [
+        "F2-E0",
+        "F1-E0"
+      ],
+      "when_to_call_pro": "If new keypad and F1-E1 persists, the ERC board keypad scan circuit has failed."
+    },
+    {
+      "id": "maytag-oven-f2-e0",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F2-E0",
+      "aliases": [
+        "F2E0"
+      ],
+      "meaning": "Shorted keypad — stuck key during normal operation",
+      "detail": "A key on the oven's keypad registered as continuously pressed for more than 60 seconds during normal operation. This is the most common oven control panel error on Maytag ranges built on the Whirlpool platform.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Key stuck from grease or food debris buildup",
+          "frequency": 55
+        },
+        {
+          "description": "Keypad membrane failure — key shorted internally",
+          "frequency": 35
+        },
+        {
+          "description": "ERC board keypad interface failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the control panel",
+          "description": "Clean around every key with a barely-damp cloth, focusing on the seams. Allow the panel to dry completely before powering on."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 5 minutes. Many F2-E0 errors on Maytag ranges clear after a power cycle and cleaning."
+        },
+        {
+          "title": "Replace the keypad",
+          "description": "If F2-E0 returns consistently after cleaning, the membrane keypad has an internal short.",
+          "parts": [
+            "Maytag oven keypad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Clean panel. Turn off circuit breaker 5 minutes. If F2-E0 returns, replace keypad.",
+      "related_codes": [
+        "F2-E1",
+        "F1-E1"
+      ],
+      "models_affected": "Maytag MER/MGR/MEW/MET ranges and wall ovens",
+      "when_to_call_pro": "If new keypad and F2-E0 persists, the ERC board has a failed keypad scan circuit."
+    },
+    {
+      "id": "maytag-oven-f2-e1",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F2-E1",
+      "aliases": [
+        "F2E1"
+      ],
+      "meaning": "Keypad disconnected — ribbon cable failure",
+      "detail": "The ribbon cable or connection between the keypad and the ERC board has lost continuity. The ERC board can no longer communicate with the touchpad.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Ribbon cable connector loose at ERC board",
+          "frequency": 50
+        },
+        {
+          "description": "Ribbon cable cracked or damaged",
+          "frequency": 35
+        },
+        {
+          "description": "ERC board ribbon connector port failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 5 minutes."
+        },
+        {
+          "title": "Reseat the ribbon cable",
+          "description": "Remove the control panel backing. Locate the flat ribbon cable connecting the keypad to the ERC board. Disconnect and firmly reseat both ends. Look for any cracking or creasing in the ribbon."
+        },
+        {
+          "title": "Replace the keypad assembly",
+          "description": "On most Maytag models, the keypad and ribbon cable are a single assembly. If the ribbon is damaged, replace the complete keypad.",
+          "parts": [
+            "Maytag oven keypad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Reseat ribbon cable. If F2-E1 persists, replace keypad.",
+      "related_codes": [
+        "F2-E0"
+      ],
+      "when_to_call_pro": "If new keypad and cable and F2-E1 persists, the ERC board ribbon connector port has failed."
+    },
+    {
+      "id": "maytag-oven-f3-e0",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F3-E0",
+      "aliases": [
+        "F3E0"
+      ],
+      "meaning": "Oven temperature sensor open circuit",
+      "detail": "The oven temperature sensor (RTD probe) has an open circuit. The oven will refuse to heat because it cannot safely regulate temperature without accurate sensor feedback. This is a very common Maytag range error.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Temperature sensor failure — burned out or open",
+          "frequency": 65
+        },
+        {
+          "description": "Sensor connector loose at ERC board",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness to sensor damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "Pull the range out from the wall and remove the back access panel (4–6 screws). Locate the temperature sensor — a thin metal probe extending 2 inches into the oven cavity from the rear. Disconnect the 2-wire connector and test resistance with a multimeter: at room temperature it should read 1,080–1,090 ohms. Open circuit (OL) = failed sensor.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Reseat the connector",
+          "description": "Before replacing, push the 2-pin connector firmly onto the sensor terminals. Loose connections are common and can cause intermittent F3-E0."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "The sensor is mounted with 1–2 screws. Pull the sensor out from inside the oven cavity and feed the wires through the back wall. Install the new sensor and route the wires.",
+          "parts": [
+            "Maytag oven temperature sensor ($20–$50)"
+          ],
+          "warning": "Let the oven cool completely before working inside."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 20,
+      "cost_hi": 50,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, run a 350°F bake cycle and verify F3-E0 is resolved.",
+      "related_codes": [
+        "F3-E1",
+        "F3-E2"
+      ],
+      "models_affected": "Maytag MER/MGR series electric and gas ranges",
+      "when_to_call_pro": "If new sensor tests correctly and F3-E0 persists, the ERC board sensor input has failed."
+    },
+    {
+      "id": "maytag-oven-f3-e1",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F3-E1",
+      "aliases": [
+        "F3E1"
+      ],
+      "meaning": "Oven temperature sensor short circuit",
+      "detail": "The oven temperature sensor is reading near-zero resistance — a short circuit condition. The ERC board detects a falsely hot reading and shuts down heating to prevent runaway temperature.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor shorted internally",
+          "frequency": 65
+        },
+        {
+          "description": "Wiring pinched against oven cavity wall causing short",
+          "frequency": 25
+        },
+        {
+          "description": "ERC board sensor input shorted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "Disconnect sensor. Room-temperature reading should be ~1,080 ohms. Near 0 ohms = shorted sensor.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Inspect the sensor wiring",
+          "description": "Look for any points where the wiring passes through the oven wall — metal burrs or improper routing can pinch the wire and cause a chassis short."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "A shorted sensor cannot be repaired.",
+          "parts": [
+            "Maytag oven temperature sensor ($20–$50)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 20,
+      "cost_hi": 50,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, run a 350°F bake cycle to confirm.",
+      "related_codes": [
+        "F3-E0",
+        "F3-E2"
+      ],
+      "when_to_call_pro": "If new sensor still shows near-0 ohms with the connector disconnected, the wiring has a short to chassis."
+    },
+    {
+      "id": "maytag-oven-f3-e2",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F3-E2",
+      "aliases": [
+        "F3E2"
+      ],
+      "meaning": "Oven over-temperature — exceeded safe operating limit",
+      "detail": "The oven temperature exceeded the maximum safe operating limit, typically above 575°F (302°C) during normal cooking. The ERC board shut off all heating and requires a diagnosis before reuse.",
+      "severity": "critical",
+      "category": "temperature",
+      "causes": [
+        {
+          "description": "Temperature sensor failure causing runaway heating",
+          "frequency": 40
+        },
+        {
+          "description": "Bake relay on ERC board stuck in closed position",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring fault causing continuous power to heating element",
+          "frequency": 15
+        },
+        {
+          "description": "Self-clean cycle runaway",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Turn off circuit breaker immediately",
+          "description": "Do not attempt to use the oven again until the fault is diagnosed. Allow the oven to cool fully — at least 1 hour.",
+          "warning": "FIRE HAZARD — do not open the oven door or use the oven until diagnosed."
+        },
+        {
+          "title": "Test temperature sensor after cooling",
+          "description": "Disconnect and test the oven temperature sensor (should read ~1,080 ohms). A failed open or shorted sensor can cause the ERC board to drive the heating element continuously.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor if out of spec",
+          "description": "If sensor reads correctly, the bake relay on the ERC board has stuck closed.",
+          "parts": [
+            "Maytag oven temperature sensor ($20–$50)",
+            "Maytag oven ERC board ($120–$300)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 50,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 580,
+      "reset_instructions": "Turn off circuit breaker. Do not use until fault is diagnosed by a professional.",
+      "related_codes": [
+        "F3-E0",
+        "F3-E1"
+      ],
+      "when_to_call_pro": "F3-E2 is a safety event. Have a qualified technician diagnose the oven before returning it to service."
+    },
+    {
+      "id": "maytag-oven-f5-e1",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F5-E1",
+      "aliases": [
+        "F5E1"
+      ],
+      "meaning": "Self-clean door latch failure — latch did not lock",
+      "detail": "The door latch motor ran but the latch switch did not confirm a locked position within the required time. Self-clean cycle cannot start or is interrupted.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Latch mechanism jammed or obstructed",
+          "frequency": 30
+        },
+        {
+          "description": "Latch switch out of alignment",
+          "frequency": 15
+        },
+        {
+          "description": "Wiring to latch motor damaged",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 5 minutes. A transient latch timeout can clear with a power cycle."
+        },
+        {
+          "title": "Inspect the latch mechanism",
+          "description": "Open the oven door and look at the top of the oven opening. The latch hook should move freely with light finger pressure. Clear any food debris from the latch slot in the oven frame."
+        },
+        {
+          "title": "Check door closure",
+          "description": "The door must close fully and evenly. Check that both hinges are engaged and the door seal is intact."
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "The latch motor sits at the top rear of the range. Access via the back service panel.",
+          "parts": [
+            "Maytag oven door latch ($50–$120)"
+          ],
+          "warning": "Unplug the range before accessing the latch assembly."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug 5 minutes. Check latch for debris. If F5-E1 returns, replace door latch assembly.",
+      "related_codes": [
+        "F9-E0"
+      ],
+      "models_affected": "Maytag MER/MGR/MEW ranges with self-clean",
+      "when_to_call_pro": "If a new door latch and F5-E1 persists, the ERC board latch relay has failed."
+    },
+    {
+      "id": "maytag-oven-f9-e0",
+      "brand": "maytag",
+      "appliance": "oven",
+      "code": "F9-E0",
+      "aliases": [
+        "F9E0"
+      ],
+      "meaning": "Door latch during lock — general latch circuit fault",
+      "detail": "A general fault with the door latch circuit occurred during a locking operation. Similar to F5-E1 but triggered from a different latch state.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure",
+          "frequency": 55
+        },
+        {
+          "description": "Latch switch misaligned or failed",
+          "frequency": 30
+        },
+        {
+          "description": "ERC board latch circuit failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 5 minutes."
+        },
+        {
+          "title": "Check door alignment and latch slot",
+          "description": "Ensure the oven door closes completely and the latch hook travels freely."
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "F9-E0 typically points to the latch motor or switch.",
+          "parts": [
+            "Maytag oven door latch ($50–$120)"
+          ],
+          "warning": "Unplug before accessing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug 5 minutes. If F9-E0 returns, replace door latch assembly.",
+      "related_codes": [
+        "F5-E1"
+      ],
+      "when_to_call_pro": "If latch is replaced and F9-E0 persists, the ERC board latch relay or wiring has failed."
+    },
+    {
+      "id": "broan-range-hood-e01",
+      "brand": "broan",
+      "appliance": "range-hood",
+      "code": "E01",
+      "aliases": [
+        "E1"
+      ],
+      "meaning": "Fan motor overload — motor drawing excess current",
+      "detail": "The fan motor has tripped its overload protection by drawing more current than the rated limit. This is usually caused by a worn motor bearing, a buildup of grease on the blower wheel, or a blocked exhaust duct restricting airflow.",
+      "severity": "medium",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Grease buildup on blower wheel causing imbalance and drag",
+          "frequency": 45
+        },
+        {
+          "description": "Blocked or kinked exhaust duct increasing static pressure",
+          "frequency": 30
+        },
+        {
+          "description": "Fan motor bearing worn or seized",
+          "frequency": 20
+        },
+        {
+          "description": "Control board motor driver failure",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the grease filters and blower wheel",
+          "description": "Remove the grease filters (most Broan filters pull straight down or tilt out). Wash in hot soapy water or the dishwasher. If accessible, also clean the blower wheel — grease accumulation on the blades causes imbalance that makes the motor work harder."
+        },
+        {
+          "title": "Check the exhaust duct",
+          "description": "Go to where the duct exits the house and confirm the damper flap opens freely. Check the full duct run for kinks, disconnected sections, or blockages — a bird or wasp nest at the termination cap is a common culprit. Duct should be as short and straight as possible with no 90-degree elbows close to the hood."
+        },
+        {
+          "title": "Power cycle the hood",
+          "description": "Turn off the circuit breaker for 15 minutes to reset the motor overload. If the underlying cause is resolved (duct clear, blower clean), the motor will run normally."
+        },
+        {
+          "title": "Replace the blower motor",
+          "description": "If the motor bearing has seized or the motor is drawing excess current even with clean blades and clear duct, replace the motor/blower assembly.",
+          "parts": [
+            "Broan range hood blower motor ($80–$180)"
+          ],
+          "warning": "Shut off circuit breaker before accessing the motor housing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 180,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Clean grease filters and blower wheel. Check duct for blockages. Turn off circuit breaker 15 minutes.",
+      "related_codes": [
+        "E02"
+      ],
+      "models_affected": "Broan Elite, BCDF, and BCSF series range hoods",
+      "when_to_call_pro": "If motor is replaced and E01 returns immediately, the control board motor driver has failed."
+    },
+    {
+      "id": "broan-range-hood-e02",
+      "brand": "broan",
+      "appliance": "range-hood",
+      "code": "E02",
+      "aliases": [
+        "E2"
+      ],
+      "meaning": "Fan motor failure — motor not running",
+      "detail": "The range hood control board is not detecting the fan motor running at all. The motor has failed electrically, or the connection between the board and motor has been lost.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Fan motor winding failure (open circuit)",
+          "frequency": 55
+        },
+        {
+          "description": "Wiring connector between board and motor disconnected",
+          "frequency": 25
+        },
+        {
+          "description": "Control board motor output circuit failed",
+          "frequency": 15
+        },
+        {
+          "description": "Motor thermal fuse blown",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the motor connector",
+          "description": "Disconnect power. Locate the motor connector on the control board (typically a 2–3 pin connector). Disconnect and firmly reseat. Check for any burned or corroded pins."
+        },
+        {
+          "title": "Test motor windings",
+          "description": "Disconnect the motor connector. Test resistance across the motor leads — most Broan blower motors read 3–15 ohms when healthy. Open circuit (OL) = failed motor.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check the motor thermal fuse",
+          "description": "Some Broan motors have an inline thermal fuse in the motor lead. Test continuity — zero resistance is good, open circuit means the fuse blew and needs replacement.",
+          "parts": [
+            "Multimeter",
+            "Broan motor thermal fuse ($8–$15)"
+          ]
+        },
+        {
+          "title": "Replace the blower motor assembly",
+          "description": "If motor windings are open, replace the complete blower/motor assembly.",
+          "parts": [
+            "Broan range hood blower motor ($80–$180)"
+          ],
+          "warning": "Disconnect circuit breaker before any motor work."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 8,
+      "cost_hi": 180,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Check motor connector. Disconnect circuit breaker 15 minutes. Test motor windings.",
+      "related_codes": [
+        "E01"
+      ],
+      "models_affected": "Broan Elite and connected series range hoods",
+      "when_to_call_pro": "If new motor and E02 persists, the control board motor output circuit has failed — replace the control board."
+    },
+    {
+      "id": "broan-range-hood-e03",
+      "brand": "broan",
+      "appliance": "range-hood",
+      "code": "E03",
+      "aliases": [
+        "E3"
+      ],
+      "meaning": "Communication error — Wi-Fi module or app connectivity failure",
+      "detail": "On Broan connected (Wi-Fi enabled) range hoods, E03 indicates the hood has lost communication with the app or the Wi-Fi module has failed. This error does not affect the hood's core cooking ventilation function.",
+      "severity": "low",
+      "category": "connectivity",
+      "causes": [
+        {
+          "description": "Wi-Fi router signal too weak at hood location",
+          "frequency": 40
+        },
+        {
+          "description": "Router channel or band incompatibility (5GHz not supported)",
+          "frequency": 30
+        },
+        {
+          "description": "Wi-Fi module firmware needs update",
+          "frequency": 20
+        },
+        {
+          "description": "Wi-Fi module hardware failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check Wi-Fi signal strength",
+          "description": "Broan connected hoods require a 2.4 GHz Wi-Fi network. If your router only broadcasts 5 GHz, the hood will not connect. Confirm your router has a 2.4 GHz band enabled."
+        },
+        {
+          "title": "Reconnect via the Broan Home app",
+          "description": "Open the Broan Home app and use 'Add Device' to re-pair the hood. A power cycle (circuit breaker off 30 seconds) before re-pairing often helps."
+        },
+        {
+          "title": "Move router or use Wi-Fi extender",
+          "description": "If the hood is far from the router, the signal may be too weak for reliable connectivity."
+        },
+        {
+          "title": "Factory reset the Wi-Fi module",
+          "description": "Press and hold the Wi-Fi button on the hood for 10 seconds until the indicator flashes rapidly. Re-pair from the app."
+        },
+        {
+          "title": "Replace the Wi-Fi control module",
+          "description": "If the module fails to connect even with strong 2.4 GHz signal and after factory reset, the Wi-Fi hardware has failed.",
+          "parts": [
+            "Broan Wi-Fi control module ($60–$120)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 120,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Turn off circuit breaker 30 seconds. Ensure 2.4 GHz Wi-Fi available. Re-pair via Broan Home app.",
+      "related_codes": [],
+      "models_affected": "Broan connected/smart range hoods (BCSF, BCSD series)",
+      "when_to_call_pro": "E03 does not affect ventilation function. The hood will still run manually. Only call a pro if physical module replacement is needed and you are not comfortable with electrical work."
+    },
+    {
+      "id": "broan-range-hood-f01",
+      "brand": "broan",
+      "appliance": "range-hood",
+      "code": "F01",
+      "aliases": [
+        "F1"
+      ],
+      "meaning": "Heat sensor tripped — oven or cooktop overheating detected",
+      "detail": "The range hood's built-in heat sensor detected unusually high temperatures above the cooktop. Some connected Broan hoods automatically activate at high speed when this sensor trips. If the fan does not run after F01, the sensor circuit or board has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Cooktop fire or very high-heat cooking that triggered the sensor",
+          "frequency": 50
+        },
+        {
+          "description": "Heat sensor calibration drift (sensor reading too high)",
+          "frequency": 30
+        },
+        {
+          "description": "Control board sensor input failure",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check for actual overheating",
+          "description": "If there was a flame-up or very high-heat event at the cooktop, turn off the burners, allow everything to cool, and clear the hood's grease filters. The F01 may clear on its own once the temperature drops."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 10 minutes after the cooktop and hood have cooled."
+        },
+        {
+          "title": "Test the heat sensor",
+          "description": "The heat sensor is a small disc or rod sensor near the hood's intake. Test resistance — at room temperature it should show a predictable value per the service manual (typically 10–100 kΩ for NTC sensors). Significantly out of range = replace sensor.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the heat sensor",
+          "description": "The sensor is typically clipped or screwed into the underside of the hood canopy.",
+          "parts": [
+            "Broan range hood heat sensor ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Allow to cool. Turn off circuit breaker 10 minutes. If F01 returns, test and replace heat sensor.",
+      "related_codes": [],
+      "models_affected": "Broan Elite and connected series with heat sensing",
+      "when_to_call_pro": "If new heat sensor and F01 persists, the control board sensor input has failed."
+    },
+    {
+      "id": "broan-range-hood-fan-not-running",
+      "brand": "broan",
+      "appliance": "range-hood",
+      "code": "Fan not running",
+      "aliases": [
+        "fan failure",
+        "hood not working"
+      ],
+      "meaning": "Range hood fan does not run on any speed",
+      "detail": "The fan blower does not respond to any speed button press. This is the most common Broan range hood complaint and can have several causes — from a simple tripped circuit breaker to a failed motor or control board.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Circuit breaker tripped",
+          "frequency": 25
+        },
+        {
+          "description": "Thermal overload protection tripped from restricted airflow",
+          "frequency": 25
+        },
+        {
+          "description": "Faulty control board or speed switch",
+          "frequency": 25
+        },
+        {
+          "description": "Fan motor failure",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring connection loose",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the circuit breaker",
+          "description": "Go to your electrical panel and check whether the breaker for the range hood has tripped. Reset if needed. Range hoods are on a dedicated circuit or shared kitchen circuit."
+        },
+        {
+          "title": "Check the grease filters",
+          "description": "Clogged grease filters cause the motor to overheat and trip the thermal overload. Remove and clean all filters, then wait 15–30 minutes for the motor to cool before testing."
+        },
+        {
+          "title": "Test the rocker switches / speed buttons",
+          "description": "The speed switches or touchpad can fail. With power off, test switch continuity.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Test motor windings and replace if failed",
+          "description": "With the circuit breaker off, disconnect the motor leads and test resistance. Open circuit = motor has failed.",
+          "parts": [
+            "Broan range hood blower motor ($80–$180)"
+          ],
+          "warning": "Confirm power is off at breaker before touching any wiring."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 180,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Check circuit breaker. Clean grease filters. Let motor cool 30 minutes. Test again.",
+      "related_codes": [
+        "E01",
+        "E02"
+      ],
+      "models_affected": "All Broan and Nutone range hood models",
+      "when_to_call_pro": "If the motor, switches, and wiring all check out normal, the control board has failed."
+    },
+    {
+      "id": "broan-range-hood-lights-not-working",
+      "brand": "broan",
+      "appliance": "range-hood",
+      "code": "Lights not working",
+      "aliases": [
+        "hood light failure",
+        "light bulb"
+      ],
+      "meaning": "Range hood lights do not come on",
+      "detail": "The cooktop lighting built into the range hood has stopped working. This can be a simple bulb failure, a blown fuse on the lighting circuit, or a failed lighting board on more advanced models.",
+      "severity": "low",
+      "category": "lighting",
+      "causes": [
+        {
+          "description": "Bulb burned out",
+          "frequency": 55
+        },
+        {
+          "description": "Light socket connection loose",
+          "frequency": 20
+        },
+        {
+          "description": "Lighting control board failure",
+          "frequency": 15
+        },
+        {
+          "description": "Blown lighting fuse on control board",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Replace the bulb",
+          "description": "Most Broan range hoods use standard appliance bulbs: 40W incandescent (A15 base), T8 halogen, or LED G8/G9 depending on the model. Check your model number at Broan.com for the exact bulb type. Turn off circuit breaker before accessing the bulb socket.",
+          "parts": [
+            "Appliance bulb for your Broan model ($5–$25)"
+          ],
+          "warning": "Circuit breaker off before changing bulbs."
+        },
+        {
+          "title": "Check the light socket",
+          "description": "If the replacement bulb also does not light, test the socket with a multimeter (120V AC at the socket with power on). No voltage = wiring or board issue.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check board fuse",
+          "description": "Some Broan models have a small glass fuse (1–2A) on the control board for the lighting circuit. Inspect and replace if blown.",
+          "parts": [
+            "Replacement fuse (same rating, $2–$8)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 5,
+      "cost_hi": 25,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 200,
+      "reset_instructions": "Turn off circuit breaker. Replace bulb with correct type for your model.",
+      "related_codes": [],
+      "models_affected": "All Broan and Nutone range hood models",
+      "when_to_call_pro": "If new bulb, socket has power, and lights still do not work, the lighting control board or switch has failed."
     },
     {
       "id": "kenmore-washer-f21",

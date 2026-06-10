@@ -35,18 +35,48 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://fundingchoices.google.com" />
   {adsenseClient && <link rel="preconnect" href="https://pagead2.googlesyndication.com" />}
 
-  <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DC15QRJVP" is:inline></script>
+  <!--
+    Google Consent Mode v2 — MUST be the first script, before gtag.js loads.
+    Defaults to denied for EEA/UK/CH users only; non-EEA users (US etc.) get
+    full analytics + personalized ads without a consent prompt.
+    Google's CMP (configured in AdSense → Privacy & messaging) updates these
+    values to 'granted' when the user accepts on the consent banner.
+  -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+
+    gtag('consent', 'default', {
+      'ad_storage':           'denied',
+      'ad_user_data':         'denied',
+      'ad_personalization':   'denied',
+      'analytics_storage':    'denied',
+      'functionality_storage':'granted',
+      'security_storage':     'granted',
+      'wait_for_update':      500,
+      'region': [
+        'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU',
+        'IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES',
+        'SE','GB','CH','IS','LI','NO'
+      ]
+    });
+
+    // Consent Mode modeling: fills gaps for users who deny consent.
+    gtag('set', 'ads_data_redaction', true);
+    gtag('set', 'url_passthrough', true);
+  </script>
+
+  <!-- Google Analytics GA4 (loads after consent defaults are set) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DC15QRJVP" is:inline></script>
+  <script is:inline>
     gtag('js', new Date());
     gtag('config', 'G-6DC15QRJVP');
   </script>
 
-  <!-- Google AdSense -->
+  <!-- Google AdSense + CMP trigger -->
   {adsenseClient && (
     <>
       <meta name="google-adsense-account" content={adsenseClient} />

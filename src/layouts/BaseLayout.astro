@@ -9,7 +9,7 @@ export interface Props {
 
 const { title, description, canonical, schemas = [], noindex = false } = Astro.props;
 const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
-const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+const ADSENSE_CLIENT = 'ca-pub-9323140183656137'; // hardcoded — must appear on every page
 ---
 
 <!doctype html>
@@ -36,7 +36,7 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <link rel="preconnect" href="https://fundingchoices.google.com" />
-  {adsenseClient && <link rel="preconnect" href="https://pagead2.googlesyndication.com" />}
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
 
   <!--
     Google Consent Mode v2 — MUST be the first script, before gtag.js loads.
@@ -77,16 +77,8 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
   </script>
 
   <!-- Google AdSense + CMP trigger -->
-  {adsenseClient && (
-    <>
-      <meta name="google-adsense-account" content={adsenseClient} />
-      <script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-        crossorigin="anonymous"
-      ></script>
-    </>
-  )}
+  <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9323140183656137" crossorigin="anonymous" is:inline></script>
 
   <!-- Sitewide Organization schema -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ApplianceErrors.com","url":"https://applianceerrors.com","description":"Free appliance error code reference. Plain-English meanings and step-by-step DIY fix guides for every major brand."}</script>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { totalCodeCount } from '../utils/data';
+import { organizationSchema } from '../utils/schema';
+
+const title = 'About ApplianceErrors.com — How We Research Error Codes';
+const description = 'ApplianceErrors.com is a free reference database of appliance error codes compiled from manufacturer service documentation, technician knowledge, and repair community data.';
+const schemas = [organizationSchema()];
+const tc = totalCodeCount();
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span class="mx-2">›</span>
+      <span>About</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">About ApplianceErrors.com</h1>
+
+    <section class="prose prose-gray max-w-none">
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">What This Site Is</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        ApplianceErrors.com is a free reference database of appliance error codes. We currently cover {tc}+ error codes across 15 major brands and 6 appliance categories — washers, dryers, dishwashers, refrigerators, ovens, and microwaves.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Every error code page explains: what the code means in plain English, what component triggered it, the most likely causes in order of frequency, a step-by-step DIY repair guide with estimated parts cost, and a frank assessment of when the repair genuinely requires a professional.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">How We Research Error Codes</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Our error code data is compiled from multiple primary sources:
+      </p>
+      <ul class="list-disc pl-6 mb-4 text-gray-700 space-y-2">
+        <li><strong>Manufacturer service documentation</strong> — official service manuals and technical bulletins published by Samsung, LG, Whirlpool, GE, Bosch, and other manufacturers</li>
+        <li><strong>Appliance repair technician knowledge</strong> — field experience from licensed appliance repair technicians, particularly around which causes are actually most common in practice vs. theoretically possible</li>
+        <li><strong>Parts supplier data</strong> — failure rate data implicit in part ordering patterns from PartSelect, RepairClinic, and AppliancePartsPros</li>
+        <li><strong>Community repair databases</strong> — aggregated repair reports from forums like ApplianceBlog, ApplianceJunk, and manufacturer community boards</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Repair cost estimates are based on current retail parts pricing plus a reasonable estimate of DIY time. Professional repair cost estimates reflect average US market rates for service calls including labor.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">Accuracy and Updates</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Appliance error codes and their associated repair procedures can change between model years and firmware versions. We maintain the database and update pages when manufacturers change diagnostic codes, release technical service bulletins, or when significant new failure patterns emerge for popular models.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        If you find an error in our database — a wrong meaning, an incorrect fix, or a missing code — please use the feedback form below to report it. Accuracy matters when people are deciding whether to attempt a repair or call a professional.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">Safety Disclaimer</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Appliance repair can involve electrical hazards, sharp components, heavy lifting, and — for gas appliances — risks that require professional certification. All repair guides on this site include appropriate safety warnings. We always recommend:
+      </p>
+      <ul class="list-disc pl-6 mb-4 text-gray-700 space-y-2">
+        <li>Unplugging the appliance before opening any access panels or touching internal components</li>
+        <li>Turning off the gas supply before working on gas appliances</li>
+        <li>Consulting a licensed appliance repair technician for high-voltage, gas, or refrigerant work</li>
+        <li>Checking that any replacement parts are compatible with your specific model number before purchasing</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        ApplianceErrors.com provides this information for educational purposes. We are not responsible for damage to appliances or personal injury resulting from repair attempts.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">Advertising</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        This site is supported by display advertising. Ad placements are clearly marked. Editorial content — error code meanings, causes, and fix guides — is not influenced by advertisers or parts suppliers. Part links (PartSelect, RepairClinic) are not affiliate links; they are provided as a convenience for readers.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">Contact</h2>
+      <p class="text-gray-700 leading-relaxed">
+        For corrections, additions, or partnership inquiries: <strong>hello@applianceerrors.com</strong>
+      </p>
+    </section>
+  </div>
+</BaseLayout>

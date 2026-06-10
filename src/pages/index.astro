@@ -2,12 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SearchBox from '../components/SearchBox.astro';
 import { brands, applianceTypes, totalCodeCount } from '../utils/data';
+import { webSiteSchema, organizationSchema } from '../utils/schema';
 
-const title = 'Appliance Error Code Lookup — All Brands & Models | ApplianceErrors.com';
-const description = `Look up any appliance error code instantly. ${totalCodeCount()}+ error codes for Samsung, LG, Whirlpool, GE, Bosch and every major brand. Plain-English explanations and step-by-step fixes.`;
+const tc = totalCodeCount();
+// ≤65 chars
+const title = 'Appliance Error Code Lookup — Free Fix Guide | ApplianceErrors.com';
+// ≤155 chars
+const description = `${tc}+ appliance error codes for Samsung, LG, Whirlpool, GE, Bosch & more. What it means, why it happens, and exactly how to fix it — free.`;
+const schemas = [webSiteSchema(tc), organizationSchema()];
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {title} {description} {schemas}>
   <!-- Hero -->
   <section class="bg-gradient-to-b from-brand-700 to-brand-900 text-white py-16 px-4">
     <div class="max-w-3xl mx-auto text-center">
@@ -93,22 +98,72 @@ const description = `Look up any appliance error code instantly. ${totalCodeCoun
     </div>
   </section>
 
-  <!-- Trust section -->
-  <section class="bg-blue-50 border-t border-blue-100 py-10">
+  <!-- Stats bar -->
+  <section class="bg-brand-700 text-white py-8">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="grid sm:grid-cols-3 gap-8 text-center">
-        <div>
-          <div class="text-3xl font-bold text-brand-700">{totalCodeCount()}+</div>
-          <div class="text-gray-600 mt-1">Error Codes</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div><div class="text-3xl font-bold">{tc}+</div><div class="text-blue-200 text-sm mt-1">Error Codes</div></div>
+        <div><div class="text-3xl font-bold">{brands.length}</div><div class="text-blue-200 text-sm mt-1">Brands Covered</div></div>
+        <div><div class="text-3xl font-bold">6</div><div class="text-blue-200 text-sm mt-1">Appliance Types</div></div>
+        <div><div class="text-3xl font-bold">Free</div><div class="text-blue-200 text-sm mt-1">Always</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works / intro content -->
+  <section class="max-w-4xl mx-auto px-4 py-14">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">What Your Appliance Error Code Is Telling You</h2>
+    <p class="text-gray-700 leading-relaxed mb-4">
+      Modern appliances have built-in self-diagnostic systems. When something goes wrong — a clogged drain, a failed sensor, a faulty motor — the machine stops running and displays an error code on the screen. These codes are not random: each one points to a specific subsystem that has failed or detected a problem.
+    </p>
+    <p class="text-gray-700 leading-relaxed mb-4">
+      The challenge is that each manufacturer uses its own code system. <strong>Samsung uses number codes like 4C, 5E, and 22E</strong>. <strong>LG uses letters like OE, LE, and DE</strong>. <strong>Whirlpool uses F-codes like F8E1 and F1E2</strong>. GE uses short codes like F2 and F3. Even two appliances from the same brand can use completely different codes depending on the model year. This makes looking up codes confusing and time-consuming.
+    </p>
+    <p class="text-gray-700 leading-relaxed mb-6">
+      ApplianceErrors.com aggregates manufacturer service documentation across every major brand and translates it into plain English. Every error code page explains what triggered the code, lists the most common causes in order of likelihood, provides a step-by-step DIY repair guide, and tells you when the repair genuinely requires a professional.
+    </p>
+
+    <div class="grid sm:grid-cols-3 gap-4 mb-8">
+      {[
+        { icon: '🔍', title: 'Find your code', body: 'Search by code, brand, or appliance type. Start with just the letters — e.g. "oe", "f8e1", "d80".' },
+        { icon: '📋', title: 'Read the diagnosis', body: 'See exactly what the code means, which component triggered it, and how common each cause is.' },
+        { icon: '🔧', title: 'Fix it yourself', body: 'Follow the step-by-step repair guide. See which parts you need, how much they cost, and when to call a pro.' },
+      ].map(item => (
+        <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+          <div class="text-3xl mb-3">{item.icon}</div>
+          <div class="font-bold text-gray-900 mb-2">{item.title}</div>
+          <div class="text-sm text-gray-600 leading-relaxed">{item.body}</div>
         </div>
-        <div>
-          <div class="text-3xl font-bold text-brand-700">{brands.length}</div>
-          <div class="text-gray-600 mt-1">Brands Covered</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-brand-700">Free</div>
-          <div class="text-gray-600 mt-1">Always</div>
-        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Repair cost context -->
+  <section class="bg-gray-50 border-t border-gray-200 py-14">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Most Appliance Repairs Are DIY-Able — If You Know What's Wrong</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The average appliance repair service call costs <strong>$150–$350 for diagnosis and labor alone</strong>, before any parts. For a washing machine that needs a $25 door latch or a dryer that needs a $15 thermal fuse, that means paying $175–$375 for a 20-minute repair you could have done yourself.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        On the other hand, some error codes — a shorted control board, a stuck gas valve relay, a failed inverter — genuinely require professional diagnosis and tools that aren't practical to own. Every error code page on ApplianceErrors.com includes a frank <em>When to Call a Pro</em> section so you don't waste time attempting a repair beyond your skill level or risk making the problem worse.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        {[
+          { label: 'LG Dryer D80', note: 'duct blocked 80% — cleaning kit $15–$35 vs $150+ service call', diy: true },
+          { label: 'Samsung Dishwasher LC', note: 'flood sensor triggered — often a $0 fix', diy: true },
+          { label: 'Whirlpool Washer F8E1', note: 'water inlet valve $25–$45 vs $200 service call', diy: true },
+          { label: 'Samsung Fridge 22E', note: 'ice maker fan motor $30–$70, moderate DIY', diy: true },
+        ].map(item => (
+          <div class="flex items-start gap-3 bg-white rounded-xl p-4 border border-gray-200">
+            <span class="text-green-500 text-xl flex-shrink-0 mt-0.5">{item.diy ? '✅' : '⚠️'}</span>
+            <div>
+              <div class="font-semibold text-gray-900">{item.label}</div>
+              <div class="text-sm text-gray-500">{item.note}</div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

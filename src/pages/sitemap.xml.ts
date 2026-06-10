@@ -17,6 +17,7 @@ export const GET: APIRoute = () => {
 
   // Homepage
   urls.push(url('/', 1.0, 'weekly'));
+  urls.push(url('/about/', 0.4, 'yearly'));
 
   // Brand index
   urls.push(url('/brands/', 0.9, 'weekly'));

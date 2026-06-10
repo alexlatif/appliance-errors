@@ -12,6 +12,13 @@ import {
 } from '../../../../utils/data';
 import { faqSchema, howToSchema, breadcrumbSchema, articleSchema } from '../../../../utils/schema';
 
+// Short appliance names for <title> (saves chars vs "Washing Machine", "Refrigerator")
+const APP_SHORT: Record<string,string> = {
+  washer: 'Washer', dryer: 'Dryer', dishwasher: 'Dishwasher',
+  refrigerator: 'Refrigerator', oven: 'Oven', microwave: 'Microwave',
+  'air-conditioner': 'AC', freezer: 'Freezer', 'range-hood': 'Range Hood',
+};
+
 export async function getStaticPaths() {
   return errorCodes.map(c => ({
     params: {
@@ -31,18 +38,25 @@ const appType = getApplianceType(appSlug!);
 const relatedCodes = getRelatedCodes(errorCode);
 const crossBrandCodes = getCrossBrandCodes(errorCode.code, brandSlug!).slice(0, 4);
 const appName = appType?.name ?? appSlug!;
+// Short names for titles — "Washing Machine"→"Washer", keeps <title> ≤65 chars
+const appShort = (APP_SHORT as Record<string,string>)[appSlug!] ?? appName;
 const brandName = brand.name;
 
 // Part links — PartSelect and RepairClinic search URLs
-const partSearchQuery = `${brandName} ${appName} ${errorCode.code}`.replace(/\s+/g, '+');
-const partSelectUrl = `https://www.partselect.com/PartSearchResults.aspx?SearchTerm=${encodeURIComponent(brandName + ' ' + appName + ' ' + errorCode.code)}`;
-const repairClinicUrl = `https://www.repairclinic.com/RepairHelp/How-To-Fix-A-${appName.replace(/\s/g,'-')}/~/${errorCode.code}`;
+const partSelectUrl = `https://www.partselect.com/PartSearchResults.aspx?SearchTerm=${encodeURIComponent(brandName + ' ' + appShort + ' ' + errorCode.code)}`;
+const repairClinicUrl = `https://www.repairclinic.com/Shop-For-Parts/a/~/${encodeURIComponent(brandName + '-' + appShort)}`;
 
-const title = `${brandName} ${appName} Error Code ${errorCode.code} — What It Means & How to Fix | ApplianceErrors.com`;
-const description = `${errorCode.meaning}. Learn the causes, step-by-step fix, parts needed, and when to call a repair person for ${brandName} ${appName.toLowerCase()} error code ${errorCode.code}.`;
+// Code-first title — ≤65 chars. "D80 Error Code — LG Dryer Fix | ApplianceErrors.com" = 51 chars
+const title = `${errorCode.code} Error Code — ${brandName} ${appShort} Fix | ApplianceErrors.com`;
+
+// Description ≤155 chars — meaning truncated, punchy suffix
+const meaningTrunc = errorCode.meaning.length > 90
+  ? errorCode.meaning.slice(0, 87) + '…'
+  : errorCode.meaning;
+const description = `${meaningTrunc}. DIY fix for ${brandName} ${appShort} error ${errorCode.code}: causes, steps & parts.`;
 
 const schemas = [
-  faqSchema(errorCode),
+  faqSchema(errorCode, brandName, appName),
   howToSchema(errorCode, brandName, appName),
   breadcrumbSchema([
     { name: 'Home', url: '/' },

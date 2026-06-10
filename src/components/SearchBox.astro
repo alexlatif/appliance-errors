@@ -1,151 +1,131 @@
 ---
-import { errorCodes, getBrand, getApplianceType, slugifyCode } from '../utils/data';
-
-// Build a compact search index — brand, appliance, code, meaning, url
-const index = errorCodes.map(c => {
-  const brand = getBrand(c.brand);
-  const app = getApplianceType(c.appliance);
-  return {
-    b: brand?.name ?? c.brand,
-    bs: c.brand,
-    a: app?.name ?? c.appliance,
-    as: c.appliance,
-    c: c.code,
-    m: c.meaning,
-    sev: c.severity,
-    u: `/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`,
-  };
-});
+// No server-side data — search index loaded lazily from /search-index.json on first keystroke
 ---
 
 <div class="relative w-full max-w-2xl mx-auto" id="search-container">
-  <label for="code-search" class="sr-only">Search error codes</label>
+  <label for="code-search" class="sr-only">Search appliance error codes</label>
   <div class="relative">
-    <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-200 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0"/>
     </svg>
     <input
       id="code-search"
       type="search"
-      placeholder="Search any error code — e.g. D80, F21, LC, OE…"
+      placeholder="Type any error code — D80, F21, LC, OE, SE…"
       autocomplete="off"
       autocorrect="off"
       spellcheck="false"
       class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-white/30 bg-white/15 text-white placeholder-blue-200 text-lg focus:outline-none focus:border-white focus:bg-white/25 transition-all"
+      aria-label="Search appliance error codes"
+      aria-autocomplete="list"
+      aria-controls="search-results-list"
     />
+    <div id="search-spinner" class="hidden absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 border-2 border-blue-200 border-t-white rounded-full animate-spin"></div>
   </div>
 
   <!-- Results dropdown -->
   <div id="search-results"
+       role="listbox"
+       aria-label="Search results"
        class="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50 hidden max-h-[480px] overflow-y-auto">
     <div id="search-results-list"></div>
     <div id="search-no-results" class="hidden p-6 text-center text-gray-500">
       <div class="text-2xl mb-2">🔍</div>
-      <p>No codes matched. Try just the letters — e.g. "oe" or "f21".</p>
+      <p class="font-medium">No codes matched.</p>
+      <p class="text-sm mt-1">Try just the letters — e.g. <strong>oe</strong>, <strong>f21</strong>, <strong>lc</strong></p>
     </div>
   </div>
 </div>
 
-<script define:vars={{ index }}>
-  const severityIcon = { low: '🟢', medium: '🟡', high: '🔴', critical: '⛔' };
+<script>
+  type IndexEntry = {b:string;bs:string;a:string;as:string;c:string;m:string;sev:string;u:string};
+  const sev: Record<string,string> = {low:'🟢',medium:'🟡',high:'🔴',critical:'⛔'};
 
-  const input = document.getElementById('code-search');
-  const resultsBox = document.getElementById('search-results');
-  const resultsList = document.getElementById('search-results-list');
-  const noResults = document.getElementById('search-no-results');
+  let index: IndexEntry[] | null = null;
+  let loading = false;
 
-  function normalise(s) {
-    return s.toLowerCase().replace(/[-_\s]/g, '');
+  const input  = document.getElementById('code-search') as HTMLInputElement|null;
+  const results = document.getElementById('search-results');
+  const list   = document.getElementById('search-results-list');
+  const noRes  = document.getElementById('search-no-results');
+  const spinner = document.getElementById('search-spinner');
+
+  function norm(s: string) { return s.toLowerCase().replace(/[-_\s]/g,''); }
+
+  function hi(text: string, q: string) {
+    const i = text.toLowerCase().indexOf(q.toLowerCase());
+    if (i === -1) return text;
+    return text.slice(0,i) + '<mark class="bg-yellow-100 font-semibold">' + text.slice(i, i+q.length) + '</mark>' + text.slice(i+q.length);
   }
 
-  function highlight(text, q) {
-    const idx = text.toLowerCase().indexOf(q.toLowerCase());
-    if (idx === -1) return text;
-    return text.slice(0, idx)
-      + '<mark class="bg-yellow-100 font-semibold rounded">' + text.slice(idx, idx + q.length) + '</mark>'
-      + text.slice(idx + q.length);
+  async function ensureIndex() {
+    if (index) return;
+    if (loading) return;
+    loading = true;
+    spinner?.classList.remove('hidden');
+    try {
+      index = await fetch('/search-index.json').then(r => r.json());
+    } catch {
+      index = [];
+    } finally {
+      spinner?.classList.add('hidden');
+      loading = false;
+    }
   }
 
-  function search(raw) {
-    const q = raw.trim();
-    if (q.length < 1) { hide(); return; }
-    const qn = normalise(q);
-
-    const seen = new Set();
-    const results = [];
-
-    // Exact code match first
-    for (const item of index) {
-      const cn = normalise(item.c);
-      if (cn === qn && !seen.has(item.u)) {
-        results.push({ item, score: 100 });
-        seen.add(item.u);
-      }
-    }
-    // Code starts-with
-    for (const item of index) {
-      if (seen.has(item.u)) continue;
-      if (normalise(item.c).startsWith(qn)) {
-        results.push({ item, score: 80 });
-        seen.add(item.u);
-      }
-    }
-    // Brand + code
-    for (const item of index) {
-      if (seen.has(item.u)) continue;
-      const combined = normalise(item.b + item.c);
-      if (combined.includes(qn)) {
-        results.push({ item, score: 60 });
-        seen.add(item.u);
-      }
-    }
-    // Meaning contains
-    for (const item of index) {
-      if (seen.has(item.u)) continue;
-      if (normalise(item.m).includes(qn) || normalise(item.b + item.a).includes(qn)) {
-        results.push({ item, score: 40 });
-        seen.add(item.u);
-      }
-    }
-
-    results.sort((a, b) => b.score - a.score);
-    render(results.slice(0, 12), q);
+  function score(item: IndexEntry, qn: string): number {
+    const cn = norm(item.c);
+    if (cn === qn) return 100;
+    if (cn.startsWith(qn)) return 80;
+    if (norm(item.b + item.c).includes(qn)) return 60;
+    if (norm(item.m + item.a).includes(qn)) return 40;
+    return 0;
   }
 
-  function render(results, q) {
-    resultsBox.classList.remove('hidden');
-    if (results.length === 0) {
-      resultsList.innerHTML = '';
-      noResults.classList.remove('hidden');
-      return;
-    }
-    noResults.classList.add('hidden');
-    resultsList.innerHTML = results.map(({ item }) => `
-      <a href="${item.u}" class="flex items-start gap-3 px-4 py-3 hover:bg-blue-50 border-b border-gray-100 last:border-0 transition-colors group">
-        <div class="w-12 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 group-hover:bg-blue-700">
+  function render(hits: IndexEntry[], q: string) {
+    results?.classList.remove('hidden');
+    if (!hits.length) { if(list) list.innerHTML=''; noRes?.classList.remove('hidden'); return; }
+    noRes?.classList.add('hidden');
+    if (!list) return;
+    list.innerHTML = hits.slice(0,12).map(item => `
+      <a href="${item.u}" role="option"
+         class="flex items-start gap-3 px-4 py-3 hover:bg-blue-50 border-b border-gray-100 last:border-0 transition-colors group">
+        <div class="w-12 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 group-hover:bg-blue-700 leading-tight text-center px-1">
           ${item.c}
         </div>
         <div class="flex-1 min-w-0">
-          <div class="font-semibold text-gray-900 text-sm">${highlight(item.b, q)} ${item.a} — Error ${item.c}</div>
-          <div class="text-gray-500 text-xs mt-0.5 truncate">${severityIcon[item.sev] || ''} ${item.m}</div>
+          <div class="font-semibold text-gray-900 text-sm">${hi(item.b, q)} ${item.a} <span class="text-gray-400">—</span> Error ${hi(item.c, q)}</div>
+          <div class="text-gray-500 text-xs mt-0.5 truncate">${sev[item.sev]||''} ${item.m}</div>
         </div>
-        <svg class="w-4 h-4 text-gray-400 flex-shrink-0 mt-1 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-gray-300 flex-shrink-0 mt-1 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
         </svg>
       </a>
     `).join('');
   }
 
-  function hide() {
-    resultsBox.classList.add('hidden');
-    resultsList.innerHTML = '';
+  function hide() { results?.classList.add('hidden'); if(list) list.innerHTML=''; }
+
+  async function doSearch(raw: string) {
+    const q = raw.trim();
+    if (q.length < 1) { hide(); return; }
+    await ensureIndex();
+    if (!index) return;
+    const qn = norm(q);
+    const seen = new Set<string>();
+    const hits: IndexEntry[] = [];
+    for (const item of index) {
+      if (seen.has(item.u)) continue;
+      const s = score(item, qn);
+      if (s > 0) { hits.push(item); seen.add(item.u); }
+    }
+    hits.sort((a,b) => score(b,qn) - score(a,qn));
+    render(hits, q);
   }
 
-  input.addEventListener('input', e => search(e.target.value));
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { hide(); input.blur(); }
-  });
+  input?.addEventListener('input', e => doSearch((e.target as HTMLInputElement).value));
+  input?.addEventListener('keydown', e => { if (e.key==='Escape') { hide(); input.blur(); } });
   document.addEventListener('click', e => {
-    if (!document.getElementById('search-container').contains(e.target)) hide();
+    if (!document.getElementById('search-container')?.contains(e.target as Node)) hide();
   });
 </script>

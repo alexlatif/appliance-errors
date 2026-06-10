@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Contact — ApplianceErrors.com';
+const description = 'Get in touch with the ApplianceErrors.com team.';
+---
+<BaseLayout {title} {description}>
+  <article class="max-w-2xl mx-auto px-4 py-12 prose prose-gray">
+    <h1>Contact Us</h1>
+    <p>
+      Questions, corrections, advertising, or business inquiries — email us at:
+    </p>
+    <p>
+      <a href="mailto:hello@applianceerrors.com"
+         class="text-brand-600 font-semibold text-lg">hello@applianceerrors.com</a>
+    </p>
+    <p>
+      We read every message and try to respond within a few business days.
+    </p>
+
+    <h2>Reporting a problem</h2>
+    <p>
+      If you spotted a factual error on one of our pages, please include the
+      page URL and a short description of what's wrong. The more specific you
+      can be, the faster we can fix it.
+    </p>
+
+    <h2>Press &amp; partnerships</h2>
+    <p>
+      For media requests, partnerships, or affiliate inquiries, use the same
+      email above and put <code>[PARTNERSHIP]</code> in the subject line.
+    </p>
+  </article>
+</BaseLayout>

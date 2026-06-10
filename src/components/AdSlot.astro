@@ -1,23 +1,38 @@
 ---
 export interface Props {
   slot_id: string;
-  style?: 'leaderboard' | 'rectangle' | 'sidebar';
+  style?: 'leaderboard' | 'rectangle' | 'sidebar' | 'in-article';
+  layout?: string;
 }
-const { slot_id, style = 'rectangle' } = Astro.props;
+const { slot_id, style = 'rectangle', layout } = Astro.props;
+
+const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+const isDev = import.meta.env.DEV;
+
 const dims: Record<string, string> = {
   leaderboard: 'min-h-[90px]',
   rectangle: 'min-h-[250px]',
   sidebar: 'min-h-[600px]',
+  'in-article': 'min-h-[280px]',
 };
+
+// Don't render ad markup if no publisher ID configured.
+const shouldRender = !!client && !!slot_id;
 ---
-<!-- Ad slot: {slot_id} -->
-<div class={`w-full ${dims[style]} bg-gray-50 border border-dashed border-gray-200 rounded flex items-center justify-center text-gray-400 text-xs my-4`}>
-  <ins class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-XXXXXXXXXX"
-    data-ad-slot={slot_id}
-    data-ad-format="auto"
-    data-full-width-responsive="true">
-  </ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+{shouldRender && (
+  <div class={`w-full ${dims[style]} my-6 flex justify-center`} data-ad-slot={slot_id}>
+    <ins
+      class="adsbygoogle"
+      style="display:block; width:100%;"
+      data-ad-client={client}
+      data-ad-slot={slot_id}
+      data-ad-format={style === 'in-article' ? 'fluid' : 'auto'}
+      data-ad-layout={layout}
+      data-full-width-responsive="true"
+      data-adtest={isDev ? 'on' : undefined}
+    />
+    <script is:inline>
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+)}

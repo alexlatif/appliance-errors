@@ -17,8 +17,9 @@ const brand = getBrand(brandSlug!)!;
 const appliances = getBrandAppliances(brandSlug!);
 const topCodes = getTopCodesForBrand(brandSlug!, 9);
 
-const title = `${brand.name} Appliance Error Codes — Complete Guide | ApplianceErrors.com`;
-const description = `All ${brand.name} appliance error codes in one place. Washer, dryer, dishwasher, refrigerator and oven error codes with plain-English meanings and step-by-step fixes.`;
+// ≤65 chars: "Samsung Error Codes — Washer, Dryer, Fridge | ApplianceErrors.com" = 66
+const title = `${brand.name} Error Codes — Washer, Dryer & Fridge | ApplianceErrors.com`;
+const description = `${brand.name} error codes for washers, dryers, dishwashers, refrigerators & ovens. Plain-English meanings and step-by-step DIY fixes. Free.`;
 
 const schemas = [
   breadcrumbSchema([

@@ -1,47 +1,89 @@
 import type { ErrorCode, Brand, ApplianceType } from './types';
 
 const BASE_URL = 'https://applianceerrors.com';
+const BUILD_DATE = new Date().toISOString().split('T')[0];
+const SITE_PUBLISHED = '2025-01-01';
 
-export function faqSchema(errorCode: ErrorCode): object {
+const PUBLISHER = {
+  "@type": "Organization",
+  "name": "ApplianceErrors.com",
+  "url": BASE_URL,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${BASE_URL}/logo.svg`,
+    "width": 200,
+    "height": 60
+  }
+};
+
+/** Global site schema — inject on every page via BaseLayout */
+export function organizationSchema(): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ApplianceErrors.com",
+    "url": BASE_URL,
+    "description": "Free appliance error code database. Look up what any error code means and how to fix it for Samsung, LG, Whirlpool, GE, Bosch and 15+ major brands.",
+    "logo": `${BASE_URL}/logo.svg`,
+    "sameAs": []
+  };
+}
+
+/** Homepage only */
+export function webSiteSchema(totalCodes: number): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ApplianceErrors.com",
+    "url": BASE_URL,
+    "description": `Free database of ${totalCodes}+ appliance error codes for every major brand. Plain-English meanings and step-by-step DIY fixes.`,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${BASE_URL}/search-index.json?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": PUBLISHER
+  };
+}
+
+/** FAQPage — kept for crawl signals even though rich results retired May 2026 */
+export function faqSchema(errorCode: ErrorCode, brandName: string, appName: string): object {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": `What does error code ${errorCode.code} mean on a ${errorCode.brand} ${errorCode.appliance}?`,
+        "name": `What does error code ${errorCode.code} mean on a ${brandName} ${appName}?`,
+        "acceptedAnswer": { "@type": "Answer", "text": errorCode.meaning }
+      },
+      {
+        "@type": "Question",
+        "name": `How do I fix ${brandName} ${appName} error code ${errorCode.code}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": errorCode.meaning
+          "text": errorCode.fixes.map((f, i) => `Step ${i+1}: ${f.title}. ${f.description}`).join(' ')
         }
       },
       {
         "@type": "Question",
-        "name": `How do I fix ${errorCode.brand} ${errorCode.appliance} error code ${errorCode.code}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": errorCode.fixes.map((f, i) => `Step ${i+1}: ${f.title} — ${f.description}`).join(' ')
-        }
+        "name": `How do I clear error code ${errorCode.code} on my ${brandName} ${appName}?`,
+        "acceptedAnswer": { "@type": "Answer", "text": errorCode.reset_instructions }
       },
       {
         "@type": "Question",
-        "name": `How do I reset error code ${errorCode.code} on my ${errorCode.brand} ${errorCode.appliance}?`,
+        "name": `Is ${brandName} ${appName} error code ${errorCode.code} serious?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": errorCode.reset_instructions
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Is error code ${errorCode.code} serious?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Error code ${errorCode.code} is rated ${errorCode.severity} severity. ${
-            errorCode.severity === 'critical' ? 'Stop using the appliance immediately and call a technician.' :
-            errorCode.severity === 'high' ? 'Address this soon — running the appliance may cause further damage.' :
-            errorCode.severity === 'medium' ? 'The appliance may still work but the issue should be resolved.' :
-            'This is a minor issue you can typically fix yourself.'
-          }`
+          "text": `Error code ${errorCode.code} has ${errorCode.severity} severity. ${
+            errorCode.severity === 'critical' ? 'Stop using the appliance immediately — safety risk. Call a certified technician.' :
+            errorCode.severity === 'high' ? 'Continuing to run the appliance may cause additional damage. Repair soon.' :
+            errorCode.severity === 'medium' ? 'The appliance may still operate but the underlying issue should be fixed.' :
+            'Low severity — does not prevent normal operation but should be addressed.'
+          } DIY repair cost: ${errorCode.cost_lo}–${errorCode.cost_hi}. Professional repair: ${errorCode.pro_cost_lo}–${errorCode.pro_cost_hi}.`
         }
       }
     ]
@@ -49,23 +91,33 @@ export function faqSchema(errorCode: ErrorCode): object {
 }
 
 export function howToSchema(errorCode: ErrorCode, brandName: string, applianceName: string): object {
+  const supply = [...new Set(errorCode.fixes.flatMap(f => f.parts ?? []))].filter(Boolean).slice(0, 6);
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": `How to Fix ${brandName} ${applianceName} Error Code ${errorCode.code}`,
-    "description": `Step-by-step guide to diagnose and fix ${errorCode.meaning.toLowerCase()} on a ${brandName} ${applianceName}.`,
+    "description": `${errorCode.meaning}. Step-by-step repair guide for ${brandName} ${applianceName} error code ${errorCode.code}.`,
     "totalTime": errorCode.diy_difficulty === 'easy' ? 'PT15M' : errorCode.diy_difficulty === 'moderate' ? 'PT45M' : 'PT2H',
     "estimatedCost": {
       "@type": "MonetaryAmount",
       "currency": "USD",
-      "value": `${errorCode.cost_lo}-${errorCode.cost_hi}`
+      "value": `${errorCode.cost_lo}–${errorCode.cost_hi}`
     },
+    ...(supply.length > 0 ? {
+      "supply": supply.map(s => ({ "@type": "HowToSupply", "name": s }))
+    } : {}),
+    "tool": [
+      { "@type": "HowToTool", "name": "Multimeter" },
+      { "@type": "HowToTool", "name": "Screwdriver set" }
+    ],
     "step": errorCode.fixes.map((fix, i) => ({
       "@type": "HowToStep",
       "position": i + 1,
       "name": fix.title,
-      "text": fix.description,
-      ...(fix.warning ? { "warning": fix.warning } : {})
+      "text": `${fix.description}${fix.warning ? ` Warning: ${fix.warning}` : ''}`,
+      ...((fix.parts?.length ?? 0) > 0 ? {
+        "supply": fix.parts!.map(p => ({ "@type": "HowToSupply", "name": p }))
+      } : {})
     }))
   };
 }
@@ -86,21 +138,48 @@ export function breadcrumbSchema(items: Array<{ name: string; url: string }>): o
 export function articleSchema(errorCode: ErrorCode, brandName: string, applianceName: string): object {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": `${brandName} ${applianceName} Error Code ${errorCode.code}: ${errorCode.meaning}`,
-    "description": `${errorCode.detail} Learn what causes this error and how to fix it step by step.`,
+    "@type": "TechArticle",
+    "headline": `${errorCode.code} Error Code: ${brandName} ${applianceName} — Meaning & Fix`,
+    "description": errorCode.detail,
+    "about": {
+      "@type": "Thing",
+      "name": `${brandName} ${applianceName} error code ${errorCode.code}`,
+      "description": errorCode.meaning
+    },
+    "proficiencyLevel": errorCode.diy_difficulty === 'easy' ? 'Beginner' : errorCode.diy_difficulty === 'moderate' ? 'Expert' : 'Expert',
     "author": {
       "@type": "Organization",
-      "name": "ApplianceErrors.com"
-    },
-    "publisher": {
-      "@type": "Organization",
       "name": "ApplianceErrors.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${BASE_URL}/logo.png`
-      }
+      "url": BASE_URL
     },
-    "dateModified": new Date().toISOString().split('T')[0]
+    "publisher": PUBLISHER,
+    "datePublished": SITE_PUBLISHED,
+    "dateModified": BUILD_DATE,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/brands/${errorCode.brand}/${errorCode.appliance}/${errorCode.code.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'')}/`
+    },
+    "keywords": [
+      `${brandName} ${applianceName} error code ${errorCode.code}`,
+      `${errorCode.code} error`,
+      `${brandName} ${errorCode.code}`,
+      errorCode.category.replace(/_/g, ' ') + ' repair'
+    ].join(', ')
+  };
+}
+
+export function itemListSchema(items: Array<{name: string; url: string; description: string}>, listName: string): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": listName,
+    "numberOfItems": items.length,
+    "itemListElement": items.map((item, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": item.name,
+      "description": item.description,
+      "url": BASE_URL + item.url
+    }))
   };
 }

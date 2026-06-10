@@ -4,9 +4,9 @@ import SeverityBadge from '../../../components/SeverityBadge.astro';
 import BreadcrumbNav from '../../../components/BreadcrumbNav.astro';
 import {
   brands, applianceTypes, getBrand, getBrandAppliances,
-  getCodesByBrandAndAppliance, getTopCodesForBrand
+  getCodesByBrand, getCodesByBrandAndAppliance, getTopCodesForBrand
 } from '../../../utils/data';
-import { breadcrumbSchema } from '../../../utils/schema';
+import { breadcrumbSchema, itemListSchema } from '../../../utils/schema';
 
 export async function getStaticPaths() {
   return brands.map(b => ({ params: { brand: b.slug } }));
@@ -16,9 +16,32 @@ const { brand: brandSlug } = Astro.params;
 const brand = getBrand(brandSlug!)!;
 const appliances = getBrandAppliances(brandSlug!);
 const topCodes = getTopCodesForBrand(brandSlug!, 9);
+const allBrandCodes = getCodesByBrand(brandSlug!);
 
-// ≤65 chars: "Samsung Error Codes — Washer, Dryer, Fridge | ApplianceErrors.com" = 66
-const title = `${brand.name} Error Codes — Washer, Dryer & Fridge | ApplianceErrors.com`;
+// Derived stats for content depth
+const criticalCount = allBrandCodes.filter(c => c.severity === 'critical' || c.severity === 'high').length;
+const applianceNames = appliances.map(a => applianceTypes.find(at=>at.slug===a)?.name ?? a);
+const categoryCounts = appliances.map(a => ({
+  name: applianceTypes.find(at=>at.slug===a)?.name ?? a,
+  count: getCodesByBrandAndAppliance(brandSlug!, a).length,
+})).filter(x=>x.count>0);
+
+// Diagnostic system name per brand
+const DIAG_NAMES: Record<string,string> = {
+  samsung: 'Smart Care diagnostic system',
+  lg: 'SmartDiagnosis system',
+  whirlpool: 'F-code diagnostic system',
+  ge: 'ERC (Electronic Range Control) diagnostic system',
+  bosch: 'E-code diagnostic system',
+  kitchenaid: 'F-code diagnostic platform (shared with Whirlpool)',
+  frigidaire: 'F-code diagnostic system',
+  maytag: 'F-code diagnostic system',
+  electrolux: 'E-code diagnostic system',
+  miele: 'F-code fault display system',
+};
+
+// ≤65 chars: "Whirlpool Error Codes — All Appliances | ApplianceErrors.com" = 60
+const title = `${brand.name} Error Codes — All Appliances | ApplianceErrors.com`;
 const description = `${brand.name} error codes for washers, dryers, dishwashers, refrigerators & ovens. Plain-English meanings and step-by-step DIY fixes. Free.`;
 
 const schemas = [
@@ -72,6 +95,35 @@ const schemas = [
           );
         })}
       </div>
+    </section>
+
+    <!-- Brand explainer — adds content depth for SEO -->
+    <section class="mb-10 bg-gray-50 rounded-2xl p-6 border border-gray-200">
+      <h2 class="text-xl font-bold text-gray-900 mb-3">About {brand.name} Error Codes</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        This database covers <strong>{allBrandCodes.length} {brand.name} error codes</strong> across
+        {appliances.length} appliance {appliances.length === 1 ? 'type' : 'types'}: {applianceNames.join(', ')}.
+        {criticalCount > 0 && (
+          <>{criticalCount} of these codes are classified as high-severity or critical — meaning the appliance should not be run until the underlying issue is resolved.</>
+        )}
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        {brand.description}
+        {DIAG_NAMES[brandSlug!] && (
+          <> {brand.name} appliances use the {DIAG_NAMES[brandSlug!]} — when a fault is detected, the appliance stops operation and displays an error code on the control panel.</>
+        )}
+      </p>
+      {categoryCounts.length > 1 && (
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+          {categoryCounts.map(cat => (
+            <a href={`/brands/${brandSlug}/${appliances[categoryCounts.indexOf(cat)]}/`}
+               class="bg-white rounded-xl p-3 border border-gray-200 hover:border-brand-400 transition-colors text-center">
+              <div class="font-bold text-brand-700 text-lg">{cat.count}</div>
+              <div class="text-sm text-gray-600">{cat.name} codes</div>
+            </a>
+          ))}
+        </div>
+      )}
     </section>
 
     <!-- Top codes grid -->

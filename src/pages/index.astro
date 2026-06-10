@@ -2,14 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SearchBox from '../components/SearchBox.astro';
 import { brands, applianceTypes, totalCodeCount } from '../utils/data';
-import { webSiteSchema, organizationSchema } from '../utils/schema';
+import { webSiteSchema } from '../utils/schema';
 
 const tc = totalCodeCount();
 // ≤65 chars
-const title = 'Appliance Error Code Lookup — Free Fix Guide | ApplianceErrors.com';
+const title = 'Appliance Error Code Lookup — Fix Any Brand | ApplianceErrors.com';
 // ≤155 chars
 const description = `${tc}+ appliance error codes for Samsung, LG, Whirlpool, GE, Bosch & more. What it means, why it happens, and exactly how to fix it — free.`;
-const schemas = [webSiteSchema(tc), organizationSchema()];
+const schemas = [webSiteSchema(tc)];  // Organization injected sitewide by BaseLayout
 ---
 
 <BaseLayout {title} {description} {schemas}>

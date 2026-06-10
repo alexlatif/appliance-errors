@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { totalCodeCount } from '../utils/data';
-import { organizationSchema } from '../utils/schema';
-
 const title = 'About ApplianceErrors.com — How We Research Error Codes';
-const description = 'ApplianceErrors.com is a free reference database of appliance error codes compiled from manufacturer service documentation, technician knowledge, and repair community data.';
-const schemas = [organizationSchema()];
+const description = 'Free appliance error code database compiled from manufacturer service manuals and technician knowledge. Samsung, LG, Whirlpool, GE, Bosch and more.';
+const schemas: object[] = [];  // Organization already injected sitewide by BaseLayout
 const tc = totalCodeCount();
 ---
 

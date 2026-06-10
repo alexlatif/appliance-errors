@@ -849,6 +849,602 @@
       "when_to_call_pro": "If no button appears stuck and the error returns after a power cycle, the control board needs professional diagnosis."
     },
     {
+      "id": "samsung-washer-ce",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "CE",
+      "aliases": [],
+      "meaning": "Over-current motor protection — motor drawing excessive current",
+      "detail": "The motor control board has detected that the motor is drawing more current than its rated maximum. This is a protective shutdown to prevent motor damage. An overloaded drum is the most common trigger, but motor or board failure can cause it without overloading.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Drum overloaded — too many heavy items",
+          "frequency": 45
+        },
+        {
+          "description": "Motor winding beginning to fail",
+          "frequency": 30
+        },
+        {
+          "description": "Motor control board fault",
+          "frequency": 15
+        },
+        {
+          "description": "Wiring fault causing incorrect current reading",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Remove half the laundry",
+          "description": "Turn off the washer, open the door, remove roughly half the items. This is the first and most common fix."
+        },
+        {
+          "title": "Power cycle for 10 minutes",
+          "description": "Unplug, wait 10 full minutes, restart. The motor control firmware resets."
+        },
+        {
+          "title": "Test the motor resistance",
+          "description": "With the washer unplugged, access the motor and test winding resistance. Compare to spec in the service manual. Out-of-spec = motor needs replacement.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace motor or control board",
+          "description": "If motor tests OK but error persists, the control board's current sensor or relay has failed.",
+          "parts": [
+            "Samsung washer motor ($150–$300)",
+            "Motor control board ($100–$250)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 480,
+      "reset_instructions": "Unplug for 10 minutes. Restart with a reduced load. If CE returns within the first minute on a light load, the motor has failed.",
+      "related_codes": [
+        "LE",
+        "3E"
+      ],
+      "when_to_call_pro": "If error persists with normal loads after a reset, professional motor or board diagnosis is required."
+    },
+    {
+      "id": "samsung-washer-pe",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "PE",
+      "aliases": [],
+      "meaning": "Water pressure sensor (pressure switch) failure",
+      "detail": "The water level pressure sensor is not reading correctly. The washer uses this sensor to detect when the tub has reached the correct fill level. A faulty sensor can cause overfilling, underfilling, or an inability to start.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure sensor failed (open or shorted)",
+          "frequency": 55
+        },
+        {
+          "description": "Pressure hose kinked or blocked",
+          "frequency": 30
+        },
+        {
+          "description": "Control board pressure sensor input failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the pressure hose",
+          "description": "The pressure hose runs from the outer tub up to the pressure sensor. Check for kinks, cracks, or blockages. Blow gently through the hose — you should hear the sensor click."
+        },
+        {
+          "title": "Test the pressure sensor",
+          "description": "The sensor should audibly click when you blow into the hose connection. Test electrical continuity at each water level position.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the pressure sensor",
+          "description": "The sensor is usually accessed by removing the top panel. Disconnect the hose and wiring, unscrew, and swap.",
+          "parts": [
+            "Samsung pressure sensor ($20–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 60,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, unplug for 1 minute then restart.",
+      "related_codes": [
+        "FE",
+        "OE"
+      ],
+      "when_to_call_pro": "If a new pressure sensor and clear hose don't resolve PE, the control board sensor input has failed."
+    },
+    {
+      "id": "samsung-washer-3e",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "3E",
+      "aliases": [
+        "3E1",
+        "3E2",
+        "3E3"
+      ],
+      "meaning": "Motor drive error — motor cannot reach commanded speed",
+      "detail": "The motor is not responding correctly to drive commands from the motor control board. This is more serious than CE and indicates a fundamental communication or hardware failure in the drive system.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Motor hall sensor failure",
+          "frequency": 40
+        },
+        {
+          "description": "Motor control board failure",
+          "frequency": 35
+        },
+        {
+          "description": "Motor stator winding failure",
+          "frequency": 20
+        },
+        {
+          "description": "Drive belt broken or slipping (belt-drive models)",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reset the washer",
+          "description": "Unplug for 10 minutes and restart with a light load."
+        },
+        {
+          "title": "Replace the hall sensor",
+          "description": "The hall sensor monitors rotor position. On direct-drive Samsung models, it is mounted near the motor and costs under $20. It's the single most common cause of 3E.",
+          "parts": [
+            "Samsung hall sensor ($15–$30)"
+          ],
+          "warning": "Lay the washer on its front to access the motor."
+        },
+        {
+          "title": "Inspect stator and rotor",
+          "description": "Check rotor magnets for cracks. Check stator windings for burn smell or discoloration.",
+          "parts": [
+            "Stator assembly ($80–$180)",
+            "Rotor assembly ($50–$120)"
+          ]
+        },
+        {
+          "title": "Replace motor control board",
+          "description": "If hall sensor and motor hardware look fine, the drive circuit on the control board has failed.",
+          "parts": [
+            "Samsung motor control board ($100–$250)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 15,
+      "cost_hi": 250,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 10 minutes and restart.",
+      "related_codes": [
+        "CE",
+        "LE",
+        "SE"
+      ],
+      "when_to_call_pro": "3E on direct-drive Samsung washers is almost always the hall sensor. Try that $20 repair before spending $200+ on a board."
+    },
+    {
+      "id": "samsung-washer-se",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "SE",
+      "aliases": [],
+      "meaning": "Motor tachometer / hall sensor error",
+      "detail": "The hall sensor (tachometer) that measures motor rotation speed is not providing a valid signal. The washer cannot safely control spin speed without this sensor.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Hall sensor failure",
+          "frequency": 65
+        },
+        {
+          "description": "Hall sensor wiring harness damaged",
+          "frequency": 25
+        },
+        {
+          "description": "Motor control board fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Replace the hall sensor",
+          "description": "The hall sensor is a small 3-wire sensor near the motor rotor. It's very inexpensive and quick to replace.",
+          "parts": [
+            "Samsung hall sensor ($15–$30)"
+          ],
+          "warning": "Unplug washer and lay on its front to access the motor."
+        },
+        {
+          "title": "Check wiring harness",
+          "description": "Inspect the 3-wire harness from hall sensor to control board for damage."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 30,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 380,
+      "reset_instructions": "After hall sensor replacement, unplug for 1 minute then restart.",
+      "related_codes": [
+        "3E",
+        "CE"
+      ],
+      "when_to_call_pro": "If hall sensor is replaced and SE persists, the control board signal input for the hall sensor has failed."
+    },
+    {
+      "id": "samsung-washer-9e1",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "9E1",
+      "aliases": [
+        "9E2"
+      ],
+      "meaning": "Low voltage detected — power supply problem",
+      "detail": "The washer is detecting abnormal input voltage. 9E1 typically means voltage is too low; 9E2 means too high. The washer shuts down to protect electronics from damage.",
+      "severity": "high",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Low household voltage — shared circuit under heavy load",
+          "frequency": 50
+        },
+        {
+          "description": "Extension cord or undersized outlet wiring",
+          "frequency": 30
+        },
+        {
+          "description": "Voltage fluctuation from utility",
+          "frequency": 15
+        },
+        {
+          "description": "Internal power board fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the outlet voltage",
+          "description": "Use a multimeter on the outlet. Samsung washers require 120V (±10%), typically 108–132V. Below 100V during spin cycle is common if sharing a circuit.",
+          "parts": [
+            "Multimeter or outlet voltage tester"
+          ]
+        },
+        {
+          "title": "Move to a dedicated circuit",
+          "description": "Washers should be on a dedicated 20A circuit. Sharing with other appliances causes voltage sag during spin."
+        },
+        {
+          "title": "Check power board",
+          "description": "If voltage is good but error persists, the internal power monitoring circuit has failed.",
+          "parts": [
+            "Samsung power board ($80–$200)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 200,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Restore proper voltage and unplug for 5 minutes. Restart on a dedicated circuit.",
+      "related_codes": [
+        "bE"
+      ],
+      "when_to_call_pro": "Persistent 9E1 on a known-good circuit indicates an internal power regulation fault requiring professional service."
+    },
+    {
+      "id": "samsung-washer-nf",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "nF",
+      "aliases": [
+        "nF1"
+      ],
+      "meaning": "No fill — water supply insufficient at start of cycle",
+      "detail": "The washer started a cycle but failed to detect water entering the drum within the initial fill check period. This is similar to 4C but specifically triggers at cycle start rather than mid-fill.",
+      "severity": "medium",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Water supply valve closed or pressure too low",
+          "frequency": 45
+        },
+        {
+          "description": "Inlet valve screens clogged",
+          "frequency": 35
+        },
+        {
+          "description": "Water inlet valve solenoid failed",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Open supply valves fully",
+          "description": "Both hot and cold valves must be completely open."
+        },
+        {
+          "title": "Clean inlet hose screens",
+          "description": "Unscrew hoses at the back of the washer, remove the mesh screens, and clean under running water."
+        },
+        {
+          "title": "Test water pressure",
+          "description": "Turn on a nearby tap to check pressure. Below 20 PSI triggers nF."
+        },
+        {
+          "title": "Replace inlet valve",
+          "description": "If pressure and screens are fine, test solenoid coils (200–500 ohms) and replace if failed.",
+          "parts": [
+            "Samsung inlet valve ($30–$70)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 70,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 230,
+      "reset_instructions": "Fix the supply issue and press Start. nF clears when fill is successfully detected.",
+      "related_codes": [
+        "4C",
+        "HE"
+      ],
+      "when_to_call_pro": "If supply is confirmed and valve is new but nF continues, the fill sensor or control board water detection circuit has failed."
+    },
+    {
+      "id": "samsung-washer-ap",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "AP",
+      "aliases": [],
+      "meaning": "Aqua Protection activated — flood protection triggered",
+      "detail": "Samsung's Aqua Protection anti-flood system has detected water in the base of the washing machine. The machine will drain and stop to prevent water damage.",
+      "severity": "high",
+      "category": "leak",
+      "causes": [
+        {
+          "description": "Door seal torn or pulled away from channel",
+          "frequency": 35
+        },
+        {
+          "description": "Detergent oversudsing causing foam overflow into base",
+          "frequency": 30
+        },
+        {
+          "description": "Supply hose connection leaking at machine inlet",
+          "frequency": 20
+        },
+        {
+          "description": "Drain hose loose at pump connection",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Tilt the machine to drain the base",
+          "description": "Turn off power. Carefully tilt the machine forward to drain water from the base pan. Have towels ready.",
+          "warning": "Turn off water supply and disconnect power before tilting."
+        },
+        {
+          "title": "Allow base to dry",
+          "description": "Leave machine upright with door open for several hours."
+        },
+        {
+          "title": "Inspect door seal",
+          "description": "Check the rubber door gasket for tears, pulled sections, or mold damage.",
+          "parts": [
+            "Samsung door gasket ($40–$90)"
+          ]
+        },
+        {
+          "title": "Check detergent amount",
+          "description": "Excessive suds can overflow into the base. Use HE detergent, max 1 tablespoon."
+        },
+        {
+          "title": "Check hose connections",
+          "description": "Inspect supply hose both ends, pump outlet, and drain hose connection."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 380,
+      "reset_instructions": "Drain base, fix leak source, let it dry completely, then restart. The float sensor resets when the base is dry.",
+      "related_codes": [
+        "OE",
+        "DE"
+      ],
+      "when_to_call_pro": "If no visible external leak, the tub, drum bearing seal, or pump housing may have an internal leak requiring professional inspection."
+    },
+    {
+      "id": "samsung-washer-fl",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "FL",
+      "aliases": [],
+      "meaning": "Door lock failure — cannot complete lock engagement",
+      "detail": "The door lock mechanism has failed to properly engage within the expected time. This is a more specific variant of DE indicating the lock mechanism itself has failed, not just the door being open.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door lock solenoid burned out",
+          "frequency": 50
+        },
+        {
+          "description": "Door lock mechanism jammed by clothing",
+          "frequency": 30
+        },
+        {
+          "description": "Control board door lock relay failure",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check for clothing in the door",
+          "description": "Pull back the door gasket and look for items caught in the lock area."
+        },
+        {
+          "title": "Test the door lock assembly",
+          "description": "The lock clicks audibly when engaged. If no click when power applied, the solenoid has failed.",
+          "parts": [
+            "Samsung door lock assembly ($40–$90)"
+          ]
+        },
+        {
+          "title": "Replace door lock assembly",
+          "description": "Straightforward replacement accessible from inside the door frame."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Close door firmly and restart. If FL returns, the lock assembly needs replacement.",
+      "related_codes": [
+        "DE"
+      ],
+      "when_to_call_pro": "If new door lock doesn't resolve FL, the control board's lock relay or wiring has failed."
+    },
+    {
+      "id": "samsung-washer-be2",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "bE2",
+      "aliases": [
+        "bE3"
+      ],
+      "meaning": "Specific button on control panel shorted",
+      "detail": "A specific button on the control panel is registering as continuously pressed (shorted). bE2 and bE3 pinpoint different specific buttons compared to the generic bE code.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Button stuck from detergent splash",
+          "frequency": 50
+        },
+        {
+          "description": "Membrane keypad failure at specific button",
+          "frequency": 35
+        },
+        {
+          "description": "UI board key input shorted",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Identify and press the stuck button",
+          "description": "Press each button around the display firmly. A stuck button will feel different."
+        },
+        {
+          "title": "Clean the control panel",
+          "description": "Wipe with a dry cloth, paying attention to button edges where detergent residue accumulates."
+        },
+        {
+          "title": "Replace the UI board",
+          "description": "If a button remains stuck after cleaning.",
+          "parts": [
+            "Samsung washer UI board ($60–$150)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 150,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug 5 minutes. If a stuck button is cleared, code should not return.",
+      "related_codes": [
+        "bE"
+      ],
+      "when_to_call_pro": "If UI board replacement doesn't resolve bE2/bE3, the main control board keypad interface has failed."
+    },
+    {
+      "id": "samsung-washer-e7",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "E7",
+      "aliases": [],
+      "meaning": "Heater circuit error — TRIAC failure",
+      "detail": "The TRIAC (solid-state relay) that switches power to the heating element has failed. The heater element may be physically fine but cannot receive power.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heater TRIAC burned on control board",
+          "frequency": 65
+        },
+        {
+          "description": "Heater element short-circuit causing TRIAC damage",
+          "frequency": 25
+        },
+        {
+          "description": "General control board failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the heating element first",
+          "description": "Check element for continuity and for any short to the casing. A shorted element damages the TRIAC.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace damaged element if shorted",
+          "description": "Replacing a shorted element without replacing the board may cause the new TRIAC to fail again.",
+          "parts": [
+            "Samsung washer heating element ($40–$100)"
+          ]
+        },
+        {
+          "title": "Replace control board",
+          "description": "E7 almost always means the control board's heater circuit needs replacement.",
+          "parts": [
+            "Samsung main control board ($120–$300)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 40,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 10 minutes. If E7 returns, replace the control board.",
+      "related_codes": [
+        "HE",
+        "tE"
+      ],
+      "when_to_call_pro": "E7 almost always requires control board replacement. Not a typical DIY repair."
+    },
+    {
       "id": "samsung-dryer-te",
       "brand": "samsung",
       "appliance": "dryer",
@@ -1041,6 +1637,276 @@
         "HE"
       ],
       "when_to_call_pro": "If duct is completely clear and code persists, the airflow sensor or control board may need replacement."
+    },
+    {
+      "id": "samsung-dryer-fe",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "FE",
+      "aliases": [],
+      "meaning": "Frequency error — abnormal power supply frequency",
+      "detail": "The dryer has detected that the AC supply frequency is outside the expected range (60 Hz for North America). This protects the motor from running at incorrect speed.",
+      "severity": "high",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Power inverter or generator with non-standard frequency",
+          "frequency": 50
+        },
+        {
+          "description": "Faulty internal power monitoring circuit",
+          "frequency": 30
+        },
+        {
+          "description": "Voltage fluctuation causing frequency distortion",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check power source",
+          "description": "If using a generator or inverter, ensure it outputs a clean 60 Hz sine wave."
+        },
+        {
+          "title": "Test on utility power",
+          "description": "Plug directly into utility power (not generator) to confirm."
+        },
+        {
+          "title": "Service the control board",
+          "description": "If on utility power and FE persists, the frequency monitoring circuit on the board has failed.",
+          "parts": [
+            "Samsung dryer control board ($100–$280)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 280,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Restore proper power source and unplug 5 minutes. Restart.",
+      "related_codes": [
+        "9E"
+      ],
+      "when_to_call_pro": "FE on utility power without a generator indicates a control board fault."
+    },
+    {
+      "id": "samsung-dryer-et",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "Et",
+      "aliases": [],
+      "meaning": "Communication error — connection between boards",
+      "detail": "The main control board cannot communicate with the sub-control board or display board. This often manifests as the dryer starting but buttons not responding, or display showing garbage.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Wiring harness connector loose between boards",
+          "frequency": 55
+        },
+        {
+          "description": "Sub-board failure",
+          "frequency": 30
+        },
+        {
+          "description": "Main control board communication circuit failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 10 minutes and restart. Communication errors sometimes clear."
+        },
+        {
+          "title": "Inspect wire harness connections",
+          "description": "Access the control board area and check all multi-pin connectors for secure seating."
+        },
+        {
+          "title": "Replace the sub-board",
+          "description": "The sub-board (user interface board) is typically cheaper than the main board.",
+          "parts": [
+            "Samsung dryer sub-board ($50–$150)"
+          ]
+        },
+        {
+          "title": "Replace main control board",
+          "description": "If sub-board replacement doesn't help.",
+          "parts": [
+            "Samsung dryer control board ($100–$280)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 50,
+      "cost_hi": 280,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug 10 minutes. If Et returns, check all wiring connections before replacing boards.",
+      "related_codes": [
+        "bC2"
+      ],
+      "when_to_call_pro": "Et diagnoses require working through both boards systematically."
+    },
+    {
+      "id": "samsung-dryer-bc2",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "bC2",
+      "aliases": [],
+      "meaning": "Button card error — control panel communication failure",
+      "detail": "The button card (user interface) is not communicating with the main control board. Buttons may become unresponsive.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Button card connector loose",
+          "frequency": 50
+        },
+        {
+          "description": "Button card failure",
+          "frequency": 35
+        },
+        {
+          "description": "Main board UI communication port failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reseat button card connector",
+          "description": "Access the control panel and firmly reseat the ribbon cable or wire connector."
+        },
+        {
+          "title": "Replace button card",
+          "description": "If connector is secure but issue persists.",
+          "parts": [
+            "Samsung dryer button card ($50–$130)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 130,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug 5 minutes, reseat connectors, restart.",
+      "related_codes": [
+        "Et"
+      ],
+      "when_to_call_pro": "If new button card doesn't resolve bC2, main board UI port has failed."
+    },
+    {
+      "id": "samsung-dryer-hc",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "HC",
+      "aliases": [],
+      "meaning": "High temperature detected — overheating safety shutdown",
+      "detail": "The dryer's thermal safety system has detected temperatures above safe operating limits. The high-limit thermostat has tripped. A blocked vent is the cause in over 80% of cases.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Blocked or restricted exhaust duct",
+          "frequency": 55
+        },
+        {
+          "description": "Clogged lint filter",
+          "frequency": 20
+        },
+        {
+          "description": "High-limit thermostat failure (rare — usually victim not cause)",
+          "frequency": 15
+        },
+        {
+          "description": "Thermal fuse open",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the entire vent system",
+          "description": "Clean lint filter, full duct length, and exterior vent cap. This is the fix in most cases.",
+          "parts": [
+            "Dryer vent brush kit ($15–$35)"
+          ]
+        },
+        {
+          "title": "Test and replace the high-limit thermostat",
+          "description": "Once tripped by overheating, high-limit thermostats can fail permanently. Test for continuity — failed = open circuit.",
+          "parts": [
+            "Samsung high-limit thermostat ($10–$25)"
+          ]
+        },
+        {
+          "title": "Test the thermal fuse",
+          "description": "If the fuse has blown, the dryer won't heat at all. Test continuity — no continuity = blown fuse.",
+          "parts": [
+            "Samsung thermal fuse ($8–$20)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 8,
+      "cost_hi": 35,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "After clearing the vent and replacing the thermostat, unplug 5 minutes and restart. Always confirm vent is clear before the first test run.",
+      "related_codes": [
+        "OD",
+        "tE"
+      ],
+      "when_to_call_pro": "If vent is completely clear and thermostats test good but overheating continues, the heating element may be stuck on (failed relay) requiring professional diagnosis."
+    },
+    {
+      "id": "samsung-dryer-ae",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "AE",
+      "aliases": [],
+      "meaning": "Communication error — internal signal failure",
+      "detail": "A communication error between internal components. Similar to Et but more generic.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Wiring harness loose connection",
+          "frequency": 60
+        },
+        {
+          "description": "Control board communication fault",
+          "frequency": 40
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 10 minutes and restart."
+        },
+        {
+          "title": "Check wiring harness",
+          "description": "Inspect all board-to-board connections."
+        },
+        {
+          "title": "Replace control board if recurring",
+          "description": "Persistent AE indicates control board failure.",
+          "parts": [
+            "Samsung dryer control board ($100–$280)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 280,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug 10 minutes and restart.",
+      "related_codes": [
+        "Et"
+      ],
+      "when_to_call_pro": "Persistent AE requires professional board diagnosis."
     },
     {
       "id": "samsung-dishwasher-lc",
@@ -1236,6 +2102,277 @@
         "5C"
       ],
       "when_to_call_pro": "Circulation pump replacement is a complex repair best left to a technician if you're not experienced with appliance repair."
+    },
+    {
+      "id": "samsung-dishwasher-he",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "HE",
+      "aliases": [],
+      "meaning": "Heater error — water not heating",
+      "detail": "The dishwasher heating element is not functioning correctly. Dishes will not be sanitized, and the drying cycle will be ineffective.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heating element failure",
+          "frequency": 55
+        },
+        {
+          "description": "NTC temperature sensor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board heater relay failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test heating element",
+          "description": "Access from under the unit. Test continuity — should read 15–30 ohms.",
+          "parts": [
+            "Samsung dishwasher heater ($40–$90)"
+          ]
+        },
+        {
+          "title": "Test NTC sensor",
+          "description": "At room temperature, should read 6k–7k ohms.",
+          "parts": [
+            "NTC sensor ($15–$40)"
+          ]
+        },
+        {
+          "title": "Replace failed component",
+          "description": "Install appropriate part."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 90,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "After repair, run full program to confirm.",
+      "related_codes": [
+        "tE",
+        "5C"
+      ],
+      "when_to_call_pro": "If element and sensor both test good, control board heater relay has failed."
+    },
+    {
+      "id": "samsung-dishwasher-te",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "tE",
+      "aliases": [],
+      "meaning": "Temperature sensor failure — NTC thermistor fault",
+      "detail": "The water temperature sensor in the dishwasher has failed. Heating and sanitize functions are disabled.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "At room temperature: 6k–7k ohms expected.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check connector",
+          "description": "Reseat firmly."
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Typically located near the heating element.",
+          "parts": [
+            "Samsung dishwasher NTC ($15–$35)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 35,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, run a test cycle.",
+      "related_codes": [
+        "HE"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
+    },
+    {
+      "id": "samsung-dishwasher-7e",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "7E",
+      "aliases": [],
+      "meaning": "Water wall reflector error — water wall sensor blocked",
+      "detail": "On Samsung Water Wall dishwashers, the reflector that guides the water wall's sensor beam is obstructed or the sensor has failed. The water wall cannot position itself correctly.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Large item blocking water wall reflector strip",
+          "frequency": 55
+        },
+        {
+          "description": "Reflector strip dirty or discolored",
+          "frequency": 30
+        },
+        {
+          "description": "Water wall motor or sensor failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check for obstructions",
+          "description": "Ensure no large pots or pans are blocking the bottom rack reflector strip."
+        },
+        {
+          "title": "Clean the reflector strip",
+          "description": "Wipe the silver reflector strip on the bottom rack with a damp cloth."
+        },
+        {
+          "title": "Check water wall motor",
+          "description": "The water wall should move back and forth during the wash. If stationary, the motor has failed.",
+          "parts": [
+            "Samsung Water Wall motor assembly ($80–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Clear obstructions and restart. If 7E persists, the water wall motor may need replacement.",
+      "related_codes": [],
+      "models_affected": "Samsung Water Wall dishwasher models (DW80K, DW80H series) only",
+      "when_to_call_pro": "Water Wall motor replacement requires Samsung-authorized parts and careful disassembly."
+    },
+    {
+      "id": "samsung-dishwasher-1e",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "1E",
+      "aliases": [],
+      "meaning": "Water inlet sensor failure",
+      "detail": "The water inlet sensor (flow sensor or water supply sensor) is not detecting correct water flow into the dishwasher.",
+      "severity": "medium",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Inlet flow sensor failure",
+          "frequency": 55
+        },
+        {
+          "description": "Water supply issue reducing flow below sensor threshold",
+          "frequency": 30
+        },
+        {
+          "description": "Sensor connector loose",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check water supply",
+          "description": "Confirm supply valve open, hose not kinked."
+        },
+        {
+          "title": "Clean inlet screen",
+          "description": "Remove and clean the inlet valve mesh screen."
+        },
+        {
+          "title": "Test flow sensor",
+          "description": "Disconnect and check with multimeter.",
+          "parts": [
+            "Samsung dishwasher flow sensor ($25–$60)"
+          ]
+        },
+        {
+          "title": "Replace inlet valve assembly",
+          "description": "If sensor is integrated with the valve.",
+          "parts": [
+            "Samsung inlet valve ($35–$80)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 80,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "After fixing supply or replacing sensor, restart cycle.",
+      "related_codes": [
+        "5C"
+      ],
+      "when_to_call_pro": "If supply is confirmed and sensor replaced but 1E persists, control board water detection failed."
+    },
+    {
+      "id": "samsung-dishwasher-be2",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "bE2",
+      "aliases": [],
+      "meaning": "Button error — control panel button shorted",
+      "detail": "A button on the dishwasher control panel is registering as continuously pressed or has an internal short.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Button stuck from food splash",
+          "frequency": 50
+        },
+        {
+          "description": "Membrane keypad failure",
+          "frequency": 35
+        },
+        {
+          "description": "Control board button input shorted",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the panel",
+          "description": "Wipe button area with dry cloth."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug 5 minutes."
+        },
+        {
+          "title": "Replace control panel",
+          "description": "If button remains stuck.",
+          "parts": [
+            "Samsung dishwasher control panel ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 160,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug 5 minutes. Clear stuck button before restarting.",
+      "related_codes": [],
+      "when_to_call_pro": "If new panel doesn't resolve bE2, main board button interface failed."
     },
     {
       "id": "samsung-refrigerator-22e",
@@ -1584,6 +2721,333 @@
         "40E"
       ],
       "when_to_call_pro": "If the ice maker is replaced and errors continue, the freezer is not cold enough (below 0°F/-18°C required) or the control board is not sending power to the ice maker."
+    },
+    {
+      "id": "samsung-refrigerator-5e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "5E",
+      "aliases": [
+        "5C"
+      ],
+      "meaning": "Defrost sensor error",
+      "detail": "The sensor monitoring freezer temperature during defrost cycles has failed. Without accurate readings, the control board cannot safely end defrost cycles, risking food damage.",
+      "severity": "medium",
+      "category": "defrost",
+      "causes": [
+        {
+          "description": "Defrost sensor open or shorted",
+          "frequency": 65
+        },
+        {
+          "description": "Sensor connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Frost causing sensor error",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Manually defrost",
+          "description": "Unplug and let all frost melt before diagnosing."
+        },
+        {
+          "title": "Test sensor",
+          "description": "At 32°F: ~16k ohms. Room temp: ~6k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor",
+          "description": "Unclip from evaporator and install new sensor.",
+          "parts": [
+            "Samsung defrost sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Allow 24 hours after repair for normal defrost cycles to resume.",
+      "related_codes": [
+        "24E",
+        "25E"
+      ],
+      "when_to_call_pro": "Recurring frost buildup after sensor replacement points to defrost heater failure."
+    },
+    {
+      "id": "samsung-refrigerator-8e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "8E",
+      "aliases": [],
+      "meaning": "Ice maker sensor failure",
+      "detail": "The ice maker temperature sensor has failed. The ice maker cannot determine if the ice tray is cold enough to eject ice.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor open circuit",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose at sensor",
+          "frequency": 25
+        },
+        {
+          "description": "Frost on sensor causing incorrect reading",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Defrost ice maker area",
+          "description": "Turn off ice maker and allow full defrost."
+        },
+        {
+          "title": "Test sensor",
+          "description": "Should read 5k–10k ohms at room temperature.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor",
+          "description": "Small clip-on sensor on ice maker assembly.",
+          "parts": [
+            "Samsung ice maker sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Press ice maker reset button after repair.",
+      "related_codes": [
+        "21E",
+        "22E",
+        "39E"
+      ],
+      "when_to_call_pro": "If sensor replaced and error returns quickly, ice maker assembly has a broader fault."
+    },
+    {
+      "id": "samsung-refrigerator-6e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "6E",
+      "aliases": [],
+      "meaning": "Ambient temperature sensor error",
+      "detail": "The sensor measuring room temperature (for adaptive cooling) has failed. The refrigerator may cool less efficiently in extreme temperatures.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Control board ambient input fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Locate the ambient sensor",
+          "description": "Usually near the top of the refrigerator compartment or at the back of a door shelf."
+        },
+        {
+          "title": "Test and replace",
+          "description": "Test resistance and replace if out of spec.",
+          "parts": [
+            "Samsung ambient sensor ($15–$35)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 15,
+      "cost_hi": 35,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 220,
+      "reset_instructions": "After replacement, unplug 5 minutes and restart.",
+      "related_codes": [],
+      "when_to_call_pro": "6E rarely causes immediate cooling failure. Low urgency compared to cooling fan errors."
+    },
+    {
+      "id": "samsung-refrigerator-40e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "40E",
+      "aliases": [
+        "40C"
+      ],
+      "meaning": "Ice maker sensor failure — ice maker position sensor",
+      "detail": "A sensor in the ice maker assembly that monitors the ice tray or ejection arm position has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Ice maker position sensor failure",
+          "frequency": 55
+        },
+        {
+          "description": "Ice jam preventing sensor from reading correctly",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring to sensor damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Defrost ice maker",
+          "description": "Let the ice maker area fully thaw."
+        },
+        {
+          "title": "Test and replace position sensor",
+          "description": "Access the ice maker assembly and test the sensor.",
+          "parts": [
+            "Samsung ice maker sensor ($15–$40)"
+          ]
+        },
+        {
+          "title": "Replace ice maker module",
+          "description": "If individual sensor is not serviceable.",
+          "parts": [
+            "Samsung ice maker assembly ($80–$150)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 150,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Press ice maker reset button after repair.",
+      "related_codes": [
+        "39E",
+        "22E"
+      ],
+      "when_to_call_pro": "If ice maker is replaced and error persists, control board ice maker input has failed."
+    },
+    {
+      "id": "samsung-refrigerator-pc-er",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "PC ER",
+      "aliases": [
+        "PC-ER",
+        "PCER"
+      ],
+      "meaning": "Pump / compressor communication error — critical cooling failure",
+      "detail": "The control board cannot communicate with the variable-speed compressor or its control module. This is a critical error. The refrigerator will stop cooling entirely.",
+      "severity": "critical",
+      "category": "compressor",
+      "causes": [
+        {
+          "description": "Compressor control module failure",
+          "frequency": 45
+        },
+        {
+          "description": "Main control board communication failure",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring harness fault between board and compressor",
+          "frequency": 20
+        },
+        {
+          "description": "Compressor itself has failed",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes. Some communication errors clear on restart.",
+          "warning": "If food is warm, move perishables immediately."
+        },
+        {
+          "title": "Check wiring harness to compressor",
+          "description": "Access the compressor area (back/bottom of unit) and check the communication wire harness for damage or loose connections."
+        },
+        {
+          "title": "Contact Samsung service",
+          "description": "PC ER on Samsung's linear/inverter compressors is often covered under Samsung's 10-year compressor warranty — even out of standard warranty."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 350,
+      "pro_cost_hi": 800,
+      "reset_instructions": "Unplug 5 minutes and restart. If PC ER returns, do not attempt DIY compressor repair.",
+      "related_codes": [
+        "22E"
+      ],
+      "when_to_call_pro": "PC ER requires professional diagnosis. Samsung offers a 10-year compressor warranty — call 1-800-726-7864 and provide the model number before paying for service."
+    },
+    {
+      "id": "samsung-refrigerator-14e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "14E",
+      "aliases": [
+        "14C"
+      ],
+      "meaning": "Ice maker defrost sensor error",
+      "detail": "The specific sensor that monitors the ice maker's defrost cycle has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor failed",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Frost blocking sensor",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Defrost ice maker section",
+          "description": "Fully defrost before diagnosing."
+        },
+        {
+          "title": "Replace defrost sensor",
+          "description": "Located on or near the ice maker evaporator.",
+          "parts": [
+            "Samsung defrost sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "After repair, run a full defrost cycle to confirm.",
+      "related_codes": [
+        "24E",
+        "25E"
+      ],
+      "when_to_call_pro": "If defrost sensor replaced and error recurs, the defrost heater is failing."
     },
     {
       "id": "lg-washer-oe",
@@ -1980,6 +3444,377 @@
       "when_to_call_pro": "If the inlet valve is replaced and overflow continues, the pressure sensor needs replacement or the control board has a fault."
     },
     {
+      "id": "lg-washer-ce",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "CE",
+      "aliases": [],
+      "meaning": "Over-current error — motor drawing too much current",
+      "detail": "The motor control board detected that the motor is drawing excessive current. The washer shuts down to protect the motor from damage. On LG direct-drive washers this is commonly the hall sensor rather than the motor itself.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Hall sensor failure causing incorrect current feedback",
+          "frequency": 40
+        },
+        {
+          "description": "Drum overloaded",
+          "frequency": 35
+        },
+        {
+          "description": "Motor winding beginning to fail",
+          "frequency": 20
+        },
+        {
+          "description": "Motor control board fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reduce load",
+          "description": "Remove items and restart with half load."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug 10 minutes."
+        },
+        {
+          "title": "Replace hall sensor",
+          "description": "The hall sensor is the $15–$30 fix that resolves CE in most cases on LG direct-drive washers.",
+          "parts": [
+            "LG hall sensor ($15–$30)"
+          ],
+          "warning": "Unplug and lay washer on front to access motor."
+        },
+        {
+          "title": "Test and replace motor if needed",
+          "description": "Test stator winding resistance if hall sensor replacement doesn't help.",
+          "parts": [
+            "LG stator assembly ($80–$200)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 15,
+      "cost_hi": 200,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 480,
+      "reset_instructions": "Unplug 10 minutes, reduce load, restart.",
+      "related_codes": [
+        "LE",
+        "SE"
+      ],
+      "when_to_call_pro": "If hall sensor replacement doesn't resolve CE, the motor or control board needs professional testing."
+    },
+    {
+      "id": "lg-washer-se",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "SE",
+      "aliases": [],
+      "meaning": "Hall sensor error — motor speed sensor fault",
+      "detail": "The hall sensor measuring motor rotation speed has failed. The motor control board cannot safely spin the drum without accurate speed feedback.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Hall sensor failure",
+          "frequency": 70
+        },
+        {
+          "description": "Hall sensor wiring harness damaged",
+          "frequency": 20
+        },
+        {
+          "description": "Motor control board fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Replace the hall sensor",
+          "description": "The most cost-effective repair for SE on LG direct-drive washers.",
+          "parts": [
+            "LG hall sensor ($15–$30)"
+          ],
+          "warning": "Lay washer on front — motor is at the back."
+        },
+        {
+          "title": "Check 3-wire harness",
+          "description": "Inspect the 3-wire connector from hall sensor to control board."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 30,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 380,
+      "reset_instructions": "After hall sensor replacement, unplug 1 minute and restart.",
+      "related_codes": [
+        "CE",
+        "LE"
+      ],
+      "when_to_call_pro": "If new hall sensor and error persists, control board hall sensor input circuit has failed."
+    },
+    {
+      "id": "lg-washer-pe",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "PE",
+      "aliases": [],
+      "meaning": "Water level pressure sensor error",
+      "detail": "The pressure sensor measuring the water level in the drum has failed or is reading incorrectly. The washer cannot safely control fill without this sensor.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure sensor failure",
+          "frequency": 55
+        },
+        {
+          "description": "Pressure hose kinked or disconnected",
+          "frequency": 30
+        },
+        {
+          "description": "Control board pressure input failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check pressure hose",
+          "description": "Locate the small hose running from the tub to the pressure sensor. Check for kinks or disconnection."
+        },
+        {
+          "title": "Blow test the sensor",
+          "description": "Disconnect the hose from the sensor. Gently blow — you should hear audible clicks."
+        },
+        {
+          "title": "Replace pressure sensor",
+          "description": "If sensor doesn't click, replace it.",
+          "parts": [
+            "LG pressure sensor ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, restart cycle.",
+      "related_codes": [
+        "FE",
+        "IE"
+      ],
+      "when_to_call_pro": "If new sensor and clear hose don't resolve PE, the control board pressure input has failed."
+    },
+    {
+      "id": "lg-washer-ee",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "EE",
+      "aliases": [],
+      "meaning": "EEPROM error — control board memory failure",
+      "detail": "The control board's EEPROM (non-volatile memory storing settings and calibration data) has failed or become corrupted. The washer may cycle through errors or behave erratically.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "EEPROM chip failure",
+          "frequency": 55
+        },
+        {
+          "description": "Voltage spike corrupting EEPROM",
+          "frequency": 35
+        },
+        {
+          "description": "Control board age-related failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 15 minutes. EEPROM corruption can sometimes be cleared."
+        },
+        {
+          "title": "Replace main control board",
+          "description": "EE almost always requires control board replacement.",
+          "parts": [
+            "LG washer control board ($120–$280)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 120,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 480,
+      "reset_instructions": "Unplug 15 minutes. If EE returns, board needs replacement.",
+      "related_codes": [],
+      "when_to_call_pro": "EE is a control board hardware failure. Professional replacement recommended."
+    },
+    {
+      "id": "lg-washer-e6",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "E6",
+      "aliases": [],
+      "meaning": "Clutch motor error (top-load models)",
+      "detail": "On LG top-load washers with a clutch motor, the clutch actuator motor has failed. The clutch switches the drum between agitation and spin modes.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Clutch motor failure",
+          "frequency": 60
+        },
+        {
+          "description": "Clutch actuator switch failure",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring to clutch motor damaged",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Access the clutch motor",
+          "description": "On top-load LG models, the clutch motor is beneath the drum.",
+          "warning": "Unplug and lay machine on its side."
+        },
+        {
+          "title": "Test clutch motor",
+          "description": "Apply 12V — should run freely.",
+          "parts": [
+            "LG clutch motor ($40–$90)"
+          ]
+        },
+        {
+          "title": "Replace clutch assembly",
+          "description": "If motor or switch has failed.",
+          "parts": [
+            "LG clutch assembly ($60–$120)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 40,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "After repair, restart.",
+      "related_codes": [
+        "LE"
+      ],
+      "models_affected": "LG top-load washers with agitator/impeller (WT series)",
+      "when_to_call_pro": "Clutch motor replacement requires significant disassembly of top-load models."
+    },
+    {
+      "id": "lg-washer-be",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "bE",
+      "aliases": [],
+      "meaning": "Button error — control panel key stuck",
+      "detail": "A button on the control panel is registering as continuously pressed.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Button physically stuck from detergent",
+          "frequency": 55
+        },
+        {
+          "description": "Membrane keypad failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board button interface fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check for stuck button",
+          "description": "Press each button and check for sticky feel."
+        },
+        {
+          "title": "Clean control panel",
+          "description": "Wipe with dry cloth around all buttons."
+        },
+        {
+          "title": "Replace UI board",
+          "description": "If button remains stuck.",
+          "parts": [
+            "LG washer UI board ($60–$150)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 150,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug 5 minutes. Clear stuck button before restart.",
+      "related_codes": [],
+      "when_to_call_pro": "If UI board replacement doesn't fix bE, main board button interface has failed."
+    },
+    {
+      "id": "lg-washer-ne",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "nE",
+      "aliases": [],
+      "meaning": "Noise sensor error (front-load models)",
+      "detail": "On LG front-load washers with a noise sensor (used for vibration detection), the sensor has failed. Some models use this to adjust spin speed based on imbalance detection.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Noise sensor failure",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Control board sensor input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 5 minutes and restart."
+        },
+        {
+          "title": "Check sensor connector",
+          "description": "Locate noise sensor (usually near the motor) and reseat connector."
+        },
+        {
+          "title": "Replace noise sensor",
+          "description": "If error persists.",
+          "parts": [
+            "LG noise sensor ($20–$50)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 50,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug 5 minutes and restart.",
+      "related_codes": [],
+      "when_to_call_pro": "nE rarely prevents normal washing — cycle may complete with reduced spin speed."
+    },
+    {
       "id": "lg-dryer-d80",
       "brand": "lg",
       "appliance": "dryer",
@@ -2323,6 +4158,223 @@
       "when_to_call_pro": "Electrical faults (heater relays, control boards) require professional diagnosis if basic checks don't resolve the issue."
     },
     {
+      "id": "lg-dryer-hs",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "HS",
+      "aliases": [],
+      "meaning": "Humidity sensor error — moisture sensing failure",
+      "detail": "The humidity sensor that detects when clothes are dry has failed. The dryer will continue running but cannot auto-detect dryness — it will run to the full timer duration only.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Humidity sensor bars dirty (coated with fabric softener)",
+          "frequency": 60
+        },
+        {
+          "description": "Humidity sensor failure",
+          "frequency": 25
+        },
+        {
+          "description": "Sensor wiring fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the humidity sensor bars",
+          "description": "The sensor is usually two metal bars inside the drum near the front. Clean with rubbing alcohol on a cotton ball. Fabric softener coating is the most common cause.",
+          "parts": [
+            "Rubbing alcohol",
+            "Cotton balls"
+          ]
+        },
+        {
+          "title": "Test the sensor",
+          "description": "Check resistance between the bars — should change when you hold them with wet fingers vs dry."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "If cleaning doesn't resolve.",
+          "parts": [
+            "LG dryer humidity sensor ($20–$50)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 50,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 220,
+      "reset_instructions": "After cleaning sensor bars, run a test cycle on Auto Dry.",
+      "related_codes": [
+        "F9"
+      ],
+      "when_to_call_pro": "HS rarely causes complete drying failure — dryer still runs, just can't auto-sense. Low urgency."
+    },
+    {
+      "id": "lg-dryer-gas",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "GAS",
+      "aliases": [],
+      "meaning": "Gas supply error — no gas detected (gas dryer models only)",
+      "detail": "The gas dryer is not detecting a gas flame during ignition attempts. This can indicate the gas supply is off or the igniter/gas valve has failed.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Gas supply valve closed",
+          "frequency": 45
+        },
+        {
+          "description": "Gas igniter failure",
+          "frequency": 30
+        },
+        {
+          "description": "Gas valve coils failure",
+          "frequency": 20
+        },
+        {
+          "description": "No gas supply to home",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the gas supply valve",
+          "description": "Confirm the gas shutoff valve behind the dryer is fully open."
+        },
+        {
+          "title": "Check home gas supply",
+          "description": "Confirm other gas appliances in the home are working."
+        },
+        {
+          "title": "Test the igniter",
+          "description": "The igniter glows orange before the gas flame lights. If it glows but no flame, the gas valve coils have failed.",
+          "parts": [
+            "LG dryer gas valve coils ($30–$60)"
+          ],
+          "warning": "Work with gas appliances only if qualified. If in doubt, call a technician."
+        },
+        {
+          "title": "Replace igniter if not glowing",
+          "description": "No glow = igniter failure.",
+          "parts": [
+            "LG dryer igniter ($30–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 30,
+      "cost_hi": 60,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 450,
+      "reset_instructions": "Restore gas supply and restart.",
+      "related_codes": [],
+      "models_affected": "LG gas dryer models (DLGX series with gas)",
+      "when_to_call_pro": "Any gas dryer repair involving the gas valve, igniter, or burner assembly should be performed by a qualified technician if you are not experienced with gas appliances."
+    },
+    {
+      "id": "lg-dryer-dh",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "dH",
+      "aliases": [],
+      "meaning": "High temperature error — drum temperature exceeded safe limit",
+      "detail": "The dryer drum temperature has exceeded the safety threshold. Similar to HC — a blocked vent is the cause in the vast majority of cases.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Severely blocked exhaust duct",
+          "frequency": 55
+        },
+        {
+          "description": "High-limit thermostat failure",
+          "frequency": 25
+        },
+        {
+          "description": "Heater stuck on (relay failure)",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean vent system thoroughly",
+          "description": "Clean lint filter, full duct run, exterior cap.",
+          "parts": [
+            "Dryer vent brush kit ($15–$35)"
+          ]
+        },
+        {
+          "title": "Test high-limit thermostat",
+          "description": "Test for continuity after cleaning. Tripped thermostat = replace.",
+          "parts": [
+            "LG high-limit thermostat ($10–$25)"
+          ]
+        },
+        {
+          "title": "Test thermal fuse",
+          "description": "Blown fuse = no heat but motor runs.",
+          "parts": [
+            "LG thermal fuse ($8–$20)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 8,
+      "cost_hi": 35,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "After clearing vent and replacing failed components, unplug 5 minutes before restarting.",
+      "related_codes": [
+        "D90",
+        "D95"
+      ],
+      "when_to_call_pro": "If vent is clear and thermostats are fine but overheating persists, heating element relay has stuck closed."
+    },
+    {
+      "id": "lg-dryer-pf",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "PF",
+      "aliases": [],
+      "meaning": "Power failure — cycle interrupted",
+      "detail": "Power was interrupted during a drying cycle.",
+      "severity": "low",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Power outage during cycle",
+          "frequency": 90
+        },
+        {
+          "description": "Circuit breaker tripped",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Restart cycle",
+          "description": "Press Start to begin a new cycle."
+        },
+        {
+          "title": "Check circuit breaker",
+          "description": "If breaker tripped, reset and investigate cause."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Press Start. PF clears automatically.",
+      "related_codes": [],
+      "when_to_call_pro": "Not a fault. No service required."
+    },
+    {
       "id": "lg-dishwasher-ae",
       "brand": "lg",
       "appliance": "dishwasher",
@@ -2501,6 +4553,275 @@
       "reset_instructions": "Restore water supply and restart the cycle.",
       "related_codes": [],
       "when_to_call_pro": "If supply is confirmed and still no fill, the inlet valve solenoid has failed."
+    },
+    {
+      "id": "lg-dishwasher-fe",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "code": "FE",
+      "aliases": [],
+      "meaning": "Water overflow — overfill protection triggered",
+      "detail": "The dishwasher has detected that the water level is above the maximum safe fill point. The unit will drain immediately.",
+      "severity": "high",
+      "category": "water_level",
+      "causes": [
+        {
+          "description": "Water inlet valve stuck open",
+          "frequency": 55
+        },
+        {
+          "description": "Float switch stuck in down position",
+          "frequency": 25
+        },
+        {
+          "description": "Control board overfill detection failure",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check inlet valve",
+          "description": "Turn off water supply. If water stops entering, inlet valve is stuck open.",
+          "parts": [
+            "LG dishwasher inlet valve ($35–$80)"
+          ]
+        },
+        {
+          "title": "Check float switch",
+          "description": "The float switch is in the base. Gently lift the float — it should move freely."
+        },
+        {
+          "title": "Replace inlet valve",
+          "description": "If valve is confirmed stuck open."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 35,
+      "cost_hi": 80,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "After repair, restart cycle.",
+      "related_codes": [
+        "AE",
+        "IE"
+      ],
+      "when_to_call_pro": "If inlet valve is replaced and overflow continues, the float switch or control board is faulty."
+    },
+    {
+      "id": "lg-dishwasher-he",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "code": "HE",
+      "aliases": [],
+      "meaning": "Heater failure — water not heating",
+      "detail": "The dishwasher heating element is not functioning.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heating element open circuit",
+          "frequency": 55
+        },
+        {
+          "description": "NTC sensor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board heater relay failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test heating element",
+          "description": "Test continuity — 15–25 ohms expected.",
+          "parts": [
+            "LG dishwasher heater ($45–$95)"
+          ]
+        },
+        {
+          "title": "Test NTC sensor",
+          "description": "~6k ohms at room temperature.",
+          "parts": [
+            "LG NTC sensor ($15–$40)"
+          ]
+        },
+        {
+          "title": "Replace failed component",
+          "description": "Install appropriate part."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 95,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "After repair, run full program.",
+      "related_codes": [
+        "tE"
+      ],
+      "when_to_call_pro": "If element and sensor good, control board relay failed."
+    },
+    {
+      "id": "lg-dishwasher-te",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "code": "tE",
+      "aliases": [],
+      "meaning": "Temperature sensor failure",
+      "detail": "The water temperature NTC sensor has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "~6k–7k ohms at room temp.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace NTC sensor",
+          "description": "Located near heating element.",
+          "parts": [
+            "LG NTC sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, run test cycle.",
+      "related_codes": [
+        "HE"
+      ],
+      "when_to_call_pro": "If new NTC and error persists, control board sensor input failed."
+    },
+    {
+      "id": "lg-dishwasher-le",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "code": "LE",
+      "aliases": [],
+      "meaning": "Leakage detected — flood protection activated",
+      "detail": "Water has been detected in the base tray of the LG dishwasher. The unit drains and shuts down.",
+      "severity": "high",
+      "category": "leak",
+      "causes": [
+        {
+          "description": "Door seal damaged",
+          "frequency": 35
+        },
+        {
+          "description": "Internal hose loose",
+          "frequency": 30
+        },
+        {
+          "description": "Overfill from stuck inlet valve",
+          "frequency": 20
+        },
+        {
+          "description": "Tub crack",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Tilt to drain base",
+          "description": "Power off, tilt forward to drain base.",
+          "warning": "Disconnect power first."
+        },
+        {
+          "title": "Inspect door seal",
+          "description": "Check gasket for damage.",
+          "parts": [
+            "LG door seal ($25–$60)"
+          ]
+        },
+        {
+          "title": "Check hose connections",
+          "description": "Inspect all internal fittings."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 100,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 340,
+      "reset_instructions": "Drain base, fix leak, restart.",
+      "related_codes": [
+        "OE"
+      ],
+      "when_to_call_pro": "If no visible leak, internal crack requires professional inspection."
+    },
+    {
+      "id": "lg-dishwasher-ce",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "code": "CE",
+      "aliases": [],
+      "meaning": "Motor/pump over-current error",
+      "detail": "The circulation pump motor is drawing excessive current.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Pump impeller jammed by debris",
+          "frequency": 55
+        },
+        {
+          "description": "Pump motor winding failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board motor relay failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check pump for debris",
+          "description": "Remove filter and clear impeller area.",
+          "warning": "Use gloves."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug 5 minutes."
+        },
+        {
+          "title": "Replace circulation pump",
+          "description": "If motor failed.",
+          "parts": [
+            "LG dishwasher pump ($100–$240)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 240,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 480,
+      "reset_instructions": "Clear debris and restart.",
+      "related_codes": [
+        "OE"
+      ],
+      "when_to_call_pro": "If pump replaced and CE persists, control board motor relay failed."
     },
     {
       "id": "lg-refrigerator-er-ff",
@@ -2692,6 +5013,272 @@
         "Er FF"
       ],
       "when_to_call_pro": "If the fan is clean and free but the error persists, the control board fan relay may have failed."
+    },
+    {
+      "id": "lg-refrigerator-er-fs",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "Er FS",
+      "aliases": [],
+      "meaning": "Freezer temperature sensor error",
+      "detail": "The NTC thermistor measuring freezer compartment temperature has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "At 32°F/0°C: ~16k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Reseat connector",
+          "description": "Firmly reconnect sensor wiring."
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Clip-on replacement to evaporator.",
+          "parts": [
+            "LG thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Allow 24 hours temperature stabilization after repair.",
+      "related_codes": [
+        "Er FF",
+        "Er dH"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
+    },
+    {
+      "id": "lg-refrigerator-er-is",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "Er IS",
+      "aliases": [],
+      "meaning": "Ice maker sensor failure",
+      "detail": "The temperature sensor on the ice maker has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor open circuit",
+          "frequency": 65
+        },
+        {
+          "description": "Frost covering sensor",
+          "frequency": 25
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Defrost ice maker area",
+          "description": "Fully thaw before diagnosing."
+        },
+        {
+          "title": "Test and replace sensor",
+          "description": "Check resistance, replace if out of spec.",
+          "parts": [
+            "LG ice maker sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Press ice maker reset after repair.",
+      "related_codes": [
+        "Er IF",
+        "Er FF"
+      ],
+      "when_to_call_pro": "If sensor replaced and error persists, ice maker control circuit failed."
+    },
+    {
+      "id": "lg-refrigerator-er-if",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "Er IF",
+      "aliases": [],
+      "meaning": "Ice maker fan error",
+      "detail": "The fan motor circulating cold air in the ice maker compartment has failed.",
+      "severity": "medium",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Fan motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Ice blocking fan blade",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring disconnected",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Defrost ice maker",
+          "description": "Allow complete defrost before fan diagnosis."
+        },
+        {
+          "title": "Test fan motor",
+          "description": "Apply 12VDC — should spin freely.",
+          "parts": [
+            "LG ice maker fan motor ($30–$70)"
+          ]
+        },
+        {
+          "title": "Replace fan motor",
+          "description": "Access through ice maker compartment."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 70,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 380,
+      "reset_instructions": "Allow 24 hours after repair.",
+      "related_codes": [
+        "Er FF",
+        "Er IS"
+      ],
+      "when_to_call_pro": "If fan replaced and error persists, control board fan circuit failed."
+    },
+    {
+      "id": "lg-refrigerator-er-co",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "Er CO",
+      "aliases": [],
+      "meaning": "Communication error — main board to sub-board",
+      "detail": "The main control board cannot communicate with the display or sub-control board.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Wire harness connector loose between boards",
+          "frequency": 55
+        },
+        {
+          "description": "Sub-board failure",
+          "frequency": 30
+        },
+        {
+          "description": "Main control board communication fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 10 minutes."
+        },
+        {
+          "title": "Reseat all connectors",
+          "description": "Check all multi-pin connectors at both boards."
+        },
+        {
+          "title": "Replace sub-board",
+          "description": "Cheaper than main board to try first.",
+          "parts": [
+            "LG refrigerator sub-board ($60–$150)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 60,
+      "cost_hi": 150,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 480,
+      "reset_instructions": "Unplug 10 minutes. If Er CO returns, check all connections.",
+      "related_codes": [
+        "Er FF"
+      ],
+      "when_to_call_pro": "If both boards replaced and error persists, wiring harness between them has failed."
+    },
+    {
+      "id": "lg-refrigerator-ds",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "dS",
+      "aliases": [],
+      "meaning": "Defrost sensor open circuit",
+      "detail": "The defrost cycle temperature sensor has failed with an open circuit reading.",
+      "severity": "medium",
+      "category": "defrost",
+      "causes": [
+        {
+          "description": "Sensor burned out (open circuit)",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Frost causing sensor misread",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Manually defrost",
+          "description": "Unplug, allow complete defrost."
+        },
+        {
+          "title": "Test sensor",
+          "description": "Room temp: ~6k–8k ohms. At 32°F: ~16k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor",
+          "description": "Unclip from evaporator and replace.",
+          "parts": [
+            "LG defrost sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Allow 24 hours for normal operation after repair.",
+      "related_codes": [
+        "Er dH",
+        "Er FF"
+      ],
+      "when_to_call_pro": "If defrost sensor is fine and dS persists, defrost heater or control board defrost circuit has failed."
     },
     {
       "id": "whirlpool-washer-f8e1",
@@ -3104,6 +5691,561 @@
       "when_to_call_pro": "Motor and motor control board diagnosis requires professional testing if basic steps don't resolve the error."
     },
     {
+      "id": "whirlpool-washer-f0e1",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F0E1",
+      "aliases": [
+        "F0 E1"
+      ],
+      "meaning": "Inlet water supply problem — excessive water or suds overflow",
+      "detail": "The washer has detected a water supply issue. F0E1 specifically indicates overflow or excessive suds causing the control board to detect an over-water condition.",
+      "severity": "low",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Excessive detergent causing overflow",
+          "frequency": 55
+        },
+        {
+          "description": "Water inlet valve stuck open allowing overfill",
+          "frequency": 30
+        },
+        {
+          "description": "Pressure sensor failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reduce detergent",
+          "description": "Use HE detergent only, max 1 tablespoon. This is the cause in over half of F0E1 cases."
+        },
+        {
+          "title": "Check inlet valve",
+          "description": "If no suds, test whether the inlet valve stays closed when not commanded.",
+          "parts": [
+            "Whirlpool inlet valve ($30–$70)"
+          ]
+        },
+        {
+          "title": "Test pressure sensor",
+          "description": "If water level seems fine, the sensor may be misreading.",
+          "parts": [
+            "Whirlpool pressure sensor ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 70,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "After fixing the cause, run Rinse+Spin to clear suds, then restart.",
+      "related_codes": [
+        "SUD",
+        "F8E1"
+      ],
+      "when_to_call_pro": "If overfill continues after inlet valve replacement, pressure sensor needs testing."
+    },
+    {
+      "id": "whirlpool-washer-f2e1",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F2E1",
+      "aliases": [
+        "F2 E1"
+      ],
+      "meaning": "Keypad disconnected or key panel failure",
+      "detail": "The main control board cannot communicate with the keypad/user interface panel.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Wire harness between UI and main board loose",
+          "frequency": 55
+        },
+        {
+          "description": "UI board failure",
+          "frequency": 30
+        },
+        {
+          "description": "Main board UI port failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 10 minutes and restart."
+        },
+        {
+          "title": "Check wire harness connector",
+          "description": "Reseat the connector between the UI panel and main board."
+        },
+        {
+          "title": "Replace UI board",
+          "description": "If connector is secure but error persists.",
+          "parts": [
+            "Whirlpool washer UI board ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug 10 minutes. If F2E1 returns, check wiring connections.",
+      "related_codes": [
+        "F6E1",
+        "F1E1"
+      ],
+      "when_to_call_pro": "If UI board replacement doesn't fix F2E1, main board communication port has failed."
+    },
+    {
+      "id": "whirlpool-washer-f3e1",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F3E1",
+      "aliases": [
+        "F3 E1"
+      ],
+      "meaning": "Pressure sensor failure — water level sensing fault",
+      "detail": "The water level pressure sensor has failed. The washer cannot accurately detect fill level.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure sensor failure",
+          "frequency": 60
+        },
+        {
+          "description": "Pressure hose kinked or blocked",
+          "frequency": 30
+        },
+        {
+          "description": "Control board pressure input fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check pressure hose",
+          "description": "Inspect hose from tub to sensor for kinks or blockages."
+        },
+        {
+          "title": "Blow-test the sensor",
+          "description": "Disconnect hose, gently blow into port — should hear click."
+        },
+        {
+          "title": "Replace pressure sensor",
+          "description": "If sensor fails blow test.",
+          "parts": [
+            "Whirlpool pressure sensor ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, unplug 1 minute and restart.",
+      "related_codes": [
+        "F8E1",
+        "F0E1"
+      ],
+      "when_to_call_pro": "If new sensor and clear hose don't resolve F3E1, control board pressure circuit failed."
+    },
+    {
+      "id": "whirlpool-washer-f6e1",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F6E1",
+      "aliases": [
+        "F6 E1",
+        "F6E2",
+        "F6E3"
+      ],
+      "meaning": "Communication failure between main control board and motor control board",
+      "detail": "The main control board and motor control module cannot communicate. The washer will not spin or agitate.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Wire harness between main and motor boards loose or damaged",
+          "frequency": 55
+        },
+        {
+          "description": "Motor control board failure",
+          "frequency": 30
+        },
+        {
+          "description": "Main control board communication port failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 10 minutes."
+        },
+        {
+          "title": "Check motor board wire harness",
+          "description": "Inspect and reseat the harness connecting main board to motor control board."
+        },
+        {
+          "title": "Replace motor control board",
+          "description": "Usually cheaper to replace than main board.",
+          "parts": [
+            "Whirlpool motor control board ($100–$250)"
+          ]
+        },
+        {
+          "title": "Replace main control board",
+          "description": "If motor board is new but error persists.",
+          "parts": [
+            "Whirlpool main control board ($120–$300)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 10 minutes. If F6E1 returns, check all board connections.",
+      "related_codes": [
+        "F7E1",
+        "F1E1"
+      ],
+      "when_to_call_pro": "Board-to-board communication failures can affect either board. Test motor board first."
+    },
+    {
+      "id": "whirlpool-washer-f3e2",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F3E2",
+      "aliases": [
+        "F3 E2"
+      ],
+      "meaning": "Pressure switch failure — open circuit",
+      "detail": "The pressure switch (water level sensor) has an open circuit — it is not making electrical contact in any position.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure switch contacts burned out",
+          "frequency": 65
+        },
+        {
+          "description": "Switch connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Pressure hose split or disconnected",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Inspect pressure hose",
+          "description": "Check hose connection at both tub and switch."
+        },
+        {
+          "title": "Test switch",
+          "description": "Should change continuity at different air pressure levels.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace pressure switch",
+          "description": "If switch has open circuit in all positions.",
+          "parts": [
+            "Whirlpool pressure switch ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, unplug 1 minute then restart.",
+      "related_codes": [
+        "F3E1",
+        "F8E1"
+      ],
+      "when_to_call_pro": "If new switch and clear hose don't resolve F3E2, control board pressure input failed."
+    },
+    {
+      "id": "whirlpool-washer-f8e3",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F8E3",
+      "aliases": [
+        "F8 E3"
+      ],
+      "meaning": "Flow meter error — water volume sensor fault",
+      "detail": "The flow meter measuring how much water has entered the drum has failed. Whirlpool uses this for precise water volume control.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Flow meter impeller stuck or broken",
+          "frequency": 55
+        },
+        {
+          "description": "Flow meter electrical failure",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to flow meter damaged",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check flow meter for scale or debris",
+          "description": "The flow meter is inline on the cold water inlet. Scale buildup can jam the impeller."
+        },
+        {
+          "title": "Test flow meter",
+          "description": "Disconnect and check continuity of the sensor coil.",
+          "parts": [
+            "Whirlpool flow meter ($30–$70)"
+          ]
+        },
+        {
+          "title": "Replace flow meter",
+          "description": "If impeller is stuck or electrical test fails."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 70,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "After repair, unplug 1 minute and restart.",
+      "related_codes": [
+        "F8E1",
+        "F8E2"
+      ],
+      "when_to_call_pro": "If flow meter replaced and error persists, control board flow meter input has failed."
+    },
+    {
+      "id": "whirlpool-washer-loc",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "LOC",
+      "aliases": [
+        "LC",
+        "Control Lock"
+      ],
+      "meaning": "Control lock active — all buttons disabled",
+      "detail": "The control lock (child lock) feature is enabled. The display shows LOC and all buttons are disabled except Power.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Control lock accidentally activated",
+          "frequency": 100
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Disable control lock",
+          "description": "Press and hold the Control Lock button for 3 seconds. On some models, hold the End of Cycle button for 3 seconds."
+        },
+        {
+          "title": "Check your manual",
+          "description": "If the above doesn't work, consult your model's manual for the specific button combination."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Hold the Control Lock button for 3 seconds to unlock.",
+      "related_codes": [],
+      "when_to_call_pro": "LOC is not a fault. No service required."
+    },
+    {
+      "id": "whirlpool-washer-f5e1",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F5E1",
+      "aliases": [
+        "F5 E1"
+      ],
+      "meaning": "Door switch failure — lid/door switch not actuating",
+      "detail": "The door switch that detects whether the door is closed has failed or is not making contact.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door switch contacts worn or burned",
+          "frequency": 45
+        },
+        {
+          "description": "Door strike not depressing switch",
+          "frequency": 35
+        },
+        {
+          "description": "Switch wiring damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check door closure",
+          "description": "Make sure the door is fully closed."
+        },
+        {
+          "title": "Inspect door strike",
+          "description": "The strike tab on the door that presses the switch may be broken.",
+          "parts": [
+            "Door strike ($10–$25)"
+          ]
+        },
+        {
+          "title": "Test door switch",
+          "description": "Test switch continuity with door open and closed.",
+          "parts": [
+            "Whirlpool door switch ($20–$55)"
+          ]
+        },
+        {
+          "title": "Replace door switch/lock assembly",
+          "description": "If switch contacts have failed.",
+          "parts": [
+            "Whirlpool door lock ($40–$100)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 10,
+      "cost_hi": 100,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Ensure door is fully closed. Restart cycle.",
+      "related_codes": [
+        "F5E2",
+        "F5E3"
+      ],
+      "when_to_call_pro": "F5E1 on front-loads often means the door latch hook or catch needs replacement."
+    },
+    {
+      "id": "whirlpool-washer-f5e3",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F5E3",
+      "aliases": [
+        "F5 E3"
+      ],
+      "meaning": "Door lock not engaging — lock timeout",
+      "detail": "The door lock solenoid has not completed the lock operation within the required time.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door lock solenoid failure",
+          "frequency": 50
+        },
+        {
+          "description": "Door latch misaligned",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to lock faulty",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Inspect door latch alignment",
+          "description": "Check that the door latch aligns with the strike in the machine."
+        },
+        {
+          "title": "Test lock solenoid",
+          "description": "Apply voltage — should hear/feel the lock engage.",
+          "parts": [
+            "Whirlpool door lock ($40–$100)"
+          ]
+        },
+        {
+          "title": "Replace door lock assembly",
+          "description": "Straightforward replacement."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 100,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Close door firmly and restart.",
+      "related_codes": [
+        "F5E1",
+        "F5E2"
+      ],
+      "when_to_call_pro": "If door lock is new and F5E3 persists, the control board lock relay has failed."
+    },
+    {
+      "id": "whirlpool-washer-f1e2",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F1E2",
+      "aliases": [
+        "F1 E2"
+      ],
+      "meaning": "Motor control board failure",
+      "detail": "The motor control board (separate from the main control board on many Whirlpool models) has experienced an internal fault.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Motor control board component failure",
+          "frequency": 55
+        },
+        {
+          "description": "Power surge damage",
+          "frequency": 30
+        },
+        {
+          "description": "Overheating of control board",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 15 minutes and restart."
+        },
+        {
+          "title": "Replace motor control board",
+          "description": "Located behind the drum or in the bottom cabinet.",
+          "parts": [
+            "Whirlpool motor control board ($100–$280)"
+          ],
+          "warning": "Photograph all wire connections before disconnecting."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 15 minutes. If F1E2 returns, board needs replacement.",
+      "related_codes": [
+        "F1E1",
+        "F7E1"
+      ],
+      "when_to_call_pro": "If new motor board returns F1E2 immediately, main board is sending incorrect commands."
+    },
+    {
       "id": "whirlpool-dryer-f01",
       "brand": "whirlpool",
       "appliance": "dryer",
@@ -3345,6 +6487,285 @@
       "when_to_call_pro": "Drive motor replacement requires significant disassembly. If not experienced with appliance repair, professional service is recommended."
     },
     {
+      "id": "whirlpool-dryer-f28",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "code": "F28",
+      "aliases": [],
+      "meaning": "Moisture sensor bar failure — primary sensor",
+      "detail": "The primary moisture sensor bars in the drum have failed. Auto-dry cycles will not work correctly.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor bars coated with fabric softener residue",
+          "frequency": 60
+        },
+        {
+          "description": "Sensor bar corrosion or physical damage",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring to sensor bars damaged",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean sensor bars",
+          "description": "The bars are two metal strips inside the front of the drum. Clean with rubbing alcohol.",
+          "parts": [
+            "Rubbing alcohol"
+          ]
+        },
+        {
+          "title": "Test sensor bars",
+          "description": "Check continuity between bars — should vary with moisture.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor bar assembly",
+          "description": "If bars are physically damaged or corroded.",
+          "parts": [
+            "Whirlpool moisture sensor ($25–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 60,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 220,
+      "reset_instructions": "After cleaning, run Auto-Dry cycle to test.",
+      "related_codes": [
+        "F29",
+        "F31"
+      ],
+      "when_to_call_pro": "If cleaning doesn't fix F28, sensor assembly replacement is needed."
+    },
+    {
+      "id": "whirlpool-dryer-f29",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "code": "F29",
+      "aliases": [],
+      "meaning": "Moisture sensor bar failure — secondary sensor",
+      "detail": "The secondary moisture sensor has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor coated with fabric softener",
+          "frequency": 60
+        },
+        {
+          "description": "Sensor failure",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring issue",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean sensor bars",
+          "description": "Clean both sets of sensor bars with rubbing alcohol."
+        },
+        {
+          "title": "Replace sensor assembly",
+          "description": "If cleaning doesn't resolve.",
+          "parts": [
+            "Whirlpool moisture sensor ($25–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 60,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 220,
+      "reset_instructions": "After cleaning, run Auto-Dry cycle.",
+      "related_codes": [
+        "F28",
+        "F31"
+      ],
+      "when_to_call_pro": "Sensor bar cleaning resolves F29 in most cases."
+    },
+    {
+      "id": "whirlpool-dryer-f31",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "code": "F31",
+      "aliases": [],
+      "meaning": "Exhaust thermistor failure",
+      "detail": "The thermistor measuring exhaust air temperature has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open or shorted",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Heat-damaged wiring",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Room temp: ~10k–12k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check connector",
+          "description": "Reseat at thermistor."
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Located in exhaust duct inside cabinet.",
+          "parts": [
+            "Whirlpool dryer thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, unplug 1 minute and restart.",
+      "related_codes": [
+        "F22",
+        "F30"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, control board thermistor input failed."
+    },
+    {
+      "id": "whirlpool-dryer-l2",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "code": "L2",
+      "aliases": [],
+      "meaning": "Low or missing voltage on one leg of 240V supply",
+      "detail": "Electric dryers run on 240V (two 120V legs). If one leg loses power, the motor runs (on 120V) but the heater does not (needs both legs). The dryer tumbles but produces no heat, and may display L2.",
+      "severity": "high",
+      "category": "power",
+      "causes": [
+        {
+          "description": "One circuit breaker leg tripped",
+          "frequency": 60
+        },
+        {
+          "description": "Loose wire connection in dryer outlet or at panel",
+          "frequency": 25
+        },
+        {
+          "description": "Failed outlet or wiring",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reset the circuit breaker",
+          "description": "Go to the panel and find the double-pole breaker for the dryer. Toggle it fully OFF then back ON."
+        },
+        {
+          "title": "Check the outlet voltage",
+          "description": "With a multimeter on the outlet, between both hot terminals: should read ~240V. Each hot to neutral: ~120V. If one reads 0V, that leg has no power.",
+          "parts": [
+            "Multimeter or outlet voltage tester"
+          ]
+        },
+        {
+          "title": "Have an electrician check the wiring",
+          "description": "If the breaker reset and outlet checks don't resolve L2, the outlet wiring or breaker needs professional inspection."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Reset the circuit breaker. L2 clears when full 240V is restored.",
+      "related_codes": [
+        "F30",
+        "HC"
+      ],
+      "when_to_call_pro": "L2 is almost always an electrical supply problem, not a dryer fault. An electrician should check the outlet and panel wiring if the breaker reset doesn't fix it."
+    },
+    {
+      "id": "whirlpool-dryer-af",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "code": "AF",
+      "aliases": [
+        "F30"
+      ],
+      "meaning": "Restricted airflow — vent partially blocked",
+      "detail": "The dryer's airflow sensor or thermal system has detected reduced exhaust airflow. A partial vent blockage is causing inefficient drying and potential overheating.",
+      "severity": "medium",
+      "category": "airflow",
+      "causes": [
+        {
+          "description": "Lint buildup in exhaust duct",
+          "frequency": 55
+        },
+        {
+          "description": "Crushed flexible duct",
+          "frequency": 25
+        },
+        {
+          "description": "Exterior vent cap flap stuck closed or clogged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean lint filter",
+          "description": "After every load."
+        },
+        {
+          "title": "Disconnect and clean exhaust duct",
+          "description": "Full length cleaning with vent brush kit.",
+          "parts": [
+            "Dryer vent brush kit ($15–$35)"
+          ]
+        },
+        {
+          "title": "Check exterior vent",
+          "description": "Clear any lint or debris from exterior vent cap."
+        },
+        {
+          "title": "Replace flexible duct with rigid metal",
+          "description": "For any run over 3 feet.",
+          "parts": [
+            "4-inch rigid metal duct ($15–$40/section)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 40,
+      "pro_cost_lo": 80,
+      "pro_cost_hi": 200,
+      "reset_instructions": "After clearing duct, run Air Only cycle for 20 minutes.",
+      "related_codes": [
+        "F30",
+        "HC"
+      ],
+      "when_to_call_pro": "If duct is clear and AF persists, the airflow sensor may have failed."
+    },
+    {
       "id": "whirlpool-dishwasher-f9e1",
       "brand": "whirlpool",
       "appliance": "dishwasher",
@@ -3460,6 +6881,321 @@
       "reset_instructions": "After replacement, run a test cycle. Error clears after a successful heated wash cycle.",
       "related_codes": [],
       "when_to_call_pro": "If heating element replacement doesn't resolve F6E4, the control board needs professional diagnosis."
+    },
+    {
+      "id": "whirlpool-dishwasher-f2e2",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F2E2",
+      "aliases": [
+        "F2 E2"
+      ],
+      "meaning": "Keypad error — control panel not communicating",
+      "detail": "The keypad or user interface is not communicating with the main control board.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Wire harness connector loose between UI and main board",
+          "frequency": 55
+        },
+        {
+          "description": "UI board failure",
+          "frequency": 30
+        },
+        {
+          "description": "Main board UI port failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 10 minutes and restart."
+        },
+        {
+          "title": "Reseat UI connector",
+          "description": "Check and firmly reseat the connector at the UI panel."
+        },
+        {
+          "title": "Replace UI board",
+          "description": "If connector is secure but error persists.",
+          "parts": [
+            "Whirlpool dishwasher UI board ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Unplug 10 minutes. If F2E2 returns, replace UI board.",
+      "related_codes": [
+        "F7E1"
+      ],
+      "when_to_call_pro": "If UI board replacement doesn't fix F2E2, main board UI port failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f3e1",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F3E1",
+      "aliases": [
+        "F3 E1"
+      ],
+      "meaning": "Thermistor failure — low resistance reading",
+      "detail": "The NTC temperature sensor is reading a resistance that indicates it has shorted.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor shorted",
+          "frequency": 70
+        },
+        {
+          "description": "Wiring fault to thermistor",
+          "frequency": 20
+        },
+        {
+          "description": "Control board sensor circuit fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Should read ~6k ohms at room temperature. Near 0 ohms = shorted.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Simple replacement near heating element.",
+          "parts": [
+            "Whirlpool dishwasher thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, run test cycle.",
+      "related_codes": [
+        "F3E2",
+        "F6E4"
+      ],
+      "when_to_call_pro": "If new thermistor shows F3E1, control board thermistor input is shorted."
+    },
+    {
+      "id": "whirlpool-dishwasher-f3e2",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F3E2",
+      "aliases": [
+        "F3 E2"
+      ],
+      "meaning": "Thermistor failure — high resistance / open circuit",
+      "detail": "The NTC temperature sensor has an open circuit or extremely high resistance.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring break",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Should read ~6k ohms at room temp. Infinite = open circuit.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check connector",
+          "description": "Reseat firmly."
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Install new sensor.",
+          "parts": [
+            "Whirlpool dishwasher thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, run test cycle.",
+      "related_codes": [
+        "F3E1",
+        "F6E4"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, wiring harness to sensor has failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f6e1",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F6E1",
+      "aliases": [
+        "F6 E1",
+        "F6E2"
+      ],
+      "meaning": "Water heating failure — not reaching target temperature",
+      "detail": "The dishwasher is unable to heat water to the programmed wash temperature.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heating element failure",
+          "frequency": 55
+        },
+        {
+          "description": "NTC thermistor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board heater relay failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test heating element",
+          "description": "Test continuity — 15–30 ohms expected.",
+          "parts": [
+            "Whirlpool dishwasher heater ($45–$100)"
+          ]
+        },
+        {
+          "title": "Test NTC sensor",
+          "description": "~6k ohms at room temp.",
+          "parts": [
+            "NTC sensor ($15–$40)"
+          ]
+        },
+        {
+          "title": "Replace failed component",
+          "description": ""
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 100,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "After repair, run full program.",
+      "related_codes": [
+        "F3E1",
+        "F3E2"
+      ],
+      "when_to_call_pro": "If element and sensor good, control board heater relay failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f7e1",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F7E1",
+      "aliases": [
+        "F7 E1"
+      ],
+      "meaning": "Circulation pump motor error",
+      "detail": "The main wash circulation pump motor has failed or is drawing incorrect current.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Pump impeller jammed",
+          "frequency": 55
+        },
+        {
+          "description": "Pump motor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board relay failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check for debris",
+          "description": "Remove filter and check pump impeller area for hard debris.",
+          "warning": "Use gloves — glass may be present."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug 5 minutes."
+        },
+        {
+          "title": "Replace circulation pump",
+          "description": "If motor has failed.",
+          "parts": [
+            "Whirlpool dishwasher pump ($100–$250)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 250,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 480,
+      "reset_instructions": "Clear debris and restart.",
+      "related_codes": [
+        "F9E1"
+      ],
+      "when_to_call_pro": "Circulation pump replacement is complex. Professional service recommended."
+    },
+    {
+      "id": "whirlpool-dishwasher-cal",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "CAL",
+      "aliases": [],
+      "meaning": "Calibration needed — sensor recalibration required",
+      "detail": "The dishwasher's sensors need to be recalibrated. This typically appears after a power outage or when settings have been reset.",
+      "severity": "low",
+      "category": "maintenance",
+      "causes": [
+        {
+          "description": "Power interruption clearing calibration data",
+          "frequency": 80
+        },
+        {
+          "description": "Control board reset",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Run a calibration cycle",
+          "description": "Select Heavy cycle and run a full cycle with the dishwasher empty. This recalibrates the sensors."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Run a heavy cycle empty. CAL clears automatically.",
+      "related_codes": [],
+      "when_to_call_pro": "CAL is not a fault. No parts needed."
     },
     {
       "id": "whirlpool-refrigerator-sy-ef",
@@ -3917,6 +7653,174 @@
       "when_to_call_pro": "If belt and brushes are fine and error persists, motor control board testing is required."
     },
     {
+      "id": "ge-washer-e43",
+      "brand": "ge",
+      "appliance": "washer",
+      "code": "E43",
+      "aliases": [],
+      "meaning": "Drive motor failure",
+      "detail": "The drive motor has failed or is drawing excessive current.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Motor winding failure",
+          "frequency": 55
+        },
+        {
+          "description": "Motor control board fault",
+          "frequency": 30
+        },
+        {
+          "description": "Drive belt broken",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check drive belt",
+          "description": "Inspect for breakage or slipping.",
+          "parts": [
+            "GE washer belt ($15–$35)"
+          ]
+        },
+        {
+          "title": "Test motor windings",
+          "description": "Test continuity of motor coils.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace motor",
+          "description": "",
+          "parts": [
+            "GE washer motor ($100–$250)"
+          ],
+          "warning": "Unplug before accessing motor."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 15,
+      "cost_hi": 250,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 10 minutes, restart.",
+      "related_codes": [
+        "E44",
+        "E52"
+      ],
+      "when_to_call_pro": "Motor replacement requires significant disassembly."
+    },
+    {
+      "id": "ge-washer-e44",
+      "brand": "ge",
+      "appliance": "washer",
+      "code": "E44",
+      "aliases": [],
+      "meaning": "Motor speed sensor failure",
+      "detail": "The motor tachometer or speed sensor has failed.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Speed sensor failure",
+          "frequency": 65
+        },
+        {
+          "description": "Sensor wiring damaged",
+          "frequency": 25
+        },
+        {
+          "description": "Control board speed input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test speed sensor",
+          "description": "Check resistance per service manual.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor",
+          "description": "",
+          "parts": [
+            "GE speed sensor ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 55,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "After repair, restart.",
+      "related_codes": [
+        "E43",
+        "E52"
+      ],
+      "when_to_call_pro": "If new sensor and error persists, control board input failed."
+    },
+    {
+      "id": "ge-washer-e47",
+      "brand": "ge",
+      "appliance": "washer",
+      "code": "E47",
+      "aliases": [],
+      "meaning": "Door lock failure",
+      "detail": "The door lock mechanism cannot engage or disengage properly.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door lock solenoid failure",
+          "frequency": 50
+        },
+        {
+          "description": "Door latch worn",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to lock damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Inspect door latch",
+          "description": "Check for wear or cracks.",
+          "parts": [
+            "GE door latch ($25–$65)"
+          ]
+        },
+        {
+          "title": "Test lock solenoid",
+          "description": "Test continuity.",
+          "parts": [
+            "GE door lock ($40–$90)"
+          ]
+        },
+        {
+          "title": "Replace assembly",
+          "description": ""
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Close door firmly and restart.",
+      "related_codes": [
+        "E42",
+        "E43"
+      ],
+      "when_to_call_pro": "If door closes but E47 persists, lock solenoid has failed."
+    },
+    {
       "id": "ge-dishwasher-c5",
       "brand": "ge",
       "appliance": "dishwasher",
@@ -4132,6 +8036,264 @@
       "when_to_call_pro": "PF does not require service unless power interruptions are frequent — in that case, check household wiring."
     },
     {
+      "id": "ge-dishwasher-oe",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "code": "OE",
+      "aliases": [],
+      "meaning": "Drain error — not draining properly",
+      "detail": "The GE dishwasher is unable to drain water within the expected time.",
+      "severity": "high",
+      "category": "drainage",
+      "causes": [
+        {
+          "description": "Drain filter clogged",
+          "frequency": 50
+        },
+        {
+          "description": "Drain hose kinked or improperly routed",
+          "frequency": 25
+        },
+        {
+          "description": "Garbage disposal blocked",
+          "frequency": 15
+        },
+        {
+          "description": "Drain pump failed",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean drain filter",
+          "description": "Remove and clean the filter in the tub bottom."
+        },
+        {
+          "title": "Check drain hose",
+          "description": "Ensure high-loop installation and no kinks."
+        },
+        {
+          "title": "Check disposal",
+          "description": "Run disposal before cycle."
+        },
+        {
+          "title": "Test drain pump",
+          "description": "If filter and hose clear, test pump.",
+          "parts": [
+            "GE dishwasher drain pump ($50–$100)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 100,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After clearing, cancel and restart cycle.",
+      "related_codes": [
+        "C5",
+        "FL"
+      ],
+      "when_to_call_pro": "If pump motor tested failed, replacement needed."
+    },
+    {
+      "id": "ge-dishwasher-c3",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "code": "C3",
+      "aliases": [],
+      "meaning": "Control board failure",
+      "detail": "The main control board has experienced an internal fault.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Board component failure",
+          "frequency": 55
+        },
+        {
+          "description": "Power surge",
+          "frequency": 30
+        },
+        {
+          "description": "Moisture damage",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 15 minutes."
+        },
+        {
+          "title": "Replace control board",
+          "description": "",
+          "parts": [
+            "GE dishwasher control board ($120–$300)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 120,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 15 minutes. If C3 returns, board needs replacement.",
+      "related_codes": [
+        "C4"
+      ],
+      "when_to_call_pro": "Professional board replacement recommended to avoid wiring errors."
+    },
+    {
+      "id": "ge-dishwasher-c7",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "code": "C7",
+      "aliases": [],
+      "meaning": "OWI sensor failure — optical water indicator fault",
+      "detail": "The optical sensor that detects water clarity (how dirty the wash water is) has failed. The dishwasher may run shorter cycles than needed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "OWI sensor lens dirty or coated",
+          "frequency": 60
+        },
+        {
+          "description": "OWI sensor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board OWI input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the OWI sensor",
+          "description": "Located on the sump assembly. Clean the lens with a soft cloth."
+        },
+        {
+          "title": "Test and replace OWI sensor",
+          "description": "If cleaning doesn't resolve.",
+          "parts": [
+            "GE OWI sensor ($30–$80)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 80,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "After cleaning or replacing, run a normal wash cycle.",
+      "related_codes": [
+        "C5"
+      ],
+      "when_to_call_pro": "C7 rarely causes complete failure — dishwasher still washes, just uses default cycle length."
+    },
+    {
+      "id": "ge-dishwasher-ho",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "code": "HO",
+      "aliases": [],
+      "meaning": "Water not hot enough — incoming water temperature too low",
+      "detail": "The dishwasher detected that the incoming water temperature is below the minimum needed for effective washing.",
+      "severity": "medium",
+      "category": "temperature",
+      "causes": [
+        {
+          "description": "Home water heater temperature set too low (below 120°F/49°C)",
+          "frequency": 50
+        },
+        {
+          "description": "Hot water run too long before cycle — hot water depleted",
+          "frequency": 30
+        },
+        {
+          "description": "NTC temperature sensor failure",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Run hot water at nearby sink",
+          "description": "Run the kitchen hot water faucet for 30–60 seconds before starting the dishwasher. This clears the cold water in the supply line."
+        },
+        {
+          "title": "Check water heater temperature",
+          "description": "Set to at least 120°F (49°C)."
+        },
+        {
+          "title": "Test NTC sensor",
+          "description": "If water is hot at tap but HO persists, test the sensor.",
+          "parts": [
+            "GE NTC sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 40,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 220,
+      "reset_instructions": "Run hot water at sink first, then restart cycle.",
+      "related_codes": [
+        "PrS"
+      ],
+      "when_to_call_pro": "If water heater is hot and sensor replaced but HO persists, the inlet valve hot side is not opening."
+    },
+    {
+      "id": "ge-dishwasher-prs",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "code": "PrS",
+      "aliases": [],
+      "meaning": "Pressure sensor fault — water level sensing issue",
+      "detail": "The water level pressure sensor in the dishwasher is not reading correctly.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure sensor failure",
+          "frequency": 60
+        },
+        {
+          "description": "Air trap or hose to sensor blocked",
+          "frequency": 30
+        },
+        {
+          "description": "Control board sensor input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check air trap and hose",
+          "description": "The pressure hose from the sump to the sensor should be clear."
+        },
+        {
+          "title": "Test and replace sensor",
+          "description": "If hose is clear, test sensor and replace if failed.",
+          "parts": [
+            "GE dishwasher pressure sensor ($25–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 60,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, run a test cycle.",
+      "related_codes": [
+        "C5",
+        "HO"
+      ],
+      "when_to_call_pro": "If new sensor and clear hose don't resolve PrS, control board pressure input failed."
+    },
+    {
       "id": "ge-refrigerator-ds",
       "brand": "ge",
       "appliance": "refrigerator",
@@ -4279,6 +8441,515 @@
       "reset_instructions": "Follow the demo mode exit procedure for your model. The display will return to actual temperatures.",
       "related_codes": [],
       "when_to_call_pro": "If demo mode cannot be exited with standard button combinations, the control board may have a software issue."
+    },
+    {
+      "id": "ge-refrigerator-2e",
+      "brand": "ge",
+      "appliance": "refrigerator",
+      "code": "2E",
+      "aliases": [],
+      "meaning": "Fresh food compartment temperature sensor failure",
+      "detail": "The NTC thermistor measuring refrigerator (fresh food) compartment temperature has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Room temp: ~6k–8k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Reseat connector",
+          "description": "Firmly reconnect."
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Located inside refrigerator compartment.",
+          "parts": [
+            "GE thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "After repair, allow 24 hours temperature stabilization.",
+      "related_codes": [
+        "1E",
+        "4E"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
+    },
+    {
+      "id": "ge-refrigerator-4e",
+      "brand": "ge",
+      "appliance": "refrigerator",
+      "code": "4E",
+      "aliases": [],
+      "meaning": "Evaporator sensor failure",
+      "detail": "The evaporator coil temperature sensor has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor open circuit",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Frost on sensor causing error",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Manually defrost",
+          "description": "Unplug and let frost clear before diagnosing."
+        },
+        {
+          "title": "Test sensor",
+          "description": "~16k ohms at 32°F.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor",
+          "description": "Clip-on replacement to evaporator coil.",
+          "parts": [
+            "GE evaporator sensor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Allow 24 hours after repair.",
+      "related_codes": [
+        "1E",
+        "2E",
+        "dS"
+      ],
+      "when_to_call_pro": "If frost builds up again quickly, defrost heater is failing."
+    },
+    {
+      "id": "ge-refrigerator-6e",
+      "brand": "ge",
+      "appliance": "refrigerator",
+      "code": "6E",
+      "aliases": [],
+      "meaning": "Humidity/ambient sensor failure",
+      "detail": "The humidity or ambient temperature sensor has failed.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor failure",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Control board input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test sensor",
+          "description": "Low-priority repair. Check connector first."
+        },
+        {
+          "title": "Replace if failed",
+          "description": "",
+          "parts": [
+            "GE sensor ($15–$35)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 15,
+      "cost_hi": 35,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 220,
+      "reset_instructions": "Unplug 5 minutes and restart.",
+      "related_codes": [
+        "1E",
+        "2E"
+      ],
+      "when_to_call_pro": "6E rarely causes cooling failure."
+    },
+    {
+      "id": "ge-dryer-e1",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "E1",
+      "aliases": [],
+      "meaning": "Thermistor open — temperature sensor failure",
+      "detail": "The dryer thermistor (temperature sensor) has an open circuit and is not providing temperature readings.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Room temp: ~10k–12k ohms expected.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check connector",
+          "description": "Reseat at thermistor."
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Located in exhaust duct area.",
+          "parts": [
+            "GE dryer thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, unplug 1 minute and restart.",
+      "related_codes": [
+        "E3",
+        "E4"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
+    },
+    {
+      "id": "ge-dryer-e3",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "E3",
+      "aliases": [],
+      "meaning": "Outlet thermistor shorted — exhaust temperature sensor failure",
+      "detail": "The outlet thermistor is reading an abnormally low resistance, indicating a short circuit.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor shorted",
+          "frequency": 70
+        },
+        {
+          "description": "Wiring fault causing short",
+          "frequency": 20
+        },
+        {
+          "description": "Control board thermistor circuit short",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Should read 10k+ ohms at room temp. Near 0 = shorted.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "",
+          "parts": [
+            "GE dryer thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, restart.",
+      "related_codes": [
+        "E1",
+        "E4"
+      ],
+      "when_to_call_pro": "If new thermistor shows E3, control board thermistor circuit shorted."
+    },
+    {
+      "id": "ge-dryer-e4",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "E4",
+      "aliases": [],
+      "meaning": "High-limit thermostat tripped — overheating detected",
+      "detail": "The high-limit safety thermostat has tripped due to excessive heat. A blocked vent is the most common cause.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Blocked exhaust duct",
+          "frequency": 55
+        },
+        {
+          "description": "High-limit thermostat failed permanently after trip",
+          "frequency": 30
+        },
+        {
+          "description": "Heating element relay stuck on",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean vent system",
+          "description": "Full duct cleaning — filter, duct, exterior cap.",
+          "parts": [
+            "Vent brush kit ($15–$35)"
+          ]
+        },
+        {
+          "title": "Test high-limit thermostat",
+          "description": "After cleaning, test for continuity. Tripped = open = replace.",
+          "parts": [
+            "GE high-limit thermostat ($10–$25)"
+          ]
+        },
+        {
+          "title": "Run after vent cleaning",
+          "description": "If thermostat tests good after vent cleaning, restart normally."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 10,
+      "cost_hi": 35,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Clean vent, replace thermostat if failed, unplug 5 minutes, restart.",
+      "related_codes": [
+        "E8",
+        "E9"
+      ],
+      "when_to_call_pro": "If vent is clear and thermostat replaced but E4 returns, heating element relay is stuck closed."
+    },
+    {
+      "id": "ge-dryer-e8",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "E8",
+      "aliases": [],
+      "meaning": "Inlet thermistor failure — intake temperature sensor",
+      "detail": "The air intake thermistor has failed. This sensor monitors incoming air temperature.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open or shorted",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Room temp: ~10k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "",
+          "parts": [
+            "GE dryer thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, restart.",
+      "related_codes": [
+        "E1",
+        "E4"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
+    },
+    {
+      "id": "ge-dryer-e9",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "E9",
+      "aliases": [],
+      "meaning": "Exhaust thermistor failure",
+      "detail": "The exhaust air thermistor has failed.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open or shorted",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test thermistor",
+          "description": "Room temp: ~10k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Located in exhaust path.",
+          "parts": [
+            "GE dryer thermistor ($15–$40)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After repair, restart.",
+      "related_codes": [
+        "E1",
+        "E8"
+      ],
+      "when_to_call_pro": "If new thermistor and error persists, control board failed."
+    },
+    {
+      "id": "ge-dryer-e10",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "E10",
+      "aliases": [],
+      "meaning": "Motor relay failure on control board",
+      "detail": "The relay controlling the drum motor on the main control board has failed.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Motor relay burned on control board",
+          "frequency": 65
+        },
+        {
+          "description": "Power surge damaging relay",
+          "frequency": 25
+        },
+        {
+          "description": "Control board general failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 15 minutes."
+        },
+        {
+          "title": "Replace control board",
+          "description": "E10 almost always requires board replacement.",
+          "parts": [
+            "GE dryer control board ($100–$280)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 15 minutes. If E10 returns, board needs replacement.",
+      "related_codes": [
+        "E4"
+      ],
+      "when_to_call_pro": "Control board replacement for GE dryers is a direct swap. Photograph all wiring."
+    },
+    {
+      "id": "ge-dryer-ls",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "LS",
+      "aliases": [],
+      "meaning": "Lint screen reminder",
+      "detail": "This is a maintenance reminder to check and clean the lint screen. Not an error.",
+      "severity": "low",
+      "category": "maintenance",
+      "causes": [
+        {
+          "description": "Lint screen full per sensor or timer",
+          "frequency": 100
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean lint screen",
+          "description": "Remove and clean thoroughly after every load."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Clean lint screen. LS clears after screen is cleaned.",
+      "related_codes": [],
+      "when_to_call_pro": "Not a fault. No service required."
     },
     {
       "id": "bosch-washer-e18",

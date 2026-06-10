@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <rect width="1200" height="630" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0"/>
+  <line x1="0" y1="315" x2="1200" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Wrench icon (simplified) -->
+  <g transform="translate(88, 80)">
+    <rect width="72" height="72" rx="16" fill="rgba(255,255,255,0.12)"/>
+    <text x="36" y="50" font-size="36" text-anchor="middle" fill="white">🔧</text>
+  </g>
+
+  <!-- Site name -->
+  <text x="88" y="240" font-family="Arial,Helvetica,sans-serif" font-size="64" font-weight="bold" fill="white">ApplianceErrors.com</text>
+
+  <!-- Tagline -->
+  <text x="88" y="310" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="rgba(255,255,255,0.80)">Free error code lookup for every major brand</text>
+
+  <!-- Stats row -->
+  <g transform="translate(88, 390)">
+    <!-- Stat 1 -->
+    <rect width="200" height="80" rx="12" fill="rgba(255,255,255,0.12)"/>
+    <text x="100" y="38" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="bold" fill="white" text-anchor="middle">305+</text>
+    <text x="100" y="62" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="rgba(255,255,255,0.70)" text-anchor="middle">Error Codes</text>
+    <!-- Stat 2 -->
+    <rect x="224" width="200" height="80" rx="12" fill="rgba(255,255,255,0.12)"/>
+    <text x="324" y="38" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="bold" fill="white" text-anchor="middle">16</text>
+    <text x="324" y="62" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="rgba(255,255,255,0.70)" text-anchor="middle">Brands</text>
+    <!-- Stat 3 -->
+    <rect x="448" width="200" height="80" rx="12" fill="rgba(255,255,255,0.12)"/>
+    <text x="548" y="38" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="bold" fill="white" text-anchor="middle">Free</text>
+    <text x="548" y="62" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="rgba(255,255,255,0.70)" text-anchor="middle">Always</text>
+  </g>
+
+  <!-- Bottom brand strip -->
+  <rect y="560" width="1200" height="70" fill="rgba(0,0,0,0.25)"/>
+  <text x="88" y="603" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="rgba(255,255,255,0.60)">Samsung · LG · Whirlpool · GE · Bosch · KitchenAid · Frigidaire · Maytag · Broan</text>
+</svg>

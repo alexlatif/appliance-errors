@@ -18,6 +18,11 @@ const APP_SHORT: Record<string,string> = {
   refrigerator: 'Refrigerator', oven: 'Oven', microwave: 'Microwave',
   'air-conditioner': 'AC', freezer: 'Freezer', 'range-hood': 'Range Hood',
 };
+// Shorter names for title tags (keep ≤65 chars total)
+const BRAND_SHORT: Record<string,string> = {
+  'ge': 'GE', 'broan': 'Broan', 'fisher-paykel': 'Fisher & Paykel',
+  'speedqueen': 'Speed Queen',
+};
 
 export async function getStaticPaths() {
   return errorCodes.map(c => ({
@@ -41,13 +46,14 @@ const appName = appType?.name ?? appSlug!;
 // Short names for titles — "Washing Machine"→"Washer", keeps <title> ≤65 chars
 const appShort = (APP_SHORT as Record<string,string>)[appSlug!] ?? appName;
 const brandName = brand.name;
+const brandShort = BRAND_SHORT[brandSlug!] ?? brandName;
 
 // Part links — PartSelect and RepairClinic search URLs
 const partSelectUrl = `https://www.partselect.com/PartSearchResults.aspx?SearchTerm=${encodeURIComponent(brandName + ' ' + appShort + ' ' + errorCode.code)}`;
 const repairClinicUrl = `https://www.repairclinic.com/Shop-For-Parts/a/~/${encodeURIComponent(brandName + '-' + appShort)}`;
 
 // Code-first title — ≤65 chars. "D80 Error Code — LG Dryer Fix | ApplianceErrors.com" = 51 chars
-const title = `${errorCode.code} Error Code — ${brandName} ${appShort} Fix | ApplianceErrors.com`;
+const title = `${errorCode.code} Error Code — ${brandShort} ${appShort} Fix | ApplianceErrors.com`;
 
 // Description ≤155 chars — meaning truncated, punchy suffix
 const meaningTrunc = errorCode.meaning.length > 90

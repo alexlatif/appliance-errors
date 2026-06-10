@@ -199,6 +199,15 @@
       "description": "New Zealand brand known for innovative DishDrawer dishwashers and top-load washers."
     },
     {
+      "slug": "broan",
+      "name": "Broan-NuTone",
+      "logo_color": "#CC0000",
+      "appliances": [
+        "range-hood"
+      ],
+      "description": "America's leading range hood manufacturer. Broan-NuTone makes over 40% of range hoods sold in the US, from budget to professional-grade ventilation."
+    },
+    {
       "slug": "haier",
       "name": "Haier",
       "logo_color": "#BC0B25",

@@ -8,7 +8,7 @@ import FixSteps from '../../../../components/FixSteps.astro';
 import AdSlot from '../../../../components/AdSlot.astro';
 import {
   brands, applianceTypes, errorCodes,
-  getBrand, getApplianceType, getCode, getRelatedCodes, slugifyCode
+  getBrand, getApplianceType, getCode, getRelatedCodes, getCrossBrandCodes, slugifyCode
 } from '../../../../utils/data';
 import { faqSchema, howToSchema, breadcrumbSchema, articleSchema } from '../../../../utils/schema';
 
@@ -29,8 +29,14 @@ const { errorCode } = Astro.props;
 const brand = getBrand(brandSlug!)!;
 const appType = getApplianceType(appSlug!);
 const relatedCodes = getRelatedCodes(errorCode);
+const crossBrandCodes = getCrossBrandCodes(errorCode.code, brandSlug!).slice(0, 4);
 const appName = appType?.name ?? appSlug!;
 const brandName = brand.name;
+
+// Part links — PartSelect and RepairClinic search URLs
+const partSearchQuery = `${brandName} ${appName} ${errorCode.code}`.replace(/\s+/g, '+');
+const partSelectUrl = `https://www.partselect.com/PartSearchResults.aspx?SearchTerm=${encodeURIComponent(brandName + ' ' + appName + ' ' + errorCode.code)}`;
+const repairClinicUrl = `https://www.repairclinic.com/RepairHelp/How-To-Fix-A-${appName.replace(/\s/g,'-')}/~/${errorCode.code}`;
 
 const title = `${brandName} ${appName} Error Code ${errorCode.code} — What It Means & How to Fix | ApplianceErrors.com`;
 const description = `${errorCode.meaning}. Learn the causes, step-by-step fix, parts needed, and when to call a repair person for ${brandName} ${appName.toLowerCase()} error code ${errorCode.code}.`;
@@ -198,6 +204,68 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
         </div>
       </section>
     )}
+
+    <!-- Cross-brand comparison -->
+    {crossBrandCodes.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Same Code on Other Brands</h2>
+        <p class="text-gray-500 text-sm mb-4">Error code <strong>{errorCode.code}</strong> appears on these other brands too. Click to compare:</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {crossBrandCodes.map(rc => {
+            const rcBrand = getBrand(rc.brand);
+            const rcApp = getApplianceType(rc.appliance);
+            return (
+              <a href={`/brands/${rc.brand}/${rc.appliance}/${slugifyCode(rc.code)}/`}
+                 class="flex items-start gap-3 p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all group">
+                <div class="w-14 h-10 flex items-center justify-center rounded-lg overflow-hidden border border-gray-100 bg-white p-1 flex-shrink-0">
+                  <img src={`/logos/${rc.brand}.svg`} alt={`${rcBrand?.name} logo`} class="h-8 w-auto max-w-[52px] object-contain"/>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-semibold text-gray-800 group-hover:text-brand-600">
+                    {rcBrand?.name} {rcApp?.name} {rc.code}
+                  </div>
+                  <div class="text-sm text-gray-500 truncate">{rc.meaning}</div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- Part finder links -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">Find Replacement Parts</h2>
+      <p class="text-gray-600 text-sm mb-4">
+        Use these links to find the exact replacement parts for your {brandName} {appName}:
+      </p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <a href={partSelectUrl} target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-3 p-4 border-2 border-blue-200 bg-blue-50 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+          <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-lg">🔩</div>
+          <div>
+            <div class="font-semibold text-blue-900 group-hover:text-blue-700">Search PartSelect</div>
+            <div class="text-xs text-blue-600">{brandName} {appName} repair parts</div>
+          </div>
+          <svg class="w-4 h-4 text-blue-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+        <a href={`https://www.repairclinic.com/Shop-For-Parts/a/~/${encodeURIComponent(brandName + '-' + appName)}`}
+           target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-3 p-4 border-2 border-orange-200 bg-orange-50 rounded-xl hover:border-orange-400 hover:shadow-md transition-all group">
+          <div class="w-10 h-10 bg-orange-500 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-lg">🔧</div>
+          <div>
+            <div class="font-semibold text-orange-900 group-hover:text-orange-700">Search RepairClinic</div>
+            <div class="text-xs text-orange-600">Step-by-step video guides</div>
+          </div>
+          <svg class="w-4 h-4 text-orange-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+      <p class="text-xs text-gray-400 mt-2">External links — ApplianceErrors.com is not affiliated with these retailers.</p>
+    </section>
 
     <!-- FAQs -->
     <section id="faqs" class="mb-10">

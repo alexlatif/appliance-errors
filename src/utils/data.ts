@@ -43,12 +43,32 @@ export function getRelatedCodes(errorCode: ErrorCode): ErrorCode[] {
     .filter((c): c is ErrorCode => c !== undefined);
 }
 
+export function getCrossBrandCodes(code: string, excludeBrand: string): ErrorCode[] {
+  const normalized = code.toUpperCase().replace(/[-\s]/g, '');
+  return errorCodes.filter(c =>
+    c.brand !== excludeBrand &&
+    (c.code.toUpperCase().replace(/[-\s]/g, '') === normalized ||
+     c.aliases.some(a => a.toUpperCase().replace(/[-\s]/g, '') === normalized))
+  );
+}
+
+// Also keep old name as alias
 export function getCrosseBrandCodes(code: string): ErrorCode[] {
   const normalized = code.toUpperCase().replace(/-/g, '');
   return errorCodes.filter(c =>
     c.code.toUpperCase().replace(/-/g, '') === normalized ||
     c.aliases.some(a => a.toUpperCase().replace(/-/g, '') === normalized)
   );
+}
+
+export function getCodesByAppliance(appliance: string): ErrorCode[] {
+  return errorCodes.filter(c => c.appliance === appliance);
+}
+
+export function getTopCodesByAppliance(appliance: string, limit = 12): ErrorCode[] {
+  const high = errorCodes.filter(c => c.appliance === appliance && (c.severity === 'high' || c.severity === 'critical'));
+  const medium = errorCodes.filter(c => c.appliance === appliance && c.severity === 'medium');
+  return [...high, ...medium].slice(0, limit);
 }
 
 export function getBrandAppliances(brand: string): string[] {

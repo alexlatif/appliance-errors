@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SearchBox from '../components/SearchBox.astro';
 import { brands, applianceTypes, totalCodeCount } from '../utils/data';
 
 const title = 'Appliance Error Code Lookup — All Brands & Models | ApplianceErrors.com';
@@ -17,18 +18,9 @@ const description = `Look up any appliance error code instantly. ${totalCodeCoun
         {totalCodeCount()}+ error codes for every major brand. Plain English. Step-by-step fixes. Free.
       </p>
 
-      <!-- Quick search hint -->
-      <div class="bg-white/10 backdrop-blur rounded-xl p-6 max-w-lg mx-auto text-left">
-        <p class="text-blue-100 text-sm mb-3 font-medium">FIND YOUR CODE:</p>
-        <div class="grid grid-cols-2 gap-2">
-          <a href="/brands/" class="bg-white/20 hover:bg-white/30 text-white rounded-lg p-3 text-sm font-medium text-center transition-colors">
-            Browse by Brand
-          </a>
-          <a href="/appliances/washer/" class="bg-white/20 hover:bg-white/30 text-white rounded-lg p-3 text-sm font-medium text-center transition-colors">
-            Browse by Appliance
-          </a>
-        </div>
-      </div>
+      <!-- Search -->
+      <SearchBox />
+      <p class="text-blue-200 text-sm mt-3">Or <a href="/brands/" class="underline hover:text-white">browse by brand</a> · <a href="/appliances/washer/" class="underline hover:text-white">browse by appliance</a></p>
     </div>
   </section>
 
@@ -42,11 +34,14 @@ const description = `Look up any appliance error code instantly. ${totalCodeCoun
       {brands.map(brand => (
         <a href={`/brands/${brand.slug}/`}
            class="group border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-md transition-all text-center">
-          <div class="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center text-white text-xl font-bold"
-               style={`background-color: ${brand.logo_color}`}>
-            {brand.name[0]}
+          <div class="h-12 flex items-center justify-center mb-3">
+            <img src={`/logos/${brand.slug}.svg`} alt={`${brand.name} logo`}
+                 class="h-10 w-auto max-w-[120px] object-contain"
+                 onerror={`this.style.display='none';this.nextSibling.style.display='flex'`} loading="lazy"/>
+            <div class="w-10 h-10 rounded-full hidden items-center justify-center text-white text-lg font-bold"
+                 style={`background-color: ${brand.logo_color}`}>{brand.name[0]}</div>
           </div>
-          <div class="font-semibold text-gray-800 group-hover:text-brand-600">{brand.name}</div>
+          <div class="font-semibold text-gray-800 group-hover:text-brand-600 text-sm">{brand.name}</div>
           <div class="text-xs text-gray-500 mt-1">{brand.appliances.length} appliances</div>
         </a>
       ))}

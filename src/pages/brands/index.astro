@@ -20,9 +20,12 @@ const brandData = brands.map(b => ({
       {brandData.map(brand => (
         <a href={`/brands/${brand.slug}/`}
            class="group flex items-start gap-4 p-5 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-lg transition-all">
-          <div class="w-14 h-14 rounded-xl flex items-center justify-center text-white text-2xl font-bold flex-shrink-0"
-               style={`background-color: ${brand.logo_color}`}>
-            {brand.name[0]}
+          <div class="w-20 h-14 flex items-center justify-center flex-shrink-0 rounded-xl overflow-hidden border border-gray-100 p-1">
+            <img src={`/logos/${brand.slug}.svg`} alt={`${brand.name} logo`}
+                 class="h-12 w-auto max-w-[72px] object-contain"
+                 onerror={`this.style.display='none';this.nextSibling.style.display='flex'`} loading="lazy"/>
+            <div class="w-14 h-14 rounded-xl hidden items-center justify-center text-white text-2xl font-bold"
+                 style={`background-color: ${brand.logo_color}`}>{brand.name[0]}</div>
           </div>
           <div class="flex-1">
             <div class="font-bold text-gray-900 text-lg group-hover:text-brand-600">{brand.name}</div>

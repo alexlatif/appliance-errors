@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" role="img" aria-label="LG logo">
+  <rect width="200" height="80" fill="white" rx="6" stroke="#eee" stroke-width="1"/>
+  <circle cx="56" cy="40" r="32" fill="none" stroke="#A50034" stroke-width="4"/>
+  <text x="50" y="48" font-family="'Arial','Helvetica',sans-serif" font-size="26" font-weight="900" fill="#A50034" text-anchor="middle">LG</text>
+  <text x="135" y="36" font-family="'Arial','Helvetica',sans-serif" font-size="13" font-weight="700" fill="#A50034" text-anchor="middle">Life's</text>
+  <text x="135" y="53" font-family="'Arial','Helvetica',sans-serif" font-size="13" font-weight="700" fill="#A50034" text-anchor="middle">Good</text>
+</svg>

@@ -3050,6 +3050,668 @@
       "when_to_call_pro": "If defrost sensor replaced and error recurs, the defrost heater is failing."
     },
     {
+      "id": "samsung-oven-e-08",
+      "brand": "samsung",
+      "appliance": "oven",
+      "code": "E-08",
+      "aliases": [
+        "E08"
+      ],
+      "meaning": "Oven temperature sensor open circuit",
+      "detail": "The oven temperature sensor (NTC probe) has an open circuit — it is no longer reading temperature. The oven will not heat without this sensor because it cannot control temperature safely.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Temperature sensor failure (open circuit)",
+          "frequency": 65
+        },
+        {
+          "description": "Connector at sensor loose or corroded",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness to sensor damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "Disconnect the sensor connector. Test resistance: at room temperature, expect 1,080–1,090 ohms for a standard oven sensor. An open circuit (OL/∞) means the sensor has failed.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check the connector",
+          "description": "Before replacing, reseat the 2-pin connector at the sensor. Corrosion on the pins can mimic an open circuit."
+        },
+        {
+          "title": "Replace the temperature sensor",
+          "description": "The sensor is in the upper-rear of the oven cavity, usually 1–2 screws. Disconnect the 2-wire connector and install the new sensor.",
+          "parts": [
+            "Samsung oven temperature sensor ($25–$55)"
+          ],
+          "warning": "Let oven cool completely before reaching inside."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 25,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, plug in and test with a short bake cycle.",
+      "related_codes": [
+        "E-09",
+        "E-07"
+      ],
+      "models_affected": "Samsung NE/NX series gas and electric ranges",
+      "when_to_call_pro": "If new sensor and E-08 persists, the control board sensor input has failed."
+    },
+    {
+      "id": "samsung-oven-e-09",
+      "brand": "samsung",
+      "appliance": "oven",
+      "code": "E-09",
+      "aliases": [
+        "E09"
+      ],
+      "meaning": "Oven temperature sensor short circuit",
+      "detail": "The oven temperature sensor is reading abnormally low resistance, indicating a short circuit.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor shorted internally",
+          "frequency": 65
+        },
+        {
+          "description": "Wiring pinched causing short",
+          "frequency": 25
+        },
+        {
+          "description": "Control board sensor circuit shorted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "At room temp, sensor should read 1,080–1,090 ohms. Near 0 ohms = shorted sensor.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "A shorted sensor cannot be repaired.",
+          "parts": [
+            "Samsung oven temperature sensor ($25–$55)"
+          ],
+          "warning": "Let oven cool completely."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 25,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, test with short bake cycle.",
+      "related_codes": [
+        "E-08",
+        "E-07"
+      ],
+      "when_to_call_pro": "If new sensor reads correctly but E-09 persists, control board sensor input is shorted."
+    },
+    {
+      "id": "samsung-oven-se",
+      "brand": "samsung",
+      "appliance": "oven",
+      "code": "SE",
+      "aliases": [
+        "5E"
+      ],
+      "meaning": "Keypad/touchpad short — stuck button on control panel",
+      "detail": "A button on the oven's touch control panel is registering as continuously pressed, either from a stuck key or a failed membrane.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Touch panel membrane failure",
+          "frequency": 60
+        },
+        {
+          "description": "Food/grease on touchpad causing false contact",
+          "frequency": 25
+        },
+        {
+          "description": "Control board touch interface failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the control panel",
+          "description": "Wipe carefully around all touch buttons with a slightly damp cloth. Let dry completely before testing.",
+          "warning": "Do not spray water directly — let dry before powering on."
+        },
+        {
+          "title": "Power cycle the oven",
+          "description": "Turn off circuit breaker for 5 minutes. This can clear transient SE codes."
+        },
+        {
+          "title": "Replace the touchpad/membrane panel",
+          "description": "If SE returns after cleaning and power cycle, the membrane has failed.",
+          "parts": [
+            "Samsung oven touchpad ($60–$150)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 150,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. If SE returns, replace touchpad.",
+      "related_codes": [],
+      "when_to_call_pro": "SE that returns after touchpad replacement indicates the control board has failed."
+    },
+    {
+      "id": "samsung-oven-e-0a",
+      "brand": "samsung",
+      "appliance": "oven",
+      "code": "E-0A",
+      "aliases": [
+        "E-0a",
+        "E0A"
+      ],
+      "meaning": "Oven overheating — temperature above safe limit",
+      "detail": "The oven has detected a temperature above the maximum operating limit, typically above 570°F (300°C) during normal cooking or above 900°F during self-clean.",
+      "severity": "critical",
+      "category": "temperature",
+      "causes": [
+        {
+          "description": "Runaway heating element (relay stuck on)",
+          "frequency": 45
+        },
+        {
+          "description": "Temperature sensor failure causing incorrect readings",
+          "frequency": 35
+        },
+        {
+          "description": "Self-clean cycle issue",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power off immediately",
+          "description": "Turn off the circuit breaker. Allow oven to cool completely — at least 1 hour.",
+          "warning": "Do NOT open the oven door during overheating. Stand clear."
+        },
+        {
+          "title": "Test temperature sensor",
+          "description": "After cooling, check sensor resistance (should be ~1,080 ohms at room temp).",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check bake/broil element",
+          "description": "Inspect for visible burn marks, holes, or arcing on either heating element."
+        },
+        {
+          "title": "Replace failed element",
+          "description": "If element has visible damage.",
+          "parts": [
+            "Samsung bake element ($30–$70)",
+            "Samsung broil element ($35–$80)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 80,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker immediately. Do not use until inspected.",
+      "related_codes": [
+        "E-08",
+        "E-09"
+      ],
+      "when_to_call_pro": "E-0A requires professional inspection. A runaway relay requires control board replacement."
+    },
+    {
+      "id": "samsung-oven-nf",
+      "brand": "samsung",
+      "appliance": "oven",
+      "code": "NF",
+      "aliases": [
+        "nF"
+      ],
+      "meaning": "No flame detected — gas ignition failure (gas range models)",
+      "detail": "The oven or one of the surface burners did not ignite successfully. The gas igniter has glowed but no gas flame appeared, or the igniter failed to glow.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Igniter too weak to open gas valve (most common)",
+          "frequency": 55
+        },
+        {
+          "description": "Clogged burner ports from spilled food",
+          "frequency": 25
+        },
+        {
+          "description": "Gas supply valve closed",
+          "frequency": 15
+        },
+        {
+          "description": "Igniter failure",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check gas supply",
+          "description": "Ensure gas supply valve behind range is fully open. Check other gas appliances in the home."
+        },
+        {
+          "title": "Clean burner ports",
+          "description": "Clogged burner ports prevent gas flow. Remove burner cap, clean ports with a pin or toothpick.",
+          "warning": "Do not use water — let burner dry completely before igniting."
+        },
+        {
+          "title": "Test the igniter amperage",
+          "description": "A Samsung oven igniter draws 3.2–3.6A when working correctly. Below 3A = too weak to open gas valve.",
+          "parts": [
+            "Clamp ammeter"
+          ]
+        },
+        {
+          "title": "Replace the igniter",
+          "description": "If igniter glows but draws < 3.2A, replace it. This is the most common NF repair.",
+          "parts": [
+            "Samsung oven igniter ($40–$80)"
+          ],
+          "warning": "Gas igniter replacement: always test for gas leaks after."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 80,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 480,
+      "reset_instructions": "Check gas supply and burner cleanliness. If NF persists, test igniter amperage.",
+      "related_codes": [],
+      "models_affected": "Samsung gas ranges (NX58 series)",
+      "when_to_call_pro": "All gas igniter work should be checked for leaks with soapy water after repair. If you smell gas, do not ignite — call the gas company."
+    },
+    {
+      "id": "samsung-oven-e-3",
+      "brand": "samsung",
+      "appliance": "oven",
+      "code": "E-3",
+      "aliases": [
+        "E3"
+      ],
+      "meaning": "Door lock motor failure — self-clean door latch issue",
+      "detail": "The door lock mechanism used during self-clean cycles has failed or the motor did not complete the lock/unlock operation within the required time.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door lock motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Lock switch not actuating correctly",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to lock motor damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes. A transient E-3 can be cleared this way."
+        },
+        {
+          "title": "Check door alignment",
+          "description": "Ensure oven door closes flush. A warped door can prevent the lock mechanism from engaging."
+        },
+        {
+          "title": "Test and replace door lock motor",
+          "description": "The lock motor is at the top-back of the oven. Test solenoid continuity.",
+          "parts": [
+            "Samsung oven door lock assembly ($60–$140)"
+          ],
+          "warning": "Unplug oven before accessing lock assembly."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 140,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Turn off circuit breaker 5 minutes and restart. If E-3 returns, lock motor needs replacement.",
+      "related_codes": [],
+      "when_to_call_pro": "If door lock assembly is replaced and E-3 persists, control board door lock relay has failed."
+    },
+    {
+      "id": "samsung-oven-e-43",
+      "brand": "samsung",
+      "appliance": "oven",
+      "code": "E-43",
+      "aliases": [
+        "E43"
+      ],
+      "meaning": "Power relay failure on main control board",
+      "detail": "A power relay controlling a heating element on the main control board has failed.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Relay contacts burned/welded on control board",
+          "frequency": 60
+        },
+        {
+          "description": "Power surge damaging relay",
+          "frequency": 30
+        },
+        {
+          "description": "Control board general failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 15 minutes."
+        },
+        {
+          "title": "Replace main control board",
+          "description": "E-43 almost always requires board replacement.",
+          "parts": [
+            "Samsung oven control board ($150–$380)"
+          ],
+          "warning": "Photograph all wiring before disconnecting."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 550,
+      "reset_instructions": "Turn off circuit breaker 15 minutes. If E-43 returns, board must be replaced.",
+      "related_codes": [],
+      "when_to_call_pro": "Control board replacement on ovens involves handling high-voltage connections. Professional installation recommended."
+    },
+    {
+      "id": "samsung-microwave-se",
+      "brand": "samsung",
+      "appliance": "microwave",
+      "code": "SE",
+      "aliases": [
+        "5E"
+      ],
+      "meaning": "Touchpad keypad error — button stuck or panel failure",
+      "detail": "A button on the microwave touchpad is stuck or the membrane keypad has failed. The microwave will not respond to other inputs.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Touchpad membrane failure",
+          "frequency": 60
+        },
+        {
+          "description": "Food splatter causing false key press",
+          "frequency": 30
+        },
+        {
+          "description": "Control board touch input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the touchpad",
+          "description": "Wipe the keypad with a barely-damp cloth. Dry completely before powering on."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug 2 minutes."
+        },
+        {
+          "title": "Replace touchpad membrane",
+          "description": "If SE returns after cleaning.",
+          "parts": [
+            "Samsung microwave touchpad ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug 2 minutes. If SE returns after cleaning, replace touchpad.",
+      "related_codes": [
+        "-SE-"
+      ],
+      "when_to_call_pro": "If new touchpad and SE persists, control board failed."
+    },
+    {
+      "id": "samsung-microwave--se-",
+      "brand": "samsung",
+      "appliance": "microwave",
+      "code": "-SE-",
+      "aliases": [
+        "SE"
+      ],
+      "meaning": "Demonstration mode active / touchpad error",
+      "detail": "On some Samsung over-the-range microwaves, -SE- indicates the unit is in demonstration/display mode. On others, it's a keypad error (same as SE).",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Demo mode enabled",
+          "frequency": 55
+        },
+        {
+          "description": "Touchpad failure",
+          "frequency": 45
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Exit demo mode",
+          "description": "Press and hold the '1' key for 3 seconds, OR hold 'Sound' for 3 seconds depending on model. Check your specific model's manual."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug 2 minutes. Demo mode clears on some models."
+        },
+        {
+          "title": "If SE keypad error",
+          "description": "Clean touchpad with damp cloth, then replace if necessary.",
+          "parts": [
+            "Samsung microwave touchpad ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 90,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug 2 minutes. Exit demo mode per manual instructions.",
+      "related_codes": [
+        "SE"
+      ],
+      "when_to_call_pro": "Persistent -SE- after touchpad replacement requires control board replacement."
+    },
+    {
+      "id": "samsung-microwave-f-3",
+      "brand": "samsung",
+      "appliance": "microwave",
+      "code": "F-3",
+      "aliases": [
+        "F3"
+      ],
+      "meaning": "Touchpad/membrane failure",
+      "detail": "A specific key on the microwave touchpad has detected a short circuit condition and the membrane has likely failed.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Membrane keypad failed internally",
+          "frequency": 70
+        },
+        {
+          "description": "Moisture behind keypad",
+          "frequency": 20
+        },
+        {
+          "description": "Control board key input shorted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 2 minutes."
+        },
+        {
+          "title": "Replace touchpad",
+          "description": "F-3 indicates membrane failure.",
+          "parts": [
+            "Samsung microwave touchpad ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug 2 minutes. Replace touchpad if F-3 returns.",
+      "related_codes": [
+        "SE"
+      ],
+      "when_to_call_pro": "If new touchpad and F-3 persists, control board failed."
+    },
+    {
+      "id": "samsung-microwave-f-10",
+      "brand": "samsung",
+      "appliance": "microwave",
+      "code": "F-10",
+      "aliases": [
+        "F10"
+      ],
+      "meaning": "Thermistor shorted — over-temperature protection",
+      "detail": "The cavity thermistor (temperature sensor) has shorted. The microwave shuts down to prevent damage from undetected overheating.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor shorted",
+          "frequency": 60
+        },
+        {
+          "description": "Overheating that tripped thermistor",
+          "frequency": 30
+        },
+        {
+          "description": "Control board sensor input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Allow to cool",
+          "description": "Unplug for 30 minutes."
+        },
+        {
+          "title": "Test thermistor",
+          "description": "Near 0 ohms = shorted.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace thermistor",
+          "description": "Located inside the microwave cavity.",
+          "parts": [
+            "Samsung microwave thermistor ($15–$40)"
+          ],
+          "warning": "DANGER: Microwave capacitors hold lethal charge. Discharge before any internal work."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 40,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Unplug 30 minutes. If F-10 returns, thermistor must be replaced by a qualified technician.",
+      "related_codes": [],
+      "when_to_call_pro": "ALWAYS call a professional for internal microwave repairs. High-voltage capacitors can retain lethal charge even when unplugged."
+    },
+    {
+      "id": "samsung-microwave-f-1",
+      "brand": "samsung",
+      "appliance": "microwave",
+      "code": "F-1",
+      "aliases": [
+        "F1"
+      ],
+      "meaning": "Keypad membrane failure — dead or stuck key",
+      "detail": "A key on the membrane keypad has failed, either stuck open or continuously pressing.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Keypad membrane failure",
+          "frequency": 75
+        },
+        {
+          "description": "Moisture damage",
+          "frequency": 15
+        },
+        {
+          "description": "Control board input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 2 minutes."
+        },
+        {
+          "title": "Replace keypad membrane",
+          "description": "Most common repair for F-1.",
+          "parts": [
+            "Samsung microwave keypad ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug 2 minutes. Replace membrane if F-1 persists.",
+      "related_codes": [
+        "SE",
+        "F-3"
+      ],
+      "when_to_call_pro": "If new keypad and F-1 persists, control board failed."
+    },
+    {
       "id": "lg-washer-oe",
       "brand": "lg",
       "appliance": "washer",
@@ -5281,6 +5943,497 @@
       "when_to_call_pro": "If defrost sensor is fine and dS persists, defrost heater or control board defrost circuit has failed."
     },
     {
+      "id": "lg-oven-f1",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F1",
+      "aliases": [],
+      "meaning": "Oven temperature sensor open circuit",
+      "detail": "The oven temperature sensor (resistance temperature detector) has failed with an open circuit. LG ovens will not heat without a functioning temperature sensor as temperature control becomes unsafe.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor failure (open circuit)",
+          "frequency": 65
+        },
+        {
+          "description": "Connector loose or corroded",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "Disconnect the sensor and test resistance. LG oven sensors read approximately 1,080 ohms at room temperature (75°F). An open circuit (OL/∞) means sensor failure.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check the connector",
+          "description": "Reseat the connector at both the sensor and the control board."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "The sensor is in the upper-back of the oven cavity, secured with 1–2 screws.",
+          "parts": [
+            "LG oven temperature sensor ($25–$55)"
+          ],
+          "warning": "Allow oven to cool completely before reaching inside."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 25,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "After replacing sensor, turn on and test with a 350°F bake cycle.",
+      "related_codes": [
+        "F2",
+        "F3"
+      ],
+      "models_affected": "LG electric ranges (LRE/LSE series) and gas ranges (LRG/LSG series)",
+      "when_to_call_pro": "If new sensor doesn't resolve F1, the control board temperature input has failed."
+    },
+    {
+      "id": "lg-oven-f2",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F2",
+      "aliases": [],
+      "meaning": "Oven over-temperature — exceeded maximum safe temperature",
+      "detail": "The oven temperature has exceeded the safe operating limit (typically 590°F during normal operation). The oven has shut down as a safety measure.",
+      "severity": "critical",
+      "category": "temperature",
+      "causes": [
+        {
+          "description": "Temperature sensor failure causing incorrect readings",
+          "frequency": 40
+        },
+        {
+          "description": "Heating element relay stuck on control board",
+          "frequency": 35
+        },
+        {
+          "description": "Control board failure",
+          "frequency": 15
+        },
+        {
+          "description": "Self-clean cycle issue",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power off immediately",
+          "description": "Turn off the circuit breaker. Allow oven to cool for 1 full hour.",
+          "warning": "DO NOT open the oven door during overheating. Stand clear of the appliance."
+        },
+        {
+          "title": "Test temperature sensor",
+          "description": "After cooling, test sensor (should be ~1,080 ohms). If sensor is OK, the issue is a stuck relay.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Inspect heating elements",
+          "description": "Check both bake and broil elements for visible signs of arcing or burn-through."
+        },
+        {
+          "title": "Replace failed component",
+          "description": "If element failed, replace it. If relay is stuck on control board, board replacement is needed.",
+          "parts": [
+            "LG bake element ($30–$70)",
+            "LG oven control board ($150–$350)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 70,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 550,
+      "reset_instructions": "Turn off circuit breaker immediately. Allow full cool-down before inspecting.",
+      "related_codes": [
+        "F1",
+        "F3"
+      ],
+      "when_to_call_pro": "F2 requires professional inspection. A stuck relay is a control board failure that must be repaired by a qualified technician."
+    },
+    {
+      "id": "lg-oven-f3",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F3",
+      "aliases": [],
+      "meaning": "Oven temperature sensor short circuit",
+      "detail": "The oven temperature sensor is reading abnormally low resistance (short circuit). This can cause the oven to incorrectly detect very high temperatures.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor shorted internally",
+          "frequency": 65
+        },
+        {
+          "description": "Pinched wiring causing short to chassis",
+          "frequency": 25
+        },
+        {
+          "description": "Control board sensor input shorted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "At room temp, LG sensor should read ~1,080 ohms. Near 0 = shorted.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Inspect wiring",
+          "description": "Check sensor wiring from probe to connector for any pinch points."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "A shorted sensor cannot be repaired.",
+          "parts": [
+            "LG oven temperature sensor ($25–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 25,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "After replacing sensor, test with 350°F bake cycle.",
+      "related_codes": [
+        "F1",
+        "F2"
+      ],
+      "when_to_call_pro": "If new sensor shows correct resistance but F3 persists, control board sensor input is shorted."
+    },
+    {
+      "id": "lg-oven-f5",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F5",
+      "aliases": [],
+      "meaning": "Door latch failure during self-clean cycle",
+      "detail": "The door latch mechanism did not complete the lock or unlock operation during a self-clean cycle.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Door latch switch not actuating",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to latch motor damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Check door alignment",
+          "description": "Door must close completely flush. Adjust door hinges if needed."
+        },
+        {
+          "title": "Test door latch assembly",
+          "description": "The latch motor is at the back-top of the oven. Test the motor solenoid.",
+          "parts": [
+            "LG oven door lock assembly ($60–$140)"
+          ],
+          "warning": "Unplug before accessing."
+        },
+        {
+          "title": "Replace door latch assembly",
+          "description": "If motor or switch failed."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 140,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Power cycle 5 minutes. If F5 returns, replace door latch assembly.",
+      "related_codes": [
+        "F6"
+      ],
+      "when_to_call_pro": "If new door latch assembly and F5 persists, control board door lock circuit failed."
+    },
+    {
+      "id": "lg-oven-f6",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F6",
+      "aliases": [],
+      "meaning": "Door lock switch open — door latch not detecting locked position",
+      "detail": "The door latch is physically in the locked position but the switch is not confirming this to the control board.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch switch contacts worn or open",
+          "frequency": 60
+        },
+        {
+          "description": "Latch assembly misaligned",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring to switch damaged",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Inspect door latch mechanism",
+          "description": "Check for physical obstructions or misalignment."
+        },
+        {
+          "title": "Replace door latch/lock assembly",
+          "description": "If switch contacts have failed.",
+          "parts": [
+            "LG oven door lock assembly ($60–$140)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 140,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Power cycle 5 minutes. If F6 returns, replace door latch assembly.",
+      "related_codes": [
+        "F5"
+      ],
+      "when_to_call_pro": "If new latch assembly and F6 persists, control board failed."
+    },
+    {
+      "id": "lg-oven-f9",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F9",
+      "aliases": [],
+      "meaning": "Control board failure — internal fault",
+      "detail": "The main electronic control board (ERC — Electronic Range Control) has experienced an internal fault.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Control board internal component failure",
+          "frequency": 60
+        },
+        {
+          "description": "Power surge damage",
+          "frequency": 30
+        },
+        {
+          "description": "Age-related board failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 15 minutes."
+        },
+        {
+          "title": "Replace control board",
+          "description": "F9 almost always requires control board replacement.",
+          "parts": [
+            "LG oven control board ($150–$380)"
+          ],
+          "warning": "Photograph all wiring before disconnecting."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 550,
+      "reset_instructions": "Turn off circuit breaker 15 minutes. If F9 returns, board must be replaced.",
+      "related_codes": [],
+      "when_to_call_pro": "Control board replacement involves high-voltage connections. Professional installation is recommended."
+    },
+    {
+      "id": "lg-microwave-f-3",
+      "brand": "lg",
+      "appliance": "microwave",
+      "code": "F-3",
+      "aliases": [
+        "F3"
+      ],
+      "meaning": "Temperature sensor error — over-temperature detected",
+      "detail": "The microwave's cavity temperature sensor has detected an over-temperature condition or has failed.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Overheating from blocked vents",
+          "frequency": 50
+        },
+        {
+          "description": "Temperature sensor failure",
+          "frequency": 35
+        },
+        {
+          "description": "Control board sensor input failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check ventilation",
+          "description": "Ensure the microwave has adequate clearance on all sides. Clean the grille and vent areas."
+        },
+        {
+          "title": "Allow to cool",
+          "description": "Unplug for 20 minutes."
+        },
+        {
+          "title": "Test and replace sensor",
+          "description": "If error returns after cooling, sensor has likely failed.",
+          "parts": [
+            "LG microwave thermistor ($15–$40)"
+          ],
+          "warning": "DANGER: Microwave capacitors hold lethal charge. Only professionals should open microwave cases."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 40,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug 20 minutes and ensure ventilation is clear. If F-3 returns, call a technician.",
+      "related_codes": [],
+      "when_to_call_pro": "ALWAYS call a professional for internal microwave repairs. Microwave capacitors retain lethal charge even when unplugged."
+    },
+    {
+      "id": "lg-microwave-f-6",
+      "brand": "lg",
+      "appliance": "microwave",
+      "code": "F-6",
+      "aliases": [
+        "F6"
+      ],
+      "meaning": "Keypad/touchpad failure",
+      "detail": "A key on the microwave's touchpad membrane has failed or is being held continuously.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Keypad membrane failure",
+          "frequency": 70
+        },
+        {
+          "description": "Food or moisture behind keypad",
+          "frequency": 20
+        },
+        {
+          "description": "Control board key input failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean touchpad",
+          "description": "Wipe with a barely-damp cloth, dry completely."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug 2 minutes."
+        },
+        {
+          "title": "Replace touchpad",
+          "description": "Most common F-6 repair.",
+          "parts": [
+            "LG microwave touchpad ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug 2 minutes. Replace touchpad if F-6 persists after cleaning.",
+      "related_codes": [],
+      "when_to_call_pro": "If new touchpad and F-6 persists, control board failed."
+    },
+    {
+      "id": "lg-microwave-f-11",
+      "brand": "lg",
+      "appliance": "microwave",
+      "code": "F-11",
+      "aliases": [
+        "F11"
+      ],
+      "meaning": "Shorted key on control panel",
+      "detail": "The control panel has detected a short circuit on one of the touch keys.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Control panel membrane shorted",
+          "frequency": 75
+        },
+        {
+          "description": "Liquid damage to panel",
+          "frequency": 20
+        },
+        {
+          "description": "Control board failure",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug 2 minutes."
+        },
+        {
+          "title": "Replace control panel/touchpad",
+          "description": "F-11 indicates membrane failure.",
+          "parts": [
+            "LG microwave touchpad ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug 2 minutes. Replace touchpad if F-11 persists.",
+      "related_codes": [
+        "F-6"
+      ],
+      "when_to_call_pro": "If new touchpad and F-11 persists, control board failed."
+    },
+    {
       "id": "whirlpool-washer-f8e1",
       "brand": "whirlpool",
       "appliance": "washer",
@@ -7375,6 +8528,459 @@
       "when_to_call_pro": "If thermistor tests good and code persists, the control board sensor input circuit has failed."
     },
     {
+      "id": "whirlpool-oven-f2-e0",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F2-E0",
+      "aliases": [
+        "F2E0"
+      ],
+      "meaning": "Shorted keypad — stuck key on control panel",
+      "detail": "A key on the oven's control panel membrane has been stuck for 60 continuous seconds. This is the most common oven control error on Whirlpool ranges.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Key stuck from food/grease buildup",
+          "frequency": 55
+        },
+        {
+          "description": "Membrane keypad failure",
+          "frequency": 35
+        },
+        {
+          "description": "Control board touchpad interface failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the control panel",
+          "description": "Wipe around all buttons with a barely-damp cloth. Dry completely."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker for 5 minutes. Many F2E0 errors clear after power cycling."
+        },
+        {
+          "title": "Replace keypad/touchpad",
+          "description": "If F2E0 returns after cleaning and cycling, replace the membrane keypad.",
+          "parts": [
+            "Whirlpool oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Wipe panel. If F2E0 persists, replace touchpad.",
+      "related_codes": [
+        "F2-E1"
+      ],
+      "when_to_call_pro": "If new touchpad and F2E0 persists, the Electronic Range Control board has failed."
+    },
+    {
+      "id": "whirlpool-oven-f2-e1",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F2-E1",
+      "aliases": [
+        "F2E1"
+      ],
+      "meaning": "Keypad/touchpad disconnected from control board",
+      "detail": "The ribbon cable or connector between the keypad and the Electronic Range Control board has lost continuity.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Ribbon cable connector loose",
+          "frequency": 55
+        },
+        {
+          "description": "Ribbon cable damaged or cracked",
+          "frequency": 30
+        },
+        {
+          "description": "Control board connector port failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Check the ribbon cable",
+          "description": "The ribbon cable connects the touchpad to the ERC board, typically running behind the control panel. Reseat both connectors."
+        },
+        {
+          "title": "Replace keypad if cable is integral",
+          "description": "On most models the keypad and cable are one assembly.",
+          "parts": [
+            "Whirlpool oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Check ribbon cable connections.",
+      "related_codes": [
+        "F2-E0"
+      ],
+      "when_to_call_pro": "If new keypad and cable and F2E1 persists, ERC board connector port failed."
+    },
+    {
+      "id": "whirlpool-oven-f3-e0",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F3-E0",
+      "aliases": [
+        "F3E0"
+      ],
+      "meaning": "Oven temperature sensor open circuit",
+      "detail": "The oven temperature sensor (RTD probe) has an open circuit. The oven will not heat safely without temperature feedback.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor failure (open circuit)",
+          "frequency": 65
+        },
+        {
+          "description": "Sensor connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness to sensor damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "At room temperature, Whirlpool oven sensors read approximately 1,080–1,090 ohms. Open circuit = failed sensor.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check connector at sensor",
+          "description": "Reseat the 2-pin connector."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "Located in the upper-back of the oven cavity.",
+          "parts": [
+            "Whirlpool oven temperature sensor ($20–$50)"
+          ],
+          "warning": "Let oven cool completely."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 20,
+      "cost_hi": 50,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, turn on and test with a 350°F bake cycle.",
+      "related_codes": [
+        "F3-E1",
+        "F3-E2"
+      ],
+      "models_affected": "Whirlpool, KitchenAid, Maytag ovens sharing the same control platform",
+      "when_to_call_pro": "If new sensor and F3E0 persists, ERC board sensor input has failed."
+    },
+    {
+      "id": "whirlpool-oven-f3-e1",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F3-E1",
+      "aliases": [
+        "F3E1"
+      ],
+      "meaning": "Oven temperature sensor short circuit",
+      "detail": "The oven temperature sensor is reading near-zero resistance, indicating a short circuit. This can cause the oven to detect falsely high temperatures.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor shorted internally",
+          "frequency": 65
+        },
+        {
+          "description": "Wiring pinched against chassis causing short",
+          "frequency": 25
+        },
+        {
+          "description": "Control board sensor input shorted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "Room temp should read ~1,080 ohms. Near 0 = shorted.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Inspect wiring",
+          "description": "Look for any pinch points along the sensor wiring."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "A shorted sensor cannot be repaired.",
+          "parts": [
+            "Whirlpool oven temperature sensor ($20–$50)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 20,
+      "cost_hi": 50,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, test with 350°F bake cycle.",
+      "related_codes": [
+        "F3-E0",
+        "F3-E2"
+      ],
+      "when_to_call_pro": "If new sensor is shorted too, wiring harness has a short to ground."
+    },
+    {
+      "id": "whirlpool-oven-f3-e2",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F3-E2",
+      "aliases": [
+        "F3E2"
+      ],
+      "meaning": "Oven over-temperature — temp exceeded safe limit",
+      "detail": "The oven temperature exceeded the maximum safe limit during normal cooking (typically above 590°F/310°C).",
+      "severity": "critical",
+      "category": "temperature",
+      "causes": [
+        {
+          "description": "Temperature sensor failure causing runaway heating",
+          "frequency": 40
+        },
+        {
+          "description": "Bake relay stuck on control board",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring fault",
+          "frequency": 15
+        },
+        {
+          "description": "Self-clean cycle issue",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Turn off circuit breaker immediately",
+          "description": "Allow oven to cool completely — 1 full hour minimum.",
+          "warning": "Do not open oven door. Stand clear."
+        },
+        {
+          "title": "Test temperature sensor after cooling",
+          "description": "Sensor should read ~1,080 ohms. Failed sensor can cause runaway heating.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor or control board",
+          "description": "If sensor is good, the heating relay on the ERC board is stuck closed.",
+          "parts": [
+            "Whirlpool oven temperature sensor ($20–$50)",
+            "Whirlpool ERC board ($150–$380)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 50,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 580,
+      "reset_instructions": "Turn off circuit breaker immediately. Do not use oven until diagnosed.",
+      "related_codes": [
+        "F3-E0",
+        "F3-E1"
+      ],
+      "when_to_call_pro": "F3E2 is a safety event. Professional diagnosis required before further use."
+    },
+    {
+      "id": "whirlpool-oven-f5-e0",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F5-E0",
+      "aliases": [
+        "F5E0"
+      ],
+      "meaning": "Door switch failure — latch not sensing door position",
+      "detail": "The door switch is not detecting the door position correctly during a self-clean cycle or normal operation.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door switch contacts worn",
+          "frequency": 50
+        },
+        {
+          "description": "Door hinge misalignment",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to door switch damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check door closes flush",
+          "description": "The door must close completely and evenly."
+        },
+        {
+          "title": "Test door switch",
+          "description": "The switch is typically near the door latch. Test continuity with door open and closed.",
+          "parts": [
+            "Whirlpool oven door switch ($15–$40)"
+          ]
+        },
+        {
+          "title": "Replace door switch",
+          "description": "If contacts have failed."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Power cycle 5 minutes. Check door alignment and switch.",
+      "related_codes": [
+        "F5-E1"
+      ],
+      "when_to_call_pro": "If door switch replaced and F5E0 persists, the ERC board door switch input has failed."
+    },
+    {
+      "id": "whirlpool-oven-f5-e1",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F5-E1",
+      "aliases": [
+        "F5E1"
+      ],
+      "meaning": "Self-clean door latch failure — lock timeout",
+      "detail": "The door latch motor did not complete the lock or unlock operation within the required time during a self-clean cycle.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Door latch mechanism stuck or jammed",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to latch motor damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Check latch for obstructions",
+          "description": "Food debris can jam the latch mechanism."
+        },
+        {
+          "title": "Test and replace latch assembly",
+          "description": "The latch motor is at the top-rear of the range.",
+          "parts": [
+            "Whirlpool oven door latch ($50–$120)"
+          ],
+          "warning": "Unplug oven before accessing latch."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Power cycle 5 minutes. If F5E1 returns, replace door latch assembly.",
+      "related_codes": [
+        "F5-E0"
+      ],
+      "when_to_call_pro": "If new door latch and F5E1 persists, ERC board latch relay has failed."
+    },
+    {
+      "id": "whirlpool-oven-f9-e0",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F9-E0",
+      "aliases": [
+        "F9E0"
+      ],
+      "meaning": "Door latch during lock function — latch system fault",
+      "detail": "A general door latch fault during the locking function.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure",
+          "frequency": 55
+        },
+        {
+          "description": "Door latch switch misaligned",
+          "frequency": 30
+        },
+        {
+          "description": "ERC board fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Check door alignment and latch",
+          "description": "Ensure door closes completely."
+        },
+        {
+          "title": "Replace door latch assembly",
+          "description": "",
+          "parts": [
+            "Whirlpool oven door latch ($50–$120)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Power cycle 5 minutes. If F9E0 returns, replace door latch assembly.",
+      "related_codes": [
+        "F5-E1"
+      ],
+      "when_to_call_pro": "If new latch and F9E0 persists, ERC board has failed."
+    },
+    {
       "id": "ge-washer-e64",
       "brand": "ge",
       "appliance": "washer",
@@ -8950,6 +10556,395 @@
       "reset_instructions": "Clean lint screen. LS clears after screen is cleaned.",
       "related_codes": [],
       "when_to_call_pro": "Not a fault. No service required."
+    },
+    {
+      "id": "ge-oven-f0",
+      "brand": "ge",
+      "appliance": "oven",
+      "code": "F0",
+      "aliases": [],
+      "meaning": "Keypad stuck — a button is continuously pressed",
+      "detail": "A button on the oven's touch control pad has been continuously pressed for over 60 seconds. This is one of the most common GE oven errors.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Membrane keypad failure",
+          "frequency": 55
+        },
+        {
+          "description": "Food/grease buildup under key",
+          "frequency": 30
+        },
+        {
+          "description": "ERC board touch interface failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the keypad",
+          "description": "Wipe around all control pad buttons with a barely-damp cloth. Dry completely before restoring power."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Turn off the circuit breaker for 5 minutes. F0 clears on many GE ovens after power cycling."
+        },
+        {
+          "title": "Replace the control panel/membrane",
+          "description": "If F0 returns after cleaning and cycling, the membrane has failed.",
+          "parts": [
+            "GE oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Wipe panel clean. If F0 returns, replace touchpad.",
+      "related_codes": [
+        "F7"
+      ],
+      "models_affected": "GE Profile, GE Café, and standard GE electric and gas ranges",
+      "when_to_call_pro": "If new touchpad and F0 persists, the ERC (Electronic Range Control) board has failed."
+    },
+    {
+      "id": "ge-oven-f2",
+      "brand": "ge",
+      "appliance": "oven",
+      "code": "F2",
+      "aliases": [],
+      "meaning": "Oven over-temperature — exceeded 590°F in bake or 990°F in self-clean",
+      "detail": "The oven temperature sensor detected a temperature above the safe maximum. The oven has locked out for safety.",
+      "severity": "critical",
+      "category": "temperature",
+      "causes": [
+        {
+          "description": "Temperature sensor failure (reporting falsely high temp)",
+          "frequency": 40
+        },
+        {
+          "description": "Heating element relay stuck closed on ERC board",
+          "frequency": 35
+        },
+        {
+          "description": "Self-clean cycle temperature spike",
+          "frequency": 20
+        },
+        {
+          "description": "ERC board failure",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Turn off circuit breaker immediately",
+          "description": "Allow oven to cool completely for 1 hour minimum.",
+          "warning": "Do NOT open oven door. Stand clear. If you smell burning, evacuate and call the fire department."
+        },
+        {
+          "title": "Test temperature sensor after cooling",
+          "description": "GE oven sensors read ~1,080 ohms at room temp. Check for open circuit or short.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace sensor if failed",
+          "description": "If sensor tests abnormal, replace it.",
+          "parts": [
+            "GE oven temperature sensor ($20–$55)"
+          ]
+        },
+        {
+          "title": "If sensor tests OK — replace ERC board",
+          "description": "The heating relay is stuck closed.",
+          "parts": [
+            "GE ERC board ($150–$350)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 0,
+      "cost_hi": 55,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 600,
+      "reset_instructions": "Turn off circuit breaker immediately. Do not use oven until cause is identified.",
+      "related_codes": [
+        "F3",
+        "F4"
+      ],
+      "when_to_call_pro": "F2 is a safety event. Professional diagnosis required. A stuck relay requires ERC board replacement."
+    },
+    {
+      "id": "ge-oven-f3",
+      "brand": "ge",
+      "appliance": "oven",
+      "code": "F3",
+      "aliases": [],
+      "meaning": "Oven temperature sensor open circuit",
+      "detail": "The oven temperature sensor has an open circuit and is not providing temperature readings to the control board.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor failure (open circuit)",
+          "frequency": 65
+        },
+        {
+          "description": "Sensor connector loose or corroded",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "At room temp, GE oven sensor should read ~1,080 ohms. Open circuit (OL/∞) = sensor failed.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Reseat connector",
+          "description": "Check and firmly reseat the sensor connector at the sensor and at the control board."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "Located in the upper-back of the oven cavity.",
+          "parts": [
+            "GE oven temperature sensor ($20–$55)"
+          ],
+          "warning": "Allow oven to cool completely before reaching inside."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 20,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, restore power and test with a 350°F bake cycle.",
+      "related_codes": [
+        "F4",
+        "F2"
+      ],
+      "models_affected": "GE, GE Profile, Hotpoint, and RCA electric ranges sharing the GE platform",
+      "when_to_call_pro": "If new sensor and F3 persists, the ERC board sensor input has failed."
+    },
+    {
+      "id": "ge-oven-f4",
+      "brand": "ge",
+      "appliance": "oven",
+      "code": "F4",
+      "aliases": [],
+      "meaning": "Oven temperature sensor short circuit",
+      "detail": "The oven temperature sensor is reading near-zero resistance, indicating a short circuit.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor shorted internally",
+          "frequency": 65
+        },
+        {
+          "description": "Wiring pinched causing short",
+          "frequency": 25
+        },
+        {
+          "description": "ERC board sensor input shorted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the sensor",
+          "description": "At room temp, sensor should read ~1,080 ohms. Near 0 = shorted.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Inspect sensor wiring",
+          "description": "Check for any kinks or pinch points."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "Shorted sensors cannot be repaired.",
+          "parts": [
+            "GE oven temperature sensor ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 20,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing sensor, restore power and test.",
+      "related_codes": [
+        "F3",
+        "F2"
+      ],
+      "when_to_call_pro": "If new sensor and F4 persists, ERC board sensor input is shorted."
+    },
+    {
+      "id": "ge-oven-f7",
+      "brand": "ge",
+      "appliance": "oven",
+      "code": "F7",
+      "aliases": [],
+      "meaning": "Touchpad/membrane key button fault",
+      "detail": "A specific key on the control panel touchpad is stuck or has a fault. Similar to F0 but F7 may indicate the fault started from a key other than the first scanned one.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Membrane keypad failure",
+          "frequency": 60
+        },
+        {
+          "description": "Food/liquid intrusion under touchpad",
+          "frequency": 25
+        },
+        {
+          "description": "ERC board touchpad input failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the touchpad",
+          "description": "Wipe carefully around all touch buttons."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Replace touchpad/membrane",
+          "description": "If F7 returns after cleaning.",
+          "parts": [
+            "GE oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Clean and inspect touchpad.",
+      "related_codes": [
+        "F0"
+      ],
+      "when_to_call_pro": "If new touchpad and F7 persists, ERC board failed."
+    },
+    {
+      "id": "ge-oven-f8",
+      "brand": "ge",
+      "appliance": "oven",
+      "code": "F8",
+      "aliases": [],
+      "meaning": "Electronic Range Control internal fault",
+      "detail": "The ERC (Electronic Range Control) board has experienced an internal logic fault.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "ERC board component failure",
+          "frequency": 60
+        },
+        {
+          "description": "Power surge damage",
+          "frequency": 30
+        },
+        {
+          "description": "Age-related board failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 15 minutes."
+        },
+        {
+          "title": "Replace ERC board",
+          "description": "F8 almost always requires board replacement.",
+          "parts": [
+            "GE ERC board ($150–$350)"
+          ],
+          "warning": "Photograph all wiring before disconnecting."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 150,
+      "cost_hi": 350,
+      "pro_cost_lo": 280,
+      "pro_cost_hi": 550,
+      "reset_instructions": "Turn off circuit breaker 15 minutes. If F8 returns, board must be replaced.",
+      "related_codes": [
+        "F9"
+      ],
+      "when_to_call_pro": "ERC board replacement involves high-voltage wiring. Professional installation recommended."
+    },
+    {
+      "id": "ge-oven-f9",
+      "brand": "ge",
+      "appliance": "oven",
+      "code": "F9",
+      "aliases": [],
+      "meaning": "Door latch failure — self-clean lock not completing",
+      "detail": "The door latch motor did not complete the lock or unlock operation within the required time during a self-clean cycle.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Door latch jam from debris",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to motor damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Check latch for food debris",
+          "description": "Food can jam the latch mechanism. Clean around latch area."
+        },
+        {
+          "title": "Test and replace door latch assembly",
+          "description": "Located at the top-rear of the oven.",
+          "parts": [
+            "GE oven door latch ($50–$130)"
+          ],
+          "warning": "Unplug oven before accessing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 130,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Power cycle 5 minutes. If F9 returns, replace door latch assembly.",
+      "related_codes": [
+        "F8"
+      ],
+      "when_to_call_pro": "If new door latch assembly and F9 persists, ERC board door lock relay has failed."
     },
     {
       "id": "bosch-washer-e18",

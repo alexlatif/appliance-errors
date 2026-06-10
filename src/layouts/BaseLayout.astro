@@ -50,11 +50,24 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
         </svg>
         <span class="font-bold text-lg">ApplianceErrors.com</span>
       </a>
-      <nav class="hidden md:flex gap-6 text-sm">
+      <!-- Inline header search (compact) -->
+      <div class="hidden md:flex items-center flex-1 max-w-sm mx-8" id="header-search-wrap">
+        <div class="relative w-full">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0"/>
+          </svg>
+          <input id="header-search-input" type="search" placeholder="Search error codes…" autocomplete="off" autocorrect="off"
+                 class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-white/15 border border-white/25 text-white placeholder-blue-300 text-sm focus:outline-none focus:bg-white/25 focus:border-white/60"/>
+          <div id="header-search-results"
+               class="absolute left-0 right-0 top-full mt-1 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 hidden max-h-96 overflow-y-auto min-w-[340px]">
+            <div id="header-results-list"></div>
+          </div>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-4 text-sm">
         <a href="/brands/" class="text-blue-100 hover:text-white transition-colors">All Brands</a>
         <a href="/appliances/washer/" class="text-blue-100 hover:text-white transition-colors">Washers</a>
         <a href="/appliances/dryer/" class="text-blue-100 hover:text-white transition-colors">Dryers</a>
-        <a href="/appliances/dishwasher/" class="text-blue-100 hover:text-white transition-colors">Dishwashers</a>
         <a href="/appliances/refrigerator/" class="text-blue-100 hover:text-white transition-colors">Fridges</a>
       </nav>
     </div>
@@ -110,5 +123,61 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
       © {new Date().getFullYear()} ApplianceErrors.com · For informational purposes only · Always unplug before servicing
     </div>
   </footer>
+  <script>
+    // Lazy header search — fetches index on first keystroke
+    let searchIndex: {b:string;bs:string;a:string;as:string;c:string;m:string;sev:string;u:string}[] | null = null;
+    const sev = {low:'🟢',medium:'🟡',high:'🔴',critical:'⛔'} as Record<string,string>;
+
+    function norm(s: string) { return s.toLowerCase().replace(/[-_\s]/g,''); }
+
+    function renderHeaderResults(results: typeof searchIndex, q: string) {
+      const box = document.getElementById('header-search-results');
+      const list = document.getElementById('header-results-list');
+      if (!box || !list || !results) return;
+      if (results.length === 0) { box.classList.add('hidden'); return; }
+      list.innerHTML = results.slice(0,8).map(item => `
+        <a href="${item.u}" class="flex items-center gap-3 px-3 py-2.5 hover:bg-blue-50 border-b border-gray-100 last:border-0">
+          <div class="w-10 h-8 bg-blue-600 text-white rounded flex items-center justify-center font-bold text-xs flex-shrink-0">${item.c}</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-medium text-gray-900 text-sm">${item.b} ${item.a} — ${item.c}</div>
+            <div class="text-gray-500 text-xs truncate">${sev[item.sev]||''} ${item.m}</div>
+          </div>
+        </a>`).join('');
+      box.classList.remove('hidden');
+    }
+
+    async function headerSearch(q: string) {
+      if (!q.trim()) { document.getElementById('header-search-results')?.classList.add('hidden'); return; }
+      if (!searchIndex) {
+        try { searchIndex = await fetch('/search-index.json').then(r=>r.json()); } catch { return; }
+      }
+      const qn = norm(q);
+      const seen = new Set<string>();
+      const out: (typeof searchIndex[0])[] = [];
+      for (const item of searchIndex!) {
+        if (seen.has(item.u)) continue;
+        const score = norm(item.c)===qn ? 100 : norm(item.c).startsWith(qn) ? 80 :
+          norm(item.b+item.c).includes(qn) ? 60 : norm(item.m).includes(qn) ? 40 : 0;
+        if (score > 0) { out.push(item); seen.add(item.u); }
+      }
+      out.sort((a,b)=> {
+        const sa = norm(a.c)===qn?100:norm(a.c).startsWith(qn)?80:norm(a.b+a.c).includes(qn)?60:40;
+        const sb = norm(b.c)===qn?100:norm(b.c).startsWith(qn)?80:norm(b.b+b.c).includes(qn)?60:40;
+        return sb-sa;
+      });
+      renderHeaderResults(out, q);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const inp = document.getElementById('header-search-input') as HTMLInputElement|null;
+      if (!inp) return;
+      inp.addEventListener('input', e => headerSearch((e.target as HTMLInputElement).value));
+      inp.addEventListener('keydown', e => { if(e.key==='Escape') { document.getElementById('header-search-results')?.classList.add('hidden'); inp.blur(); }});
+      document.addEventListener('click', e => {
+        const wrap = document.getElementById('header-search-wrap');
+        if (wrap && !wrap.contains(e.target as Node)) document.getElementById('header-search-results')?.classList.add('hidden');
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../../components/BreadcrumbNav.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import SeverityBadge from '../../../components/SeverityBadge.astro';
+import symptomsData from '../../../data/symptoms.json';
+import { brands, errorCodes, getBrand, getApplianceType, slugifyCode } from '../../../utils/data';
+import { breadcrumbSchema, faqListSchema } from '../../../utils/schema';
+
+interface Symptom {
+  slug: string; appliance: string; name: string; h1: string; answer: string;
+  categories: string[]; checks: string[]; faqs: { q: string; a: string }[];
+}
+
+export async function getStaticPaths() {
+  const symptoms = (symptomsData as { symptoms: Symptom[] }).symptoms;
+  return symptoms.map(s => ({
+    params: { appliance: s.appliance, symptom: s.slug },
+    props: { symptom: s },
+  }));
+}
+
+const { symptom } = Astro.props;
+const appType = getApplianceType(symptom.appliance);
+const appName = appType?.name ?? symptom.appliance;
+
+// Codes matching this symptom's categories, grouped by brand
+const matching = errorCodes.filter(
+  c => c.appliance === symptom.appliance && symptom.categories.includes(c.category)
+);
+const byBrand = new Map<string, typeof matching>();
+for (const c of matching) {
+  if (!byBrand.has(c.brand)) byBrand.set(c.brand, []);
+  byBrand.get(c.brand)!.push(c);
+}
+// Order brands by number of matching codes (most coverage first)
+const brandGroups = [...byBrand.entries()]
+  .map(([slug, codes]) => ({ brand: getBrand(slug)!, codes }))
+  .filter(g => g.brand)
+  .sort((a, b) => b.codes.length - a.codes.length);
+
+const title = `${symptom.name} — Error Codes & Fixes by Brand | ApplianceErrors.com`;
+const description = symptom.answer.length > 150 ? symptom.answer.slice(0, 147) + '…' : symptom.answer;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Symptoms', url: '/symptoms/' },
+    { name: symptom.name, url: `/symptoms/${symptom.appliance}/${symptom.slug}/` },
+  ]),
+  faqListSchema(symptom.faqs),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Symptoms', href: '/symptoms/' },
+      { label: symptom.name }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">{symptom.h1}</h1>
+
+    <!-- Answer-first summary (AEO) -->
+    <div class="bg-brand-50 border-2 border-brand-200 rounded-xl p-5 mb-8">
+      <p class="text-gray-800 text-lg leading-relaxed">{symptom.answer}</p>
+    </div>
+
+    <AdSlot slot_id="1234567890" style="leaderboard" />
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What to Check First</h2>
+      <ol class="space-y-4">
+        {symptom.checks.map((check, i) => (
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{i + 1}</span>
+            <p class="text-gray-700 leading-relaxed pt-1">{check}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {brandGroups.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Error Codes for This Problem, by Brand</h2>
+        <p class="text-gray-600 mb-6">
+          If your {appName.toLowerCase()} is showing an error code along with this symptom,
+          find your brand below — each code links to its full fix guide.
+        </p>
+        <div class="space-y-8">
+          {brandGroups.map(group => (
+            <div id={group.brand.slug}>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <img src={`/logos/${group.brand.slug}.svg`} alt={`${group.brand.name} logo`} class="h-6 w-auto max-w-[60px] object-contain" loading="lazy"/>
+                {group.brand.name} {appName}
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-3">
+                {group.codes.map(c => (
+                  <a href={`/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`}
+                     class="flex gap-3 items-start p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+                    <span class="font-bold text-brand-600 font-mono w-14 flex-shrink-0">{c.code}</span>
+                    <div>
+                      <div class="font-medium text-gray-800">{c.meaning}</div>
+                      <SeverityBadge severity={c.severity} />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <AdSlot slot_id="0987654321" style="rectangle" />
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {symptom.faqs.map(faq => (
+          <details class="border border-gray-200 rounded-xl overflow-hidden group">
+            <summary class="px-5 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 list-none flex justify-between items-center">
+              {faq.q}
+              <span class="text-gray-400 text-xl group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-5 py-4 text-gray-700 border-t border-gray-100">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <div class="flex flex-wrap gap-3 mt-6 pt-6 border-t border-gray-200">
+      <a href="/symptoms/" class="text-sm text-brand-600 hover:underline">← All Symptoms</a>
+      <a href={`/appliances/${symptom.appliance}/`} class="text-sm text-brand-600 hover:underline">
+        All {appName} Error Codes →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

@@ -6,7 +6,7 @@ import { webSiteSchema } from '../utils/schema';
 
 const tc = totalCodeCount();
 // ≤65 chars
-const title = 'Appliance Error Code Lookup — Fix Any Brand | ApplianceErrors.com';
+const title = 'Appliance Error Code Lookup & Fixes | ApplianceErrors.com';
 // ≤155 chars
 const description = `${tc}+ appliance error codes for Samsung, LG, Whirlpool, GE, Bosch & more. What it means, why it happens, and exactly how to fix it — free.`;
 const schemas = [webSiteSchema(tc)];  // Organization injected sitewide by BaseLayout
@@ -107,6 +107,28 @@ const schemas = [webSiteSchema(tc)];  // Organization injected sitewide by BaseL
         <div><div class="text-3xl font-bold">6</div><div class="text-blue-200 text-sm mt-1">Appliance Types</div></div>
         <div><div class="text-3xl font-bold">Free</div><div class="text-blue-200 text-sm mt-1">Always</div></div>
       </div>
+    </div>
+  </section>
+
+  <!-- Browse other ways -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">More Ways to Troubleshoot</h2>
+    <div class="grid sm:grid-cols-3 gap-4">
+      <a href="/symptoms/" class="p-5 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+        <div class="text-3xl mb-2">🩺</div>
+        <div class="font-bold text-gray-900 mb-1">Troubleshoot by Symptom</div>
+        <p class="text-sm text-gray-500">No code on the display? Start from what the appliance is doing — won't drain, not heating, leaking…</p>
+      </a>
+      <a href="/costs/" class="p-5 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+        <div class="text-3xl mb-2">💰</div>
+        <div class="font-bold text-gray-900 mb-1">Repair Cost Guides</div>
+        <p class="text-sm text-gray-500">DIY vs professional cost by appliance and problem type, computed from our code database.</p>
+      </a>
+      <a href="/models/" class="p-5 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+        <div class="text-3xl mb-2">🏷️</div>
+        <div class="font-bold text-gray-900 mb-1">Codes by Model</div>
+        <p class="text-sm text-gray-500">Find the most common error codes for your exact model number.</p>
+      </a>
     </div>
   </section>
 

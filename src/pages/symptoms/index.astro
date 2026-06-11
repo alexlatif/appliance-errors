@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import symptomsData from '../../data/symptoms.json';
+import { getApplianceType } from '../../utils/data';
+import { breadcrumbSchema, itemListSchema } from '../../utils/schema';
+
+interface Symptom {
+  slug: string; appliance: string; name: string; h1: string; answer: string;
+  categories: string[]; checks: string[]; faqs: { q: string; a: string }[];
+}
+const symptoms = (symptomsData as { symptoms: Symptom[] }).symptoms;
+
+// Group by appliance
+const byAppliance = new Map<string, Symptom[]>();
+for (const s of symptoms) {
+  if (!byAppliance.has(s.appliance)) byAppliance.set(s.appliance, []);
+  byAppliance.get(s.appliance)!.push(s);
+}
+
+const title = 'Appliance Problems & Symptoms — Troubleshooting by Symptom | ApplianceErrors.com';
+const description = 'Troubleshoot your appliance by symptom: washer won\'t drain, dryer not heating, dishwasher leaking, fridge not cooling, and more — with the matching error codes for every major brand.';
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Symptoms', url: '/symptoms/' },
+  ]),
+  itemListSchema(
+    symptoms.map(s => ({
+      name: s.name,
+      url: `/symptoms/${s.appliance}/${s.slug}/`,
+      description: s.answer.slice(0, 120),
+    })),
+    'Appliance problems by symptom'
+  ),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Symptoms' }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">
+      Troubleshoot by Symptom
+    </h1>
+    <p class="text-gray-600 text-lg mb-10 max-w-3xl">
+      No error code on the display? Start from what the appliance is <em>doing</em>. Each guide covers
+      the most likely causes in order, what to check first, and the matching error codes for every major brand.
+    </p>
+
+    {[...byAppliance.entries()].map(([appSlug, items]) => {
+      const appType = getApplianceType(appSlug);
+      return (
+        <section class="mb-10">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-3xl">{appType?.icon ?? '🔧'}</span> {appType?.name ?? appSlug} Problems
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {items.map(s => (
+              <a href={`/symptoms/${s.appliance}/${s.slug}/`}
+                 class="p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+                <div class="font-semibold text-gray-900 mb-1">{s.name}</div>
+                <div class="text-sm text-gray-500 line-clamp-2">{s.answer.slice(0, 110)}…</div>
+              </a>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</BaseLayout>

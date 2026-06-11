@@ -1,0 +1,2097 @@
+{
+  "models": [
+    {
+      "slug": "wf45t6000aw",
+      "model": "WF45T6000AW",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WF45T6000AW Front-Load Washer",
+      "years": "2020–present",
+      "notes": "One of Samsung's best-selling 4.5 cu ft front-load washers. Uses Samsung's standard front-load diagnostic codes shown on the LED panel.",
+      "common_codes": [
+        "4C",
+        "5C",
+        "UE",
+        "dC",
+        "OE",
+        "LC"
+      ]
+    },
+    {
+      "slug": "wf45r6100ap",
+      "model": "WF45R6100AP",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WF45R6100AP Front-Load Washer",
+      "years": "2019–2021",
+      "notes": "Steam-capable front-loader with Self Clean+. Shares the diagnostic code set used across Samsung's R-series front-load platform.",
+      "common_codes": [
+        "4C",
+        "5C",
+        "UE",
+        "SUd",
+        "dC5",
+        "LC"
+      ]
+    },
+    {
+      "slug": "dve45r6100c",
+      "model": "DVE45R6100C",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "name": "Samsung DVE45R6100C Electric Dryer",
+      "years": "2019–present",
+      "notes": "7.5 cu ft electric dryer with steam sanitize. Codes display on the front LED panel; heating element and vent codes dominate service calls.",
+      "common_codes": [
+        "HC",
+        "tS",
+        "tO",
+        "dC",
+        "9C1"
+      ]
+    },
+    {
+      "slug": "dw80r5060us",
+      "model": "DW80R5060US",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "name": "Samsung DW80R5060US StormWash Dishwasher",
+      "years": "2019–present",
+      "notes": "Popular StormWash model. The leak-sensor LC code is the single most common complaint on this platform — often triggered by detergent overflow rather than a real leak.",
+      "common_codes": [
+        "LC",
+        "OC",
+        "4C",
+        "5C",
+        "HC"
+      ]
+    },
+    {
+      "slug": "rf28r7351sg",
+      "model": "RF28R7351SG",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "name": "Samsung RF28R7351SG 4-Door French Door Refrigerator",
+      "years": "2019–present",
+      "notes": "Family Hub-adjacent 28 cu ft French door model. Ice-maker and fan codes are the most frequent; codes show on the front display panel.",
+      "common_codes": [
+        "22E",
+        "21E",
+        "5E",
+        "8E",
+        "85E"
+      ]
+    },
+    {
+      "slug": "wm3900hwa",
+      "model": "WM3900HWA",
+      "brand": "lg",
+      "appliance": "washer",
+      "name": "LG WM3900HWA Front-Load Washer",
+      "years": "2019–2022",
+      "notes": "4.5 cu ft TurboWash 360 front-loader, one of LG's most-reviewed washers. Direct-drive motor; drain and inlet codes are the most common.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "UE",
+        "LE",
+        "dE",
+        "AE"
+      ]
+    },
+    {
+      "slug": "wm4000hba",
+      "model": "WM4000HBA",
+      "brand": "lg",
+      "appliance": "washer",
+      "name": "LG WM4000HBA Front-Load Washer",
+      "years": "2021–present",
+      "notes": "Successor to the WM3900 with the same diagnostic code set. AI DD drum sensing; balance (UE) complaints drop but drain codes remain common.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "UE",
+        "LE",
+        "dE",
+        "PF"
+      ]
+    },
+    {
+      "slug": "dlex3900w",
+      "model": "DLEX3900W",
+      "brand": "lg",
+      "appliance": "dryer",
+      "name": "LG DLEX3900W Electric Dryer",
+      "years": "2019–2022",
+      "notes": "7.4 cu ft TurboSteam dryer. The D80/D90/D95 airflow-blockage family is by far the most common code group on this model — almost always lint restriction in the duct run.",
+      "common_codes": [
+        "D80",
+        "D90",
+        "D95",
+        "nP",
+        "tE1"
+      ]
+    },
+    {
+      "slug": "lfxs26973s",
+      "model": "LFXS26973S",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "name": "LG LFXS26973S French Door Refrigerator",
+      "years": "2019–2022",
+      "notes": "26 cu ft smart French door model with dual ice makers. Fan and defrost-circuit codes shown via the internal display panel; linear compressor era model.",
+      "common_codes": [
+        "Er rF",
+        "Er FF",
+        "Er dH",
+        "Er IF",
+        "Er CO"
+      ]
+    },
+    {
+      "slug": "wtw5000dw",
+      "model": "WTW5000DW",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "name": "Whirlpool WTW5000DW Top-Load Washer",
+      "years": "2015–2021",
+      "notes": "High-volume 4.3 cu ft VMW-platform top loader. Lid lock and fill codes dominate; most are resolvable without parts.",
+      "common_codes": [
+        "F5E2",
+        "F7E1",
+        "F0E2",
+        "F8E1",
+        "F2E3"
+      ]
+    },
+    {
+      "slug": "wfw5620hw",
+      "model": "WFW5620HW",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "name": "Whirlpool WFW5620HW Front-Load Washer",
+      "years": "2018–present",
+      "notes": "4.5 cu ft front-loader with Load & Go dispenser. Drain (F9E1-family) and door-lock codes are the most common service triggers.",
+      "common_codes": [
+        "F9E1",
+        "F5E2",
+        "F7E5",
+        "F3E2",
+        "F8E3"
+      ]
+    },
+    {
+      "slug": "wed4815ew",
+      "model": "WED4815EW",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "name": "Whirlpool WED4815EW Electric Dryer",
+      "years": "2015–2021",
+      "notes": "Budget 7 cu ft electric dryer. Thermal fuse and heating circuit codes are the usual suspects; vent restriction is the root cause in most cases.",
+      "common_codes": [
+        "F22",
+        "F23",
+        "F28",
+        "F29",
+        "F01"
+      ]
+    },
+    {
+      "slug": "wdf520padm",
+      "model": "WDF520PADM",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "name": "Whirlpool WDF520PADM Dishwasher",
+      "years": "2014–2020",
+      "notes": "Workhorse budget dishwasher. Codes are read as blink patterns on the Clean light or shown as F-E pairs on display models.",
+      "common_codes": [
+        "F2E2",
+        "F8E4",
+        "F6E4",
+        "F9E1"
+      ]
+    },
+    {
+      "slug": "wrs325sdhz",
+      "model": "WRS325SDHZ",
+      "brand": "whirlpool",
+      "appliance": "refrigerator",
+      "name": "Whirlpool WRS325SDHZ Side-by-Side Refrigerator",
+      "years": "2018–present",
+      "notes": "25 cu ft side-by-side with in-door ice. PO (power outage) and communication codes show on the dispenser display.",
+      "common_codes": [
+        "PO",
+        "CF",
+        "18 C"
+      ]
+    },
+    {
+      "slug": "gtw465asnww",
+      "model": "GTW465ASNWW",
+      "brand": "ge",
+      "appliance": "washer",
+      "name": "GE GTW465ASNWW Top-Load Washer",
+      "years": "2019–present",
+      "notes": "4.5 cu ft top loader with dual-action agitator. GE top-load codes display via LED blink patterns or on-screen on lid models.",
+      "common_codes": []
+    },
+    {
+      "slug": "gdf630psmss",
+      "model": "GDF630PSMSS",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "name": "GE GDF630PSMSS Dishwasher",
+      "years": "2017–present",
+      "notes": "Front-control dishwasher with Dry Boost. Leak and fill codes are the most common; codes show on the control panel display.",
+      "common_codes": [
+        "C4",
+        "C5",
+        "PF",
+        "FL"
+      ]
+    },
+    {
+      "slug": "gne27jymfs",
+      "model": "GNE27JYMFS",
+      "brand": "ge",
+      "appliance": "refrigerator",
+      "name": "GE GNE27JYMFS French Door Refrigerator",
+      "years": "2019–present",
+      "notes": "27 cu ft fingerprint-resistant French door model. Fan, defrost, and ice-maker codes show on the temperature display panel.",
+      "common_codes": [
+        "dS",
+        "1E",
+        "2E"
+      ]
+    },
+    {
+      "slug": "shem63w55n",
+      "model": "SHEM63W55N",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "name": "Bosch SHEM63W55N 300 Series Dishwasher",
+      "years": "2017–2022",
+      "notes": "The best-selling Bosch 300 Series platform. E15 (water in base pan) is the signature Bosch code — the anti-flood switch trips and the unit refuses to run until the base is dry.",
+      "common_codes": [
+        "E15",
+        "E24",
+        "E25",
+        "E09",
+        "E22"
+      ]
+    },
+    {
+      "slug": "shpm65z55n",
+      "model": "SHPM65Z55N",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "name": "Bosch SHPM65Z55N 500 Series Dishwasher",
+      "years": "2019–present",
+      "notes": "500 Series with AutoAir dry and the same diagnostic set as the 300 Series. Drain (E24/E25) and heat-pump codes are the most frequent.",
+      "common_codes": [
+        "E15",
+        "E24",
+        "E25",
+        "E04",
+        "E01"
+      ]
+    },
+    {
+      "slug": "mvwc465hw",
+      "model": "MVWC465HW",
+      "brand": "maytag",
+      "appliance": "washer",
+      "name": "Maytag MVWC465HW Top-Load Washer",
+      "years": "2018–2021",
+      "notes": "Maytag's VMW-platform top loader — mechanically the same platform as Whirlpool's WTW series, so it shares the F#E# code set.",
+      "common_codes": [
+        "F8E1",
+        "F1E1",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "medc465hw",
+      "model": "MEDC465HW",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "name": "Maytag MEDC465HW Electric Dryer",
+      "years": "2018–present",
+      "notes": "7 cu ft electric dryer on the Whirlpool platform. Thermal and heating-circuit codes are the usual failures; check the vent run first.",
+      "common_codes": [
+        "F22",
+        "F23",
+        "F28",
+        "F01"
+      ]
+    },
+    {
+      "slug": "110-series",
+      "model": "110 Series",
+      "brand": "kenmore",
+      "appliance": "washer",
+      "name": "Kenmore 110-Series Washers (Whirlpool-built)",
+      "years": "2005–present",
+      "notes": "Model numbers starting with 110. are Whirlpool-built Kenmore washers. They use Whirlpool's F-code diagnostic set: F21 slow drain, F20 fill failure, and friends.",
+      "common_codes": [
+        "F21",
+        "F20",
+        "F1",
+        "F5"
+      ]
+    },
+    {
+      "slug": "796-series",
+      "model": "796 Series",
+      "brand": "kenmore",
+      "appliance": "washer",
+      "name": "Kenmore 796-Series Washers (LG-built)",
+      "years": "2009–present",
+      "notes": "Model numbers starting with 796. are LG-built Kenmore (mostly Elite) washers. They use LG's two-letter code set: OE, IE, LE, UE.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "LE",
+        "UE"
+      ]
+    },
+    {
+      "slug": "ffcd2418us",
+      "model": "FFCD2418US",
+      "brand": "frigidaire",
+      "appliance": "dishwasher",
+      "name": "Frigidaire FFCD2418US Dishwasher",
+      "years": "2017–present",
+      "notes": "High-volume budget dishwasher. Frigidaire's i-codes (i20, i30) cover drain restriction and base-pan leak detection.",
+      "common_codes": [
+        "i20",
+        "i30",
+        "i10",
+        "uo"
+      ]
+    },
+    {
+      "slug": "efls627utt",
+      "model": "EFLS627UTT",
+      "brand": "electrolux",
+      "appliance": "washer",
+      "name": "Electrolux EFLS627UTT Front-Load Washer",
+      "years": "2017–2022",
+      "notes": "Premium front-loader with SmartBoost. Electrolux E-codes display directly; drain and door-lock codes lead service data.",
+      "common_codes": [
+        "E20",
+        "E10",
+        "E40",
+        "E50"
+      ]
+    },
+    {
+      "slug": "wf42h5000aw",
+      "model": "WF42H5000AW",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WF42H5000AW Front-Load Washer",
+      "years": "2014–2019",
+      "notes": "High-volume 4.2 cu ft front-loader from Samsung's H-series era. Door-boot mold complaints and water-supply (4C) codes dominate its service history.",
+      "common_codes": [
+        "4C",
+        "OE",
+        "UE",
+        "dC",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "wa50r5400av",
+      "model": "WA50R5400AV",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WA50R5400AV Top-Load Washer",
+      "years": "2019–present",
+      "notes": "5.0 cu ft top loader with Active WaterJet. Unbalance (UE) codes are the most common complaint on this platform — usually a load distribution issue, not a part failure.",
+      "common_codes": [
+        "UE",
+        "4C",
+        "OE",
+        "SUD",
+        "dC"
+      ]
+    },
+    {
+      "slug": "wa45t3200aw",
+      "model": "WA45T3200AW",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WA45T3200AW Top-Load Washer",
+      "years": "2020–present",
+      "notes": "Budget 4.5 cu ft top loader. Simple LED display shows the standard Samsung top-load code set; fill and unbalance codes lead service data.",
+      "common_codes": [
+        "4C",
+        "UE",
+        "OE",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "wf50bg8300av",
+      "model": "WF50BG8300AV",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WF50BG8300AV Bespoke Front-Load Washer",
+      "years": "2022–present",
+      "notes": "Bespoke 5.0 cu ft front-loader with AI OptiWash. Codes appear on the full-color display; the AP code (SmartThings access point mode) is often mistaken for an error.",
+      "common_codes": [
+        "4C",
+        "OE",
+        "UE",
+        "dC",
+        "AP"
+      ]
+    },
+    {
+      "slug": "wv60m9900av",
+      "model": "WV60M9900AV",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WV60M9900AV FlexWash Washer",
+      "years": "2017–2021",
+      "notes": "Dual-drum FlexWash — a front-loader with a small top-load tub above. Each tub reports codes separately, so note which display shows the error before troubleshooting.",
+      "common_codes": [
+        "4C",
+        "OE",
+        "UE",
+        "dC",
+        "LE"
+      ]
+    },
+    {
+      "slug": "wa54r7600av",
+      "model": "WA54R7600AV",
+      "brand": "samsung",
+      "appliance": "washer",
+      "name": "Samsung WA54R7600AV Top-Load Washer",
+      "years": "2019–2022",
+      "notes": "5.4 cu ft top loader with built-in faucet. Shares the WA-series code set; leak (LE) and unbalance (UE) codes are the most frequent service triggers.",
+      "common_codes": [
+        "UE",
+        "4C",
+        "OE",
+        "LE",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "dve45t6000w",
+      "model": "DVE45T6000W",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "name": "Samsung DVE45T6000W Electric Dryer",
+      "years": "2020–present",
+      "notes": "7.5 cu ft electric dryer, successor to the R-series. Heating element (HC) and clog-warning (Clg) codes are the most common; check the vent run before replacing parts.",
+      "common_codes": [
+        "HC",
+        "tE",
+        "HE",
+        "Clg"
+      ]
+    },
+    {
+      "slug": "dv42h5000ew",
+      "model": "DV42H5000EW",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "name": "Samsung DV42H5000EW Electric Dryer",
+      "years": "2014–2019",
+      "notes": "7.5 cu ft H-series electric dryer. Thermistor (tE) and heating (HE) codes dominate; the heating element on this platform is a common DIY replacement.",
+      "common_codes": [
+        "tE",
+        "HE",
+        "OD",
+        "HC"
+      ]
+    },
+    {
+      "slug": "dve50bg8300v",
+      "model": "DVE50BG8300V",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "name": "Samsung DVE50BG8300V Bespoke Electric Dryer",
+      "years": "2022–present",
+      "notes": "Bespoke 7.6 cu ft dryer with AI Dry. The Clg clog warning fires early and often — it is a maintenance prompt for the duct run, not a component failure.",
+      "common_codes": [
+        "HC",
+        "Clg",
+        "tE",
+        "1 AC"
+      ]
+    },
+    {
+      "slug": "dvg45t3200w",
+      "model": "DVG45T3200W",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "name": "Samsung DVG45T3200W Gas Dryer",
+      "years": "2020–present",
+      "notes": "7.5 cu ft gas dryer. The nG (no gas) code usually means a closed supply valve or failed igniter rather than a control fault.",
+      "common_codes": [
+        "nG",
+        "tE",
+        "HE",
+        "HC"
+      ]
+    },
+    {
+      "slug": "dw80k5050us",
+      "model": "DW80K5050US",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "name": "Samsung DW80K5050US Dishwasher",
+      "years": "2016–2019",
+      "notes": "K-series StormWash predecessor. The LC leak-sensor code is the defining complaint — moisture in the base pan from detergent overflow trips it as readily as a real leak.",
+      "common_codes": [
+        "LC",
+        "5C",
+        "3C",
+        "HE"
+      ]
+    },
+    {
+      "slug": "dw80b6060us",
+      "model": "DW80B6060US",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "name": "Samsung DW80B6060US StormWash+ Dishwasher",
+      "years": "2022–present",
+      "notes": "StormWash+ with AutoRelease door. Same diagnostic family as earlier DW80 platforms; drain (5C) and leak (LC) codes lead service calls.",
+      "common_codes": [
+        "LC",
+        "5C",
+        "7E",
+        "tE"
+      ]
+    },
+    {
+      "slug": "dw80cg4051sr",
+      "model": "DW80CG4051SR",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "name": "Samsung DW80CG4051SR Dishwasher",
+      "years": "2023–present",
+      "notes": "Current-generation budget Samsung dishwasher. Codes show as letter-number pairs on the front display; the code set carries over from the DW80 platform.",
+      "common_codes": [
+        "LC",
+        "5C",
+        "3C",
+        "1E"
+      ]
+    },
+    {
+      "slug": "rf263beaesr",
+      "model": "RF263BEAESR",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "name": "Samsung RF263BEAESR French Door Refrigerator",
+      "years": "2012–2019",
+      "notes": "One of the best-selling French door fridges of its decade. Ice-maker freeze-up and the 22E fan code are the platform's signature issues.",
+      "common_codes": [
+        "22E",
+        "21E",
+        "5E",
+        "40E"
+      ]
+    },
+    {
+      "slug": "rf23m8070sr",
+      "model": "RF23M8070SR",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "name": "Samsung RF23M8070SR Counter-Depth French Door Refrigerator",
+      "years": "2017–2022",
+      "notes": "Counter-depth 4-door Flex model. Fan codes (22E, 26E) often trace to evaporator icing — defrost the unit fully before condemning the fan motor.",
+      "common_codes": [
+        "22E",
+        "21E",
+        "26E",
+        "5E"
+      ]
+    },
+    {
+      "slug": "rs27t5200sr",
+      "model": "RS27T5200SR",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "name": "Samsung RS27T5200SR Side-by-Side Refrigerator",
+      "years": "2020–present",
+      "notes": "27 cu ft side-by-side. Codes display on the dispenser panel; fan and defrost-sensor codes are the most common on this platform.",
+      "common_codes": [
+        "22E",
+        "21E",
+        "5E",
+        "8E"
+      ]
+    },
+    {
+      "slug": "rf27t5201sr",
+      "model": "RF27T5201SR",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "name": "Samsung RF27T5201SR French Door Refrigerator",
+      "years": "2020–present",
+      "notes": "27 cu ft 3-door French door model. The ice-maker codes (33E/34E family) and evaporator fan codes account for most service visits.",
+      "common_codes": [
+        "22E",
+        "21E",
+        "24E",
+        "33E"
+      ]
+    },
+    {
+      "slug": "ne59m4320ss",
+      "model": "NE59M4320SS",
+      "brand": "samsung",
+      "appliance": "oven",
+      "name": "Samsung NE59M4320SS Electric Range",
+      "years": "2017–2021",
+      "notes": "Freestanding 5.9 cu ft electric range. The E-08 (oven not heating) and SE (stuck key) codes are the two most common; SE usually means a shorted membrane keypad.",
+      "common_codes": [
+        "E-08",
+        "SE",
+        "E-0A"
+      ]
+    },
+    {
+      "slug": "nx58r5601ss",
+      "model": "NX58R5601SS",
+      "brand": "samsung",
+      "appliance": "oven",
+      "name": "Samsung NX58R5601SS Gas Range",
+      "years": "2019–present",
+      "notes": "5.8 cu ft gas range with illuminated knobs. Temperature-sensor codes dominate; the oven sensor is an inexpensive DIY part on this model.",
+      "common_codes": [
+        "E-08",
+        "SE",
+        "E-3"
+      ]
+    },
+    {
+      "slug": "ne63a6511ss",
+      "model": "NE63A6511SS",
+      "brand": "samsung",
+      "appliance": "oven",
+      "name": "Samsung NE63A6511SS Electric Range",
+      "years": "2021–present",
+      "notes": "6.3 cu ft electric range with Air Fry. Uses the current Samsung E-code set; codes display on the front control panel.",
+      "common_codes": [
+        "E-08",
+        "E-09",
+        "E-0A",
+        "E-43"
+      ]
+    },
+    {
+      "slug": "me19r7041fs",
+      "model": "ME19R7041FS",
+      "brand": "samsung",
+      "appliance": "microwave",
+      "name": "Samsung ME19R7041FS Over-the-Range Microwave",
+      "years": "2019–present",
+      "notes": "Best-selling OTR microwave. The infamous SE (stuck key) code on this platform is almost always a failed membrane keypad — Samsung extended warranties for it on some serials.",
+      "common_codes": [
+        "SE",
+        "-SE-",
+        "F-3"
+      ]
+    },
+    {
+      "slug": "wm3400cw",
+      "model": "WM3400CW",
+      "brand": "lg",
+      "appliance": "washer",
+      "name": "LG WM3400CW Front-Load Washer",
+      "years": "2019–present",
+      "notes": "Entry-level 4.5 cu ft front-loader. Shares the full LG two-letter code set; drain (OE) and inlet (IE) codes are the most common service triggers.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "UE",
+        "dE"
+      ]
+    },
+    {
+      "slug": "wt7300cw",
+      "model": "WT7300CW",
+      "brand": "lg",
+      "appliance": "washer",
+      "name": "LG WT7300CW Top-Load Washer",
+      "years": "2019–present",
+      "notes": "5.0 cu ft top loader with TurboWash3D. UE unbalance codes lead complaints on this platform — bulky single items are the usual cause.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "UE",
+        "LE"
+      ]
+    },
+    {
+      "slug": "wm8100hva",
+      "model": "WM8100HVA",
+      "brand": "lg",
+      "appliance": "washer",
+      "name": "LG WM8100HVA Front-Load Washer",
+      "years": "2016–2019",
+      "notes": "5.2 cu ft mega-capacity front-loader. Direct-drive motor codes (LE) and drain codes (OE) are the most frequent; the drain pump filter is front-accessible.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "UE",
+        "LE",
+        "dE"
+      ]
+    },
+    {
+      "slug": "wm4500hba",
+      "model": "WM4500HBA",
+      "brand": "lg",
+      "appliance": "washer",
+      "name": "LG WM4500HBA Front-Load Washer",
+      "years": "2021–present",
+      "notes": "5.0 cu ft WashTower-adjacent front-loader with AI DD 2.0. Code set carries over from the WM4000; drain and door codes dominate.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "UE",
+        "dE",
+        "AE"
+      ]
+    },
+    {
+      "slug": "wt7900hba",
+      "model": "WT7900HBA",
+      "brand": "lg",
+      "appliance": "washer",
+      "name": "LG WT7900HBA Top-Load Washer",
+      "years": "2021–present",
+      "notes": "5.5 cu ft top loader with TurboWash3D and EasyUnload. Standard LG top-load code set; unbalance and slow-drain codes are the usual suspects.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "UE",
+        "LE"
+      ]
+    },
+    {
+      "slug": "dle3500w",
+      "model": "DLE3500W",
+      "brand": "lg",
+      "appliance": "dryer",
+      "name": "LG DLE3500W Electric Dryer",
+      "years": "2019–2022",
+      "notes": "7.4 cu ft electric dryer. The D80/D90 airflow codes are by far the most common — they measure duct restriction and almost always indicate lint buildup, not a failed part.",
+      "common_codes": [
+        "D80",
+        "D90",
+        "nP",
+        "dH"
+      ]
+    },
+    {
+      "slug": "dlex4500b",
+      "model": "DLEX4500B",
+      "brand": "lg",
+      "appliance": "dryer",
+      "name": "LG DLEX4500B Electric Dryer",
+      "years": "2021–present",
+      "notes": "7.4 cu ft TurboSteam dryer in matte black. Same airflow-code family as the DLEX3900; nF (no flow) joins D80/D90/D95 on this generation.",
+      "common_codes": [
+        "D80",
+        "D90",
+        "D95",
+        "nF"
+      ]
+    },
+    {
+      "slug": "dle7150w",
+      "model": "DLE7150W",
+      "brand": "lg",
+      "appliance": "dryer",
+      "name": "LG DLE7150W Electric Dryer",
+      "years": "2021–present",
+      "notes": "7.4 cu ft sensor-dry model. nP (no power to heater circuit) usually means a tripped breaker leg on 240V models — check the panel before calling service.",
+      "common_codes": [
+        "D80",
+        "D90",
+        "nP"
+      ]
+    },
+    {
+      "slug": "dlg3601w",
+      "model": "DLG3601W",
+      "brand": "lg",
+      "appliance": "dryer",
+      "name": "LG DLG3601W Gas Dryer",
+      "years": "2020–present",
+      "notes": "7.4 cu ft gas dryer. The GAS code points to supply or igniter problems; airflow codes behave identically to the electric models.",
+      "common_codes": [
+        "GAS",
+        "nP",
+        "D80",
+        "D90"
+      ]
+    },
+    {
+      "slug": "ldfn4542s",
+      "model": "LDFN4542S",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "name": "LG LDFN4542S Dishwasher",
+      "years": "2020–present",
+      "notes": "LG's volume front-control dishwasher. The AE leak code and OE drain code lead service data; the leak sensor sits in the base pan.",
+      "common_codes": [
+        "AE",
+        "OE",
+        "IE",
+        "HE"
+      ]
+    },
+    {
+      "slug": "ldts5552s",
+      "model": "LDTS5552S",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "name": "LG LDTS5552S Top-Control Dishwasher",
+      "years": "2021–present",
+      "notes": "QuadWash Pro top-control model with TrueSteam. Same code family as the LDFN series; FE (overfill) often follows a stuck inlet valve.",
+      "common_codes": [
+        "AE",
+        "OE",
+        "LE",
+        "FE"
+      ]
+    },
+    {
+      "slug": "ldf5545st",
+      "model": "LDF5545ST",
+      "brand": "lg",
+      "appliance": "dishwasher",
+      "name": "LG LDF5545ST Dishwasher",
+      "years": "2017–2020",
+      "notes": "Front-control QuadWash workhorse. Drain (OE) and inlet (IE) codes are the most common; the drain pump is accessible without pulling the unit.",
+      "common_codes": [
+        "OE",
+        "IE",
+        "AE",
+        "nE"
+      ]
+    },
+    {
+      "slug": "lfxs28968s",
+      "model": "LFXS28968S",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "name": "LG LFXS28968S French Door Refrigerator",
+      "years": "2018–2021",
+      "notes": "28 cu ft French door model from the linear-compressor era. Fan codes (Er rF/Er FF) often trace to evaporator icing caused by a weak defrost cycle.",
+      "common_codes": [
+        "Er FF",
+        "Er rF",
+        "Er dH",
+        "Er IF"
+      ]
+    },
+    {
+      "slug": "lrfvs3006s",
+      "model": "LRFVS3006S",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "name": "LG LRFVS3006S InstaView French Door Refrigerator",
+      "years": "2019–2022",
+      "notes": "30 cu ft InstaView Door-in-Door flagship. Craft Ice and dual ice-maker hardware add the IF code family to the standard LG fridge code set.",
+      "common_codes": [
+        "Er FF",
+        "Er IF",
+        "Er CO",
+        "Er rF"
+      ]
+    },
+    {
+      "slug": "lmxs28626s",
+      "model": "LMXS28626S",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "name": "LG LMXS28626S 4-Door French Door Refrigerator",
+      "years": "2017–2020",
+      "notes": "26 cu ft 4-door model. The Er dH defrost-heater code is the signature failure of this generation; the freezer sensor (Er FS) is a close second.",
+      "common_codes": [
+        "Er FF",
+        "Er dH",
+        "Er FS",
+        "Er CF"
+      ]
+    },
+    {
+      "slug": "lrfds3016s",
+      "model": "LRFDS3016S",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "name": "LG LRFDS3016S French Door Refrigerator",
+      "years": "2019–present",
+      "notes": "30 cu ft standard-depth French door with dual ice makers. Codes display on the control panel inside the left door; fan and ice-maker codes dominate.",
+      "common_codes": [
+        "Er FF",
+        "Er rF",
+        "Er IF",
+        "Er dH"
+      ]
+    },
+    {
+      "slug": "lrel6325f",
+      "model": "LREL6325F",
+      "brand": "lg",
+      "appliance": "oven",
+      "name": "LG LREL6325F Electric Range",
+      "years": "2020–present",
+      "notes": "6.3 cu ft electric range with Air Fry and EasyClean. The F9 (oven not heating) code is the platform's most-searched fault; check the bake element first.",
+      "common_codes": [
+        "F9",
+        "F2",
+        "F1"
+      ]
+    },
+    {
+      "slug": "lrgl5825f",
+      "model": "LRGL5825F",
+      "brand": "lg",
+      "appliance": "oven",
+      "name": "LG LRGL5825F Gas Range",
+      "years": "2021–present",
+      "notes": "5.8 cu ft gas range with Air Fry. F9 on gas models usually points to the igniter rather than the control board — a glowing-but-weak igniter won't open the gas valve.",
+      "common_codes": [
+        "F9",
+        "F1",
+        "F5"
+      ]
+    },
+    {
+      "slug": "wtw4816fw",
+      "model": "WTW4816FW",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "name": "Whirlpool WTW4816FW Top-Load Washer",
+      "years": "2016–2021",
+      "notes": "3.5 cu ft budget VMW top loader. Lid-lock (F5E2) and shifter (F7E1) codes are the platform's defining faults; both are well-documented DIY repairs.",
+      "common_codes": [
+        "F5E2",
+        "F7E1",
+        "F0E2",
+        "F2E3"
+      ]
+    },
+    {
+      "slug": "wtw8127lc",
+      "model": "WTW8127LC",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "name": "Whirlpool WTW8127LC Top-Load Washer",
+      "years": "2022–present",
+      "notes": "5.2–5.3 cu ft top loader with removable agitator and 2-in-1 flex dispenser. Current-generation VMW platform; same F#E# code set as earlier models.",
+      "common_codes": [
+        "F5E2",
+        "F7E1",
+        "F8E1",
+        "F0E1"
+      ]
+    },
+    {
+      "slug": "wfw9620hc",
+      "model": "WFW9620HC",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "name": "Whirlpool WFW9620HC Front-Load Washer",
+      "years": "2019–present",
+      "notes": "5.0 cu ft flagship front-loader with Load & Go XL. Drain-time (F9E1) and door-lock codes lead service data; the drain filter is behind the lower front panel.",
+      "common_codes": [
+        "F9E1",
+        "F5E2",
+        "F3E2",
+        "F8E3"
+      ]
+    },
+    {
+      "slug": "wtw5057lw",
+      "model": "WTW5057LW",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "name": "Whirlpool WTW5057LW Top-Load Washer",
+      "years": "2022–present",
+      "notes": "4.7–4.8 cu ft top loader with removable agitator. Uses the standard VMW diagnostic set; lid-lock errors after power blips are common and usually clear with a reset.",
+      "common_codes": [
+        "F5E2",
+        "F7E1",
+        "F0E2"
+      ]
+    },
+    {
+      "slug": "wfw6620hw",
+      "model": "WFW6620HW",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "name": "Whirlpool WFW6620HW Front-Load Washer",
+      "years": "2018–2022",
+      "notes": "4.5 cu ft closet-depth front-loader. The F9E1 long-drain code is the top complaint — coins and debris in the drain pump filter are the usual cause.",
+      "common_codes": [
+        "F9E1",
+        "F5E2",
+        "F7E5"
+      ]
+    },
+    {
+      "slug": "wed5620hw",
+      "model": "WED5620HW",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "name": "Whirlpool WED5620HW Electric Dryer",
+      "years": "2018–present",
+      "notes": "7.4 cu ft electric dryer with steam. The AF (airflow) code is a duct-restriction warning; F01 points to the main control board.",
+      "common_codes": [
+        "F01",
+        "F22",
+        "AF",
+        "F28"
+      ]
+    },
+    {
+      "slug": "wed6620hw",
+      "model": "WED6620HW",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "name": "Whirlpool WED6620HW Electric Dryer",
+      "years": "2019–present",
+      "notes": "7.4 cu ft model with Load & Go-matching styling. Moisture-sensor (F28) and thermistor (F22) codes are the most common after airflow warnings.",
+      "common_codes": [
+        "F01",
+        "F22",
+        "AF"
+      ]
+    },
+    {
+      "slug": "wgd4815ew",
+      "model": "WGD4815EW",
+      "brand": "whirlpool",
+      "appliance": "dryer",
+      "name": "Whirlpool WGD4815EW Gas Dryer",
+      "years": "2015–2021",
+      "notes": "Gas twin of the WED4815EW. Thermal fuse and igniter failures present as heating codes; the fuse blows protectively when the vent is restricted.",
+      "common_codes": [
+        "F01",
+        "F22",
+        "F23",
+        "F28"
+      ]
+    },
+    {
+      "slug": "wdt730pahz",
+      "model": "WDT730PAHZ",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "name": "Whirlpool WDT730PAHZ Dishwasher",
+      "years": "2018–2022",
+      "notes": "Top-control model with third rack. F9E1 (drain) and F6E4 (float switch) are the leading codes; both display as flash patterns on models without a digit display.",
+      "common_codes": [
+        "F9E1",
+        "F6E4",
+        "F8E4",
+        "F2E2"
+      ]
+    },
+    {
+      "slug": "wdta50sakz",
+      "model": "WDTA50SAKZ",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "name": "Whirlpool WDTA50SAKZ Dishwasher",
+      "years": "2021–present",
+      "notes": "Large-capacity top-control model. Same F#E# diagnostic pairs as the rest of the platform; drain codes lead service data.",
+      "common_codes": [
+        "F9E1",
+        "F6E4",
+        "F2E2"
+      ]
+    },
+    {
+      "slug": "wdf330pahs",
+      "model": "WDF330PAHS",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "name": "Whirlpool WDF330PAHS Dishwasher",
+      "years": "2018–present",
+      "notes": "Budget front-control model with the Clean-light blink-code interface. Count the blinks to read the F and E values, then look up the pair.",
+      "common_codes": [
+        "F9E1",
+        "F8E4",
+        "F6E4"
+      ]
+    },
+    {
+      "slug": "wrx735sdhz",
+      "model": "WRX735SDHZ",
+      "brand": "whirlpool",
+      "appliance": "refrigerator",
+      "name": "Whirlpool WRX735SDHZ French Door Refrigerator",
+      "years": "2017–present",
+      "notes": "25 cu ft 4-door model. PO (power outage) is informational; the SY EF evaporator-fan code is the one that takes out cooling and deserves immediate attention.",
+      "common_codes": [
+        "PO",
+        "CF",
+        "SY EF"
+      ]
+    },
+    {
+      "slug": "wrf555sdfz",
+      "model": "WRF555SDFZ",
+      "brand": "whirlpool",
+      "appliance": "refrigerator",
+      "name": "Whirlpool WRF555SDFZ French Door Refrigerator",
+      "years": "2016–present",
+      "notes": "25 cu ft French door with interior water dispenser. Dispenser-panel codes follow the Whirlpool side-by-side convention; PO and CF are the most seen.",
+      "common_codes": [
+        "PO",
+        "CF",
+        "18 C"
+      ]
+    },
+    {
+      "slug": "wrt318fzdw",
+      "model": "WRT318FZDW",
+      "brand": "whirlpool",
+      "appliance": "refrigerator",
+      "name": "Whirlpool WRT318FZDW Top-Freezer Refrigerator",
+      "years": "2016–present",
+      "notes": "18 cu ft top-freezer workhorse. No digital display — faults present as temperature drift rather than codes; the electronic control board reports codes only in service mode.",
+      "common_codes": [
+        "PO",
+        "CF"
+      ]
+    },
+    {
+      "slug": "wfe525s0jz",
+      "model": "WFE525S0JZ",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "name": "Whirlpool WFE525S0JZ Electric Range",
+      "years": "2019–present",
+      "notes": "5.3 cu ft freestanding electric range. F3-E0 (open oven sensor) is the most common code; the sensor is a 15-minute DIY replacement.",
+      "common_codes": [
+        "F2-E0",
+        "F3-E0",
+        "F9-E0"
+      ]
+    },
+    {
+      "slug": "wfg320m0bs",
+      "model": "WFG320M0BS",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "name": "Whirlpool WFG320M0BS Gas Range",
+      "years": "2016–present",
+      "notes": "5.1 cu ft freestanding gas range. Keypad codes (F2-E0/E1) usually mean moisture or heat damage to the membrane switch above the oven vent.",
+      "common_codes": [
+        "F2-E0",
+        "F3-E1",
+        "F5-E0"
+      ]
+    },
+    {
+      "slug": "gfw550ssnww",
+      "model": "GFW550SSNWW",
+      "brand": "ge",
+      "appliance": "washer",
+      "name": "GE GFW550SSNWW Front-Load Washer",
+      "years": "2019–present",
+      "notes": "4.8 cu ft front-loader with UltraFresh vent system. GE's E-series codes display on the front panel; drain (E64 family) codes are the most common.",
+      "common_codes": [
+        "E64",
+        "E61",
+        "E52",
+        "E71"
+      ]
+    },
+    {
+      "slug": "gfw850spnrs",
+      "model": "GFW850SPNRS",
+      "brand": "ge",
+      "appliance": "washer",
+      "name": "GE GFW850SPNRS Front-Load Washer",
+      "years": "2020–present",
+      "notes": "5.0 cu ft flagship with SmartDispense. Dispense-system and drain codes lead service data; the bulk dispenser adds its own fault family.",
+      "common_codes": [
+        "E64",
+        "E61",
+        "E65",
+        "E47"
+      ]
+    },
+    {
+      "slug": "gfw650ssnww",
+      "model": "GFW650SSNWW",
+      "brand": "ge",
+      "appliance": "washer",
+      "name": "GE GFW650SSNWW Front-Load Washer",
+      "years": "2019–present",
+      "notes": "4.8 cu ft model one trim above the GFW550 with steam. Shares the identical E-code diagnostic set.",
+      "common_codes": [
+        "E64",
+        "E61",
+        "E43"
+      ]
+    },
+    {
+      "slug": "gtd42easjww",
+      "model": "GTD42EASJWW",
+      "brand": "ge",
+      "appliance": "dryer",
+      "name": "GE GTD42EASJWW Electric Dryer",
+      "years": "2015–present",
+      "notes": "7.2 cu ft aluminized-alloy drum dryer. Long-running budget model; heating-circuit codes (E1/E3/E4 family) are the usual service triggers.",
+      "common_codes": [
+        "E1",
+        "E3",
+        "E4"
+      ]
+    },
+    {
+      "slug": "gfd55essnww",
+      "model": "GFD55ESSNWW",
+      "brand": "ge",
+      "appliance": "dryer",
+      "name": "GE GFD55ESSNWW Electric Dryer",
+      "years": "2019–present",
+      "notes": "7.8 cu ft front-load matching dryer. The LS (lint screen) reminder is informational; E-series codes indicate real sensor or heater faults.",
+      "common_codes": [
+        "E1",
+        "E4",
+        "E8",
+        "LS"
+      ]
+    },
+    {
+      "slug": "gdt665ssnss",
+      "model": "GDT665SSNSS",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "name": "GE GDT665SSNSS Dishwasher",
+      "years": "2019–present",
+      "notes": "Top-control model with bottle jets. GE's C-codes cover the wash system: C4 is the drain fault most owners meet first.",
+      "common_codes": [
+        "C4",
+        "C5",
+        "OE",
+        "PF"
+      ]
+    },
+    {
+      "slug": "gdp630pyrfs",
+      "model": "GDP630PYRFS",
+      "brand": "ge",
+      "appliance": "dishwasher",
+      "name": "GE GDP630PYRFS Dishwasher",
+      "years": "2021–present",
+      "notes": "Front-control Dry Boost model. The FL (flood/leak) code and HO (heating delay) status are the two most-searched on this platform.",
+      "common_codes": [
+        "C4",
+        "C5",
+        "FL",
+        "HO"
+      ]
+    },
+    {
+      "slug": "gss25gypfs",
+      "model": "GSS25GYPFS",
+      "brand": "ge",
+      "appliance": "refrigerator",
+      "name": "GE GSS25GYPFS Side-by-Side Refrigerator",
+      "years": "2020–present",
+      "notes": "25.3 cu ft side-by-side. Codes show on the dispenser display; dS (defrost sensor) and the 88 display test are common sights after power interruptions.",
+      "common_codes": [
+        "dS",
+        "1E",
+        "88"
+      ]
+    },
+    {
+      "slug": "gfe26jymfs",
+      "model": "GFE26JYMFS",
+      "brand": "ge",
+      "appliance": "refrigerator",
+      "name": "GE GFE26JYMFS French Door Refrigerator",
+      "years": "2019–present",
+      "notes": "25.6 cu ft French door model. The turbo-cool-era control platform reports E-codes via the temperature display; defrost faults dominate.",
+      "common_codes": [
+        "dS",
+        "1E",
+        "2E"
+      ]
+    },
+    {
+      "slug": "pvd28bynfs",
+      "model": "PVD28BYNFS",
+      "brand": "ge",
+      "appliance": "refrigerator",
+      "name": "GE Profile PVD28BYNFS 4-Door French Door Refrigerator",
+      "years": "2020–present",
+      "notes": "27.9 cu ft Profile flagship with door-in-door. Same diagnostic family as mainline GE fridges plus connectivity status codes.",
+      "common_codes": [
+        "dS",
+        "88",
+        "4E"
+      ]
+    },
+    {
+      "slug": "jb645rkss",
+      "model": "JB645RKSS",
+      "brand": "ge",
+      "appliance": "oven",
+      "name": "GE JB645RKSS Electric Range",
+      "years": "2017–present",
+      "notes": "5.3 cu ft freestanding electric range — a perennial best-seller. F2 (over-temp) and F3/F4 (sensor) codes are the classic GE oven faults.",
+      "common_codes": [
+        "F2",
+        "F3",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "slug": "jgb735spss",
+      "model": "JGB735SPSS",
+      "brand": "ge",
+      "appliance": "oven",
+      "name": "GE JGB735SPSS Gas Range",
+      "years": "2020–present",
+      "notes": "5.0 cu ft gas range with air fry. The F-code set carries over from GE's electric platform; F7 (stuck/shorted keypad) often appears after cleaning the control panel.",
+      "common_codes": [
+        "F2",
+        "F3",
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "slug": "shxm4ay55n",
+      "model": "SHXM4AY55N",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "name": "Bosch SHXM4AY55N 100 Series Dishwasher",
+      "years": "2017–present",
+      "notes": "Entry-level Bosch with a plastic tub. Same E-code diagnostics as the 300/500/800 Series — E15 base-pan water and E24/E25 drain faults lead the list.",
+      "common_codes": [
+        "E15",
+        "E24",
+        "E25",
+        "E09"
+      ]
+    },
+    {
+      "slug": "shem3ay55n",
+      "model": "SHEM3AY55N",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "name": "Bosch SHEM3AY55N 100 Series Dishwasher",
+      "years": "2017–2021",
+      "notes": "Front-handle 100 Series variant. The E25 drain code on this platform usually means a blocked impeller cover — a 5-minute fix without tools.",
+      "common_codes": [
+        "E15",
+        "E24",
+        "E25"
+      ]
+    },
+    {
+      "slug": "shp878zd5n",
+      "model": "SHP878ZD5N",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "name": "Bosch SHP878ZD5N 800 Series Dishwasher",
+      "years": "2017–2021",
+      "notes": "800 Series with CrystalDry. Premium trim, identical diagnostic set; E01 control-board codes are rarer but more expensive when they appear.",
+      "common_codes": [
+        "E15",
+        "E24",
+        "E25",
+        "E01"
+      ]
+    },
+    {
+      "slug": "shx878zd5n",
+      "model": "SHX878ZD5N",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "name": "Bosch SHX878ZD5N 800 Series Dishwasher",
+      "years": "2017–2021",
+      "notes": "Bar-handle 800 Series CrystalDry model. E15 remains the signature Bosch code — tip the unit 45° forward to drain the base pan and it usually clears.",
+      "common_codes": [
+        "E15",
+        "E24",
+        "E09"
+      ]
+    },
+    {
+      "slug": "wat28400uc",
+      "model": "WAT28400UC",
+      "brand": "bosch",
+      "appliance": "washer",
+      "name": "Bosch WAT28400UC 300 Series Compact Washer",
+      "years": "2016–2022",
+      "notes": "24-inch compact front-loader, ubiquitous in condos. E18 (drain) and E17 (inlet) are the dominant codes; the drain pump filter is behind the lower right panel.",
+      "common_codes": [
+        "E18",
+        "E17",
+        "E02"
+      ]
+    },
+    {
+      "slug": "wga12400uc",
+      "model": "WGA12400UC",
+      "brand": "bosch",
+      "appliance": "washer",
+      "name": "Bosch WGA12400UC 500 Series Compact Washer",
+      "years": "2022–present",
+      "notes": "Current-generation 24-inch compact washer. Carries the same E-code set as the 300 Series it replaced.",
+      "common_codes": [
+        "E18",
+        "E17",
+        "E04"
+      ]
+    },
+    {
+      "slug": "hbl8453uc",
+      "model": "HBL8453UC",
+      "brand": "bosch",
+      "appliance": "oven",
+      "name": "Bosch HBL8453UC 800 Series Wall Oven",
+      "years": "2019–present",
+      "notes": "30-inch single wall oven. E-numbered codes display on the control panel; the E132 safety cutout demands immediate attention.",
+      "common_codes": [
+        "E002",
+        "E111",
+        "E132"
+      ]
+    },
+    {
+      "slug": "mvw7230hw",
+      "model": "MVW7230HW",
+      "brand": "maytag",
+      "appliance": "washer",
+      "name": "Maytag MVW7230HW Top-Load Washer",
+      "years": "2020–present",
+      "notes": "5.2 cu ft top loader with Extra Power button. Whirlpool VMW platform underneath; F8E1 fill faults and SUD detection are the most-searched codes.",
+      "common_codes": [
+        "F8E1",
+        "F9E1",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "mhw6630hw",
+      "model": "MHW6630HW",
+      "brand": "maytag",
+      "appliance": "washer",
+      "name": "Maytag MHW6630HW Front-Load Washer",
+      "years": "2019–present",
+      "notes": "4.8 cu ft front-loader with 16-hr Fresh Hold. F9E1 slow-drain is the leading code — the drain filter behind the lower panel collects everything.",
+      "common_codes": [
+        "F9E1",
+        "F8E1",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "mvw4505mw",
+      "model": "MVW4505MW",
+      "brand": "maytag",
+      "appliance": "washer",
+      "name": "Maytag MVW4505MW Top-Load Washer",
+      "years": "2022–present",
+      "notes": "4.5 cu ft deep-fill top loader. Current VMW platform with the standard F#E# code set; lid-lock faults clear with a power reset more often than not.",
+      "common_codes": [
+        "F8E1",
+        "F1E1",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "med7230hw",
+      "model": "MED7230HW",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "name": "Maytag MED7230HW Electric Dryer",
+      "years": "2020–present",
+      "notes": "7.4 cu ft dryer with Extra Power. F01 main-board and F22 thermistor codes are the platform's most common; check the vent before replacing sensors.",
+      "common_codes": [
+        "F01",
+        "F22"
+      ]
+    },
+    {
+      "slug": "med4500mw",
+      "model": "MED4500MW",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "name": "Maytag MED4500MW Electric Dryer",
+      "years": "2022–present",
+      "notes": "7.0 cu ft Pet Pro-adjacent platform. Shares the Whirlpool dryer code set; F06 motor-circuit codes are rare but terminal for the drive motor.",
+      "common_codes": [
+        "F01",
+        "F06"
+      ]
+    },
+    {
+      "slug": "mer8800fz",
+      "model": "MER8800FZ",
+      "brand": "maytag",
+      "appliance": "oven",
+      "name": "Maytag MER8800FZ Electric Range",
+      "years": "2017–2021",
+      "notes": "6.4 cu ft electric range. Whirlpool oven platform — F-E paired codes; F3-E0 oven sensor faults are the most common and cheapest to fix.",
+      "common_codes": [
+        "F1-E0",
+        "F2-E0",
+        "F3-E0",
+        "F9-E0"
+      ]
+    },
+    {
+      "slug": "665-series",
+      "model": "665 Series",
+      "brand": "kenmore",
+      "appliance": "dishwasher",
+      "name": "Kenmore 665-Series Dishwashers (Whirlpool-built)",
+      "years": "2000–present",
+      "notes": "Model numbers starting with 665. are Whirlpool-built Kenmore dishwashers. They use Whirlpool's F#E# diagnostic pairs, read as blink patterns on the Clean light.",
+      "common_codes": [
+        "F2E2",
+        "F8E4",
+        "F6E4",
+        "F1E1"
+      ]
+    },
+    {
+      "slug": "795-series",
+      "model": "795 Series",
+      "brand": "kenmore",
+      "appliance": "refrigerator",
+      "name": "Kenmore 795-Series Refrigerators (LG-built)",
+      "years": "2008–present",
+      "notes": "Model numbers starting with 795. are LG-built Kenmore (mostly Elite) refrigerators. They use LG's ER-prefix code set on the display panel.",
+      "common_codes": [
+        "ER FF",
+        "ER IF",
+        "ER 1F",
+        "ER RF"
+      ]
+    },
+    {
+      "slug": "110-series-dryer",
+      "model": "110 Series (Dryer)",
+      "brand": "kenmore",
+      "appliance": "dryer",
+      "name": "Kenmore 110-Series Dryers (Whirlpool-built)",
+      "years": "2005–present",
+      "notes": "110-prefix Kenmore dryers are Whirlpool-built and use the F01/F22/F28 code family. The AF airflow warning means check the duct run first.",
+      "common_codes": [
+        "F01",
+        "F22",
+        "F28",
+        "AF"
+      ]
+    },
+    {
+      "slug": "elite-he3",
+      "model": "Elite HE3/HE4",
+      "brand": "kenmore",
+      "appliance": "washer",
+      "name": "Kenmore Elite HE3 & HE4 Washers (Whirlpool-built)",
+      "years": "2004–2012",
+      "notes": "The classic Whirlpool Duet platform sold under the Kenmore Elite badge. The F21 slow-drain code is the defining fault — the coin-trap filter is almost always the culprit.",
+      "common_codes": [
+        "F21",
+        "F20"
+      ]
+    },
+    {
+      "slug": "790-series",
+      "model": "790 Series",
+      "brand": "kenmore",
+      "appliance": "oven",
+      "name": "Kenmore 790-Series Ranges (Frigidaire-built)",
+      "years": "2000–present",
+      "notes": "790-prefix Kenmore ranges are Frigidaire-built and use Frigidaire's F10-series codes. The F10 runaway-temperature code should never be ignored.",
+      "common_codes": [
+        "F10",
+        "F31",
+        "F1",
+        "F2"
+      ]
+    },
+    {
+      "slug": "ffss2615ts",
+      "model": "FFSS2615TS",
+      "brand": "frigidaire",
+      "appliance": "refrigerator",
+      "name": "Frigidaire FFSS2615TS Side-by-Side Refrigerator",
+      "years": "2017–present",
+      "notes": "25.5 cu ft side-by-side. The H1 high-temperature code and SY EF evaporator-fan code are the two faults that take out cooling on this platform.",
+      "common_codes": [
+        "H1",
+        "SY EF"
+      ]
+    },
+    {
+      "slug": "fghb2868tf",
+      "model": "FGHB2868TF",
+      "brand": "frigidaire",
+      "appliance": "refrigerator",
+      "name": "Frigidaire Gallery FGHB2868TF French Door Refrigerator",
+      "years": "2016–2021",
+      "notes": "27.6 cu ft Gallery French door model. Codes display on the front panel; fan and high-temp alerts dominate the service history.",
+      "common_codes": [
+        "H1",
+        "SY EF"
+      ]
+    },
+    {
+      "slug": "fgid2466qf",
+      "model": "FGID2466QF",
+      "brand": "frigidaire",
+      "appliance": "dishwasher",
+      "name": "Frigidaire Gallery FGID2466QF Dishwasher",
+      "years": "2015–2020",
+      "notes": "Gallery top-control model. Frigidaire's i-codes: i20 (clogged filter/drain) is by far the most common — clean the fine filter and check the air gap.",
+      "common_codes": [
+        "i20",
+        "i30",
+        "i10"
+      ]
+    },
+    {
+      "slug": "ffbd2412ss",
+      "model": "FFBD2412SS",
+      "brand": "frigidaire",
+      "appliance": "dishwasher",
+      "name": "Frigidaire FFBD2412SS 24-inch Dishwasher",
+      "years": "2014–present",
+      "notes": "Long-running budget dishwasher. The i30 base-pan leak code stops everything until the pan dries out; PF after storms is informational.",
+      "common_codes": [
+        "i20",
+        "i30",
+        "PF"
+      ]
+    },
+    {
+      "slug": "fcre3052as",
+      "model": "FCRE3052AS",
+      "brand": "frigidaire",
+      "appliance": "oven",
+      "name": "Frigidaire FCRE3052AS Electric Range",
+      "years": "2020–present",
+      "notes": "5.3 cu ft electric range. The F10 runaway-temp and F30/F31 sensor codes carry over from the long-running Frigidaire range platform.",
+      "common_codes": [
+        "F10",
+        "F30",
+        "F11"
+      ]
+    },
+    {
+      "slug": "fggh3047vf",
+      "model": "FGGH3047VF",
+      "brand": "frigidaire",
+      "appliance": "oven",
+      "name": "Frigidaire Gallery FGGH3047VF Gas Range",
+      "years": "2019–present",
+      "notes": "30-inch front-control gas range with air fry. F90-series door-lock codes appear most often after self-clean cycles.",
+      "common_codes": [
+        "F10",
+        "F11",
+        "F90"
+      ]
+    },
+    {
+      "slug": "ffre4120sw",
+      "model": "FFRE4120SW",
+      "brand": "frigidaire",
+      "appliance": "dryer",
+      "name": "Frigidaire FFRE4120SW Electric Dryer",
+      "years": "2016–2021",
+      "notes": "6.7 cu ft budget dryer. E64 heating-element failure is the platform's signature fault; the element is an inexpensive DIY part.",
+      "common_codes": [
+        "E64",
+        "E11"
+      ]
+    },
+    {
+      "slug": "elfw7637at",
+      "model": "ELFW7637AT",
+      "brand": "electrolux",
+      "appliance": "washer",
+      "name": "Electrolux ELFW7637AT Front-Load Washer",
+      "years": "2021–present",
+      "notes": "4.5 cu ft front-loader with SmartBoost premix. Current-generation E-code set; E20 drain restrictions lead service data.",
+      "common_codes": [
+        "E20",
+        "E10",
+        "E40"
+      ]
+    },
+    {
+      "slug": "efme627utt",
+      "model": "EFME627UTT",
+      "brand": "electrolux",
+      "appliance": "dryer",
+      "name": "Electrolux EFME627UTT Electric Dryer",
+      "years": "2017–2022",
+      "notes": "8.0 cu ft dryer matching the EFLS627 washer. E61 heating-relay and E64 element codes are the most common; both point to the heater circuit.",
+      "common_codes": [
+        "E61",
+        "E64",
+        "E62"
+      ]
+    },
+    {
+      "slug": "elfe7637at",
+      "model": "ELFE7637AT",
+      "brand": "electrolux",
+      "appliance": "dryer",
+      "name": "Electrolux ELFE7637AT Electric Dryer",
+      "years": "2021–present",
+      "notes": "8.0 cu ft balanced-dry dryer. Shares the E6x heater-circuit code family with its predecessor.",
+      "common_codes": [
+        "E61",
+        "E64"
+      ]
+    },
+    {
+      "slug": "ei24id30qs",
+      "model": "EI24ID30QS",
+      "brand": "electrolux",
+      "appliance": "dishwasher",
+      "name": "Electrolux EI24ID30QS Dishwasher",
+      "years": "2015–2020",
+      "notes": "24-inch IQ-Touch dishwasher. Electrolux i-codes mirror Frigidaire's (same parent company): i20 drain restriction is the volume leader.",
+      "common_codes": [
+        "i20",
+        "i30",
+        "i50"
+      ]
+    },
+    {
+      "slug": "kdtm404kps",
+      "model": "KDTM404KPS",
+      "brand": "kitchenaid",
+      "appliance": "dishwasher",
+      "name": "KitchenAid KDTM404KPS Dishwasher",
+      "years": "2020–present",
+      "notes": "Top-control model with FreeFlex third rack. Whirlpool platform — codes read as blink-pattern pairs; 7-1 heater faults stop the dry cycle.",
+      "common_codes": [
+        "7-1",
+        "6-2",
+        "1-1"
+      ]
+    },
+    {
+      "slug": "kdfe104hps",
+      "model": "KDFE104HPS",
+      "brand": "kitchenaid",
+      "appliance": "dishwasher",
+      "name": "KitchenAid KDFE104HPS Dishwasher",
+      "years": "2018–2022",
+      "notes": "Front-control 46 dBA model. The 6-2 inlet-valve and 7-1 heater codes are the most common; both parts are shared with Whirlpool equivalents.",
+      "common_codes": [
+        "6-2",
+        "7-1",
+        "1-1"
+      ]
+    },
+    {
+      "slug": "krff507hps",
+      "model": "KRFF507HPS",
+      "brand": "kitchenaid",
+      "appliance": "refrigerator",
+      "name": "KitchenAid KRFF507HPS French Door Refrigerator",
+      "years": "2018–present",
+      "notes": "26.8 cu ft French door model. Whirlpool fridge platform — SY EF evaporator-fan faults are the code to act on quickly.",
+      "common_codes": [
+        "SY EF",
+        "SY CF"
+      ]
+    },
+    {
+      "slug": "krmf706ess",
+      "model": "KRMF706ESS",
+      "brand": "kitchenaid",
+      "appliance": "refrigerator",
+      "name": "KitchenAid KRMF706ESS 5-Door Refrigerator",
+      "years": "2015–present",
+      "notes": "25.8 cu ft multi-door flagship. Codes show on the dispenser panel; fan and communication faults dominate its service record.",
+      "common_codes": [
+        "SY EF",
+        "SY CF"
+      ]
+    },
+    {
+      "slug": "kfeg500ess",
+      "model": "KFEG500ESS",
+      "brand": "kitchenaid",
+      "appliance": "oven",
+      "name": "KitchenAid KFEG500ESS Electric Range",
+      "years": "2015–present",
+      "notes": "5.8 cu ft freestanding electric range. Whirlpool oven platform with F#E# pairs; keypad codes (F2E0/F2E1) usually follow control-panel moisture.",
+      "common_codes": [
+        "F2E0",
+        "F2E1",
+        "F9E0"
+      ]
+    },
+    {
+      "slug": "kose500ess",
+      "model": "KOSE500ESS",
+      "brand": "kitchenaid",
+      "appliance": "oven",
+      "name": "KitchenAid KOSE500ESS Single Wall Oven",
+      "years": "2015–present",
+      "notes": "30-inch Even-Heat wall oven. F6E0 communication and F9E0 door-latch codes are the platform's most-searched faults.",
+      "common_codes": [
+        "F2E1",
+        "F6E0",
+        "F9E0"
+      ]
+    },
+    {
+      "slug": "ksgg700ess",
+      "model": "KSGG700ESS",
+      "brand": "kitchenaid",
+      "appliance": "oven",
+      "name": "KitchenAid KSGG700ESS Gas Range",
+      "years": "2015–2021",
+      "notes": "5.8 cu ft gas range with even-heat convection. Same Whirlpool F-E code pairs as the electric models.",
+      "common_codes": [
+        "F2E0",
+        "F6E0"
+      ]
+    },
+    {
+      "slug": "w1-series",
+      "model": "W1 Series",
+      "brand": "miele",
+      "appliance": "washer",
+      "name": "Miele W1 Series Compact Washers (WWB/WWH/WXD)",
+      "years": "2016–present",
+      "notes": "Miele's 24-inch W1 platform. F-numbered codes display on the panel; F11 drainage faults and F53 speed-sensor codes are the most commonly searched.",
+      "common_codes": [
+        "F11",
+        "F19",
+        "F53"
+      ]
+    },
+    {
+      "slug": "g7000-series",
+      "model": "G 7000 Series",
+      "brand": "miele",
+      "appliance": "dishwasher",
+      "name": "Miele G 7000 Series Dishwashers",
+      "years": "2019–present",
+      "notes": "Current AutoDos generation. F11 (drain) and F13 (water intake) carry over from earlier G-series platforms; F70 float-switch faults need the base pan dried.",
+      "common_codes": [
+        "F11",
+        "F13",
+        "F70"
+      ]
+    },
+    {
+      "slug": "t1-series",
+      "model": "T1 Series",
+      "brand": "miele",
+      "appliance": "dryer",
+      "name": "Miele T1 Series Heat-Pump Dryers",
+      "years": "2016–present",
+      "notes": "Ventless heat-pump dryers. F66 heater-relay and F53 sensor codes are rare but documented; most T1 complaints are airflow maintenance, not faults.",
+      "common_codes": [
+        "F66",
+        "F53"
+      ]
+    },
+    {
+      "slug": "tr3003wn",
+      "model": "TR3003WN",
+      "brand": "speedqueen",
+      "appliance": "washer",
+      "name": "Speed Queen TR3003WN Top-Load Washer",
+      "years": "2018–present",
+      "notes": "Commercial-grade 3.2 cu ft top loader with mechanical-feel controls. Electronic control underneath reports E-codes; most faults are fill or drain related.",
+      "common_codes": [
+        "E3",
+        "E8",
+        "E2"
+      ]
+    },
+    {
+      "slug": "tr7003wn",
+      "model": "TR7003WN",
+      "brand": "speedqueen",
+      "appliance": "washer",
+      "name": "Speed Queen TR7003WN Top-Load Washer",
+      "years": "2018–present",
+      "notes": "Flagship top loader with 7-year warranty. Same TR-platform diagnostics as the TR3; errors are uncommon enough that most owners never see one.",
+      "common_codes": [
+        "E3",
+        "E8",
+        "E5"
+      ]
+    },
+    {
+      "slug": "ff7005wn",
+      "model": "FF7005WN",
+      "brand": "speedqueen",
+      "appliance": "washer",
+      "name": "Speed Queen FF7005WN Front-Load Washer",
+      "years": "2018–present",
+      "notes": "3.5 cu ft commercial-grade front-loader. E-codes display on the electronic panel; door-lock and drain faults are the most reported.",
+      "common_codes": [
+        "E1",
+        "E2",
+        "E5"
+      ]
+    },
+    {
+      "slug": "dr3003we",
+      "model": "DR3003WE",
+      "brand": "speedqueen",
+      "appliance": "dryer",
+      "name": "Speed Queen DR3003WE Electric Dryer",
+      "years": "2018–present",
+      "notes": "7.0 cu ft metal-cabinet dryer. Minimal electronics mean few codes; E1/E3 sensor faults are the main entries in its diagnostic table.",
+      "common_codes": [
+        "E1",
+        "E3"
+      ]
+    },
+    {
+      "slug": "ntw4516fw",
+      "model": "NTW4516FW",
+      "brand": "amana",
+      "appliance": "washer",
+      "name": "Amana NTW4516FW Top-Load Washer",
+      "years": "2016–present",
+      "notes": "3.5 cu ft budget top loader on the Whirlpool VMW platform. F8E1 fill faults and SUD over-sudsing are the codes owners search most.",
+      "common_codes": [
+        "F8E1",
+        "SUD"
+      ]
+    },
+    {
+      "slug": "ned4655ew",
+      "model": "NED4655EW",
+      "brand": "amana",
+      "appliance": "dryer",
+      "name": "Amana NED4655EW Electric Dryer",
+      "years": "2015–present",
+      "notes": "6.5 cu ft budget dryer. Whirlpool platform; F01 control-board and F22 thermistor codes cover most of its diagnostic table.",
+      "common_codes": [
+        "F01",
+        "F22"
+      ]
+    },
+    {
+      "slug": "art318ffds",
+      "model": "ART318FFDS",
+      "brand": "amana",
+      "appliance": "refrigerator",
+      "name": "Amana ART318FFDS Top-Freezer Refrigerator",
+      "years": "2016–present",
+      "notes": "18 cu ft top-freezer. The H1 high-temperature alert is the only code most owners ever encounter — usually after a door left ajar.",
+      "common_codes": [
+        "H1"
+      ]
+    },
+    {
+      "slug": "aer6303mfs",
+      "model": "AER6303MFS",
+      "brand": "amana",
+      "appliance": "oven",
+      "name": "Amana AER6303MFS Electric Range",
+      "years": "2016–2021",
+      "notes": "4.8 cu ft electric range. Whirlpool oven platform with F#E# codes; F1E0 board faults and F2E0 keypad shorts lead the list.",
+      "common_codes": [
+        "F1E0",
+        "F2E0"
+      ]
+    },
+    {
+      "slug": "hlc1700axw",
+      "model": "HLC1700AXW",
+      "brand": "haier",
+      "appliance": "washer",
+      "name": "Haier HLC1700AXW Washer-Dryer Combo",
+      "years": "2016–present",
+      "notes": "24-inch ventless all-in-one, common in apartments. E-codes cover both wash and dry functions; drain (E1/E2 family) faults dominate.",
+      "common_codes": [
+        "E1",
+        "E2",
+        "E4"
+      ]
+    },
+    {
+      "slug": "hrq16n3bgs",
+      "model": "HRQ16N3BGS",
+      "brand": "haier",
+      "appliance": "refrigerator",
+      "name": "Haier HRQ16N3BGS Quad-Door Refrigerator",
+      "years": "2017–present",
+      "notes": "16.4 cu ft counter-depth quad-door. F-codes show on the internal display; sensor faults (F1/F3) are the most reported.",
+      "common_codes": [
+        "F1",
+        "F3",
+        "F6"
+      ]
+    },
+    {
+      "slug": "dd24-series",
+      "model": "DD24 Series",
+      "brand": "fisher-paykel",
+      "appliance": "dishwasher",
+      "name": "Fisher & Paykel DD24 DishDrawer Series",
+      "years": "2010–present",
+      "notes": "The iconic two-drawer dishwasher. U-codes are user-clearable faults: U1 (fill) and U4 (drain) account for the majority of displays.",
+      "common_codes": [
+        "U1",
+        "U4",
+        "U7"
+      ]
+    },
+    {
+      "slug": "wh2424p1",
+      "model": "WH2424P1",
+      "brand": "fisher-paykel",
+      "appliance": "washer",
+      "name": "Fisher & Paykel WH2424P1 Front-Load Washer",
+      "years": "2017–present",
+      "notes": "24-inch compact front-loader. Numeric fault codes display on the panel; most are sensor or fill related and clear with a power cycle.",
+      "common_codes": [
+        "E4",
+        "E5",
+        "E2"
+      ]
+    },
+    {
+      "slug": "rf170adusx4",
+      "model": "RF170ADUSX4",
+      "brand": "fisher-paykel",
+      "appliance": "refrigerator",
+      "name": "Fisher & Paykel RF170ADUSX4 ActiveSmart French Door Refrigerator",
+      "years": "2015–present",
+      "notes": "17.1 cu ft counter-depth French door. ActiveSmart control reports F-codes via display flashes; fan faults (F1/F2) are the main entries.",
+      "common_codes": [
+        "F1",
+        "F2",
+        "F40"
+      ]
+    }
+  ]
+}

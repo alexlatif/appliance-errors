@@ -8,6 +8,7 @@ import {
   getCodesByBrandAndAppliance
 } from '../../../../utils/data';
 import { breadcrumbSchema } from '../../../../utils/schema';
+import proceduresData from '../../../../data/procedures.json';
 
 export async function getStaticPaths() {
   const paths = [];
@@ -30,6 +31,8 @@ const bySeverity: Record<string, typeof codes> = { critical: [], high: [], mediu
 for (const c of codes) bySeverity[c.severity]?.push(c);
 
 const appName = appType?.name ?? appSlug!;
+const hasProcedures = (proceduresData as { procedures: { brand: string; appliance: string }[] }).procedures
+  .some(p => p.brand === brandSlug && p.appliance === appSlug);
 const title = `${brand.name} ${appName} Error Codes — Complete List & Fixes | ApplianceErrors.com`;
 const description = `All ${brand.name} ${appName.toLowerCase()} error codes with meanings and step-by-step repair guides. ${codes.length} codes covered.`;
 
@@ -59,6 +62,19 @@ const schemas = [
         <p class="text-gray-600 mt-1">{codes.length} error codes with causes and step-by-step fixes</p>
       </div>
     </div>
+
+    {hasProcedures && (
+      <div class="flex flex-wrap gap-3 mb-8">
+        <a href={`/brands/${brandSlug}/${appSlug}/diagnostic-mode/`}
+           class="inline-flex items-center gap-2 px-4 py-2.5 bg-brand-50 border border-brand-200 rounded-xl text-brand-700 font-medium text-sm hover:border-brand-400 hover:shadow-sm transition-all">
+          🔍 How to Enter Diagnostic Mode
+        </a>
+        <a href={`/brands/${brandSlug}/${appSlug}/reset/`}
+           class="inline-flex items-center gap-2 px-4 py-2.5 bg-brand-50 border border-brand-200 rounded-xl text-brand-700 font-medium text-sm hover:border-brand-400 hover:shadow-sm transition-all">
+          🔄 How to Reset &amp; Clear Codes
+        </a>
+      </div>
+    )}
 
     <!-- Quick reference table -->
     <div class="bg-white border border-gray-200 rounded-xl overflow-hidden mb-10">

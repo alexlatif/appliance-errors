@@ -2,5 +2,13 @@ name = "appliance-errors"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "dist"
 
+[[kv_namespaces]]
+binding = "FEEDBACK"
+id = "d2a89c5f0ad948ec84d1fb0ebae539f5"
+
 [env.production]
 name = "appliance-errors"
+
+[[env.production.kv_namespaces]]
+binding = "FEEDBACK"
+id = "d2a89c5f0ad948ec84d1fb0ebae539f5"

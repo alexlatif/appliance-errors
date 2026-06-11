@@ -1,0 +1,365 @@
+{
+  "symptoms": [
+    {
+      "slug": "washer-wont-drain", "appliance": "washer",
+      "name": "Washer Won't Drain",
+      "h1": "Washer Won't Drain or Spin: Causes and Fixes",
+      "answer": "A washer that won't drain almost always has a blocked drain pump filter, a clogged or kinked drain hose, or a failed drain pump. On most machines you can clear it yourself in 20–30 minutes: locate the drain filter (behind a small front panel on front-loaders, or check the drain hose on top-loaders), put towels down, and clear any coins, lint, or debris.",
+      "categories": ["drainage", "motor", "door_lock", "door"],
+      "checks": [
+        "Clean the drain pump filter — front-loaders have an access door at the lower front; expect trapped water behind it (towels first).",
+        "Straighten and inspect the drain hose for kinks, and make sure it isn't pushed more than a few inches into the standpipe (which causes siphoning faults).",
+        "Check the drain height — the standpipe or sink connection should be 30–96 inches above the floor on most machines.",
+        "Listen at the start of the drain step: a humming-but-no-drain pump usually has a jammed impeller; silence usually means a failed pump or control relay.",
+        "On front-loaders, a door that won't unlock can block draining — the machine won't drain until it confirms the lid/door is safe."
+      ],
+      "faqs": [
+        { "q": "Why is there water left in my washer drum?", "a": "Standing water after a cycle means the drain step failed. The usual cause is a clogged drain pump filter or a kinked drain hose. Clear both before suspecting the pump itself." },
+        { "q": "Can I manually drain my washer?", "a": "Yes. Power off, place towels and a shallow pan, and slowly open the drain pump filter (front-loaders) or lower the drain hose into a bucket (top-loaders) to release the water before working on it." }
+      ]
+    },
+    {
+      "slug": "washer-wont-start", "appliance": "washer",
+      "name": "Washer Won't Start",
+      "h1": "Washer Won't Start or Turn On: Causes and Fixes",
+      "answer": "A washer that won't start is usually a power, door-lock, or control issue. Confirm the outlet has power, the door/lid is fully latched (machines won't start until the lock confirms), and that Control Lock or a delay-start timer isn't engaged. A 60-second power cycle clears many soft control faults.",
+      "categories": ["power", "door", "door_lock", "control_panel", "control_board", "control", "settings"],
+      "checks": [
+        "Confirm power: test the outlet, check the breaker, and avoid extension cords (washers need a dedicated circuit).",
+        "Fully close the door/lid until the lock clicks — most washers won't start with the lock unconfirmed.",
+        "Check for Control Lock / Child Lock — hold the labeled button 3 seconds to toggle it off.",
+        "Cancel any Delay Start that may be counting down.",
+        "Power-cycle: unplug for 60 seconds to clear soft control faults before suspecting the board."
+      ],
+      "faqs": [
+        { "q": "Why won't my washer turn on at all?", "a": "No lights at all points to power: dead outlet, tripped breaker, or a failed line filter/control board. Lights but no start usually means the door lock isn't confirming or Control Lock is on." }
+      ]
+    },
+    {
+      "slug": "washer-not-filling", "appliance": "washer",
+      "name": "Washer Not Filling With Water",
+      "h1": "Washer Not Filling With Water: Causes and Fixes",
+      "answer": "A washer that won't fill usually has closed or low-pressure water supply, clogged inlet screens, kinked fill hoses, or a failed water inlet valve. Start by confirming both hot and cold taps are fully open, then clean the mesh inlet screens where the hoses connect to the machine.",
+      "categories": ["water_supply", "water_level", "sensor"],
+      "checks": [
+        "Confirm both supply taps are fully open — a half-open valve drops pressure below the fill threshold.",
+        "Unscrew the fill hoses and clean the mesh inlet screens (they trap mineral scale and sediment).",
+        "Straighten kinked fill hoses behind the machine.",
+        "Check home water pressure — most washers need at least 20 psi to fill in the allotted time.",
+        "If only hot or only cold fills, the problem is on that side (tap, hose, or that half of the inlet valve)."
+      ],
+      "faqs": [
+        { "q": "Why is my washer not filling but the water supply is on?", "a": "Clogged inlet screens or a failed water inlet valve are the usual causes when supply is confirmed on. Clean the screens first — it's free and fixes most cases." }
+      ]
+    },
+    {
+      "slug": "washer-leaking-water", "appliance": "washer",
+      "name": "Washer Leaking Water",
+      "h1": "Washer Leaking Water: Causes and Fixes",
+      "answer": "Washer leaks usually trace to loose or worn hose connections, a torn door boot (front-loaders), too much detergent causing oversudsing, or a cracked tub seal. Identify where the water appears — front, back, or underneath — to narrow the source quickly.",
+      "categories": ["leak", "detergent", "dispenser"],
+      "checks": [
+        "Leak from the front of a front-loader: inspect the door boot/gasket for tears and trapped debris in its lower fold.",
+        "Leak from the back: tighten fill-hose connections and check the drain hose clamp.",
+        "Excessive suds/overflow: switch to HE detergent and use far less — oversudsing pushes water past seals.",
+        "Leak underneath: could be the tub seal, drain pump, or internal hose — pull the machine and run a cycle watching with a flashlight.",
+        "Check the detergent dispenser drawer for clogs that cause overflow."
+      ],
+      "faqs": [
+        { "q": "Why does my front-load washer leak from the door?", "a": "A torn or debris-fouled door boot (gasket) is the most common front-leak cause. Pull back the boot's folds and inspect for tears, coins, and residue; replace the boot if torn." }
+      ]
+    },
+    {
+      "slug": "washer-shaking-loud", "appliance": "washer",
+      "name": "Washer Shaking or Loud During Spin",
+      "h1": "Washer Shaking, Walking, or Loud on Spin: Causes and Fixes",
+      "answer": "Violent shaking or a washer that 'walks' during spin is usually an unbalanced load, unlevel feet, or shipping bolts still installed on a new front-loader. Redistribute the load, level the machine, and confirm transit bolts are removed. Persistent banging can mean worn suspension or bad drum bearings.",
+      "categories": ["balance", "motor"],
+      "checks": [
+        "Redistribute the load evenly — single heavy items (rugs, towels) are the #1 cause of unbalance.",
+        "Level the machine: adjust the feet so it doesn't rock, then tighten the lock nuts.",
+        "New machine? Confirm all shipping/transit bolts were removed from the back panel.",
+        "Listen for a grinding/rumbling that worsens with speed — that points to drum bearings, a bigger repair.",
+        "Check that the machine sits on a solid floor, not a flexing subfloor or riser."
+      ],
+      "faqs": [
+        { "q": "Why does my washer shake so violently on spin?", "a": "Most often an unbalanced load or an unlevel machine. On a new front-loader, leftover shipping bolts cause severe shaking. If it's level, balanced, and bolt-free, suspect worn suspension rods or drum bearings." }
+      ]
+    },
+    {
+      "slug": "washer-not-spinning", "appliance": "washer",
+      "name": "Washer Not Spinning",
+      "h1": "Washer Won't Spin: Causes and Fixes",
+      "answer": "A washer that fills and washes but won't spin usually has a drainage problem (it must drain before it spins), an unbalanced load it can't safely accelerate, a door/lid lock that isn't confirming, or a worn drive belt/motor. Check drainage and the lock first.",
+      "categories": ["drainage", "balance", "door", "door_lock", "motor"],
+      "checks": [
+        "Confirm it drains fully first — washers won't spin with water in the tub (see drain troubleshooting).",
+        "Redistribute the load; an unbalanced drum aborts the spin ramp for safety.",
+        "Verify the lid/door lock engages and confirms — a failed lock blocks spin.",
+        "Listen for the motor trying: humming with no spin can be a seized bearing or failed capacitor; silence points to control or lock.",
+        "On belt-drive models, a worn or broken drive belt causes wash-but-no-spin."
+      ],
+      "faqs": [
+        { "q": "Why does my washer wash but not spin?", "a": "The most common reason is that it isn't draining — washers must empty before they spin. Clear the drain filter and hose. If it drains fine, suspect the lid lock, an unbalanced load, or the drive belt/motor." }
+      ]
+    },
+    {
+      "slug": "dryer-not-heating", "appliance": "dryer",
+      "name": "Dryer Not Heating",
+      "h1": "Dryer Runs But Won't Heat: Causes and Fixes",
+      "answer": "A dryer that tumbles but won't heat usually has a blown thermal fuse, a failed heating element (electric) or igniter/gas valve (gas), or — on electric dryers — only one of the two 240V breaker legs tripped. A restricted vent is the root cause behind most blown thermal fuses, so always clean the duct run.",
+      "categories": ["heating", "airflow", "sensor", "electrical", "temperature_sensor"],
+      "checks": [
+        "Electric: check BOTH breaker legs — one tripped leg lets the drum turn but kills the heater.",
+        "Clean the full vent run, lint screen, and exterior hood — restriction trips the thermal cutoff and blows the fuse.",
+        "Test the thermal fuse for continuity (back panel, on the blower housing) — it's a one-time device that must be replaced if blown.",
+        "Electric: measure the heating element for continuity; a broken coil = no heat.",
+        "Gas: listen for the igniter glowing and the gas valve clicking — a weak igniter won't open the valve."
+      ],
+      "faqs": [
+        { "q": "Why is my dryer running but not getting hot?", "a": "On electric dryers, a single tripped 240V breaker leg is a classic cause — the motor runs on 120V but the heater needs both legs. Otherwise: a blown thermal fuse (from vent restriction), a failed heating element, or on gas models a bad igniter." },
+        { "q": "Will a clogged vent stop my dryer from heating?", "a": "Yes — a restricted vent overheats the dryer and trips the thermal cutoff, which can blow the thermal fuse and cut heat entirely. Clean the full duct run, then replace the fuse if blown." }
+      ]
+    },
+    {
+      "slug": "dryer-not-drying", "appliance": "dryer",
+      "name": "Dryer Not Drying Clothes",
+      "h1": "Dryer Takes Too Long or Won't Dry: Causes and Fixes",
+      "answer": "Clothes still damp after a full cycle is almost always an airflow problem: a lint-clogged screen, a restricted vent duct, or a blocked exterior vent hood. Poor airflow traps moist air in the drum. Clean the entire path from lint screen to outside wall — it's the single most effective fix.",
+      "categories": ["airflow", "sensor", "moisture_sensor", "heating"],
+      "checks": [
+        "Clean the lint screen before every load — a film of fabric softener residue also blocks airflow (wash it with soap).",
+        "Disconnect and clean the full vent duct to the exterior; check the outdoor hood flap for lint, paint, or nests.",
+        "Don't overload — clothes need room to tumble for moisture to escape.",
+        "Clean the moisture-sensor bars (two metal strips inside the drum) — softener film makes them read 'dry' early.",
+        "Confirm the dryer actually heats — weak heat plus poor airflow compounds long dry times."
+      ],
+      "faqs": [
+        { "q": "Why does my dryer take two or three cycles to dry?", "a": "Restricted airflow is the cause in the vast majority of cases. A clogged lint screen, a lint-packed vent duct, or a blocked exterior hood traps moist air. Clean the entire path from screen to outside." }
+      ]
+    },
+    {
+      "slug": "dryer-wont-start", "appliance": "dryer",
+      "name": "Dryer Won't Start",
+      "h1": "Dryer Won't Start or Turn On: Causes and Fixes",
+      "answer": "A dryer that won't start usually has a power problem, a door that isn't fully latched (the door switch must close), or a failed start switch, thermal fuse, or belt switch. Confirm power and a firmly closed door first, then a 60-second power cycle.",
+      "categories": ["power", "control_board", "control_panel", "control", "user_interface"],
+      "checks": [
+        "Check power: both 240V breaker legs (electric) or the outlet/breaker (gas); avoid extension cords.",
+        "Close the door firmly — a worn door switch or misaligned strike prevents start.",
+        "Hold the Start button fully — momentary start switches need a solid press.",
+        "A blown thermal fuse kills start on some models; test it for continuity.",
+        "Power-cycle 60 seconds to clear soft control faults."
+      ],
+      "faqs": [
+        { "q": "Why does my dryer hum but not start?", "a": "A humming dryer that won't turn often has a seized blower wheel, a bad start capacitor, or a failed motor. If it's silent, look at the door switch, start switch, thermal fuse, and power supply first." }
+      ]
+    },
+    {
+      "slug": "dishwasher-not-draining", "appliance": "dishwasher",
+      "name": "Dishwasher Not Draining",
+      "h1": "Dishwasher Won't Drain: Causes and Fixes",
+      "answer": "Standing water in the bottom of a dishwasher usually means a clogged filter, a blocked drain hose, a plugged air gap, or a disposer knockout plug left in place on a new install. Clean the sump filter first — it traps food debris and is the most common cause.",
+      "categories": ["drainage", "motor", "pump", "sensor"],
+      "checks": [
+        "Clean the cylindrical sump filter at the bottom of the tub — pull it out and rinse away trapped food and glass grit.",
+        "Check the air gap (the chrome cap at the sink) for clog — pop it off and clear debris.",
+        "New install or new disposer? Confirm the disposer knockout plug was removed — this blocks drainage completely.",
+        "Inspect the drain hose for kinks behind the unit and under the sink.",
+        "Run the disposer — dishwashers often share its drain line, and a full disposer backs up into the dishwasher."
+      ],
+      "faqs": [
+        { "q": "Why is there standing water in the bottom of my dishwasher?", "a": "A clogged sump filter is the most common cause, followed by a blocked air gap, a kinked drain hose, or a disposer knockout plug left in on a new connection. A shallow amount of clean water in the sump is normal between cycles." }
+      ]
+    },
+    {
+      "slug": "dishwasher-not-cleaning", "appliance": "dishwasher",
+      "name": "Dishwasher Not Cleaning Dishes",
+      "h1": "Dishwasher Not Cleaning Dishes Well: Causes and Fixes",
+      "answer": "Poor cleaning usually comes from clogged spray arms, a dirty filter, low inlet water temperature, hard-water scale, or improper loading that blocks spray. Clean the filter and spray-arm jets, run the hot tap before starting, and use a dishwasher cleaner to strip scale.",
+      "categories": ["water_supply", "heating", "motor", "sensor"],
+      "checks": [
+        "Pull and rinse the sump filter — a fouled filter recirculates dirty water.",
+        "Clear the spray-arm holes with a toothpick; remove the arms and flush them.",
+        "Run the kitchen hot tap until hot before starting — incoming water should be ~120°F.",
+        "Don't block the spray: tall items and overlapping dishes shadow the jets.",
+        "Run an empty cycle with dishwasher cleaner or citric acid to remove hard-water scale and grease."
+      ],
+      "faqs": [
+        { "q": "Why are my dishes still dirty after the dishwasher runs?", "a": "Most often a clogged filter or spray arms, low inlet water temperature, or hard-water scale. Clean the filter and spray jets, run the hot tap first, and descale the machine — these fix the majority of poor-cleaning complaints." }
+      ]
+    },
+    {
+      "slug": "dishwasher-leaking", "appliance": "dishwasher",
+      "name": "Dishwasher Leaking",
+      "h1": "Dishwasher Leaking Water: Causes and Fixes",
+      "answer": "Dishwasher leaks usually trace to a worn door gasket, oversudsing from the wrong detergent, an overfilled or tilted unit, or a loose hose connection. Many leaks trip a base-pan leak sensor (LC, AE, i30, E15, FL depending on brand) that disables the machine until dry.",
+      "categories": ["leak", "door", "door_lock"],
+      "checks": [
+        "Inspect the door gasket for tears, food residue, and proper seating all the way around.",
+        "Use only dishwasher detergent — never dish soap, which oversuds and pushes water past seals.",
+        "Confirm the unit is level; a tilt sends water to one corner and past the door seal.",
+        "Check hose clamps and the fill/drain connections under the sink.",
+        "If a leak code appears, dry the base pan — the float/leak sensor blocks operation until it's dry."
+      ],
+      "faqs": [
+        { "q": "Why does my dishwasher leak from the bottom of the door?", "a": "A worn or food-fouled door gasket is the usual cause, along with oversudsing from using the wrong soap. Inspect and clean the gasket, switch to proper dishwasher detergent, and confirm the unit is level." }
+      ]
+    },
+    {
+      "slug": "dishwasher-wont-start", "appliance": "dishwasher",
+      "name": "Dishwasher Won't Start",
+      "h1": "Dishwasher Won't Start: Causes and Fixes",
+      "answer": "A dishwasher that won't start usually has a door that isn't latched, an active Control Lock or Delay Start, or a power issue at the breaker. The door latch must fully engage for the cycle to begin. Confirm the latch, check for lock/delay modes, then reset power.",
+      "categories": ["power", "control_panel", "door", "door_lock", "control"],
+      "checks": [
+        "Push the door until the latch clicks firmly — a misaligned or worn latch is the #1 no-start cause.",
+        "Check for Control Lock (often a 3-second button hold) and cancel any Delay Start.",
+        "Confirm power at the breaker — dishwashers are usually hardwired or on a dedicated circuit.",
+        "Make sure a cycle is actually selected and Start was pressed and the door closed within the start window.",
+        "Power-cycle at the breaker for 60 seconds to clear soft faults."
+      ],
+      "faqs": [
+        { "q": "Why won't my dishwasher start but has power?", "a": "Usually the door latch isn't fully engaging, or Control Lock / Delay Start is active. Press the door firmly until it clicks, check for a lock indicator, and make sure you closed the door within a few seconds of pressing Start." }
+      ]
+    },
+    {
+      "slug": "refrigerator-not-cooling", "appliance": "refrigerator",
+      "name": "Refrigerator Not Cooling",
+      "h1": "Refrigerator Not Cooling: Causes and Fixes",
+      "answer": "A fridge that runs but won't cool usually has dirty condenser coils, a failed evaporator fan, or an iced-over evaporator from a defrost-system fault. Clean the coils first (the most common and easiest fix), then check whether the evaporator fan is running and whether the back of the freezer is iced up.",
+      "categories": ["cooling", "motor", "fan", "defrost", "compressor", "sensor", "temperature"],
+      "checks": [
+        "Clean the condenser coils (behind the lower kick plate or on the back) — dust-clogged coils are the #1 cause of weak cooling.",
+        "Confirm the condenser fan (near the compressor) spins — heat won't shed if it's stalled.",
+        "Listen for the evaporator fan inside the freezer; open the door and press the light switch to keep it running.",
+        "Check the freezer back panel for ice buildup — heavy frost means a defrost-system fault (heater, sensor, or control).",
+        "Verify the temperature setting wasn't bumped and the vents between freezer and fridge aren't blocked by food."
+      ],
+      "faqs": [
+        { "q": "Why is my fridge running but not cold?", "a": "The most common causes are dirty condenser coils, a stalled condenser or evaporator fan, or an iced-over evaporator from a defrost fault. Clean the coils first, then confirm both fans run and check for frost behind the freezer panel." },
+        { "q": "Why is my freezer cold but the fridge is warm?", "a": "This classic split usually means the evaporator fan failed or the evaporator is iced over, so cold air isn't reaching the fridge compartment. Check the fan and look for frost behind the freezer back panel." }
+      ]
+    },
+    {
+      "slug": "refrigerator-ice-maker-not-working", "appliance": "refrigerator",
+      "name": "Refrigerator Ice Maker Not Working",
+      "h1": "Refrigerator Ice Maker Not Working: Causes and Fixes",
+      "answer": "An ice maker that stops usually has a frozen fill tube, a closed or kinked water line, a clogged water filter, or freezer temperatures too warm to freeze cubes (needs ≤ 0°F / -18°C). Thaw the fill tube, confirm water supply, and change the filter.",
+      "categories": ["ice_maker", "sensor", "temperature"],
+      "checks": [
+        "Confirm freezer temperature is at or below 0°F (-18°C) — warmer than that and cubes won't form.",
+        "Check the water filter — an overdue filter chokes flow; replace it and confirm the supply valve is open.",
+        "Thaw a frozen fill tube (the small tube feeding the mold) with warm water or a hair dryer.",
+        "Make sure the ice maker's wire/feeler arm or the on/off switch is in the ON position.",
+        "Listen for the fill valve buzzing during the fill — a dead valve means no water reaches the mold."
+      ],
+      "faqs": [
+        { "q": "Why did my refrigerator ice maker stop making ice?", "a": "Common causes: a frozen fill tube, a clogged or overdue water filter, a closed supply valve, or freezer temperature too warm (must be ≤ 0°F). Thaw the fill tube, change the filter, and confirm the supply." }
+      ]
+    },
+    {
+      "slug": "refrigerator-freezing-food", "appliance": "refrigerator",
+      "name": "Refrigerator Freezing Food",
+      "h1": "Refrigerator Freezing Food in the Fresh-Food Section: Causes and Fixes",
+      "answer": "Food freezing in the fridge compartment usually means the temperature is set too low, items are sitting directly in front of a cold-air vent, or a failed thermistor/damper is overcooling. Raise the setting a few degrees, move food away from vents, and check the damper.",
+      "categories": ["temperature", "sensor", "temperature_sensor", "control"],
+      "checks": [
+        "Raise the fridge setting a few degrees — aim for 37–40°F (3–4°C).",
+        "Move items away from the rear and upper air vents where the coldest air enters.",
+        "Don't store delicate items (lettuce, eggs) directly under the freezer-to-fridge air duct.",
+        "Check the air damper between compartments — stuck open, it overcools the fridge.",
+        "A failed thermistor can make the control overcool — suspect it if settings don't change anything."
+      ],
+      "faqs": [
+        { "q": "Why is my refrigerator freezing my food?", "a": "Usually the temperature is set too cold, food is sitting in the path of the cold-air vent, or the air damper/thermistor has failed. Raise the setting, relocate food away from vents, and check the damper if it persists." }
+      ]
+    },
+    {
+      "slug": "oven-not-heating", "appliance": "oven",
+      "name": "Oven Not Heating",
+      "h1": "Oven Won't Heat or Won't Reach Temperature: Causes and Fixes",
+      "answer": "An oven that won't heat usually has a failed bake element (electric), a weak igniter (gas), or a drifted oven temperature sensor. On electric ovens, look for a visibly broken or non-glowing element; on gas, watch whether the igniter glows but the burner never lights — a classic weak-igniter sign.",
+      "categories": ["heating", "temperature", "sensor", "temperature_sensor", "control_board", "control"],
+      "checks": [
+        "Electric: watch the bake element — it should glow evenly orange; blistered, broken, or dark spots mean replace it.",
+        "Gas: watch the igniter — if it glows but the burner doesn't light within 90 seconds, the igniter is too weak to open the gas valve.",
+        "Test the oven temperature sensor: about 1,080–1,100Ω at room temperature; open or shorted = replace.",
+        "Confirm the oven isn't in a delay-bake, Sabbath, or demo mode.",
+        "Electric: a tripped 240V breaker leg can let the display work but kill the heating elements."
+      ],
+      "faqs": [
+        { "q": "Why is my electric oven not heating up?", "a": "A failed bake element is the most common cause — look for breaks or blisters, and confirm it glows when baking. Also check the oven temperature sensor and that both 240V breaker legs are on." },
+        { "q": "Why does my gas oven igniter glow but not light?", "a": "A weak igniter is the classic gas-oven failure: it still glows but no longer draws enough current to open the safety gas valve. The igniter needs replacement — it's a common DIY part." }
+      ]
+    },
+    {
+      "slug": "oven-wont-turn-on", "appliance": "oven",
+      "name": "Oven Won't Turn On",
+      "h1": "Oven Won't Turn On: Causes and Fixes",
+      "answer": "An oven with a dead display usually has a power problem — a tripped breaker or a failed control board. If the display works but the oven won't respond, check for an active lock (control lock, self-clean lockout, or Sabbath mode) and reset power at the breaker.",
+      "categories": ["power", "control_panel", "control_board", "control", "door_latch", "safety"],
+      "checks": [
+        "Dead display: check the breaker (ovens are 240V — both legs matter) and confirm the unit is getting power.",
+        "Working display, no response: look for a Control Lock, Sabbath mode, or self-clean lockout indicator.",
+        "If a self-clean cycle was interrupted, the door latch may be stuck locked — let the oven fully cool.",
+        "Reset at the breaker for 60 seconds to clear control faults.",
+        "A failed electronic oven control (EOC) board can kill all function — suspect it if power is confirmed and no mode is active."
+      ],
+      "faqs": [
+        { "q": "Why is my oven display dead?", "a": "A tripped breaker (check both 240V legs), a blown internal fuse, or a failed control board. Reset the breaker for 60 seconds first; if the display stays dark with power confirmed, the control board is the likely culprit." }
+      ]
+    },
+    {
+      "slug": "oven-door-locked", "appliance": "oven",
+      "name": "Oven Door Stuck Locked",
+      "h1": "Oven Door Stuck Locked After Self-Clean: Causes and Fixes",
+      "answer": "An oven door that won't unlock is almost always stuck in the self-clean lockout. The latch won't release until the oven cools below a safe temperature (often 30–90 minutes after the cycle). If it stays locked after cooling, a power reset usually completes the latch motor's travel.",
+      "categories": ["door_latch", "door", "safety", "control"],
+      "checks": [
+        "Wait for full cool-down — self-clean locks the door until the cavity drops below ~550°F; this can take up to 90 minutes.",
+        "Power-cycle at the breaker for 60 seconds — this often lets the latch motor finish its travel and release.",
+        "Start and then immediately cancel a short self-clean — sometimes re-running the lock cycle frees a stuck latch motor.",
+        "Check for an error code indicating a latch or door fault and look it up.",
+        "Never force the door — the latch motor and door hinges are easily damaged."
+      ],
+      "faqs": [
+        { "q": "How do I unlock my oven door after self-cleaning?", "a": "Wait until the oven fully cools — the safety latch won't release while it's hot, which can take up to 90 minutes. If it's cool and still locked, reset power at the breaker for 60 seconds to let the latch motor complete its cycle." }
+      ]
+    },
+    {
+      "slug": "washer-error-codes", "appliance": "washer",
+      "name": "Washer Error Codes",
+      "h1": "Washer Error Codes by Brand: What They Mean",
+      "answer": "Washer error codes identify which subsystem failed — water supply, drainage, door lock, motor, or balance. The same fault often has different code letters per brand: a slow-drain fault is F21 on Whirlpool, OE on LG, 5C on Samsung, and E20 on Electrolux. Find your brand below to decode yours.",
+      "categories": ["water_supply", "drainage", "door", "door_lock", "motor", "balance", "sensor", "leak"],
+      "checks": [
+        "Note the exact characters shown — washer codes are case- and digit-specific.",
+        "Identify your brand and look up the code on its dedicated page for causes and fix steps.",
+        "Drain codes (F21/OE/5C/E20) usually mean a clogged drain filter — check it first.",
+        "Door/lid codes mean the lock isn't confirming — inspect the latch and strike.",
+        "A code that returns after a power-cycle reset indicates a real, present fault."
+      ],
+      "faqs": [
+        { "q": "Are washer error codes the same across brands?", "a": "No — each brand uses its own code scheme, though the underlying faults overlap. A slow-drain error is F21 (Whirlpool), OE (LG), 5C (Samsung), and E20 (Electrolux). Always look up the code under your specific brand." }
+      ]
+    },
+    {
+      "slug": "dryer-error-codes", "appliance": "dryer",
+      "name": "Dryer Error Codes",
+      "h1": "Dryer Error Codes by Brand: What They Mean",
+      "answer": "Dryer error codes point to airflow restriction, heating faults, or sensor problems. Airflow codes are the most common — D80/D90/D95 on LG, AF on Whirlpool, Clg on Samsung — and nearly always mean a clogged vent rather than a broken part. Find your brand to decode yours.",
+      "categories": ["airflow", "heating", "sensor", "control_board", "motor", "temperature_sensor", "moisture_sensor"],
+      "checks": [
+        "Note the exact code from the display.",
+        "Airflow codes (LG D80/D90, Whirlpool AF, Samsung Clg) mean clean the vent run — start there.",
+        "Heating codes usually involve the thermal fuse, element, or thermistor.",
+        "Look up your specific brand's code for the exact cause and fix.",
+        "A blown thermal fuse won't reset — replace it and fix the vent restriction that blew it."
+      ],
+      "faqs": [
+        { "q": "What is the most common dryer error code?", "a": "Airflow/vent-restriction codes are by far the most common: LG's D80/D90/D95, Whirlpool's AF, and Samsung's Clg. They measure duct blockage and almost always mean the vent needs cleaning, not a part replaced." }
+      ]
+    }
+  ]
+}

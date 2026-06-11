@@ -1,0 +1,60 @@
+---
+export interface Props {
+  codeId: string;
+}
+const { codeId } = Astro.props;
+---
+<div class="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-10" data-feedback={codeId}>
+  <p class="font-semibold text-gray-800 mb-3">Did this guide fix your appliance?</p>
+  <div class="flex gap-3" data-feedback-buttons>
+    <button data-vote="yes"
+      class="px-5 py-2 rounded-lg border-2 border-green-300 bg-white text-green-700 font-medium hover:bg-green-50 transition-colors">
+      👍 Yes, fixed it
+    </button>
+    <button data-vote="no"
+      class="px-5 py-2 rounded-lg border-2 border-gray-300 bg-white text-gray-600 font-medium hover:bg-gray-100 transition-colors">
+      👎 Not yet
+    </button>
+  </div>
+  <p class="hidden text-sm text-green-700 font-medium" data-feedback-thanks>
+    ✓ Thanks — your feedback helps us improve this guide for the next person.
+  </p>
+  <p class="hidden text-sm text-gray-600" data-feedback-sorry>
+    Thanks for letting us know. If the steps above didn't work, see
+    <a href="#when-to-call-pro" class="text-brand-600 hover:underline">when to call a professional</a>.
+  </p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-feedback]').forEach(box => {
+    const id = box.dataset.feedback!;
+    const key = `fb:${id}`;
+    const buttons = box.querySelector<HTMLElement>('[data-feedback-buttons]')!;
+    const thanks = box.querySelector<HTMLElement>('[data-feedback-thanks]')!;
+    const sorry = box.querySelector<HTMLElement>('[data-feedback-sorry]')!;
+
+    function showResult(vote: string) {
+      buttons.classList.add('hidden');
+      (vote === 'yes' ? thanks : sorry).classList.remove('hidden');
+    }
+
+    const prior = localStorage.getItem(key);
+    if (prior) { showResult(prior); return; }
+
+    buttons.querySelectorAll<HTMLButtonElement>('button[data-vote]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const vote = btn.dataset.vote!;
+        localStorage.setItem(key, vote);
+        showResult(vote);
+        // GA4 event — works even if the KV endpoint is down
+        try { (window as any).gtag?.('event', 'fix_feedback', { code_id: id, vote }); } catch {}
+        // Durable count via Pages Function (fire-and-forget)
+        fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, vote }),
+        }).catch(() => {});
+      });
+    });
+  });
+</script>

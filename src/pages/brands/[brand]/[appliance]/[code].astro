@@ -6,11 +6,16 @@ import BreadcrumbNav from '../../../../components/BreadcrumbNav.astro';
 import CausesList from '../../../../components/CausesList.astro';
 import FixSteps from '../../../../components/FixSteps.astro';
 import AdSlot from '../../../../components/AdSlot.astro';
+import ReviewedBy from '../../../../components/ReviewedBy.astro';
+import FeedbackWidget from '../../../../components/FeedbackWidget.astro';
 import {
   brands, applianceTypes, errorCodes,
-  getBrand, getApplianceType, getCode, getRelatedCodes, getCrossBrandCodes, slugifyCode
+  getBrand, getApplianceType, getCode, getRelatedCodes, getCrossBrandCodes,
+  getCodesByBrandAndAppliance, slugifyCode
 } from '../../../../utils/data';
 import { faqSchema, howToSchema, breadcrumbSchema, articleSchema } from '../../../../utils/schema';
+import { verifiedDate, verifiedDateHuman } from '../../../../utils/freshness';
+import { sourcesForBrand } from '../../../../utils/sources';
 
 // Short appliance names for <title> (saves chars vs "Washing Machine", "Refrigerator")
 const APP_SHORT: Record<string,string> = {
@@ -42,6 +47,19 @@ const brand = getBrand(brandSlug!)!;
 const appType = getApplianceType(appSlug!);
 const relatedCodes = getRelatedCodes(errorCode);
 const crossBrandCodes = getCrossBrandCodes(errorCode.code, brandSlug!).slice(0, 4);
+
+const relatedIds = new Set([errorCode.id, ...relatedCodes.map(c => c.id)]);
+const siblingCodes = getCodesByBrandAndAppliance(brandSlug!, appSlug!)
+  .filter(c => !relatedIds.has(c.id))
+  .slice(0, 6);
+
+const codeKey = errorCode.code.toUpperCase().replace(/[-\s]/g, '');
+const crossBrandPageExists = errorCodes.filter(c => c.code.toUpperCase().replace(/[-\s]/g, '') === codeKey).length >= 2;
+const crossBrandPageUrl = `/error/${codeKey.toLowerCase()}/`;
+
+const brandSources = sourcesForBrand(brandSlug!);
+const lastVerified = verifiedDate(errorCode);
+const lastVerifiedHuman = verifiedDateHuman(errorCode);
 const appName = appType?.name ?? appSlug!;
 // Short names for titles — "Washing Machine"→"Washer", keeps <title> ≤65 chars
 const appShort = (APP_SHORT as Record<string,string>)[appSlug!] ?? appName;
@@ -71,7 +89,7 @@ const schemas = [
     { name: `${appName} Errors`, url: `/brands/${brandSlug}/${appSlug}/` },
     { name: `Error ${errorCode.code}`, url: `/brands/${brandSlug}/${appSlug}/${slugifyCode(errorCode.code)}/` },
   ]),
-  articleSchema(errorCode, brandName, appName),
+  articleSchema(errorCode, brandName, appName, lastVerified),
 ];
 
 const severityColors: Record<string, string> = {
@@ -98,6 +116,8 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
       {brandName} {appName} Error Code <span class="text-brand-600 font-mono">{errorCode.code}</span>
     </h1>
 
+    <ReviewedBy verifiedDate={lastVerifiedHuman} />
+
     <!-- Quick answer box -->
     <div class={`rounded-xl border-2 p-5 mb-8 ${severityColors[errorCode.severity]}`}>
       <div class="flex flex-wrap gap-3 mb-3">
@@ -119,6 +139,17 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
         )}
       </div>
     </div>
+
+    <!-- Display illustration (image SEO) -->
+    <figure class="mb-8">
+      <img src={`/images/codes/${errorCode.id}.svg`}
+           alt={`${brandName} ${appName} error code ${errorCode.code} on the display panel`}
+           width="800" height="450" loading="lazy"
+           class="w-full max-w-xl mx-auto rounded-xl border border-gray-200" />
+      <figcaption class="text-center text-xs text-gray-400 mt-2">
+        How the {errorCode.code} code appears on a {brandName} {appName.toLowerCase()} display
+      </figcaption>
+    </figure>
 
     <!-- Top ad -->
     <AdSlot slot_id="1234567890" style="leaderboard" />
@@ -195,6 +226,9 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
       </p>
     </section>
 
+    <!-- Feedback: did this fix work? -->
+    <FeedbackWidget codeId={errorCode.id} />
+
     <!-- When to call a pro -->
     <section id="when-to-call-pro" class="mb-10">
       <h2 class="text-2xl font-bold text-gray-900 mb-3">When to Call a Professional</h2>
@@ -229,7 +263,12 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
     {crossBrandCodes.length > 0 && (
       <section class="mb-10">
         <h2 class="text-2xl font-bold text-gray-900 mb-2">Same Code on Other Brands</h2>
-        <p class="text-gray-500 text-sm mb-4">Error code <strong>{errorCode.code}</strong> appears on these other brands too. Click to compare:</p>
+        <p class="text-gray-500 text-sm mb-4">
+          Error code <strong>{errorCode.code}</strong> appears on these other brands too.
+          {crossBrandPageExists && (
+            <a href={crossBrandPageUrl} class="text-brand-600 hover:underline ml-1">See every brand that shows {errorCode.code} →</a>
+          )}
+        </p>
         <div class="grid sm:grid-cols-2 gap-3">
           {crossBrandCodes.map(rc => {
             const rcBrand = getBrand(rc.brand);
@@ -287,6 +326,22 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
       <p class="text-xs text-gray-400 mt-2">External links — ApplianceErrors.com is not affiliated with these retailers.</p>
     </section>
 
+    <!-- More codes from this brand+appliance (internal-link density) -->
+    {siblingCodes.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">More {brandName} {appName} Error Codes</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {siblingCodes.map(sc => (
+            <a href={`/brands/${sc.brand}/${sc.appliance}/${slugifyCode(sc.code)}/`}
+               class="px-3 py-2 border border-gray-200 rounded-lg hover:border-brand-400 text-sm transition-all">
+              <span class="font-bold text-brand-600 font-mono">{sc.code}</span>
+              <span class="text-gray-500 block truncate text-xs">{sc.meaning}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     <!-- FAQs -->
     <section id="faqs" class="mb-10">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
@@ -326,6 +381,23 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
           </details>
         ))}
       </div>
+    </section>
+
+    <!-- Sources & references (E-E-A-T) -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-900 mb-2">Sources & References</h2>
+      <ul class="text-sm text-gray-600 space-y-1">
+        {brandSources.map(s => (
+          <li>
+            • <a href={s.url} target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">{s.name}</a>
+            <span class="text-gray-400"> — official manufacturer documentation</span>
+          </li>
+        ))}
+        <li>• <a href="/editorial-policy/" class="text-brand-600 hover:underline">Our editorial &amp; verification policy</a></li>
+      </ul>
+      <p class="text-xs text-gray-400 mt-2">
+        Content verified against manufacturer service documentation. Last verified: {lastVerifiedHuman}.
+      </p>
     </section>
 
     <!-- Bottom ad -->

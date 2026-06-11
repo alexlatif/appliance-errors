@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import { errorCodes } from '../../utils/data';
+import { breadcrumbSchema } from '../../utils/schema';
+
+// Same grouping as [code].astro — only codes spanning 2+ brand/appliance combos
+const groups = new Map<string, { display: string; count: number; brands: Set<string> }>();
+for (const c of errorCodes) {
+  const key = c.code.toUpperCase().replace(/[-\s]/g, '');
+  if (!groups.has(key)) groups.set(key, { display: c.code, count: 0, brands: new Set() });
+  const g = groups.get(key)!;
+  g.count++;
+  g.brands.add(c.brand);
+}
+const crossBrand = [...groups.entries()]
+  .filter(([, g]) => g.count >= 2)
+  .sort((a, b) => b[1].count - a[1].count);
+
+const title = `Appliance Error Code Lookup by Code — ${crossBrand.length} Shared Codes | ApplianceErrors.com`;
+const description = `Don't know your brand's exact code page? Look up any appliance error code — ${crossBrand.length} codes shared across multiple brands, disambiguated by brand and appliance type.`;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Error Codes', url: '/error/' },
+  ]),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Error Codes' }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Error Code Lookup — By Code</h1>
+    <p class="text-gray-600 mb-2 max-w-3xl">
+      These error codes appear on <strong>more than one brand</strong> — and usually mean something different
+      on each. Click a code to see every brand and appliance that displays it.
+    </p>
+    <p class="text-gray-500 text-sm mb-8">
+      Know your brand already? Use the <a href="/tools/error-code-lookup/" class="text-brand-600 hover:underline">interactive lookup tool</a>
+      or browse <a href="/brands/" class="text-brand-600 hover:underline">by brand</a>.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      {crossBrand.map(([key, g]) => (
+        <a href={`/error/${key.toLowerCase()}/`}
+           class="p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all text-center">
+          <div class="font-bold text-brand-600 font-mono text-lg">{g.display}</div>
+          <div class="text-xs text-gray-500 mt-1">{g.brands.size} brand{g.brands.size > 1 ? 's' : ''} · {g.count} meanings</div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

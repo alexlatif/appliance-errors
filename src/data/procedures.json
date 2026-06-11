@@ -1,0 +1,726 @@
+{
+  "procedures": [
+    {
+      "brand": "samsung", "appliance": "washer",
+      "diagnostic": {
+        "summary": "Samsung washers display error codes automatically on the front panel when a fault occurs. Calibration mode and the SmartThings app provide deeper diagnostics.",
+        "steps": [
+          "Read the current code directly from the display — Samsung washers show active faults without entering any special mode.",
+          "Run Calibration Mode after moving the machine or replacing parts: with the washer on and empty, hold Temp. and Delay End together for about 3 seconds until 'Cb' appears, then press Start. The drum runs empty for 2–3 minutes and shuts off when done.",
+          "For models with SmartThings (most 2018+ units), open the app and run the washer self-check — it reports fault history in plain English, which is the easiest way to see intermittent codes.",
+          "On many models, pressing and holding the Start/Pause button right after a cycle aborts will re-display the last error code.",
+          "Exact service-mode button combinations vary by model series. The tech sheet (inside the lower front panel or taped behind the top lid on top-loaders) lists the sequence for your specific model."
+        ],
+        "notes": "Samsung service mode (fast-track test) is model-specific and intended for technicians. For DIY troubleshooting, the displayed code plus the SmartThings self-check covers nearly every case."
+      },
+      "reset": {
+        "summary": "Most Samsung washer error codes clear with a power reset. The code returns immediately if the underlying fault is still present.",
+        "steps": [
+          "Press Power to turn the washer off.",
+          "Unplug the washer (or switch off its breaker) and wait at least 60 seconds — this lets the control board fully discharge.",
+          "Plug it back in, power on, and start a short cycle (Rinse + Spin) to confirm the code is gone.",
+          "If the same code returns within the first cycle, the fault is real — look up the code and work through its fix steps."
+        ],
+        "notes": "There is no hidden 'master reset' beyond a power cycle on Samsung washers. Codes like UE (unbalance) also clear by simply redistributing the load and pressing Start."
+      },
+      "faqs": [
+        { "q": "How do I see the last error code on a Samsung washer?", "a": "Active codes show automatically on the display. For fault history, run the self-check in the SmartThings app — most 2018-and-newer Samsung washers support it." },
+        { "q": "Does unplugging a Samsung washer clear error codes?", "a": "Yes. A 60-second power cycle clears the displayed code. If the fault is still present, the code reappears as soon as the washer retries the failed operation." }
+      ]
+    },
+    {
+      "brand": "samsung", "appliance": "dryer",
+      "diagnostic": {
+        "summary": "Samsung dryers show fault codes on the front display. A vent-blockage test and SmartThings self-check cover most diagnostics owners need.",
+        "steps": [
+          "Read the active code from the display — no special mode is needed for current faults.",
+          "Run the vent blockage test on models with 'Vent Sensor' or after a Clg code: this automatic airflow check runs at the start of Time Dry cycles on many models.",
+          "Use the SmartThings app self-check (2018+ models) to read stored fault history.",
+          "Check the thermistor reading: with the dryer unplugged, the thermistor (on the heater housing) should read roughly 10kΩ at room temperature on a multimeter — the most useful single measurement for heat-related codes.",
+          "The tech sheet with the model-specific service-mode sequence is folded inside the control console or behind the lower access panel."
+        ],
+        "notes": "Most Samsung dryer complaints (Clg, HC, no-heat) trace to lint restriction in the duct run. Clean the full vent path before testing components."
+      },
+      "reset": {
+        "summary": "Power-cycle the dryer to clear displayed codes; thermal-cutoff trips require the part to be replaced before the dryer will heat again.",
+        "steps": [
+          "Unplug the dryer or flip its breaker off and wait 60 seconds.",
+          "Restore power and start a Time Dry cycle on medium heat.",
+          "If the code returns, look it up and follow the fix steps — heating codes that return usually mean a real component fault, not a glitch."
+        ],
+        "notes": "A blown thermal fuse does not reset — it must be replaced, and the vent restriction that blew it must be fixed or the new fuse will blow too."
+      },
+      "faqs": [
+        { "q": "How do I reset a Samsung dryer after a Clg code?", "a": "Clean the lint screen and the full exhaust duct, then power-cycle the dryer for 60 seconds. Clg is a clog warning — it returns until airflow is actually restored." }
+      ]
+    },
+    {
+      "brand": "samsung", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "Samsung dishwashers display letter-number codes on the front panel, or blink cycle lights in a pattern on non-display models.",
+        "steps": [
+          "On display models, read the code directly (LC, 5C, etc.).",
+          "On non-display models, count which cycle indicator lights blink — the combination maps to a code in the user manual's troubleshooting table.",
+          "For the LC leak code specifically: pull the unit out, remove the kick plate, and check the base pan for moisture — the leak sensor sits in the pan and trips on any water, including detergent overflow.",
+          "SmartThings-connected models report faults in the app with plain-English descriptions.",
+          "The tech sheet behind the kick plate lists the service-mode entry sequence for your control revision."
+        ],
+        "notes": "The LC code keeps the dishwasher disabled while the base pan is wet. Drying the pan with a towel or letting it sit unplugged for 24 hours clears stubborn cases."
+      },
+      "reset": {
+        "summary": "Disconnect power to reset the control. The LC leak code clears only after the base pan dries.",
+        "steps": [
+          "Switch off the dishwasher's breaker (most are hardwired) or unplug it under the sink.",
+          "Wait 60 seconds, restore power, and run a short cycle.",
+          "For LC codes: dry the base pan first — power cycling alone will not clear it while moisture remains on the sensor."
+        ],
+        "notes": "If LC returns with a dry pan, unplug the leak sensor connector per your model's tech sheet to confirm the sensor itself has failed — but never leave it disconnected permanently."
+      },
+      "faqs": [
+        { "q": "How do I clear the LC code on a Samsung dishwasher?", "a": "Dry the base pan completely (remove the kick plate and towel it out or let it air-dry 24h unplugged), then restore power. LC will not clear while the leak sensor detects moisture." }
+      ]
+    },
+    {
+      "brand": "samsung", "appliance": "refrigerator",
+      "diagnostic": {
+        "summary": "Samsung refrigerators have a self-diagnosis display test and forced-operation modes entered from the front panel buttons.",
+        "steps": [
+          "Enter self-diagnosis: press and hold the top-left and top-right buttons on the display panel together for 8–12 seconds (commonly Power Freeze + Power Cool, or Freezer + Fridge depending on model) until the display blinks — any active fault codes then show on the display.",
+          "Forced Freeze / Forced Defrost: with self-diagnosis active, repeated presses of the same combination cycle through 'Fd' (forced defrost) and 'rd' (radiant defrost) modes — used to clear evaporator icing behind fan-noise and fan-code complaints.",
+          "Check the fault from the display segments: each segment of the display corresponds to a specific sensor on Samsung's segment-map (the tech sheet behind the lower front grille has the map).",
+          "Family Hub and SmartThings models report faults directly in the app."
+        ],
+        "notes": "Forced defrost ends with a beep after 20–30 minutes. Use it when the evaporator fan grinds or a fan code appears — icing is the most common root cause."
+      },
+      "reset": {
+        "summary": "Power-cycle at the breaker to reset the control board. The display test mode exits on its own.",
+        "steps": [
+          "Unplug the refrigerator or switch off its breaker for 60 seconds.",
+          "Restore power — the compressor may wait up to 5 minutes before restarting (normal protection delay).",
+          "If a code returns after the cooling system stabilizes (give it 2–4 hours), the underlying fault is real."
+        ],
+        "notes": "After any power loss, ice makers need up to 24 hours to resume normal production — give the system a full day before judging the fix."
+      },
+      "faqs": [
+        { "q": "How do I run forced defrost on a Samsung refrigerator?", "a": "Hold the self-diagnosis button pair (commonly Power Freeze + Power Cool) for 8–12 seconds, then press the pair repeatedly to cycle to 'Fd'. The unit beeps while defrosting and exits automatically." }
+      ]
+    },
+    {
+      "brand": "samsung", "appliance": "oven",
+      "diagnostic": {
+        "summary": "Samsung ranges show E-codes on the control display. Most diagnostics are resistance checks on the oven temperature sensor.",
+        "steps": [
+          "Note the exact code (E-08, E-0A, SE, etc.) — Samsung's E-codes map directly to subsystems.",
+          "For heating codes, test the oven temperature sensor: unplug the range, pull it forward, and measure the sensor plug at the back — it should read about 1,080Ω at room temperature.",
+          "For SE (stuck key) codes, disconnect power and inspect the membrane keypad ribbon connector for moisture or wear.",
+          "Samsung ranges have no consumer-facing diagnostic menu; codes display automatically when faults occur."
+        ],
+        "notes": "The oven sensor is the most common failure and a 15-minute DIY job on most models — two screws inside the back of the oven cavity."
+      },
+      "reset": {
+        "summary": "Reset at the breaker. SE keypad codes sometimes clear after the keypad dries out.",
+        "steps": [
+          "Switch the range's breaker off for 60 seconds (ranges are 240V hardwired or plugged behind the unit — the breaker is the practical option).",
+          "Restore power and set the clock.",
+          "Run a bake test at 350°F for 20 minutes. If the code returns, follow the code's fix guide."
+        ],
+        "notes": "Codes that appear only during self-clean usually mean the door latch or thermal protection tripped — avoid self-clean until fixed."
+      },
+      "faqs": [
+        { "q": "Why does my Samsung range show SE after cleaning the control panel?", "a": "Moisture wicking into the membrane keypad shorts the key matrix. Power off at the breaker, let it dry several hours, and reset. If SE persists, the keypad membrane needs replacement." }
+      ]
+    },
+
+    {
+      "brand": "lg", "appliance": "washer",
+      "diagnostic": {
+        "summary": "LG washers show two-letter codes on the display and have a service test mode plus SmartDiagnosis tone transmission on most models.",
+        "steps": [
+          "Read the active code from the display — LG codes (OE, IE, UE…) display automatically.",
+          "Use SmartDiagnosis: on models with the logo, call up the LG ThinQ app, hold the phone to the marked spot on the control panel, and press the SmartDiagnosis sequence shown in the app — the washer transmits its fault log as audio tones the app decodes.",
+          "Service test mode on most front-loaders: power off, then hold Spin Speed + Soil Level together and press Power. Each subsequent Start/Pause press steps through component tests (fill, drum, drain, etc.).",
+          "Test mode steps vary slightly by series — the exact sequence is on the tech sheet inside the lower access panel."
+        ],
+        "notes": "In test mode the washer actuates one component at a time — listening for the drain pump during its step is the fastest way to separate a dead pump from a clogged filter on OE codes."
+      },
+      "reset": {
+        "summary": "Power-cycle for 60 seconds. The CL display is child lock, not an error — clear it with the dedicated button hold.",
+        "steps": [
+          "Press Power off, unplug the washer, and wait 60 seconds.",
+          "Plug in, power on, and run Rinse+Spin to confirm.",
+          "If 'CL' shows: that is Child Lock — hold the CL button (or the labeled button pair) for 3–5 seconds to toggle it off. It is not a fault."
+        ],
+        "notes": "LG drain (OE) and inlet (IE) codes return immediately on the next cycle if the filter or hoses are still restricted."
+      },
+      "faqs": [
+        { "q": "How do I get my LG washer out of CL mode?", "a": "CL is Child Lock, not an error. Press and hold the Child Lock button (marked CL, often shared with another button) for 3–5 seconds until the display returns to normal." },
+        { "q": "What is LG SmartDiagnosis?", "a": "A feature where the washer transmits its fault history as audio tones to the LG ThinQ app. Hold your phone near the marked spot on the panel and follow the app prompts." }
+      ]
+    },
+    {
+      "brand": "lg", "appliance": "dryer",
+      "diagnostic": {
+        "summary": "LG dryers run an automatic airflow test (D80/D90/D95 codes) and support SmartDiagnosis through the ThinQ app.",
+        "steps": [
+          "Read the code from the display. The D-series codes are percentages of duct blockage detected: D80 = 80% blocked, D90/D95 = nearly full blockage.",
+          "Run Flow Sense check: start a Time Dry cycle — the airflow test runs in the first minutes and reports D-codes if restriction is found.",
+          "Use SmartDiagnosis via the ThinQ app for stored fault history on connected models.",
+          "For no-heat complaints without codes: unplug and measure the thermistor (about 10kΩ at room temperature) and check both legs of the 240V supply — a tripped single breaker leg gives motor-runs-no-heat symptoms (nP code on some models)."
+        ],
+        "notes": "D-codes measure the duct system, not the dryer. Clean from the dryer outlet to the exterior hood — booster fans and long runs are common offenders."
+      },
+      "reset": {
+        "summary": "Power-cycle for 60 seconds after clearing the duct restriction.",
+        "steps": [
+          "Unplug the dryer (or breaker off) for 60 seconds.",
+          "Restore power and run Time Dry — the airflow test re-runs and the D-code clears if the duct is actually clear.",
+          "If D80/D90 returns after a full duct cleaning, check the exterior vent flap for paint, screening, or nesting blockage."
+        ],
+        "notes": "There is no code-bypass: LG D-codes return until airflow is physically restored."
+      },
+      "faqs": [
+        { "q": "Can I keep using my LG dryer with a D80 code?", "a": "It will run, but with 80% duct blockage drying is slow and the thermal cutoff can trip — and a restricted duct full of lint is a fire risk. Clean the vent run before continuing to use it." }
+      ]
+    },
+    {
+      "brand": "lg", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "LG dishwashers show two-letter codes on the display and transmit fault history via SmartDiagnosis on connected models.",
+        "steps": [
+          "Read the active code (AE, OE, IE…) from the display.",
+          "For the AE leak code: pull the unit and inspect the base pan — the float sensor in the pan trips on any accumulated water.",
+          "SmartDiagnosis via ThinQ reads stored faults on connected models.",
+          "The tech sheet (in a plastic sleeve behind the kick plate) documents the service-mode button sequence for your control revision."
+        ],
+        "notes": "OE drain faults: check the drain hose loop height and the air gap before condemning the drain pump — installation issues cause the majority."
+      },
+      "reset": {
+        "summary": "Breaker off for 60 seconds resets the control. AE leak codes need a dry base pan to clear.",
+        "steps": [
+          "Switch off the dishwasher breaker (or unplug under the sink) for 60 seconds.",
+          "Restore power and run a short cycle.",
+          "AE codes: dry the base pan first; the float must drop before the code clears."
+        ],
+        "notes": "Repeated AE with a dry pan usually means a slow door-gasket or sump seal leak that only appears mid-cycle — run a cycle with the kick plate off and watch with a flashlight."
+      },
+      "faqs": [
+        { "q": "How do I clear the AE code on an LG dishwasher?", "a": "AE means the leak float in the base pan tripped. Tip/towel the pan dry, find the source of the water, then power-cycle. The code clears once the float drops." }
+      ]
+    },
+    {
+      "brand": "lg", "appliance": "refrigerator",
+      "diagnostic": {
+        "summary": "LG refrigerators report Er-prefix codes on the display panel and store fault history readable through SmartDiagnosis.",
+        "steps": [
+          "Read the code from the display (Er FF, Er rF, Er dH…). Codes display automatically when faults occur.",
+          "Use SmartDiagnosis via the ThinQ app — hold the phone near the marked area and follow the prompts to transmit fault history.",
+          "For fan codes (Er FF / Er rF): open the relevant compartment, listen for the fan, and check for frost buildup on the back panel — icing that jams the fan blade is the leading cause.",
+          "For defrost codes (Er dH): the defrost heater and thermal fuse on the evaporator can be resistance-tested after removing the freezer back panel."
+        ],
+        "notes": "Linear-compressor-era models (2014–2020) with cooling loss but no codes may have a sealed-system issue — that diagnosis needs gauges and a technician, but it is often covered by LG's 10-year compressor warranty."
+      },
+      "reset": {
+        "summary": "Power-cycle at the breaker or plug for 60 seconds; allow hours for temperatures to stabilize before re-judging.",
+        "steps": [
+          "Unplug the refrigerator for 60 seconds, then restore power.",
+          "Expect a compressor restart delay of several minutes (normal).",
+          "Re-check after 2–4 hours of run time — a code that returns indicates a real fault."
+        ],
+        "notes": "After defrosting an iced evaporator with a power-off thaw (24–48h with doors open and towels down), the fan codes usually stay away only if the root defrost fault is also fixed."
+      },
+      "faqs": [
+        { "q": "Why does my LG fridge show Er rF after a power outage?", "a": "The fridge fan may be temporarily iced or the controller flagged a stall during the outage. Power-cycle 60 seconds and watch for 2–4 hours. If Er rF returns, the evaporator fan or its icing problem needs attention." }
+      ]
+    },
+
+    {
+      "brand": "whirlpool", "appliance": "washer",
+      "diagnostic": {
+        "summary": "Whirlpool VMW top-load washers have a well-known knob-sequence diagnostic mode; front-loaders use button sequences from the tech sheet.",
+        "steps": [
+          "Top-load (VMW platform, dial models): turn the cycle knob counterclockwise one full rotation to reset, then turn clockwise 3 clicks, counterclockwise 1 click, clockwise 1 click. If done at the right speed, the cycle lights flash — you are in diagnostic mode.",
+          "Once in diagnostics: turning the knob steps through stored error codes (shown via the status lights) and automatic test cycles. The tech sheet under the top panel (or behind the console) decodes the light patterns.",
+          "Stored codes display as light combinations — note them, then look up the F#E# pair.",
+          "Front-load models: the entry sequence is button-based and varies by console; it is printed on the tech sheet folded inside the lower front panel.",
+          "To clear stored codes from diagnostic mode: most VMW models clear history by pressing/holding the Start button or stepping to the code-clear position per the tech sheet."
+        ],
+        "notes": "The 3-1-1 knob sequence is timing-sensitive — about half a second per click. If the lights don't flash, rotate fully counterclockwise and try again at a steadier pace."
+      },
+      "reset": {
+        "summary": "Power-cycle for 60 seconds, or use the knob/button reset. Lid-lock errors often clear with this alone.",
+        "steps": [
+          "Unplug the washer for 60 seconds.",
+          "Plug back in and, on dial models, turn the knob counterclockwise one full rotation before selecting a cycle.",
+          "Run Drain & Spin to confirm the code is gone.",
+          "If F5E2 (lid lock) persists: check for detergent residue or debris in the lid-lock strike area before replacing the lock assembly."
+        ],
+        "notes": "VMW washers store fault history — clearing it via diagnostic mode after a repair prevents old codes from confusing future troubleshooting."
+      },
+      "faqs": [
+        { "q": "What is the Whirlpool washer diagnostic knob sequence?", "a": "On VMW dial models: rotate counterclockwise one full turn, then clockwise 3 clicks, counterclockwise 1, clockwise 1. The status lights flash when you've entered diagnostic mode. Timing matters — about half a second per click." },
+        { "q": "How do I clear stored error codes on a Whirlpool top-load washer?", "a": "Enter diagnostic mode with the 3-1-1 knob sequence, then follow the tech sheet's code-clear step (usually a Start-button hold at the fault-display position)." }
+      ]
+    },
+    {
+      "brand": "whirlpool", "appliance": "dryer",
+      "diagnostic": {
+        "summary": "Whirlpool dryers display F-codes on digital models; diagnostic entry is a button sequence from the tech sheet inside the console.",
+        "steps": [
+          "Digital models display F#E# codes automatically when a fault occurs.",
+          "The diagnostic entry on most consoles: press and hold a button (commonly the first button used to start diagnostics per tech sheet) or press a 3-button sequence three times — the exact pattern is printed on the tech sheet inside the control console or behind the lower access panel.",
+          "In diagnostics, stored codes can be stepped through and individual components (motor, heater, valves on gas models) actuated.",
+          "Without entering diagnostics, the two highest-value checks are: thermal fuse continuity (back panel, on the blower housing) and thermistor resistance (~10kΩ at room temp)."
+        ],
+        "notes": "The AF (airflow) code is a measurement of duct restriction — treat it as a maintenance instruction, not a part failure."
+      },
+      "reset": {
+        "summary": "Power-cycle for 60 seconds. Thermal fuses do not reset — they are one-time devices.",
+        "steps": [
+          "Unplug the dryer or switch off both breaker legs for 60 seconds.",
+          "Restore power and run a Timed Dry cycle.",
+          "If the dryer runs but doesn't heat after an F-code: test the thermal fuse and thermal cutoff for continuity — and clean the vent run, because restriction is what blows them."
+        ],
+        "notes": "Gas dryers: a no-heat condition with no code often alternates with the igniter glowing — that pattern means the gas valve coils are failing."
+      },
+      "faqs": [
+        { "q": "Why won't my Whirlpool dryer heat even after resetting?", "a": "A blown thermal fuse or cutoff doesn't reset — it must be replaced. They blow protectively when the vent is restricted, so clean the full duct run or the replacement will fail too." }
+      ]
+    },
+    {
+      "brand": "whirlpool", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "Whirlpool dishwashers use F#E# code pairs. Display models show them directly; non-display models blink them on the Clean light. Service mode is entered with a button-press pattern.",
+        "steps": [
+          "Display models: the code shows as an F#E# pair, or count the Clean-light blinks on non-display models — the light flashes the F value, pauses, then the E value, repeating.",
+          "Enter service diagnostics: press any three different buttons (avoiding Start/Cancel) in the pattern 1-2-3, 1-2-3, 1-2-3 within about 8 seconds. All lights illuminate and the controller runs through a full test cycle.",
+          "During the service cycle, each interval actuates a single component (fill valve, wash motor, heater, drain pump) — note where it fails.",
+          "Stored fault history shows at the start of service mode on display models.",
+          "The tech sheet in a plastic pouch behind the kick plate maps every F/E combination."
+        ],
+        "notes": "The 1-2-3 pattern works across most Whirlpool, KitchenAid, Maytag, Kenmore (665-prefix), and Amana dishwashers — they share the same control platform."
+      },
+      "reset": {
+        "summary": "Cancel/Drain reset first, then a breaker power-cycle for stubborn codes.",
+        "steps": [
+          "Press Cancel (or Cancel/Drain) once — this runs a 2-minute drain and clears most soft faults.",
+          "If the code persists, switch off the breaker for 60 seconds.",
+          "Restore power and run a short cycle to confirm."
+        ],
+        "notes": "F8E4/F6E4 float faults need the base pan checked — power cycling won't help while the overfill float is raised."
+      },
+      "faqs": [
+        { "q": "How do I put a Whirlpool dishwasher in diagnostic mode?", "a": "Press any three buttons (not Start/Cancel) in the order 1-2-3, 1-2-3, 1-2-3 within ~8 seconds. The lights illuminate and a service test cycle begins, actuating one component at a time." },
+        { "q": "How do I read error codes on a Whirlpool dishwasher without a display?", "a": "Watch the Clean light: it blinks the F number, pauses, blinks the E number, then repeats. For example 6 blinks–pause–4 blinks = F6E4 (float switch)." }
+      ]
+    },
+    {
+      "brand": "whirlpool", "appliance": "refrigerator",
+      "diagnostic": {
+        "summary": "Whirlpool refrigerators with dispensers show codes (PO, CF, SY EF…) on the dispenser display; service diagnostics are entered from the dispenser buttons.",
+        "steps": [
+          "Read the code from the dispenser display. PO = power outage notice (informational); SY EF = evaporator fan fault (cooling at risk).",
+          "Service mode on most dispenser models: the entry combination is model-specific (commonly holding two dispenser buttons together for several seconds) — the tech sheet behind the lower front grille documents it.",
+          "For SY EF: open the freezer, remove the back panel, and check whether the evaporator fan is iced or jammed — icing from a failed defrost cycle is the leading cause.",
+          "For no-code cooling loss: check the condenser coils (under/behind) and the condenser fan before anything else."
+        ],
+        "notes": "PO clears by pressing the confirm button shown on the display — it just tells you power was lost. Food-safety judgment matters more than the code."
+      },
+      "reset": {
+        "summary": "Confirm PO notices on the display; other codes reset via a 60-second power-cycle.",
+        "steps": [
+          "For PO: press the indicated button (often 'Measured Fill' or 'Confirm') to acknowledge.",
+          "For fault codes: unplug or breaker-off for 60 seconds, restore power.",
+          "Allow 2–4 hours of run time before judging whether a cooling-path fault has returned."
+        ],
+        "notes": "SY EF that returns after a defrost thaw means the fan motor itself is failing — it is accessible behind the freezer back panel."
+      },
+      "faqs": [
+        { "q": "What does PO mean on my Whirlpool fridge and how do I clear it?", "a": "PO is a power-outage notification, not a fault. Press the confirm button shown on the dispenser display to clear it, and assess whether food stayed cold." }
+      ]
+    },
+    {
+      "brand": "whirlpool", "appliance": "oven",
+      "diagnostic": {
+        "summary": "Whirlpool ranges and wall ovens show F#-E# paired codes. Diagnosis is mostly resistance checks; there is no consumer diagnostic menu.",
+        "steps": [
+          "Note the exact F#-E# pair — the F value identifies the subsystem (F2 keypad, F3 oven sensor, F5 door latch, F9 lockout).",
+          "F3-E0/E1 (sensor): unplug the range, measure the oven temperature sensor — about 1,080Ω at room temperature; open or shorted readings confirm replacement.",
+          "F2-E0/E1 (keypad): disconnect power, reseat the keypad ribbon cable at the control board; persistent codes mean the membrane keypad has shorted.",
+          "F5/F9 (latch): inspect the self-clean latch mechanism for jams before replacing the latch motor."
+        ],
+        "notes": "Codes that appear only during or after self-clean are classic — the extreme heat stresses the sensor, latch, and thermal fuses. Many techs advise avoiding self-clean on electronically controlled ovens."
+      },
+      "reset": {
+        "summary": "Breaker off for 60 seconds. The control must pass its self-check on power-up for the code to stay away.",
+        "steps": [
+          "Switch the range/oven breaker off for 60 seconds.",
+          "Restore power, set the clock, and run a 350°F bake test.",
+          "If the code returns immediately on power-up, the fault (sensor, keypad, latch) is hard — follow the code's fix guide."
+        ],
+        "notes": "F9E0 lockout codes after self-clean sometimes clear once the oven fully cools and the latch motor completes its travel — give it 90 minutes before replacing parts."
+      },
+      "faqs": [
+        { "q": "What resistance should a Whirlpool oven sensor read?", "a": "About 1,080Ω at room temperature (~70°F), rising with temperature. A reading that is open, shorted, or wildly off confirms the sensor is behind an F3-class code." }
+      ]
+    },
+
+    {
+      "brand": "ge", "appliance": "washer",
+      "diagnostic": {
+        "summary": "GE front-load washers display E-codes and have a service mode entered from the control panel; top-load models use light patterns or on-display codes.",
+        "steps": [
+          "Read the E-code from the display on front-load models (E64, E61…).",
+          "GE front-load service mode: the entry sequence is model-specific (typically a press-and-hold of two buttons at power-on) and is printed on the tech sheet — located in a pouch inside the lower front service panel or behind the control console.",
+          "In service mode the display shows stored fault history (most recent first) and allows component actuation tests.",
+          "For drain-class codes, the drain pump filter behind the lower front panel is the first stop — same as every front-loader."
+        ],
+        "notes": "GE washers also support diagnostics through the SmartHQ app on connected models, which reads fault history without entering service mode."
+      },
+      "reset": {
+        "summary": "Power-cycle for 60 seconds; GE controls reboot cleanly and re-display real faults on the next cycle.",
+        "steps": [
+          "Unplug the washer for 60 seconds.",
+          "Restore power and run a Drain & Spin.",
+          "If the code returns, look it up and follow the fix steps."
+        ],
+        "notes": "GE front-load door locks release on power loss after a few minutes — useful when a door-lock fault traps laundry."
+      },
+      "faqs": [
+        { "q": "Can I read GE washer fault history without service mode?", "a": "On connected models, yes — the SmartHQ app reports fault history. Otherwise the tech sheet's service-mode sequence displays stored codes on the panel." }
+      ]
+    },
+    {
+      "brand": "ge", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "GE dishwashers show C-codes (wash system) and letter codes on the display; non-display models blink the Start light.",
+        "steps": [
+          "Read the code: C-numbers cover the wash/drain system (C4 drain, C5 low water), letters cover sensors and status (FL flood, HO heating delay, PrS pressure sensor).",
+          "Non-display models: count Start/Status light blinks and match to the manual's table.",
+          "For C4: clear the air gap (if fitted), the disposer knockout on new installs, and the drain hose loop before condemning the pump.",
+          "Connected models report faults through the SmartHQ app.",
+          "The tech sheet behind the kick plate documents service-mode entry for your control revision."
+        ],
+        "notes": "HO is not an error — it means the unit is pausing to heat water. Long HO times usually mean the inlet water is too cold or the heater is weak."
+      },
+      "reset": {
+        "summary": "Cancel first, then breaker power-cycle for 60 seconds.",
+        "steps": [
+          "Press Start/Reset (or Cancel) and let the unit pump out for 2 minutes.",
+          "If the code persists, switch the breaker off for 60 seconds and restore.",
+          "Run a 1-hour wash to confirm."
+        ],
+        "notes": "FL flood codes require the base pan to dry before they clear, just like other brands' leak sensors."
+      },
+      "faqs": [
+        { "q": "What does HO mean on a GE dishwasher?", "a": "Heating delay — the dishwasher is waiting for water to reach temperature. It is status, not a fault. If cycles run hours long, check inlet water temperature (should be ~120°F) and the heater." }
+      ]
+    },
+    {
+      "brand": "ge", "appliance": "refrigerator",
+      "diagnostic": {
+        "summary": "GE refrigerators show codes on the dispenser/temperature display; the display self-test (all-segments '88') confirms the panel itself.",
+        "steps": [
+          "Read the code from the display (dS defrost sensor, 1E/2E sensor family…).",
+          "If the display shows 88 or garbled segments after an outage, power-cycle — a stuck self-test usually clears.",
+          "For dS/defrost codes: the defrost heater and sensor on the evaporator (behind the freezer back panel) are resistance-testable with the unit unplugged.",
+          "Connected models report faults via SmartHQ.",
+          "The mini-manual/tech sheet is behind the base grille or taped to the back."
+        ],
+        "notes": "GE fridge boards from certain years fail with relay clicks and erratic display — if multiple unrelated codes appear at once, suspect the main board, not five sensors."
+      },
+      "reset": {
+        "summary": "Unplug for 60 seconds. Give cooling 2–4 hours to stabilize before re-checking.",
+        "steps": [
+          "Unplug or breaker-off for 60 seconds.",
+          "Restore power; compressor restart may delay a few minutes.",
+          "Re-check the display after a few hours of run time."
+        ],
+        "notes": "Repeated dS codes with frost accumulating on the freezer back wall confirm a real defrost-circuit failure."
+      },
+      "faqs": [
+        { "q": "Why does my GE fridge display show 88?", "a": "88 with all segments lit is the display self-test — common after power interruptions. Power-cycle for 60 seconds; if it persists, the display or main board has a fault." }
+      ]
+    },
+    {
+      "brand": "ge", "appliance": "oven",
+      "diagnostic": {
+        "summary": "GE ranges show single-letter F-codes. Diagnosis is resistance testing — F-codes map directly to the sensor, keypad, or control.",
+        "steps": [
+          "Note the F-code: F0/F1 stuck key, F2 over-temperature, F3 open sensor, F4 shorted sensor, F7 key short, F8/F9 control/door faults.",
+          "F3/F4: unplug the range and measure the oven sensor — about 1,080Ω at room temperature. Open = F3, shorted = F4.",
+          "F2 during self-clean is common on older models — the sensor reads runaway heat; verify with an oven thermometer at 350°F before condemning parts.",
+          "F0/F7: disconnect the keypad ribbon from the control (power off) — if the code stops, the keypad is shorted; if it continues, the control board is at fault."
+        ],
+        "notes": "GE's F-code letters have been stable for decades — the same table covers most GE, Hotpoint, and many Kenmore (363-prefix) ranges."
+      },
+      "reset": {
+        "summary": "Breaker off for 60 seconds. Hard faults re-display immediately on power-up.",
+        "steps": [
+          "Switch the range breaker off for 60 seconds.",
+          "Restore power and set the clock.",
+          "Bake-test at 350°F; if the code returns, follow its fix guide."
+        ],
+        "notes": "An F2 that only appears during self-clean can be lived with by not using self-clean, but a sensor reading hot at normal temps will drift baking accuracy too."
+      },
+      "faqs": [
+        { "q": "What does F2 mean on a GE oven?", "a": "Oven over-temperature — the control saw a temperature beyond limits. Causes: a drifted/failing oven sensor, a welded relay on the control, or genuine runaway heat. Stop using the oven until diagnosed if it happens outside self-clean." }
+      ]
+    },
+
+    {
+      "brand": "bosch", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "Bosch dishwashers display E-codes and have a built-in test program entered with a button-hold sequence at power-on.",
+        "steps": [
+          "Read the E-code from the display (E15, E24, E25…). On non-display models, cycle LEDs encode the fault per the manual.",
+          "Test program on most models: hold the Start button and the left-most program button together, then switch the unit on (sequences vary by series — some use holding both outer program buttons while powering on). The display then shows stored faults and runs a test cycle. Your model's exact sequence is in the service documentation; several common variants are printed on owner forums and the tech sheet.",
+          "E15 (water in base pan): pull the unit, tip it forward about 45°, and drain the pan — then find the leak source (door gasket corners, sump seal, hose clamps).",
+          "E24/E25: clean the filter, check the impeller cover snap behind the filter, and verify the drain hose/air-gap path."
+        ],
+        "notes": "E15 is the definitive Bosch code: the anti-flood float in the base pan keeps the drain pump running and blocks all operation until the pan is dry."
+      },
+      "reset": {
+        "summary": "Hold Start ~3–5 seconds to cancel/reset a cycle; E15 clears only when the base pan dries.",
+        "steps": [
+          "Press and hold Start (labeled Reset on many panels) for 3–5 seconds, then close the door — the unit pumps out and resets.",
+          "For persistent codes, switch the breaker off for 60 seconds.",
+          "E15: tip the unit forward to empty the base pan, dry it, fix the leak source, then reset."
+        ],
+        "notes": "If the drain pump runs continuously even with the door open, that is the E15 flood-switch state — the pan is wet."
+      },
+      "faqs": [
+        { "q": "How do I clear E15 on a Bosch dishwasher?", "a": "Pull the unit out and tip it forward ~45° to drain the base pan, dry it thoroughly, and fix the leak source. E15 cannot be bypassed — the float switch blocks operation while the pan is wet." },
+        { "q": "How do I reset a Bosch dishwasher mid-cycle?", "a": "Hold the Start/Reset button for 3–5 seconds with the door closed enough to engage. The unit drains for about a minute and returns to standby." }
+      ]
+    },
+    {
+      "brand": "bosch", "appliance": "washer",
+      "diagnostic": {
+        "summary": "Bosch compact washers show E-codes on the display; the drain pump filter and inlet screens cover the two most common code families.",
+        "steps": [
+          "Read the E-code (E18 drain, E17 inlet…).",
+          "E18: open the small door at the lower right, place towels, and unscrew the drain pump filter — coins and lint collect here. Spin the visible impeller; it should turn with slight detents.",
+          "E17: close-check both inlet taps, then unscrew the inlet hoses and clean the mesh screens.",
+          "Service program entry varies by series (typically a knob-position + button-hold combination at power-on, printed in the service docs)."
+        ],
+        "notes": "These 24-inch compacts are often installed in tight closets — confirm the drain hose isn't kinked behind the unit before opening anything."
+      },
+      "reset": {
+        "summary": "Power-cycle for 60 seconds; turn the program dial to Off first.",
+        "steps": [
+          "Turn the program selector to Off.",
+          "Unplug for 60 seconds, plug back in.",
+          "Run Rinse/Spin to confirm the code is gone."
+        ],
+        "notes": "Codes return immediately if the filter or screens are still blocked — the control re-tests on every cycle start."
+      },
+      "faqs": [
+        { "q": "Where is the drain filter on a Bosch compact washer?", "a": "Behind the small access door at the lower right of the front panel. Put towels down — a full drum's worth of water can be behind it. Unscrew counterclockwise slowly." }
+      ]
+    },
+
+    {
+      "brand": "maytag", "appliance": "washer",
+      "diagnostic": {
+        "summary": "Maytag washers are Whirlpool-platform machines — the VMW knob-sequence diagnostic and F#E# code set apply.",
+        "steps": [
+          "Top-load dial models: rotate the cycle knob counterclockwise one full turn, then clockwise 3 clicks, counterclockwise 1, clockwise 1 — status lights flash when diagnostic mode engages.",
+          "Stored F#E# codes display as light patterns decoded by the tech sheet (under the main top or behind the console).",
+          "Front-load models display codes directly; service-mode entry is on the tech sheet inside the lower panel.",
+          "Maytag's branding aside, parts and procedures interchange with equivalent Whirlpool models — searching the F#E# code works across both brands."
+        ],
+        "notes": "If the 3-1-1 sequence doesn't take, rotate fully counterclockwise and retry with ~half-second clicks — timing is the usual failure."
+      },
+      "reset": {
+        "summary": "60-second power-cycle, knob reset on dial models.",
+        "steps": [
+          "Unplug for 60 seconds.",
+          "Dial models: rotate the knob counterclockwise one full rotation before selecting a new cycle.",
+          "Run Drain & Spin to confirm."
+        ],
+        "notes": "Lid-lock (F5-class) errors that persist after reset usually mean debris in the strike or a failing lock assembly — a $30–50 DIY part."
+      },
+      "faqs": [
+        { "q": "Are Maytag and Whirlpool washer error codes the same?", "a": "Yes — Maytag has been a Whirlpool brand since 2006 and current models share the VMW/front-load platforms and F#E# diagnostic code set." }
+      ]
+    },
+    {
+      "brand": "maytag", "appliance": "dryer",
+      "diagnostic": {
+        "summary": "Maytag dryers share Whirlpool's dryer platform: F-codes on the display, tech sheet in the console, thermal components testable with a meter.",
+        "steps": [
+          "Read the F-code from the display (F01 board, F22 thermistor…).",
+          "Diagnostic entry is a button sequence printed on the tech sheet (inside the control console or behind the lower panel).",
+          "Thermal fuse continuity (blower housing, back panel off) and thermistor resistance (~10kΩ room temp) are the two highest-value meter checks.",
+          "The AF airflow warning means duct restriction — clean the full run before replacing parts."
+        ],
+        "notes": "F01 control-board faults sometimes follow power surges; a power-cycle is worth trying before ordering a board."
+      },
+      "reset": {
+        "summary": "Power-cycle for 60 seconds at the plug or breaker.",
+        "steps": [
+          "Unplug (or both breaker legs off) for 60 seconds.",
+          "Restore power, run Timed Dry.",
+          "Codes that return point to real component faults — follow the code's guide."
+        ],
+        "notes": "Thermal fuses are one-shot: replace, and fix the airflow restriction that blew them."
+      },
+      "faqs": [
+        { "q": "How do I reset a Maytag dryer F01 code?", "a": "Unplug for 60 seconds and retry — F01 after a power surge sometimes clears. If it returns, the main control board has failed; the board is replaceable DIY on most models." }
+      ]
+    },
+
+    {
+      "brand": "kenmore", "appliance": "washer",
+      "diagnostic": {
+        "summary": "Kenmore washers are built by Whirlpool (110-prefix) or LG (796-prefix) — identify your builder from the model prefix, then use that brand's diagnostic procedure.",
+        "steps": [
+          "Find the model number (door frame or rear label). The 3-digit prefix before the dot identifies the manufacturer: 110 = Whirlpool, 796 = LG, 417 = Frigidaire.",
+          "110-prefix dial models: use the Whirlpool VMW knob sequence — counterclockwise full turn, then clockwise 3, counterclockwise 1, clockwise 1; lights flash on success.",
+          "796-prefix models: use LG's procedure — codes display directly (OE, IE, LE…), and SmartDiagnosis works on equipped models.",
+          "The tech sheet location follows the builder: inside the lower front panel (front load) or under the top panel (top load)."
+        ],
+        "notes": "Searching your error code under the builder brand (Whirlpool F21 / LG OE) finds far more documentation than searching 'Kenmore'."
+      },
+      "reset": {
+        "summary": "60-second power-cycle works across all builders.",
+        "steps": [
+          "Unplug for 60 seconds.",
+          "Restore power; dial models get a full counterclockwise knob rotation first.",
+          "Run Drain & Spin to confirm."
+        ],
+        "notes": "F21 on 110-prefix models: the coin-trap filter behind the lower front panel is almost always the fix — clean it before any reset attempt."
+      },
+      "faqs": [
+        { "q": "Who makes my Kenmore washer?", "a": "The model-number prefix tells you: 110 = Whirlpool, 796 = LG, 417 = Frigidaire. Use the builder brand's error-code documentation and parts." }
+      ]
+    },
+    {
+      "brand": "kenmore", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "Kenmore 665-prefix dishwashers are Whirlpool-built and use the same F#E# codes, Clean-light blink patterns, and 1-2-3 service-mode entry.",
+        "steps": [
+          "Confirm the 665 prefix on the model plate (door edge).",
+          "Read codes from the display, or count Clean-light blinks: F value, pause, E value, repeat.",
+          "Enter service mode: press any three buttons (not Start/Cancel) in the pattern 1-2-3, 1-2-3, 1-2-3 within ~8 seconds — all lights come on and a component-by-component test cycle runs.",
+          "The tech sheet behind the kick plate decodes every F/E pair for your control."
+        ],
+        "notes": "Parts cross-reference directly to Whirlpool equivalents and are usually cheaper searched under the Whirlpool part number."
+      },
+      "reset": {
+        "summary": "Cancel/Drain, then a 60-second breaker cycle if needed.",
+        "steps": [
+          "Press Cancel — the 2-minute drain clears most soft faults.",
+          "Persistent codes: breaker off 60 seconds, restore, run a short cycle."
+        ],
+        "notes": "Float-switch codes need the overfill float checked — reset alone won't clear a raised float."
+      },
+      "faqs": [
+        { "q": "Do Whirlpool dishwasher codes apply to my Kenmore?", "a": "If the model number starts with 665, yes — it is a Whirlpool-built machine sharing the same control platform, codes, and parts." }
+      ]
+    },
+
+    {
+      "brand": "frigidaire", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "Frigidaire dishwashers show i-codes on the display; the leak (i30) and drain (i20) codes cover most service calls.",
+        "steps": [
+          "Read the i-code from the display (i10 fill, i20 drain, i30 leak, i50 heat/relay, i60 temperature).",
+          "i20: clean the fine filter and glass trap in the sump, then verify the drain path (air gap, disposer loop).",
+          "i30: water in the base pan — remove the kick plate, dry the pan, and find the source. The unit stays disabled while the pan is wet.",
+          "Service/test mode entry varies by control revision; the tech sheet in the door panel or behind the kick plate documents it."
+        ],
+        "notes": "i-codes carried over to many Electrolux-built models (same parent) — documentation interchanges between the brands."
+      },
+      "reset": {
+        "summary": "Cancel first; breaker-cycle for 60 seconds for stubborn codes; i30 needs a dry pan.",
+        "steps": [
+          "Press Cancel and let the unit drain.",
+          "Breaker off 60 seconds if the code persists.",
+          "i30: dry the base pan before any reset attempt will stick."
+        ],
+        "notes": "Repeated i30 with a dry pan points to a slow mid-cycle leak — run a cycle with the kick plate off and watch."
+      },
+      "faqs": [
+        { "q": "What does i30 mean on a Frigidaire dishwasher?", "a": "Water detected in the base pan under the tub. The unit disables itself until the pan dries. Find and fix the leak (door gasket, sump seal, hose), dry the pan, then power-cycle." }
+      ]
+    },
+    {
+      "brand": "frigidaire", "appliance": "oven",
+      "diagnostic": {
+        "summary": "Frigidaire ranges use F-codes in the F10–F90 ranges; the F10 runaway-temperature code is safety-critical.",
+        "steps": [
+          "Note the code: F10 = runaway temperature (treat as urgent), F11 = stuck key, F30/F31 = sensor open/short, F90-series = door lock.",
+          "F30/F31: unplug and measure the oven probe — about 1,100Ω at room temperature on this platform.",
+          "F10: if the oven is actually overheating, kill power at the breaker immediately. If it shows F10 at room temperature, the sensor or the EOC (electronic oven control) has drifted — both testable.",
+          "F11: disconnect the keypad ribbon (power off) to separate keypad vs control faults; keypads on these consoles are a known wear item."
+        ],
+        "notes": "The EOC (control board) on Frigidaire ranges is a frequent failure behind F-codes — but always meter the sensor first, since it's a tenth the price."
+      },
+      "reset": {
+        "summary": "Breaker off for 60 seconds. Treat a returning F10 as do-not-use until repaired.",
+        "steps": [
+          "Switch the range breaker off for 60 seconds.",
+          "Restore power, set the clock, and bake-test at 350°F.",
+          "If F10 returns at normal temperatures, replace the sensor (and EOC if the sensor meters fine) before using the oven."
+        ],
+        "notes": "F90-series lock codes often clear after the oven fully cools post-self-clean — wait 90 minutes before replacing the lock motor."
+      },
+      "faqs": [
+        { "q": "Is the F10 code on a Frigidaire oven dangerous?", "a": "Potentially — it means the control believes the oven temperature is running away. If the oven is genuinely hot, cut power at the breaker. If it falses at room temperature, replace the temperature probe and re-test before normal use." }
+      ]
+    },
+
+    {
+      "brand": "kitchenaid", "appliance": "dishwasher",
+      "diagnostic": {
+        "summary": "KitchenAid dishwashers are Whirlpool-platform machines: blink-coded faults and the 1-2-3 service-mode entry apply.",
+        "steps": [
+          "Read codes as blink pairs (most KitchenAid models flash the Clean/Complete LED: first number, pause, second number — e.g. 7-1 heater).",
+          "Enter service diagnostics: press any three buttons (not Start/Cancel) 1-2-3, 1-2-3, 1-2-3 within ~8 seconds; all LEDs light and the test cycle steps through each component.",
+          "7-1 (heater) stops the dry cycle: the heater is metered for continuity at the sump, accessible from below with the unit pulled.",
+          "The tech sheet pouch behind the kick plate maps all blink pairs for your control."
+        ],
+        "notes": "Premium badge, Whirlpool internals — parts and procedures interchange with Whirlpool/Maytag equivalents."
+      },
+      "reset": {
+        "summary": "Cancel/Drain, then a breaker power-cycle.",
+        "steps": [
+          "Press Cancel; allow the 2-minute drain.",
+          "Breaker off 60 seconds for persistent codes.",
+          "Run a 1-hour cycle to confirm."
+        ],
+        "notes": "Codes set during a cycle re-display within minutes if the fault is hard — no amount of resetting outlasts a failed heater."
+      },
+      "faqs": [
+        { "q": "How do I read error codes on a KitchenAid dishwasher?", "a": "Watch the Clean/Complete LED blink pattern: first digit, pause, second digit, long pause, repeat. 7 blinks–pause–1 blink = 7-1, the heater fault." }
+      ]
+    },
+
+    {
+      "brand": "electrolux", "appliance": "washer",
+      "diagnostic": {
+        "summary": "Electrolux front-load washers show E-codes on the display and store fault history accessible through a service mode documented on the tech sheet.",
+        "steps": [
+          "Read the active E-code (E20 drain, E10 fill…).",
+          "E20: open the lower access panel and clean the drain pump filter — the same first stop as every front-loader.",
+          "E10/E11: check both taps and clean the inlet screens.",
+          "Service-mode entry (fault history + component tests) is a button-hold combination at power-on that varies by console generation — printed on the tech sheet inside the lower front panel."
+        ],
+        "notes": "Electrolux and Frigidaire share engineering (same parent company); E-code documentation overlaps heavily between the brands."
+      },
+      "reset": {
+        "summary": "60-second power-cycle clears soft faults.",
+        "steps": [
+          "Power off, unplug 60 seconds.",
+          "Restore and run Rinse & Spin.",
+          "Returning codes are real — follow the code's fix steps."
+        ],
+        "notes": "Door-lock faults may hold the door for several minutes after power-off before the lock releases — don't force it."
+      },
+      "faqs": [
+        { "q": "How do I clear E20 on an Electrolux washer?", "a": "Clean the drain pump filter behind the lower front access panel (towels down — it holds water), check the drain hose for kinks, then power-cycle 60 seconds. E20 returns until drainage is actually restored." }
+      ]
+    }
+  ]
+}

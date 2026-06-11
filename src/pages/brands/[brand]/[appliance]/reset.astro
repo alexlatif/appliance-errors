@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../../../components/BreadcrumbNav.astro';
+import AdSlot from '../../../../components/AdSlot.astro';
+import proceduresData from '../../../../data/procedures.json';
+import { getBrand, getApplianceType, getCodesByBrandAndAppliance, slugifyCode } from '../../../../utils/data';
+import { breadcrumbSchema, faqListSchema } from '../../../../utils/schema';
+
+interface Procedure {
+  brand: string; appliance: string;
+  diagnostic: { summary: string; steps: string[]; notes: string };
+  reset: { summary: string; steps: string[]; notes: string };
+  faqs: { q: string; a: string }[];
+}
+
+export async function getStaticPaths() {
+  const procs = (proceduresData as { procedures: Procedure[] }).procedures;
+  return procs.map(p => ({
+    params: { brand: p.brand, appliance: p.appliance },
+    props: { proc: p },
+  }));
+}
+
+const { proc } = Astro.props;
+const brand = getBrand(proc.brand)!;
+const appType = getApplianceType(proc.appliance);
+const appName = appType?.name ?? proc.appliance;
+const codes = getCodesByBrandAndAppliance(proc.brand, proc.appliance);
+// Codes whose reset instructions are most searched (high severity first)
+const commonCodes = codes.slice(0, 8);
+
+const title = `How to Reset a ${brand.name} ${appName} (Clear Error Codes) | ApplianceErrors.com`;
+const description = `${proc.reset.summary} Step-by-step reset instructions for ${brand.name} ${appName.toLowerCase()} error codes.`;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Brands', url: '/brands/' },
+    { name: brand.name, url: `/brands/${proc.brand}/` },
+    { name: `${appName} Errors`, url: `/brands/${proc.brand}/${proc.appliance}/` },
+    { name: 'Reset Guide', url: `/brands/${proc.brand}/${proc.appliance}/reset/` },
+  ]),
+  faqListSchema(proc.faqs),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Brands', href: '/brands/' },
+      { label: brand.name, href: `/brands/${proc.brand}/` },
+      { label: `${appName} Errors`, href: `/brands/${proc.brand}/${proc.appliance}/` },
+      { label: 'Reset Guide' }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+      How to Reset a {brand.name} {appName}
+    </h1>
+
+    <!-- Answer-first summary (AEO) -->
+    <div class="bg-brand-50 border-2 border-brand-200 rounded-xl p-5 mb-8">
+      <p class="text-gray-800 text-lg">{proc.reset.summary}</p>
+    </div>
+
+    <AdSlot slot_id="1234567890" style="leaderboard" />
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Reset Steps</h2>
+      <ol class="space-y-4">
+        {proc.reset.steps.map((step, i) => (
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{i + 1}</span>
+            <p class="text-gray-700 leading-relaxed pt-1">{step}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="mt-6 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm text-amber-800">
+        💡 <strong>Good to know:</strong> {proc.reset.notes}
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">If the Code Comes Back</h2>
+      <p class="text-gray-600 mb-4">
+        A code that returns after a reset means the underlying fault is still present. Look up your exact
+        code for its causes and step-by-step fix:
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        {commonCodes.map(c => (
+          <a href={`/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`}
+             class="px-3 py-2 border border-gray-200 rounded-lg hover:border-brand-400 text-sm transition-all">
+            <span class="font-bold text-brand-600 font-mono">{c.code}</span>
+            <span class="text-gray-500 block truncate text-xs">{c.meaning}</span>
+          </a>
+        ))}
+      </div>
+      <p class="text-sm mt-3">
+        <a href={`/brands/${proc.brand}/${proc.appliance}/`} class="text-brand-600 hover:underline">
+          See all {codes.length} {brand.name} {appName.toLowerCase()} error codes →
+        </a>
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {proc.faqs.map(faq => (
+          <details class="border border-gray-200 rounded-xl overflow-hidden group">
+            <summary class="px-5 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 list-none flex justify-between items-center">
+              {faq.q}
+              <span class="text-gray-400 text-xl group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-5 py-4 text-gray-700 border-t border-gray-100">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <AdSlot slot_id="1122334455" style="rectangle" />
+
+    <div class="flex flex-wrap gap-3 mt-6 pt-6 border-t border-gray-200">
+      <a href={`/brands/${proc.brand}/${proc.appliance}/diagnostic-mode/`} class="text-sm text-brand-600 hover:underline">
+        How to Enter {brand.name} {appName} Diagnostic Mode →
+      </a>
+      <a href={`/brands/${proc.brand}/${proc.appliance}/`} class="text-sm text-brand-600 hover:underline">
+        ← All {brand.name} {appName} Error Codes
+      </a>
+    </div>
+  </div>
+</BaseLayout>

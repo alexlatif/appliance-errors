@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { applianceTypes, errorCodes, getApplianceType, getBrand, slugifyCode } from '../../utils/data';
+import { breadcrumbSchema, faqListSchema } from '../../utils/schema';
+
+const MIN_CODES = 30;
+const CURRENT_YEAR = new Date().getFullYear();
+
+export async function getStaticPaths() {
+  const counts = new Map<string, number>();
+  for (const c of errorCodes) counts.set(c.appliance, (counts.get(c.appliance) ?? 0) + 1);
+  return [...counts.entries()]
+    .filter(([, n]) => n >= 30)
+    .map(([appliance]) => ({ params: { appliance } }));
+}
+
+const { appliance: appSlug } = Astro.params;
+const appType = getApplianceType(appSlug!);
+const appName = appType?.name ?? appSlug!;
+const codes = errorCodes.filter(c => c.appliance === appSlug);
+
+const avg = (xs: number[]) => xs.length ? Math.round(xs.reduce((a, b) => a + b, 0) / xs.length) : 0;
+
+// Aggregate by category
+const catLabel = (cat: string) => cat.replace(/_/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
+const byCat = new Map<string, typeof codes>();
+for (const c of codes) {
+  if (!byCat.has(c.category)) byCat.set(c.category, []);
+  byCat.get(c.category)!.push(c);
+}
+const catRows = [...byCat.entries()]
+  .filter(([, cs]) => cs.length >= 2)
+  .map(([cat, cs]) => ({
+    cat, label: catLabel(cat), count: cs.length,
+    diyLo: avg(cs.map(c => c.cost_lo)), diyHi: avg(cs.map(c => c.cost_hi)),
+    proLo: avg(cs.map(c => c.pro_cost_lo)), proHi: avg(cs.map(c => c.pro_cost_hi)),
+  }))
+  .sort((a, b) => b.count - a.count);
+
+// Aggregate by brand
+const byBrand = new Map<string, typeof codes>();
+for (const c of codes) {
+  if (!byBrand.has(c.brand)) byBrand.set(c.brand, []);
+  byBrand.get(c.brand)!.push(c);
+}
+const brandRows = [...byBrand.entries()]
+  .filter(([, cs]) => cs.length >= 4)
+  .map(([slug, cs]) => ({
+    slug, name: getBrand(slug)?.name ?? slug, count: cs.length,
+    diyLo: avg(cs.map(c => c.cost_lo)), diyHi: avg(cs.map(c => c.cost_hi)),
+    proLo: avg(cs.map(c => c.pro_cost_lo)), proHi: avg(cs.map(c => c.pro_cost_hi)),
+  }))
+  .sort((a, b) => b.count - a.count);
+
+// Most/least expensive faults (by pro cost midpoint)
+const sortedByCost = [...codes].sort((a, b) =>
+  (b.pro_cost_lo + b.pro_cost_hi) - (a.pro_cost_lo + a.pro_cost_hi));
+const priciest = sortedByCost.slice(0, 5);
+const cheapest = sortedByCost.slice(-5).reverse();
+
+const overallDiy = { lo: avg(codes.map(c => c.cost_lo)), hi: avg(codes.map(c => c.cost_hi)) };
+const overallPro = { lo: avg(codes.map(c => c.pro_cost_lo)), hi: avg(codes.map(c => c.pro_cost_hi)) };
+const avgSaving = Math.max(0, Math.round(((overallPro.lo + overallPro.hi) - (overallDiy.lo + overallDiy.hi)) / 2));
+
+const easyShare = Math.round(100 * codes.filter(c => c.diy_difficulty === 'easy' || c.diy_difficulty === 'moderate').length / codes.length);
+
+const title = `${appName} Repair Cost Guide ${CURRENT_YEAR} — DIY vs Pro by Problem | ApplianceErrors.com`;
+const description = `Average ${appName.toLowerCase()} repair costs: $${overallDiy.lo}–$${overallDiy.hi} DIY vs $${overallPro.lo}–$${overallPro.hi} professional, broken down by problem type and brand from ${codes.length} documented error codes.`;
+
+const faqs = [
+  { q: `How much does ${appName.toLowerCase()} repair cost?`,
+    a: `Across the ${codes.length} ${appName.toLowerCase()} error codes in our database, professional repair averages $${overallPro.lo}–$${overallPro.hi}, while the DIY parts cost averages $${overallDiy.lo}–$${overallDiy.hi}. The spread depends heavily on the failed component — see the table by problem type.` },
+  { q: `Is it worth repairing a ${appName.toLowerCase()} myself?`,
+    a: `${easyShare}% of documented ${appName.toLowerCase()} faults are rated easy or moderate DIY difficulty, and the average saving over a professional repair is about $${avgSaving}. Faults rated 'Call a Pro' (sealed-system, gas, high-voltage work) should not be DIY'd.` },
+  { q: `When should I replace instead of repair a ${appName.toLowerCase()}?`,
+    a: `The common rule: if the repair quote exceeds 50% of the replacement cost and the unit is past half its expected lifespan (10–13 years for most ${appName.toLowerCase()}s), replacement usually wins. Control-board and motor failures on older units are the classic replace triggers.` },
+];
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Repair Costs', url: '/costs/' },
+    { name: `${appName} Repair Cost`, url: `/costs/${appSlug}/` },
+  ]),
+  faqListSchema(faqs),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Repair Costs', href: '/costs/' },
+      { label: `${appName} Repair Cost` }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+      {appName} Repair Cost Guide ({CURRENT_YEAR})
+    </h1>
+
+    <!-- Answer-first summary (AEO) -->
+    <div class="bg-brand-50 border-2 border-brand-200 rounded-xl p-5 mb-8">
+      <p class="text-gray-800 text-lg leading-relaxed">
+        Across the <strong>{codes.length} documented {appName.toLowerCase()} error codes</strong> in our database,
+        a professional repair averages <strong>${overallPro.lo}–${overallPro.hi}</strong>, while fixing it yourself
+        averages <strong>${overallDiy.lo}–${overallDiy.hi}</strong> in parts —
+        a typical saving of about <strong>${avgSaving}</strong>.
+        {easyShare}% of these faults are rated easy-to-moderate DIY difficulty.
+      </p>
+    </div>
+
+    <AdSlot slot_id="1234567890" style="leaderboard" />
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">{appName} Repair Cost by Problem Type</h2>
+      <p class="text-gray-600 text-sm mb-4">
+        Averages computed from the error codes in each fault category. DIY = parts only; Pro = parts + labor.
+      </p>
+      <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 border-b border-gray-200">
+              <tr>
+                <th class="px-4 py-3 text-left font-semibold text-gray-700">Problem Type</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-700">Codes</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-700">DIY Cost</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-700">Pro Cost</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {catRows.map(r => (
+                <tr class="hover:bg-blue-50 transition-colors">
+                  <td class="px-4 py-3 font-medium text-gray-800">{r.label}</td>
+                  <td class="px-4 py-3 text-right text-gray-500">{r.count}</td>
+                  <td class="px-4 py-3 text-right text-gray-700">${r.diyLo}–${r.diyHi}</td>
+                  <td class="px-4 py-3 text-right text-gray-700">${r.proLo}–${r.proHi}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Cost by Brand</h2>
+      <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 border-b border-gray-200">
+              <tr>
+                <th class="px-4 py-3 text-left font-semibold text-gray-700">Brand</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-700">Codes Tracked</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-700">Avg DIY</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-700">Avg Pro</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {brandRows.map(r => (
+                <tr class="hover:bg-blue-50 transition-colors">
+                  <td class="px-4 py-3">
+                    <a href={`/brands/${r.slug}/${appSlug}/`} class="font-medium text-brand-600 hover:underline">{r.name}</a>
+                  </td>
+                  <td class="px-4 py-3 text-right text-gray-500">{r.count}</td>
+                  <td class="px-4 py-3 text-right text-gray-700">${r.diyLo}–${r.diyHi}</td>
+                  <td class="px-4 py-3 text-right text-gray-700">${r.proLo}–${r.proHi}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <AdSlot slot_id="0987654321" style="rectangle" />
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Most Expensive {appName} Faults</h2>
+      <div class="grid sm:grid-cols-2 gap-3 mb-6">
+        {priciest.map(c => (
+          <a href={`/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`}
+             class="flex gap-3 items-start p-4 border border-red-200 bg-red-50/50 rounded-xl hover:border-red-400 transition-all">
+            <span class="font-bold text-red-700 font-mono w-14 flex-shrink-0">{c.code}</span>
+            <div>
+              <div class="font-medium text-gray-800">{getBrand(c.brand)?.name}: {c.meaning}</div>
+              <div class="text-sm text-gray-500">Pro: ${c.pro_cost_lo}–${c.pro_cost_hi}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Cheapest {appName} Fixes</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {cheapest.map(c => (
+          <a href={`/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`}
+             class="flex gap-3 items-start p-4 border border-green-200 bg-green-50/50 rounded-xl hover:border-green-400 transition-all">
+            <span class="font-bold text-green-700 font-mono w-14 flex-shrink-0">{c.code}</span>
+            <div>
+              <div class="font-medium text-gray-800">{getBrand(c.brand)?.name}: {c.meaning}</div>
+              <div class="text-sm text-gray-500">DIY: ${c.cost_lo}–${c.cost_hi}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <details class="border border-gray-200 rounded-xl overflow-hidden group">
+            <summary class="px-5 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 list-none flex justify-between items-center">
+              {faq.q}
+              <span class="text-gray-400 text-xl group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-5 py-4 text-gray-700 border-t border-gray-100">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <p class="text-xs text-gray-400 mb-8">
+      Methodology: figures are averages of the per-code DIY (parts) and professional (parts + labor) cost
+      ranges documented across {codes.length} {appName.toLowerCase()} error codes in our database,
+      verified against manufacturer documentation and common parts pricing. Regional labor rates vary.
+    </p>
+
+    <div class="flex flex-wrap gap-3 pt-6 border-t border-gray-200">
+      <a href="/costs/" class="text-sm text-brand-600 hover:underline">← All Repair Cost Guides</a>
+      <a href={`/appliances/${appSlug}/`} class="text-sm text-brand-600 hover:underline">
+        All {appName} Error Codes →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

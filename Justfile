@@ -5,9 +5,10 @@ dev:
     npm run seed
     npm run dev
 
-# Generate error codes JSON
+# Generate error codes JSON + stamp verified dates for new codes
 seed:
     cd ../data-seed && cargo run --release -- --out ../appliance-site/src/data/error-codes.json
+    node ../scripts/update-verified-dates.mjs
 
 # Build static site
 build:

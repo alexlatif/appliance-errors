@@ -122,6 +122,19 @@ export function howToSchema(errorCode: ErrorCode, brandName: string, applianceNa
   };
 }
 
+/** Generic FAQPage from a list of Q&As — for procedure/symptom/cost pages. */
+export function faqListSchema(faqs: Array<{ q: string; a: string }>): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  };
+}
+
 export function breadcrumbSchema(items: Array<{ name: string; url: string }>): object {
   return {
     "@context": "https://schema.org",
@@ -135,12 +148,19 @@ export function breadcrumbSchema(items: Array<{ name: string; url: string }>): o
   };
 }
 
-export function articleSchema(errorCode: ErrorCode, brandName: string, applianceName: string): object {
+export function articleSchema(errorCode: ErrorCode, brandName: string, applianceName: string, lastVerified?: string): object {
   return {
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "headline": `${errorCode.code} Error Code: ${brandName} ${applianceName} — Meaning & Fix`,
     "description": errorCode.detail,
+    "image": {
+      "@type": "ImageObject",
+      "url": `${BASE_URL}/images/codes/${errorCode.id}.svg`,
+      "width": 800,
+      "height": 450,
+      "caption": `${brandName} ${applianceName} error code ${errorCode.code} on the display panel`
+    },
     "about": {
       "@type": "Thing",
       "name": `${brandName} ${applianceName} error code ${errorCode.code}`,
@@ -149,12 +169,17 @@ export function articleSchema(errorCode: ErrorCode, brandName: string, appliance
     "proficiencyLevel": errorCode.diy_difficulty === 'easy' ? 'Beginner' : errorCode.diy_difficulty === 'moderate' ? 'Expert' : 'Expert',
     "author": {
       "@type": "Organization",
-      "name": "ApplianceErrors.com",
-      "url": BASE_URL
+      "name": "ApplianceErrors Editorial Team",
+      "url": `${BASE_URL}/editorial-policy/`
+    },
+    "reviewedBy": {
+      "@type": "Organization",
+      "name": "ApplianceErrors Editorial Team",
+      "url": `${BASE_URL}/editorial-policy/`
     },
     "publisher": PUBLISHER,
     "datePublished": SITE_PUBLISHED,
-    "dateModified": BUILD_DATE,
+    "dateModified": lastVerified ?? BUILD_DATE,
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `${BASE_URL}/brands/${errorCode.brand}/${errorCode.appliance}/${errorCode.code.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'')}/`

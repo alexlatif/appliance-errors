@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import { errorCodes, getApplianceType } from '../../utils/data';
+import { breadcrumbSchema, itemListSchema } from '../../utils/schema';
+
+const CURRENT_YEAR = new Date().getFullYear();
+const avg = (xs: number[]) => xs.length ? Math.round(xs.reduce((a, b) => a + b, 0) / xs.length) : 0;
+
+const counts = new Map<string, typeof errorCodes>();
+for (const c of errorCodes) {
+  if (!counts.has(c.appliance)) counts.set(c.appliance, []);
+  counts.get(c.appliance)!.push(c);
+}
+const guides = [...counts.entries()]
+  .filter(([, cs]) => cs.length >= 30)
+  .map(([slug, cs]) => ({
+    slug,
+    appType: getApplianceType(slug),
+    count: cs.length,
+    diyLo: avg(cs.map(c => c.cost_lo)), diyHi: avg(cs.map(c => c.cost_hi)),
+    proLo: avg(cs.map(c => c.pro_cost_lo)), proHi: avg(cs.map(c => c.pro_cost_hi)),
+  }))
+  .sort((a, b) => b.count - a.count);
+
+const title = `Appliance Repair Cost Guides ${CURRENT_YEAR} — DIY vs Professional | ApplianceErrors.com`;
+const description = 'How much appliance repair really costs, computed from our database of documented error codes: washer, dryer, dishwasher, refrigerator and oven repair costs by problem type and brand.';
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Repair Costs', url: '/costs/' },
+  ]),
+  itemListSchema(
+    guides.map(g => ({
+      name: `${g.appType?.name ?? g.slug} Repair Cost Guide`,
+      url: `/costs/${g.slug}/`,
+      description: `DIY $${g.diyLo}–$${g.diyHi} vs pro $${g.proLo}–$${g.proHi}, from ${g.count} documented faults.`,
+    })),
+    'Appliance repair cost guides'
+  ),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Repair Costs' }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">
+      Appliance Repair Cost Guides ({CURRENT_YEAR})
+    </h1>
+    <p class="text-gray-600 text-lg mb-10 max-w-3xl">
+      Real repair-cost ranges computed from our database of documented error codes — not generic estimates.
+      Each guide breaks down DIY vs professional cost by problem type and brand.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+      {guides.map(g => (
+        <a href={`/costs/${g.slug}/`}
+           class="p-5 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-3xl">{g.appType?.icon ?? '🔧'}</span>
+            <div class="font-bold text-gray-900 text-lg">{g.appType?.name ?? g.slug} Repair Cost</div>
+          </div>
+          <div class="text-sm text-gray-600 space-y-1">
+            <div>🔧 DIY average: <strong>${g.diyLo}–${g.diyHi}</strong></div>
+            <div>👨‍🔧 Pro average: <strong>${g.proLo}–${g.proHi}</strong></div>
+            <div class="text-gray-400">Based on {g.count} documented faults</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

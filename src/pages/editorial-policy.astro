@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../components/BreadcrumbNav.astro';
+import { totalCodeCount } from '../utils/data';
+import { breadcrumbSchema } from '../utils/schema';
+
+const title = 'Editorial Policy — How We Verify Error Codes | ApplianceErrors.com';
+const description = 'How ApplianceErrors.com researches, verifies, and maintains its appliance error code database: sources, review process, update cadence, and corrections.';
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Editorial Policy', url: '/editorial-policy/' },
+  ]),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Editorial Policy' }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Editorial Policy</h1>
+
+    <div class="prose prose-gray max-w-none">
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        ApplianceErrors.com maintains a database of {totalCodeCount()}+ appliance error codes.
+        Because our readers act on this information — often with tools in hand — accuracy is
+        the entire product. This page explains how content gets onto the site and how it stays correct.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Where our information comes from</h2>
+      <ul class="list-disc pl-6 space-y-2 text-gray-700">
+        <li><strong>Manufacturer service documentation.</strong> Error code definitions are sourced from
+          manufacturer service manuals, tech sheets, and official support documentation. Every code page
+          links to the relevant manufacturer's official support portal.</li>
+        <li><strong>Cross-referencing.</strong> Each code is checked against multiple independent sources —
+          manufacturer documentation, parts databases, and established repair references — before publication.</li>
+        <li><strong>Reader feedback.</strong> Every fix guide carries a "Did this guide fix your appliance?"
+          prompt. Codes with low success rates are flagged for re-review and rewritten.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Review process</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Each error code page shows a <strong>"Last verified"</strong> date. That date reflects the most recent
+        time the page's meaning, causes, and fix steps were checked against manufacturer documentation.
+        Pages are re-verified when manufacturers revise their documentation, when reader feedback indicates
+        a problem, or on a rolling schedule for the most-visited pages.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What we will and won't tell you</h2>
+      <ul class="list-disc pl-6 space-y-2 text-gray-700">
+        <li>We order causes by real-world frequency so you check the most likely (and cheapest) fix first.</li>
+        <li>We tell you when a repair is DIY-safe and when it isn't. Repairs involving gas lines, sealed
+          refrigeration systems, or mains wiring are always flagged for professional service.</li>
+        <li>We never recommend calling a professional before the safe DIY checks have been exhausted —
+          and we never hide the DIY option to sell you a service call. We have no service-call partnerships.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Corrections</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Found an error? <a href="/contact/" class="text-brand-600 hover:underline">Contact us</a> with the page
+        URL and what's wrong. Verified corrections are published promptly and the page's "Last verified"
+        date is updated.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Advertising</h2>
+      <p class="text-gray-700 leading-relaxed">
+        This site is funded by display advertising. Advertisers have no influence over which codes we cover,
+        what the fix steps say, or when we recommend professional service. Parts-retailer links on code pages
+        are plain search links, not affiliate links.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Safety disclaimer</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Appliance repair involves electricity, water, and sometimes gas. Always unplug the appliance before
+        opening any panel. If you are not confident performing a step safely, stop and call a certified
+        technician. Information on this site is provided as-is for informational purposes.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

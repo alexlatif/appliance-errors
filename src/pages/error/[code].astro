@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import SeverityBadge from '../../components/SeverityBadge.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { errorCodes, getBrand, getApplianceType, slugifyCode } from '../../utils/data';
+import { breadcrumbSchema, itemListSchema } from '../../utils/schema';
+
+function normalize(code: string): string {
+  return code.toUpperCase().replace(/[-\s]/g, '');
+}
+
+export async function getStaticPaths() {
+  const groups = new Map<string, typeof errorCodes>();
+  for (const c of errorCodes) {
+    const key = c.code.toUpperCase().replace(/[-\s]/g, '');
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(c);
+  }
+  const paths = [];
+  for (const [key, codes] of groups) {
+    // Only build disambiguation pages where the code spans 2+ brand/appliance combos
+    if (codes.length < 2) continue;
+    paths.push({
+      params: { code: key.toLowerCase() },
+      props: { codes, displayCode: codes[0].code },
+    });
+  }
+  return paths;
+}
+
+const { code: codeSlug } = Astro.params;
+const { codes, displayCode } = Astro.props;
+
+const brandCount = new Set(codes.map(c => c.brand)).size;
+const applianceCount = new Set(codes.map(c => c.appliance)).size;
+
+const title = `${displayCode} Error Code — What It Means on ${brandCount} Brands | ApplianceErrors.com`;
+const description = `Error code ${displayCode} appears on ${brandCount} appliance brand${brandCount > 1 ? 's' : ''}. Find your brand and appliance to see exactly what ${displayCode} means and how to fix it.`;
+
+const listItems = codes.map(c => {
+  const b = getBrand(c.brand);
+  const a = getApplianceType(c.appliance);
+  return {
+    name: `${b?.name ?? c.brand} ${a?.name ?? c.appliance} ${c.code}`,
+    url: `/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`,
+    description: c.meaning,
+  };
+});
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Error Codes', url: '/error/' },
+    { name: `${displayCode} Error`, url: `/error/${codeSlug}/` },
+  ]),
+  itemListSchema(listItems, `${displayCode} error code across appliance brands`),
+];
+
+// Group by brand for display
+const byBrand = new Map<string, typeof codes>();
+for (const c of codes) {
+  if (!byBrand.has(c.brand)) byBrand.set(c.brand, []);
+  byBrand.get(c.brand)!.push(c);
+}
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Error Codes', href: '/error/' },
+      { label: `${displayCode} Error` }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+      Error Code <span class="text-brand-600 font-mono">{displayCode}</span> — Which Appliance Do You Have?
+    </h1>
+
+    <p class="text-gray-700 text-lg mb-2">
+      Error code <strong>{displayCode}</strong> appears on <strong>{brandCount} brand{brandCount > 1 ? 's' : ''}</strong>
+      across <strong>{applianceCount} appliance type{applianceCount > 1 ? 's' : ''}</strong> — and it means
+      something different on each one.
+    </p>
+    <p class="text-gray-600 mb-8">
+      Select your brand and appliance below to see exactly what {displayCode} means on your machine,
+      what causes it, and the step-by-step fix.
+    </p>
+
+    <AdSlot slot_id="1234567890" style="leaderboard" />
+
+    {[...byBrand.entries()].map(([brandSlug, brandCodes]) => {
+      const brand = getBrand(brandSlug);
+      return (
+        <section class="mb-8">
+          <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src={`/logos/${brandSlug}.svg`} alt={`${brand?.name} logo`} class="h-6 w-auto" loading="lazy" />
+            {brand?.name}
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {brandCodes.map(c => {
+              const app = getApplianceType(c.appliance);
+              return (
+                <a href={`/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`}
+                   class="flex gap-3 items-start p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+                  <span class="text-2xl flex-shrink-0">{app?.icon}</span>
+                  <div class="min-w-0">
+                    <div class="font-semibold text-gray-800">{brand?.name} {app?.name} {c.code}</div>
+                    <div class="text-sm text-gray-500 mb-1">{c.meaning}</div>
+                    <SeverityBadge severity={c.severity} />
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      );
+    })}
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mt-8">
+      <h2 class="font-bold text-blue-900 mb-2">Why does the same code mean different things?</h2>
+      <p class="text-blue-800 text-sm leading-relaxed">
+        Appliance manufacturers each define their own diagnostic codes. A code like {displayCode} may indicate
+        a water supply issue on one brand and a sensor fault on another. Always look up the code for your
+        specific brand and appliance type — fixing the wrong component wastes time and money.
+      </p>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-gray-200">
+      <a href="/error/" class="text-sm text-brand-600 hover:underline">← All cross-brand error codes</a>
+    </div>
+  </div>
+</BaseLayout>

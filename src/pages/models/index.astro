@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import modelsData from '../../data/models.json';
+import { getBrand, getApplianceType } from '../../utils/data';
+import { breadcrumbSchema } from '../../utils/schema';
+
+interface Model {
+  slug: string; model: string; brand: string; appliance: string;
+  name: string; years: string; notes: string; common_codes: string[];
+}
+const models = (modelsData as { models: Model[] }).models;
+
+// Group by brand
+const byBrand = new Map<string, Model[]>();
+for (const m of models) {
+  if (!byBrand.has(m.brand)) byBrand.set(m.brand, []);
+  byBrand.get(m.brand)!.push(m);
+}
+
+const title = `Error Codes by Appliance Model — ${models.length} Popular Models | ApplianceErrors.com`;
+const description = `Look up error codes for popular appliance models: Samsung WF45T6000AW, LG WM3900HWA, Bosch SHEM63W55N, Whirlpool WTW5000DW and more. Model-specific common codes and fixes.`;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Models', url: '/models/' },
+  ]),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Models' }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Error Codes by Model</h1>
+    <p class="text-gray-600 mb-8 max-w-3xl">
+      The most popular appliance models, with the error codes each one most commonly displays.
+      Don't see your model? Codes are shared across each brand's platform — start from the
+      <a href="/brands/" class="text-brand-600 hover:underline">brand page</a> instead.
+    </p>
+
+    {[...byBrand.entries()].map(([brandSlug, brandModels]) => {
+      const brand = getBrand(brandSlug);
+      return (
+        <section class="mb-10">
+          <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src={`/logos/${brandSlug}.svg`} alt={`${brand?.name} logo`} class="h-6 w-auto" loading="lazy" />
+            {brand?.name}
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {brandModels.map(m => {
+              const app = getApplianceType(m.appliance);
+              return (
+                <a href={`/models/${m.brand}/${m.slug}/`}
+                   class="flex gap-3 items-start p-4 border border-gray-200 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+                  <span class="text-2xl flex-shrink-0">{app?.icon}</span>
+                  <div class="min-w-0">
+                    <div class="font-semibold text-gray-800 font-mono">{m.model}</div>
+                    <div class="text-sm text-gray-500">{app?.name} · {m.years}</div>
+                    <div class="text-xs text-gray-400 mt-1">
+                      Common: {m.common_codes.slice(0, 4).join(', ')}
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</BaseLayout>

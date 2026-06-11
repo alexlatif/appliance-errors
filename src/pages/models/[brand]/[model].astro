@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../../components/BreadcrumbNav.astro';
+import SeverityBadge from '../../../components/SeverityBadge.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import modelsData from '../../../data/models.json';
+import {
+  getBrand, getApplianceType, getCodesByBrandAndAppliance, slugifyCode
+} from '../../../utils/data';
+import { breadcrumbSchema, itemListSchema } from '../../../utils/schema';
+
+interface Model {
+  slug: string; model: string; brand: string; appliance: string;
+  name: string; years: string; notes: string; common_codes: string[];
+}
+const models = (modelsData as { models: Model[] }).models;
+
+export async function getStaticPaths() {
+  const all = (modelsData as { models: Model[] }).models;
+  return all.map(m => ({
+    params: { brand: m.brand, model: m.slug },
+    props: { model: m },
+  }));
+}
+
+const { model } = Astro.props;
+const brand = getBrand(model.brand)!;
+const appType = getApplianceType(model.appliance);
+const appName = appType?.name ?? model.appliance;
+
+const allCodes = getCodesByBrandAndAppliance(model.brand, model.appliance);
+const norm = (s: string) => s.toUpperCase().replace(/[-\s]/g, '');
+// Only surface common codes that actually exist in our database
+const commonCodes = model.common_codes
+  .map(cc => allCodes.find(c => norm(c.code) === norm(cc) || c.aliases.some(a => norm(a) === norm(cc))))
+  .filter((c): c is NonNullable<typeof c> => c !== undefined);
+const otherCodes = allCodes.filter(c => !commonCodes.includes(c));
+
+const title = `${model.model} Error Codes — ${brand.name} ${appName} | ApplianceErrors.com`;
+const description = `Error codes for the ${brand.name} ${model.model} ${appName.toLowerCase()} (${model.years}): the ${commonCodes.length} most common codes on this model plus the full ${brand.name} ${appName.toLowerCase()} code list.`;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Models', url: '/models/' },
+    { name: brand.name, url: `/brands/${model.brand}/` },
+    { name: model.model, url: `/models/${model.brand}/${model.slug}/` },
+  ]),
+  itemListSchema(
+    commonCodes.map(c => ({
+      name: `${brand.name} ${appName} ${c.code}`,
+      url: `/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`,
+      description: c.meaning,
+    })),
+    `Most common error codes on the ${brand.name} ${model.model}`
+  ),
+];
+---
+
+<BaseLayout {title} {description} {schemas}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <BreadcrumbNav items={[
+      { label: 'Home', href: '/' },
+      { label: 'Models', href: '/models/' },
+      { label: brand.name, href: `/brands/${model.brand}/` },
+      { label: model.model }
+    ]} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+      {model.model} Error Codes <span class="text-gray-400 font-normal">— {brand.name} {appName}</span>
+    </h1>
+
+    <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-8">
+      <div class="flex flex-wrap gap-x-8 gap-y-2 text-sm text-gray-600 mb-3">
+        <span>🏷️ Model: <strong class="font-mono">{model.model}</strong></span>
+        <span>📅 Production: <strong>{model.years}</strong></span>
+        <span>{appType?.icon} Type: <strong>{appName}</strong></span>
+      </div>
+      <p class="text-gray-700">{model.notes}</p>
+    </div>
+
+    <AdSlot slot_id="1234567890" style="leaderboard" />
+
+    {commonCodes.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Most Common Codes on the {model.model}</h2>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {commonCodes.map(c => (
+            <a href={`/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`}
+               class="flex gap-3 items-start p-4 border-2 border-brand-100 bg-brand-50/30 rounded-xl hover:border-brand-400 hover:shadow-md transition-all">
+              <span class="font-bold text-brand-600 font-mono w-14 flex-shrink-0">{c.code}</span>
+              <div>
+                <div class="font-medium text-gray-800">{c.meaning}</div>
+                <SeverityBadge severity={c.severity} />
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {otherCodes.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">All Other {brand.name} {appName} Codes</h2>
+        <p class="text-gray-500 text-sm mb-4">
+          The {model.model} can also display any of the standard {brand.name} {appName.toLowerCase()} codes:
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+          {otherCodes.map(c => (
+            <a href={`/brands/${c.brand}/${c.appliance}/${slugifyCode(c.code)}/`}
+               class="px-3 py-2 border border-gray-200 rounded-lg hover:border-brand-400 text-sm transition-all">
+              <span class="font-bold text-brand-600 font-mono">{c.code}</span>
+              <span class="text-gray-500 block truncate text-xs">{c.meaning}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-8 text-sm text-amber-800">
+      💡 <strong>Tip:</strong> Your model's serial sticker (door frame, rim, or back panel) confirms the exact
+      model number. Codes can differ between revisions of the same model line — if a code on your display
+      isn't listed here, check the
+      <a href={`/brands/${model.brand}/${model.appliance}/`} class="underline font-medium">full {brand.name} {appName.toLowerCase()} code list</a>.
+    </div>
+
+    <div class="flex flex-wrap gap-3 pt-6 border-t border-gray-200">
+      <a href={`/brands/${model.brand}/${model.appliance}/`} class="text-sm text-brand-600 hover:underline">
+        ← All {brand.name} {appName} Error Codes
+      </a>
+      <a href="/models/" class="text-sm text-brand-600 hover:underline">← All Models</a>
+    </div>
+  </div>
+</BaseLayout>

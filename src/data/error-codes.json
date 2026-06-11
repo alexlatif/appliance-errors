@@ -352,8 +352,7 @@
       "appliance": "washer",
       "code": "UE",
       "aliases": [
-        "E4",
-        "Ub"
+        "E4"
       ],
       "meaning": "Unbalanced load detected",
       "detail": "The washer cannot spin safely because the laundry load is unevenly distributed in the drum. This is a safety feature — an unbalanced drum at spin speed can damage the bearings, drum suspension, and surrounding cabinetry. The washer will pause and attempt to redistribute the load before displaying UE.",
@@ -415,9 +414,7 @@
       "appliance": "washer",
       "code": "OE",
       "aliases": [
-        "5E",
-        "5C",
-        "E2"
+        "5E"
       ],
       "meaning": "Drain failure — water not draining",
       "detail": "The Samsung washer cannot drain water within the expected time. This is a high-priority error as it will prevent the cycle from completing and leave standing water in the drum. The most common cause is a clogged pump filter, which is a 5-minute DIY fix.",
@@ -557,10 +554,7 @@
       "brand": "samsung",
       "appliance": "washer",
       "code": "DE",
-      "aliases": [
-        "dC",
-        "dE"
-      ],
+      "aliases": [],
       "meaning": "Door not properly closed or door lock failure",
       "detail": "The washer detected that the door is not securely latched, or the door lock mechanism has failed. For safety, the washer will not run with an unlocked door. This is often a simple latch alignment issue but can indicate a failing door lock assembly.",
       "severity": "medium",
@@ -750,11 +744,7 @@
       "brand": "samsung",
       "appliance": "washer",
       "code": "tE",
-      "aliases": [
-        "tE1",
-        "tE2",
-        "tE3"
-      ],
+      "aliases": [],
       "meaning": "Temperature sensor (thermistor) fault",
       "detail": "The temperature sensor in the washer has failed or is reading an implausible temperature. The washer cannot safely heat water without an accurate temperature reading, so it stops the cycle.",
       "severity": "medium",
@@ -812,7 +802,6 @@
       "code": "bE",
       "aliases": [
         "bE1",
-        "bE2",
         "bE3"
       ],
       "meaning": "Button error — key stuck or shorted",
@@ -979,7 +968,6 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After repair, unplug for 1 minute then restart.",
       "related_codes": [
-        "FE",
         "OE"
       ],
       "when_to_call_pro": "If a new pressure sensor and clear hose don't resolve PE, the control board sensor input has failed."
@@ -1465,8 +1453,7 @@
       "appliance": "dryer",
       "code": "tE",
       "aliases": [
-        "tE3",
-        "tS"
+        "tE3"
       ],
       "meaning": "Thermistor (temperature sensor) failure",
       "detail": "The dryer's temperature sensor has failed or is reading out of range. The dryer cannot safely heat the drum without knowing the current temperature, so it stops the cycle.",
@@ -1523,9 +1510,7 @@
       "brand": "samsung",
       "appliance": "dryer",
       "code": "HE",
-      "aliases": [
-        "HC"
-      ],
+      "aliases": [],
       "meaning": "Heater fault — drum not heating or overheating",
       "detail": "The dryer heating element is not functioning correctly. This can mean it's not producing heat at all, or it's reaching unsafe temperatures. Clothes will come out damp or the dryer will stop mid-cycle.",
       "severity": "high",
@@ -1593,9 +1578,7 @@
       "brand": "samsung",
       "appliance": "dryer",
       "code": "OD",
-      "aliases": [
-        "Clg"
-      ],
+      "aliases": [],
       "meaning": "Vent blockage detected",
       "detail": "The dryer's internal sensors have detected restricted airflow through the exhaust duct. Continuing to run with a blocked vent is a fire hazard — the dryer will reduce heat or stop the cycle.",
       "severity": "medium",
@@ -1700,9 +1683,7 @@
       "pro_cost_lo": 200,
       "pro_cost_hi": 420,
       "reset_instructions": "Restore proper power source and unplug 5 minutes. Restart.",
-      "related_codes": [
-        "9E"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "FE on utility power without a generator indicates a control board fault."
     },
     {
@@ -2005,8 +1986,7 @@
       "appliance": "dishwasher",
       "code": "5C",
       "aliases": [
-        "5E",
-        "OC"
+        "5E"
       ],
       "meaning": "Drain failure — water not draining from dishwasher",
       "detail": "The dishwasher cannot drain within the expected time. Water will remain standing in the bottom of the tub. This usually means the drain pump is blocked or the drain hose is kinked.",
@@ -2397,64 +2377,61 @@
       "aliases": [
         "22C"
       ],
-      "meaning": "Ice maker fan motor error or ice room fan failure",
-      "detail": "The fan motor in the ice maker compartment or ice room has failed or is running at incorrect speed. This prevents proper cold air circulation to the ice maker, resulting in no ice production and potential temperature rises in the freezer section.",
-      "severity": "medium",
-      "category": "motor",
+      "meaning": "Refrigerator fan error — fresh-food compartment fan not running",
+      "detail": "The control board is not sensing rotational feedback from the refrigerator (fresh-food) compartment fan when it should be turning. Without this fan, cold air doesn't circulate through the fridge section, so the fridge warms up while the freezer often stays cold. Ice buildup jamming the fan blade is the most common root cause.",
+      "severity": "high",
+      "category": "fan",
       "causes": [
         {
+          "description": "Ice or frost buildup jamming the fan blade (defrost-system weakness)",
+          "frequency": 45
+        },
+        {
           "description": "Fan motor failure (bearing failure or burned windings)",
-          "frequency": 50
+          "frequency": 35
         },
         {
-          "description": "Ice or frost buildup blocking the fan blade",
-          "frequency": 30
+          "description": "Fan blade physically broken or obstructed",
+          "frequency": 12
         },
         {
-          "description": "Fan blade physically broken or stuck",
-          "frequency": 15
-        },
-        {
-          "description": "Wiring harness to fan motor damaged",
-          "frequency": 5
+          "description": "Wiring harness to fan motor damaged or loose",
+          "frequency": 8
         }
       ],
       "fixes": [
         {
-          "title": "Defrost the ice maker area",
-          "description": "Turn the refrigerator to demo/off mode and let the freezer section warm to room temperature. Ice buildup around the fan is extremely common and will jam the blade without breaking it."
+          "title": "Defrost the fridge-section evaporator",
+          "description": "Unplug the refrigerator and let it fully thaw (12–24 hours, doors open, towels down) — or run forced defrost from the panel. Ice jamming the fan blade is the most common cause and a thaw clears it without parts."
         },
         {
           "title": "Inspect the fan blade",
-          "description": "Locate the ice maker fan (usually behind the ice maker assembly). Spin the blade by hand — it should rotate freely. If stuck, clear any ice or debris."
+          "description": "Remove the back interior panel of the fridge compartment to expose the fan. Spin the blade by hand — it should rotate freely. Clear any ice or debris."
         },
         {
-          "title": "Test the fan motor",
-          "description": "Disconnect the fan and apply 12V DC directly (from a phone charger). If the motor doesn't spin, it has failed.",
-          "parts": [
-            "Samsung ice maker fan motor ($30–$80)"
-          ]
+          "title": "Check the wiring connector",
+          "description": "Reseat the fan connector at the motor and check the harness where it passes through the cabinet for chafing."
         },
         {
           "title": "Replace the fan motor",
-          "description": "Remove the ice maker assembly to access the fan. Swap the motor assembly.",
+          "description": "If the blade is free but the motor doesn't spin when powered, replace the fan motor assembly.",
           "parts": [
-            "Ice maker fan motor ($30–$80)"
+            "Samsung refrigerator fan motor ($25–$70)"
           ],
-          "warning": "Unplug the refrigerator before disassembly."
+          "warning": "Unplug the refrigerator before removing interior panels."
         }
       ],
       "diy_difficulty": "moderate",
-      "cost_lo": 30,
-      "cost_hi": 80,
+      "cost_lo": 25,
+      "cost_hi": 70,
       "pro_cost_lo": 150,
       "pro_cost_hi": 320,
-      "reset_instructions": "After repair, press and hold both the 'Energy Saver' and 'Power Freeze' buttons simultaneously for 5 seconds to clear diagnostic error codes.",
+      "reset_instructions": "After repair, press and hold both the 'Energy Saver' and 'Power Freeze' buttons simultaneously for 5 seconds to clear diagnostic error codes (button pair varies by model).",
       "related_codes": [
         "21E",
         "40E"
       ],
-      "when_to_call_pro": "If the fan and ice are clear but the motor doesn't spin with direct voltage, proceed with replacement. If the new motor also shows errors, the control board input is faulty."
+      "when_to_call_pro": "If the fan ices over again within weeks, the defrost system (heater, sensor, or control) is the real fault — replacing the fan alone won't fix it. That diagnosis is worth a technician visit."
     },
     {
       "id": "samsung-refrigerator-21e",
@@ -2464,17 +2441,17 @@
       "aliases": [
         "21C"
       ],
-      "meaning": "Ice maker fan motor error",
-      "detail": "The fan motor responsible for circulating cold air through the ice maker compartment is not operating correctly. Without this fan, the ice maker cannot maintain freezing temperatures and ice production stops.",
-      "severity": "medium",
-      "category": "motor",
+      "meaning": "Freezer fan error — freezer evaporator fan not running",
+      "detail": "The control board is not sensing rotational feedback from the freezer fan when it should be turning. This is the fan that pulls air across the freezer evaporator coils — without it, both freezer and fridge cooling degrade. Per Samsung's service documentation the usual culprits are ice jamming the blade or a failed fan motor.",
+      "severity": "high",
+      "category": "fan",
       "causes": [
         {
-          "description": "Fan motor winding failure",
+          "description": "Ice or frost buildup jamming the fan blade",
           "frequency": 45
         },
         {
-          "description": "Ice blockage on fan blade",
+          "description": "Fan motor winding or bearing failure",
           "frequency": 35
         },
         {
@@ -2485,31 +2462,32 @@
       "fixes": [
         {
           "title": "Defrost the freezer section",
-          "description": "Turn off the refrigerator and let all ice melt. This resolves fan blade blockage."
+          "description": "Unplug the refrigerator and let all ice melt (12–24 hours), or run forced defrost from the control panel. This clears the most common cause — an iced fan blade."
         },
         {
-          "title": "Check wiring to ice maker fan",
-          "description": "Reseat the connector at the fan motor and at the control board."
+          "title": "Inspect blade and wiring",
+          "description": "Remove the freezer back panel, spin the fan blade by hand, and reseat the connector at the fan motor and control board."
         },
         {
-          "title": "Replace ice maker fan motor",
-          "description": "If motor doesn't spin freely or shows no continuity, replace it.",
+          "title": "Replace the freezer fan motor",
+          "description": "If the blade is free but the motor won't spin when powered, replace it.",
           "parts": [
-            "Samsung ice maker fan motor ($30–$70)"
-          ]
+            "Samsung freezer evaporator fan motor ($25–$70)"
+          ],
+          "warning": "Unplug the refrigerator before removing the freezer back panel."
         }
       ],
       "diy_difficulty": "moderate",
-      "cost_lo": 30,
+      "cost_lo": 25,
       "cost_hi": 70,
       "pro_cost_lo": 150,
       "pro_cost_hi": 300,
-      "reset_instructions": "Hold 'Energy Saver' + 'Power Freeze' for 5 seconds to enter diagnostic mode and clear the error after repair.",
+      "reset_instructions": "Hold 'Energy Saver' + 'Power Freeze' for 5 seconds to clear the code after repair (button pair varies by model).",
       "related_codes": [
         "22E",
         "40E"
       ],
-      "when_to_call_pro": "If ice buildup is recurring (freezer OK but ice maker section keeps frosting over), the defrost heater in that zone may be failing."
+      "when_to_call_pro": "If frost keeps returning to the freezer back panel after a full thaw, the defrost heater or sensor is failing — that's the repair to make, not another fan."
     },
     {
       "id": "samsung-refrigerator-24e",
@@ -2634,9 +2612,7 @@
       "brand": "samsung",
       "appliance": "refrigerator",
       "code": "88-88",
-      "aliases": [
-        "88 88"
-      ],
+      "aliases": [],
       "meaning": "Display test mode active — not a fault code",
       "detail": "Your Samsung refrigerator is in display test mode or showroom demo mode. This is not a malfunction. The compressor and cooling system are disabled. All 8s on the display confirm this mode.",
       "severity": "low",
@@ -2961,10 +2937,7 @@
       "brand": "samsung",
       "appliance": "refrigerator",
       "code": "PC ER",
-      "aliases": [
-        "PC-ER",
-        "PCER"
-      ],
+      "aliases": [],
       "meaning": "Pump / compressor communication error — critical cooling failure",
       "detail": "The control board cannot communicate with the variable-speed compressor or its control module. This is a critical error. The refrigerator will stop cooling entirely.",
       "severity": "critical",
@@ -3022,7 +2995,7 @@
         "14C"
       ],
       "meaning": "Ice maker defrost sensor error",
-      "detail": "The specific sensor that monitors the ice maker's defrost cycle has failed.",
+      "detail": "The control board is reading an open or shorted circuit from the sensor that monitors the ice maker's defrost cycle. Without it, the ice compartment cannot defrost properly, so frost builds up and ice production slows or stops. Most often the sensor itself has failed; a loose connector is the next suspect.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -3069,9 +3042,7 @@
       "brand": "samsung",
       "appliance": "oven",
       "code": "E-08",
-      "aliases": [
-        "E08"
-      ],
+      "aliases": [],
       "meaning": "Oven temperature sensor open circuit",
       "detail": "The oven temperature sensor (NTC probe) has an open circuit — it is no longer reading temperature. The oven will not heat without this sensor because it cannot control temperature safely.",
       "severity": "high",
@@ -3118,8 +3089,7 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After replacing sensor, plug in and test with a short bake cycle.",
       "related_codes": [
-        "E-09",
-        "E-07"
+        "E-09"
       ],
       "models_affected": "Samsung NE/NX series gas and electric ranges",
       "when_to_call_pro": "If new sensor and E-08 persists, the control board sensor input has failed."
@@ -3129,9 +3099,7 @@
       "brand": "samsung",
       "appliance": "oven",
       "code": "E-09",
-      "aliases": [
-        "E09"
-      ],
+      "aliases": [],
       "meaning": "Oven temperature sensor short circuit",
       "detail": "The oven temperature sensor is reading abnormally low resistance, indicating a short circuit.",
       "severity": "high",
@@ -3174,8 +3142,7 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After replacing sensor, test with short bake cycle.",
       "related_codes": [
-        "E-08",
-        "E-07"
+        "E-08"
       ],
       "when_to_call_pro": "If new sensor reads correctly but E-09 persists, control board sensor input is shorted."
     },
@@ -3237,10 +3204,7 @@
       "brand": "samsung",
       "appliance": "oven",
       "code": "E-0A",
-      "aliases": [
-        "E-0a",
-        "E0A"
-      ],
+      "aliases": [],
       "meaning": "Oven overheating — temperature above safe limit",
       "detail": "The oven has detected a temperature above the maximum operating limit, typically above 570°F (300°C) during normal cooking or above 900°F during self-clean.",
       "severity": "critical",
@@ -3302,9 +3266,7 @@
       "brand": "samsung",
       "appliance": "oven",
       "code": "NF",
-      "aliases": [
-        "nF"
-      ],
+      "aliases": [],
       "meaning": "No flame detected — gas ignition failure (gas range models)",
       "detail": "The oven or one of the surface burners did not ignite successfully. The gas igniter has glowed but no gas flame appeared, or the igniter failed to glow.",
       "severity": "high",
@@ -3368,9 +3330,7 @@
       "brand": "samsung",
       "appliance": "oven",
       "code": "E-3",
-      "aliases": [
-        "E3"
-      ],
+      "aliases": [],
       "meaning": "Door lock motor failure — self-clean door latch issue",
       "detail": "The door lock mechanism used during self-clean cycles has failed or the motor did not complete the lock/unlock operation within the required time.",
       "severity": "medium",
@@ -3421,9 +3381,7 @@
       "brand": "samsung",
       "appliance": "oven",
       "code": "E-43",
-      "aliases": [
-        "E43"
-      ],
+      "aliases": [],
       "meaning": "Power relay failure on main control board",
       "detail": "A power relay controlling a heating element on the main control board has failed.",
       "severity": "high",
@@ -3514,69 +3472,15 @@
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
       "reset_instructions": "Unplug 2 minutes. If SE returns after cleaning, replace touchpad.",
-      "related_codes": [
-        "-SE-"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If new touchpad and SE persists, control board failed."
-    },
-    {
-      "id": "samsung-microwave--se-",
-      "brand": "samsung",
-      "appliance": "microwave",
-      "code": "-SE-",
-      "aliases": [
-        "SE"
-      ],
-      "meaning": "Demonstration mode active / touchpad error",
-      "detail": "On some Samsung over-the-range microwaves, -SE- indicates the unit is in demonstration/display mode. On others, it's a keypad error (same as SE).",
-      "severity": "low",
-      "category": "control_panel",
-      "causes": [
-        {
-          "description": "Demo mode enabled",
-          "frequency": 55
-        },
-        {
-          "description": "Touchpad failure",
-          "frequency": 45
-        }
-      ],
-      "fixes": [
-        {
-          "title": "Exit demo mode",
-          "description": "Press and hold the '1' key for 3 seconds, OR hold 'Sound' for 3 seconds depending on model. Check your specific model's manual."
-        },
-        {
-          "title": "Power cycle",
-          "description": "Unplug 2 minutes. Demo mode clears on some models."
-        },
-        {
-          "title": "If SE keypad error",
-          "description": "Clean touchpad with damp cloth, then replace if necessary.",
-          "parts": [
-            "Samsung microwave touchpad ($40–$90)"
-          ]
-        }
-      ],
-      "diy_difficulty": "easy",
-      "cost_lo": 0,
-      "cost_hi": 90,
-      "pro_cost_lo": 100,
-      "pro_cost_hi": 250,
-      "reset_instructions": "Unplug 2 minutes. Exit demo mode per manual instructions.",
-      "related_codes": [
-        "SE"
-      ],
-      "when_to_call_pro": "Persistent -SE- after touchpad replacement requires control board replacement."
     },
     {
       "id": "samsung-microwave-f-3",
       "brand": "samsung",
       "appliance": "microwave",
       "code": "F-3",
-      "aliases": [
-        "F3"
-      ],
+      "aliases": [],
       "meaning": "Touchpad/membrane failure",
       "detail": "A specific key on the microwave touchpad has detected a short circuit condition and the membrane has likely failed.",
       "severity": "medium",
@@ -3624,9 +3528,7 @@
       "brand": "samsung",
       "appliance": "microwave",
       "code": "F-10",
-      "aliases": [
-        "F10"
-      ],
+      "aliases": [],
       "meaning": "Thermistor shorted — over-temperature protection",
       "detail": "The cavity thermistor (temperature sensor) has shorted. The microwave shuts down to prevent damage from undetected overheating.",
       "severity": "high",
@@ -3680,9 +3582,7 @@
       "brand": "samsung",
       "appliance": "microwave",
       "code": "F-1",
-      "aliases": [
-        "F1"
-      ],
+      "aliases": [],
       "meaning": "Keypad membrane failure — dead or stuck key",
       "detail": "A key on the membrane keypad has failed, either stuck open or continuously pressing.",
       "severity": "medium",
@@ -3792,9 +3692,7 @@
       "brand": "lg",
       "appliance": "washer",
       "code": "UE",
-      "aliases": [
-        "uE"
-      ],
+      "aliases": [],
       "meaning": "Unbalanced load — cannot complete spin cycle",
       "detail": "The washer's sensors detected that the laundry load is unevenly distributed, making it unsafe to run the spin cycle at high speed. LG washers will make several attempts to redistribute the load by adding water and slowly tumbling before displaying UE.",
       "severity": "low",
@@ -4046,22 +3944,30 @@
       "category": "maintenance",
       "causes": [
         {
-          "description": "Tub clean cycle count reached (every 30 cycles)",
-          "frequency": 100
+          "description": "Drum clean cycle due after ~30 washes",
+          "frequency": 70
+        },
+        {
+          "description": "Reminder not cleared after running Tub Clean",
+          "frequency": 30
         }
       ],
       "fixes": [
         {
           "title": "Run the Tub Clean cycle",
-          "description": "Select 'Tub Clean' on the cycle selector. Add a washing machine cleaner tablet to the drum (not the dispenser). Run the full cycle.",
+          "description": "Select 'Tub Clean' on the cycle selector. Add a washing machine cleaner tablet or 1 cup of bleach to the empty drum (not the dispenser) and run the full cycle.",
           "parts": [
             "Affresh or LG washing machine cleaner"
           ]
+        },
+        {
+          "title": "Clear the reminder",
+          "description": "The tCL indicator clears automatically once a Tub Clean cycle completes. If it lingers, press and hold the Tub Clean button for 3 seconds or power cycle the washer."
         }
       ],
       "diy_difficulty": "easy",
-      "cost_lo": 5,
-      "cost_hi": 20,
+      "cost_lo": 0,
+      "cost_hi": 15,
       "pro_cost_lo": 0,
       "pro_cost_hi": 0,
       "reset_instructions": "Run a complete Tub Clean cycle. The tCL counter resets automatically after the cycle finishes.",
@@ -4281,7 +4187,7 @@
       "cost_hi": 55,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, restart cycle.",
+      "reset_instructions": "Unplug the washer for 60 seconds, then restart and let it fill. If PE returns during fill, recheck that the pressure hose is fully seated on the sensor and free of kinks before replacing parts.",
       "related_codes": [
         "FE",
         "IE"
@@ -4384,7 +4290,7 @@
       "cost_hi": 120,
       "pro_cost_lo": 200,
       "pro_cost_hi": 420,
-      "reset_instructions": "After repair, restart.",
+      "reset_instructions": "Unplug the washer for 60 seconds, then plug back in and start a Rinse & Spin cycle. If E6 returns as soon as the drum tries to switch between agitate and spin, the clutch hardware fault is confirmed.",
       "related_codes": [
         "LE"
       ],
@@ -4398,7 +4304,7 @@
       "code": "bE",
       "aliases": [],
       "meaning": "Button error — control panel key stuck",
-      "detail": "A button on the control panel is registering as continuously pressed.",
+      "detail": "The control board sees one of the panel buttons held down continuously, so it locks out the keypad and won't start a cycle. Detergent residue or moisture under the membrane is the usual culprit — the button physically sticks, or the keypad contact shorts and registers a constant press.",
       "severity": "low",
       "category": "control_panel",
       "causes": [
@@ -4487,7 +4393,7 @@
       "cost_hi": 50,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "Unplug 5 minutes and restart.",
+      "reset_instructions": "Unplug the washer for 5 minutes to reset the control board, then restart the cycle. If nE reappears, reseat the noise sensor connector near the motor before retrying — a loose plug often clears it.",
       "related_codes": [],
       "when_to_call_pro": "nE rarely prevents normal washing — cycle may complete with reduced spin speed."
     },
@@ -4496,9 +4402,7 @@
       "brand": "lg",
       "appliance": "dryer",
       "code": "D80",
-      "aliases": [
-        "d80"
-      ],
+      "aliases": [],
       "meaning": "Duct blockage detected — exhaust duct 80% blocked",
       "detail": "LG's Flow Sense sensor has detected that your dryer's exhaust duct is approximately 80% blocked. Airflow is significantly reduced, causing longer dry times, overheating risk, and potential fire hazard. This is the single most-searched LG dryer error code with nearly 10,000 searches per month.",
       "severity": "medium",
@@ -4566,9 +4470,7 @@
       "brand": "lg",
       "appliance": "dryer",
       "code": "D90",
-      "aliases": [
-        "d90"
-      ],
+      "aliases": [],
       "meaning": "Duct blockage detected — exhaust duct 90% blocked",
       "detail": "LG's Flow Sense system has detected a critical 90% duct blockage. At this level, the dryer will reduce heat output or stop the cycle entirely to prevent overheating and fire risk. The D90 code is more urgent than D80 and requires immediate attention. This is the second most-searched LG dryer error with nearly 3,000 monthly searches.",
       "severity": "high",
@@ -4633,9 +4535,7 @@
       "brand": "lg",
       "appliance": "dryer",
       "code": "D95",
-      "aliases": [
-        "d95"
-      ],
+      "aliases": [],
       "meaning": "Duct blockage detected — exhaust duct 95% blocked",
       "detail": "Critical duct blockage at 95%. The dryer has nearly no exhaust airflow and is at serious risk of overheating and fire. The dryer may refuse to operate or will only run briefly before shutting down. Treat this as an emergency.",
       "severity": "high",
@@ -4752,14 +4652,22 @@
       "category": "control_panel",
       "causes": [
         {
-          "description": "Child lock intentionally or accidentally activated",
-          "frequency": 100
+          "description": "Child Lock enabled accidentally",
+          "frequency": 85
+        },
+        {
+          "description": "Control panel button stuck",
+          "frequency": 15
         }
       ],
       "fixes": [
         {
           "title": "Disable child lock",
-          "description": "Press and hold the Child Lock button for 3 seconds until the CL indicator turns off. On some models, press and hold 'Temp' for 3 seconds."
+          "description": "Press and hold the Child Lock button for 3–5 seconds until the CL indicator turns off. On some models, press and hold 'Temp' for 3 seconds."
+        },
+        {
+          "title": "Power cycle if a button is stuck",
+          "description": "If CL won't clear, unplug the dryer for 60 seconds, plug back in, and hold the Child Lock button again. A sticky button may need cleaning around its edges."
         }
       ],
       "diy_difficulty": "easy",
@@ -5019,7 +4927,7 @@
       "code": "PF",
       "aliases": [],
       "meaning": "Power failure — cycle interrupted",
-      "detail": "Power was interrupted during a drying cycle.",
+      "detail": "The control board lost electrical power partway through a drying cycle and is notifying you that the cycle did not finish. Clothes may still be damp. This is a notice, not a fault — it's almost always a brief power outage or a tripped breaker on the dryer's circuit.",
       "severity": "low",
       "category": "power",
       "causes": [
@@ -5056,9 +4964,7 @@
       "brand": "lg",
       "appliance": "dishwasher",
       "code": "AE",
-      "aliases": [
-        "LE"
-      ],
+      "aliases": [],
       "meaning": "Leakage detected — water found in base tray",
       "detail": "The anti-flood device has detected water in the base tray of the dishwasher. This indicates a leak somewhere in the unit. The LG dishwasher will drain and shut down to prevent water damage.",
       "severity": "high",
@@ -5277,7 +5183,7 @@
       "cost_hi": 80,
       "pro_cost_lo": 150,
       "pro_cost_hi": 320,
-      "reset_instructions": "After repair, restart cycle.",
+      "reset_instructions": "Turn off the dishwasher's breaker for 60 seconds (most LG dishwashers are hardwired), then restore power. The unit should drain the excess water automatically; once empty, start a new cycle to confirm FE is cleared.",
       "related_codes": [
         "AE",
         "IE"
@@ -5291,7 +5197,7 @@
       "code": "HE",
       "aliases": [],
       "meaning": "Heater failure — water not heating",
-      "detail": "The dishwasher heating element is not functioning.",
+      "detail": "The control board has detected that wash water is not reaching the target temperature — the heating element isn't producing heat. Dishes come out poorly cleaned and won't dry properly. An open-circuit heating element is the most common cause, followed by a failed temperature sensor.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -5346,7 +5252,7 @@
       "code": "tE",
       "aliases": [],
       "meaning": "Temperature sensor failure",
-      "detail": "The water temperature NTC sensor has failed.",
+      "detail": "The control board is reading an open or shorted circuit from the NTC sensor that measures wash water temperature. Without a valid reading the board disables heating for safety, so dishes wash in cold water and dry poorly. The thermistor itself usually fails; check its connector first.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -5384,7 +5290,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, run test cycle.",
+      "reset_instructions": "Turn off the dishwasher's breaker for 60 seconds (LG dishwashers are typically hardwired), then restore power. After replacing the sensor, run a normal cycle and confirm the water heats without tE returning.",
       "related_codes": [
         "HE"
       ],
@@ -5454,7 +5360,7 @@
       "code": "CE",
       "aliases": [],
       "meaning": "Motor/pump over-current error",
-      "detail": "The circulation pump motor is drawing excessive current.",
+      "detail": "The control board has detected the circulation pump motor drawing more current than its safe limit and has shut the motor down to prevent damage. The cycle stops with dishes unwashed. A pump impeller jammed by glass, food debris, or a seed is the most common cause; a failed motor winding comes next.",
       "severity": "high",
       "category": "motor",
       "causes": [
@@ -5494,7 +5400,7 @@
       "cost_hi": 240,
       "pro_cost_lo": 250,
       "pro_cost_hi": 480,
-      "reset_instructions": "Clear debris and restart.",
+      "reset_instructions": "LG dishwashers are usually hardwired — turn off the breaker for 60 seconds instead of unplugging. After clearing any debris from the pump, restore power and run a short cycle to confirm CE is gone.",
       "related_codes": [
         "OE"
       ],
@@ -5505,9 +5411,7 @@
       "brand": "lg",
       "appliance": "refrigerator",
       "code": "Er FF",
-      "aliases": [
-        "Er rF"
-      ],
+      "aliases": [],
       "meaning": "Freezer fan error — fan motor not operating",
       "detail": "The evaporator fan motor in the freezer compartment has failed or is not spinning at the correct speed. Without this fan, cold air cannot circulate from the evaporator coils to the freezer and refrigerator compartments. Food will warm up within hours.",
       "severity": "high",
@@ -5698,7 +5602,7 @@
       "code": "Er FS",
       "aliases": [],
       "meaning": "Freezer temperature sensor error",
-      "detail": "The NTC thermistor measuring freezer compartment temperature has failed.",
+      "detail": "The control board is getting an out-of-range reading from the NTC thermistor that measures freezer compartment temperature. Without a valid reading the board runs the compressor on a fallback schedule, so the freezer may run too warm or too cold. An open-circuit thermistor is the usual cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -5754,7 +5658,7 @@
       "code": "Er IS",
       "aliases": [],
       "meaning": "Ice maker sensor failure",
-      "detail": "The temperature sensor on the ice maker has failed.",
+      "detail": "The control board is reading an open or shorted circuit from the ice maker temperature sensor. The board can't confirm the ice tray is cold enough to harvest, so ice production slows or stops entirely. The sensor itself usually fails, though heavy frost over the sensor can cause the same misread.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -5803,7 +5707,7 @@
       "code": "Er IF",
       "aliases": [],
       "meaning": "Ice maker fan error",
-      "detail": "The fan motor circulating cold air in the ice maker compartment has failed.",
+      "detail": "The control board sees no feedback signal from the fan motor that circulates cold air through the ice maker compartment. Without airflow the ice room warms up and ice production stops. Either the fan motor has failed, or — very commonly — ice has built up around the blade and physically jammed it.",
       "severity": "medium",
       "category": "motor",
       "causes": [
@@ -5842,7 +5746,7 @@
       "cost_hi": 70,
       "pro_cost_lo": 200,
       "pro_cost_hi": 380,
-      "reset_instructions": "Allow 24 hours after repair.",
+      "reset_instructions": "Unplug the refrigerator for 60 seconds to reset the board, then restore power. If ice was jamming the fan, leave the ice compartment door open to thaw first. Allow 24 hours for ice production to resume after repair.",
       "related_codes": [
         "Er FF",
         "Er IS"
@@ -5908,7 +5812,7 @@
       "code": "dS",
       "aliases": [],
       "meaning": "Defrost sensor open circuit",
-      "detail": "The defrost cycle temperature sensor has failed with an open circuit reading.",
+      "detail": "The control board is reading an open circuit from the defrost temperature sensor on the evaporator. Without it, the board cannot tell when defrost is complete, so frost builds on the coils and cooling gradually weakens. A burned-out sensor is the most common cause; a loose connector comes next.",
       "severity": "medium",
       "category": "defrost",
       "causes": [
@@ -6298,9 +6202,7 @@
       "brand": "lg",
       "appliance": "microwave",
       "code": "F-3",
-      "aliases": [
-        "F3"
-      ],
+      "aliases": [],
       "meaning": "Temperature sensor error — over-temperature detected",
       "detail": "The microwave's cavity temperature sensor has detected an over-temperature condition or has failed.",
       "severity": "high",
@@ -6351,9 +6253,7 @@
       "brand": "lg",
       "appliance": "microwave",
       "code": "F-6",
-      "aliases": [
-        "F6"
-      ],
+      "aliases": [],
       "meaning": "Keypad/touchpad failure",
       "detail": "A key on the microwave's touchpad membrane has failed or is being held continuously.",
       "severity": "medium",
@@ -6403,11 +6303,9 @@
       "brand": "lg",
       "appliance": "microwave",
       "code": "F-11",
-      "aliases": [
-        "F11"
-      ],
+      "aliases": [],
       "meaning": "Shorted key on control panel",
-      "detail": "The control panel has detected a short circuit on one of the touch keys.",
+      "detail": "The control board has detected a short circuit on one of the touch keys, reading it as permanently pressed. The microwave will refuse input or behave erratically until the short clears. Moisture or grease that has worked under the membrane keypad is the most common cause, followed by membrane wear.",
       "severity": "medium",
       "category": "control_panel",
       "causes": [
@@ -6454,7 +6352,6 @@
       "appliance": "washer",
       "code": "F8E1",
       "aliases": [
-        "F8 E1",
         "FH"
       ],
       "meaning": "Low water fill detected — water inlet problem",
@@ -6518,7 +6415,6 @@
       "appliance": "washer",
       "code": "F9E1",
       "aliases": [
-        "F9 E1",
         "DR"
       ],
       "meaning": "Drain failure — cycle paused, water not draining",
@@ -6581,9 +6477,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F5E2",
-      "aliases": [
-        "F5 E2"
-      ],
+      "aliases": [],
       "meaning": "Door lock failure — latch cannot engage",
       "detail": "The door lock mechanism cannot properly engage or disengage. The washer will not start without a confirmed locked door, and will stop immediately if the lock fails mid-cycle.",
       "severity": "medium",
@@ -6647,9 +6541,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F1E1",
-      "aliases": [
-        "F1 E1"
-      ],
+      "aliases": [],
       "meaning": "Main control board failure",
       "detail": "The primary electronic control board has experienced an internal fault or component failure. This controls all functions of the washer. This error typically requires control board replacement.",
       "severity": "high",
@@ -6753,9 +6645,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F0E2",
-      "aliases": [
-        "F0 E2"
-      ],
+      "aliases": [],
       "meaning": "Dispenser cannot dispense detergent or additive",
       "detail": "The dispenser system (drawer or automatic dispenser) is unable to dispense laundry products as programmed. This may affect wash quality but does not stop the cycle on all models.",
       "severity": "medium",
@@ -6805,9 +6695,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F7E1",
-      "aliases": [
-        "F7 E1"
-      ],
+      "aliases": [],
       "meaning": "Motor speed error — motor not reaching target RPM",
       "detail": "The washer motor is not spinning at the required speed. This prevents the spin cycle from reaching the target RPM, leaving clothes wetter than normal.",
       "severity": "high",
@@ -6863,9 +6751,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F0E1",
-      "aliases": [
-        "F0 E1"
-      ],
+      "aliases": [],
       "meaning": "Inlet water supply problem — excessive water or suds overflow",
       "detail": "The washer has detected a water supply issue. F0E1 specifically indicates overflow or excessive suds causing the control board to detect an over-water condition.",
       "severity": "low",
@@ -6921,11 +6807,9 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F2E1",
-      "aliases": [
-        "F2 E1"
-      ],
+      "aliases": [],
       "meaning": "Keypad disconnected or key panel failure",
-      "detail": "The main control board cannot communicate with the keypad/user interface panel.",
+      "detail": "The main control board lost communication with the keypad/user interface panel, so button presses no longer register and the cycle cannot be started or changed. A loose wire harness connector between the UI panel and the main board is the most common root cause.",
       "severity": "medium",
       "category": "control_panel",
       "causes": [
@@ -6976,9 +6860,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F3E1",
-      "aliases": [
-        "F3 E1"
-      ],
+      "aliases": [],
       "meaning": "Pressure sensor failure — water level sensing fault",
       "detail": "The water level pressure sensor has failed. The washer cannot accurately detect fill level.",
       "severity": "medium",
@@ -7032,7 +6914,6 @@
       "appliance": "washer",
       "code": "F6E1",
       "aliases": [
-        "F6 E1",
         "F6E2",
         "F6E3"
       ],
@@ -7095,9 +6976,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F3E2",
-      "aliases": [
-        "F3 E2"
-      ],
+      "aliases": [],
       "meaning": "Pressure switch failure — open circuit",
       "detail": "The pressure switch (water level sensor) has an open circuit — it is not making electrical contact in any position.",
       "severity": "medium",
@@ -7153,9 +7032,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F8E3",
-      "aliases": [
-        "F8 E3"
-      ],
+      "aliases": [],
       "meaning": "Flow meter error — water volume sensor fault",
       "detail": "The flow meter measuring how much water has entered the drum has failed. Whirlpool uses this for precise water volume control.",
       "severity": "medium",
@@ -7218,8 +7095,12 @@
       "category": "control_panel",
       "causes": [
         {
-          "description": "Control lock accidentally activated",
-          "frequency": 100
+          "description": "Control Lock enabled accidentally (button held)",
+          "frequency": 80
+        },
+        {
+          "description": "Stuck or moisture-fouled keypad",
+          "frequency": 20
         }
       ],
       "fixes": [
@@ -7246,9 +7127,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F5E1",
-      "aliases": [
-        "F5 E1"
-      ],
+      "aliases": [],
       "meaning": "Door switch failure — lid/door switch not actuating",
       "detail": "The door switch that detects whether the door is closed has failed or is not making contact.",
       "severity": "medium",
@@ -7311,9 +7190,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F5E3",
-      "aliases": [
-        "F5 E3"
-      ],
+      "aliases": [],
       "meaning": "Door lock not engaging — lock timeout",
       "detail": "The door lock solenoid has not completed the lock operation within the required time.",
       "severity": "medium",
@@ -7366,9 +7243,7 @@
       "brand": "whirlpool",
       "appliance": "washer",
       "code": "F1E2",
-      "aliases": [
-        "F1 E2"
-      ],
+      "aliases": [],
       "meaning": "Motor control board failure",
       "detail": "The motor control board (separate from the main control board on many Whirlpool models) has experienced an internal fault.",
       "severity": "high",
@@ -7477,9 +7352,7 @@
       "brand": "whirlpool",
       "appliance": "dryer",
       "code": "F22",
-      "aliases": [
-        "F-22"
-      ],
+      "aliases": [],
       "meaning": "Outlet thermistor failure",
       "detail": "The exhaust temperature sensor (thermistor) at the dryer outlet has failed or is reading incorrectly. The dryer cannot properly regulate heat without this sensor.",
       "severity": "medium",
@@ -7535,9 +7408,7 @@
       "brand": "whirlpool",
       "appliance": "dryer",
       "code": "F30",
-      "aliases": [
-        "AF"
-      ],
+      "aliases": [],
       "meaning": "Restricted airflow — vent blockage",
       "detail": "The dryer has detected insufficient airflow through the exhaust system. This is a safety shutdown — running with blocked airflow causes overheating and is a fire risk.",
       "severity": "medium",
@@ -7591,8 +7462,7 @@
       "pro_cost_hi": 200,
       "reset_instructions": "After clearing the duct, run a 20-minute Air Only cycle. The F30 code clears once adequate airflow is detected.",
       "related_codes": [
-        "F31",
-        "HC"
+        "F31"
       ],
       "when_to_call_pro": "If duct is completely clear and code persists, the airflow sensor or high-limit thermostat may need replacement."
     },
@@ -7601,9 +7471,7 @@
       "brand": "whirlpool",
       "appliance": "dryer",
       "code": "F26",
-      "aliases": [
-        "F-26"
-      ],
+      "aliases": [],
       "meaning": "Drive motor failure",
       "detail": "The drum drive motor has failed. The drum will not rotate, clothes will not tumble, and the dryer cannot complete a cycle.",
       "severity": "high",
@@ -7720,7 +7588,7 @@
       "code": "F29",
       "aliases": [],
       "meaning": "Moisture sensor bar failure — secondary sensor",
-      "detail": "The secondary moisture sensor has failed.",
+      "detail": "The control detected an implausible reading from the secondary moisture sensor bars inside the drum, so auto-dry cycles can't judge when clothes are dry — loads stop damp or run far too long. Fabric softener residue coating the metal bars is the most common cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -7769,7 +7637,7 @@
       "code": "F31",
       "aliases": [],
       "meaning": "Exhaust thermistor failure",
-      "detail": "The thermistor measuring exhaust air temperature has failed.",
+      "detail": "The control is reading an open or shorted circuit from the thermistor that measures exhaust air temperature, so it cannot regulate heat safely and stops the cycle. Most often the thermistor itself has drifted out of spec or failed; a loose connector is the next suspect.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -7866,8 +7734,7 @@
       "pro_cost_hi": 400,
       "reset_instructions": "Reset the circuit breaker. L2 clears when full 240V is restored.",
       "related_codes": [
-        "F30",
-        "HC"
+        "F30"
       ],
       "when_to_call_pro": "L2 is almost always an electrical supply problem, not a dryer fault. An electrician should check the outlet and panel wiring if the breaker reset doesn't fix it."
     },
@@ -7876,9 +7743,7 @@
       "brand": "whirlpool",
       "appliance": "dryer",
       "code": "AF",
-      "aliases": [
-        "F30"
-      ],
+      "aliases": [],
       "meaning": "Restricted airflow — vent partially blocked",
       "detail": "The dryer's airflow sensor or thermal system has detected reduced exhaust airflow. A partial vent blockage is causing inefficient drying and potential overheating.",
       "severity": "medium",
@@ -7928,8 +7793,7 @@
       "pro_cost_hi": 200,
       "reset_instructions": "After clearing duct, run Air Only cycle for 20 minutes.",
       "related_codes": [
-        "F30",
-        "HC"
+        "F30"
       ],
       "when_to_call_pro": "If duct is clear and AF persists, the airflow sensor may have failed."
     },
@@ -7938,9 +7802,7 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F9E1",
-      "aliases": [
-        "F9 E1"
-      ],
+      "aliases": [],
       "meaning": "Drain pump failure — dishwasher not draining",
       "detail": "The dishwasher drain pump is not draining water within the expected time. Standing water in the tub indicates this error.",
       "severity": "high",
@@ -8000,9 +7862,7 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F6E4",
-      "aliases": [
-        "F6 E4"
-      ],
+      "aliases": [],
       "meaning": "Wash heater or heating element failure",
       "detail": "The dishwasher is unable to heat water to the target wash temperature. Dishes will not be sanitized and drying performance will suffer.",
       "severity": "high",
@@ -8055,11 +7915,9 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F2E2",
-      "aliases": [
-        "F2 E2"
-      ],
+      "aliases": [],
       "meaning": "Keypad error — control panel not communicating",
-      "detail": "The keypad or user interface is not communicating with the main control board.",
+      "detail": "The main control board has lost communication with the keypad/user interface, so button presses don't register and cycles can't be selected or started. A loose wire harness connector behind the door panel is the most common root cause, followed by a failed UI board.",
       "severity": "medium",
       "category": "control_panel",
       "causes": [
@@ -8109,9 +7967,7 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F3E1",
-      "aliases": [
-        "F3 E1"
-      ],
+      "aliases": [],
       "meaning": "Thermistor failure — low resistance reading",
       "detail": "The NTC temperature sensor is reading a resistance that indicates it has shorted.",
       "severity": "medium",
@@ -8151,7 +8007,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, run test cycle.",
+      "reset_instructions": "Press Cancel and let the 2-minute drain finish, then unplug the dishwasher (or flip the breaker) for 60 seconds. After replacing the thermistor, run a normal cycle to confirm F3E1 stays clear.",
       "related_codes": [
         "F3E2",
         "F6E4"
@@ -8163,11 +8019,9 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F3E2",
-      "aliases": [
-        "F3 E2"
-      ],
+      "aliases": [],
       "meaning": "Thermistor failure — high resistance / open circuit",
-      "detail": "The NTC temperature sensor has an open circuit or extremely high resistance.",
+      "detail": "The control is reading an open circuit or impossibly high resistance from the NTC temperature sensor, so it cannot verify water temperature and may skip heated wash or sani phases. A failed sensor or a loose connector at the thermistor is the most common cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -8209,7 +8063,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, run test cycle.",
+      "reset_instructions": "Press Cancel and allow the 2-minute drain to complete, then cut power at the breaker for 60 seconds. After reseating the connector or fitting a new thermistor, run a normal cycle to verify the code is gone.",
       "related_codes": [
         "F3E1",
         "F6E4"
@@ -8222,11 +8076,10 @@
       "appliance": "dishwasher",
       "code": "F6E1",
       "aliases": [
-        "F6 E1",
         "F6E2"
       ],
       "meaning": "Water heating failure — not reaching target temperature",
-      "detail": "The dishwasher is unable to heat water to the programmed wash temperature.",
+      "detail": "The control commanded the heater but water temperature never reached the programmed target within the allowed time. Dishes come out poorly washed and the cycle runs long or aborts. A burned-out heating element is the most common root cause, followed by a bad thermistor.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -8280,9 +8133,7 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F7E1",
-      "aliases": [
-        "F7 E1"
-      ],
+      "aliases": [],
       "meaning": "Circulation pump motor error",
       "detail": "The main wash circulation pump motor has failed or is drawing incorrect current.",
       "severity": "high",
@@ -8324,7 +8175,7 @@
       "cost_hi": 250,
       "pro_cost_lo": 250,
       "pro_cost_hi": 480,
-      "reset_instructions": "Clear debris and restart.",
+      "reset_instructions": "Press Cancel and let the 2-minute drain run, then unplug or switch off the breaker for 60 seconds. Remove the filter, clear any debris around the pump impeller, and start a short cycle to test.",
       "related_codes": [
         "F9E1"
       ],
@@ -8352,8 +8203,12 @@
       ],
       "fixes": [
         {
-          "title": "Run a calibration cycle",
-          "description": "Select Heavy cycle and run a full cycle with the dishwasher empty. This recalibrates the sensors."
+          "title": "Let the calibration cycle finish",
+          "description": "CAL is a status display, not a fault. Run the dishwasher empty and let the calibration complete uninterrupted — typically 10–20 minutes."
+        },
+        {
+          "title": "Power cycle if stuck",
+          "description": "If CAL stays on the display for more than an hour, switch off power at the breaker for 60 seconds, then run an empty Heavy cycle to recalibrate."
         }
       ],
       "diy_difficulty": "easy",
@@ -8370,9 +8225,7 @@
       "brand": "whirlpool",
       "appliance": "refrigerator",
       "code": "SY EF",
-      "aliases": [
-        "SYEF"
-      ],
+      "aliases": [],
       "meaning": "Evaporator fan motor failure",
       "detail": "The evaporator fan motor in the freezer has stopped functioning. This fan circulates cold air from the evaporator to both the freezer and refrigerator sections. Without it, temperatures will rise throughout the refrigerator.",
       "severity": "high",
@@ -8432,9 +8285,7 @@
       "brand": "whirlpool",
       "appliance": "refrigerator",
       "code": "SY CF",
-      "aliases": [
-        "SYCF"
-      ],
+      "aliases": [],
       "meaning": "Condenser fan motor failure",
       "detail": "The condenser fan (near the compressor at the bottom rear of the refrigerator) has stopped running. The compressor will overheat and shut down, causing the entire refrigerator to stop cooling.",
       "severity": "high",
@@ -8489,9 +8340,7 @@
       "brand": "whirlpool",
       "appliance": "refrigerator",
       "code": "E0",
-      "aliases": [
-        "E-0"
-      ],
+      "aliases": [],
       "meaning": "Freezer thermistor failure",
       "detail": "The temperature sensor in the freezer compartment has failed. The control board cannot accurately read freezer temperature, which may cause over-cooling or under-cooling.",
       "severity": "medium",
@@ -8536,10 +8385,7 @@
       "pro_cost_lo": 150,
       "pro_cost_hi": 300,
       "reset_instructions": "After replacement, unplug 5 minutes then restart. Code clears after normal temperature cycle.",
-      "related_codes": [
-        "E1",
-        "E2"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If thermistor tests good and code persists, the control board sensor input circuit has failed."
     },
     {
@@ -8547,9 +8393,7 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F2-E0",
-      "aliases": [
-        "F2E0"
-      ],
+      "aliases": [],
       "meaning": "Shorted keypad — stuck key on control panel",
       "detail": "A key on the oven's control panel membrane has been stuck for 60 continuous seconds. This is the most common oven control error on Whirlpool ranges.",
       "severity": "low",
@@ -8601,9 +8445,7 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F2-E1",
-      "aliases": [
-        "F2E1"
-      ],
+      "aliases": [],
       "meaning": "Keypad/touchpad disconnected from control board",
       "detail": "The ribbon cable or connector between the keypad and the Electronic Range Control board has lost continuity.",
       "severity": "medium",
@@ -8655,9 +8497,7 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F3-E0",
-      "aliases": [
-        "F3E0"
-      ],
+      "aliases": [],
       "meaning": "Oven temperature sensor open circuit",
       "detail": "The oven temperature sensor (RTD probe) has an open circuit. The oven will not heat safely without temperature feedback.",
       "severity": "high",
@@ -8715,9 +8555,7 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F3-E1",
-      "aliases": [
-        "F3E1"
-      ],
+      "aliases": [],
       "meaning": "Oven temperature sensor short circuit",
       "detail": "The oven temperature sensor is reading near-zero resistance, indicating a short circuit. This can cause the oven to detect falsely high temperatures.",
       "severity": "high",
@@ -8773,9 +8611,7 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F3-E2",
-      "aliases": [
-        "F3E2"
-      ],
+      "aliases": [],
       "meaning": "Oven over-temperature — temp exceeded safe limit",
       "detail": "The oven temperature exceeded the maximum safe limit during normal cooking (typically above 590°F/310°C).",
       "severity": "critical",
@@ -8837,9 +8673,7 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F5-E0",
-      "aliases": [
-        "F5E0"
-      ],
+      "aliases": [],
       "meaning": "Door switch failure — latch not sensing door position",
       "detail": "The door switch is not detecting the door position correctly during a self-clean cycle or normal operation.",
       "severity": "medium",
@@ -8891,9 +8725,7 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F5-E1",
-      "aliases": [
-        "F5E1"
-      ],
+      "aliases": [],
       "meaning": "Self-clean door latch failure — lock timeout",
       "detail": "The door latch motor did not complete the lock or unlock operation within the required time during a self-clean cycle.",
       "severity": "medium",
@@ -8946,11 +8778,9 @@
       "brand": "whirlpool",
       "appliance": "oven",
       "code": "F9-E0",
-      "aliases": [
-        "F9E0"
-      ],
+      "aliases": [],
       "meaning": "Door latch during lock function — latch system fault",
-      "detail": "A general door latch fault during the locking function.",
+      "detail": "The control commanded the door latch to lock (usually for self-clean) but never received confirmation that the latch reached the locked position, so the cycle is locked out. A failed latch motor or a misaligned latch switch is the most common root cause.",
       "severity": "medium",
       "category": "door",
       "causes": [
@@ -9047,8 +8877,7 @@
       "pro_cost_hi": 380,
       "reset_instructions": "After replacing the heating element, unplug for 5 minutes and restart. The code clears after a successful heated cycle.",
       "related_codes": [
-        "E61",
-        "E62"
+        "E61"
       ],
       "when_to_call_pro": "Heating element access requires significant disassembly. Professional service is recommended if you're not experienced."
     },
@@ -9104,8 +8933,7 @@
       "pro_cost_hi": 250,
       "reset_instructions": "After fixing the supply issue or replacing the sensor, restart the cycle.",
       "related_codes": [
-        "E64",
-        "E62"
+        "E64"
       ],
       "when_to_call_pro": "If hot water is confirmed good at the tap but E61 persists, the NTC sensor or inlet valve hot side needs replacement."
     },
@@ -9208,7 +9036,6 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After repair, unplug 1 minute and restart.",
       "related_codes": [
-        "E72",
         "E64"
       ],
       "when_to_call_pro": "If thermistor is new and tests correctly but error persists, control board sensor input has failed."
@@ -9280,7 +9107,7 @@
       "code": "E43",
       "aliases": [],
       "meaning": "Drive motor failure",
-      "detail": "The drive motor has failed or is drawing excessive current.",
+      "detail": "The control board detected that the drive motor failed to run or drew excessive current when commanded. The drum will not tumble or spin and the cycle halts. Worn motor windings or a broken drive belt letting the motor race are the most common root causes.",
       "severity": "high",
       "category": "motor",
       "causes": [
@@ -9326,7 +9153,7 @@
       "cost_hi": 250,
       "pro_cost_lo": 250,
       "pro_cost_hi": 520,
-      "reset_instructions": "Unplug 10 minutes, restart.",
+      "reset_instructions": "Unplug the washer for 10 minutes to reset the control, then plug back in and run a short spin cycle. If E43 returns as soon as the drum tries to turn, the motor or motor control board has failed.",
       "related_codes": [
         "E44",
         "E52"
@@ -9340,7 +9167,7 @@
       "code": "E44",
       "aliases": [],
       "meaning": "Motor speed sensor failure",
-      "detail": "The motor tachometer or speed sensor has failed.",
+      "detail": "The control board stopped receiving speed feedback from the motor tachometer, so it cannot regulate drum speed. The washer may agitate erratically or refuse to spin. A failed tach sensor on the motor or a chafed sensor wire is the most common cause.",
       "severity": "high",
       "category": "sensor",
       "causes": [
@@ -9378,7 +9205,7 @@
       "cost_hi": 55,
       "pro_cost_lo": 200,
       "pro_cost_hi": 400,
-      "reset_instructions": "After repair, restart.",
+      "reset_instructions": "Unplug the washer for 5 minutes to clear the code, then restart on a spin cycle. If E44 reappears once the drum starts turning, test and replace the motor speed sensor.",
       "related_codes": [
         "E43",
         "E52"
@@ -9392,7 +9219,7 @@
       "code": "E47",
       "aliases": [],
       "meaning": "Door lock failure",
-      "detail": "The door lock mechanism cannot engage or disengage properly.",
+      "detail": "The control board commanded the door lock to engage or release but never received confirmation from the lock switch. The cycle cannot start, or the door stays locked after it ends. A worn latch or failed lock solenoid is the most common cause.",
       "severity": "medium",
       "category": "door",
       "causes": [
@@ -9436,7 +9263,6 @@
       "pro_cost_hi": 320,
       "reset_instructions": "Close door firmly and restart.",
       "related_codes": [
-        "E42",
         "E43"
       ],
       "when_to_call_pro": "If door closes but E47 persists, lock solenoid has failed."
@@ -9663,7 +9489,7 @@
       "code": "OE",
       "aliases": [],
       "meaning": "Drain error — not draining properly",
-      "detail": "The GE dishwasher is unable to drain water within the expected time.",
+      "detail": "The control board did not see the water level drop during the drain period — the pump ran but water stayed in the tub, leaving standing water after the cycle. A clogged drain filter or a kinked or improperly looped drain hose is the most common root cause.",
       "severity": "high",
       "category": "drainage",
       "causes": [
@@ -9724,7 +9550,7 @@
       "code": "C3",
       "aliases": [],
       "meaning": "Control board failure",
-      "detail": "The main control board has experienced an internal fault.",
+      "detail": "The main control board failed an internal self-check or stopped responding, so the dishwasher may go unresponsive or halt mid-cycle. Internal component failure on the board, often triggered by a power surge or moisture intrusion, is the most common cause.",
       "severity": "high",
       "category": "control_board",
       "causes": [
@@ -9872,7 +9698,7 @@
       "code": "PrS",
       "aliases": [],
       "meaning": "Pressure sensor fault — water level sensing issue",
-      "detail": "The water level pressure sensor in the dishwasher is not reading correctly.",
+      "detail": "The control board is receiving implausible or no readings from the water level pressure sensor, so it cannot verify the fill level. Fills may be wrong or the cycle may halt. A failed sensor or a blocked pressure hose from the sump is the usual cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -10040,8 +9866,12 @@
       "category": "display",
       "causes": [
         {
-          "description": "Demo mode activated",
-          "frequency": 100
+          "description": "Demo/display mode activated, often after a power interruption or self-test",
+          "frequency": 70
+        },
+        {
+          "description": "Display board or main board communication fault keeping the mode stuck",
+          "frequency": 30
         }
       ],
       "fixes": [
@@ -10126,7 +9956,7 @@
       "code": "4E",
       "aliases": [],
       "meaning": "Evaporator sensor failure",
-      "detail": "The evaporator coil temperature sensor has failed.",
+      "detail": "The control board detected an open or out-of-range signal from the evaporator coil temperature sensor, so defrost timing can no longer be regulated accurately. Frost may build up and cooling suffer. A failed clip-on sensor or heavy frost encasing it is the usual cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -10168,7 +9998,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 300,
-      "reset_instructions": "Allow 24 hours after repair.",
+      "reset_instructions": "Unplug the refrigerator for 5 minutes, restore power, and allow 24 hours for temperatures to stabilize. If 4E returns after the reset, test and replace the evaporator sensor.",
       "related_codes": [
         "1E",
         "2E",
@@ -10183,7 +10013,7 @@
       "code": "6E",
       "aliases": [],
       "meaning": "Humidity/ambient sensor failure",
-      "detail": "The humidity or ambient temperature sensor has failed.",
+      "detail": "The control board is getting no valid signal from the humidity or ambient temperature sensor, so it cannot fine-tune defrost cycles and anti-condensation heaters. Cooling usually continues normally. A failed sensor or loose connector is the typical cause.",
       "severity": "low",
       "category": "sensor",
       "causes": [
@@ -10218,7 +10048,7 @@
       "cost_hi": 35,
       "pro_cost_lo": 100,
       "pro_cost_hi": 220,
-      "reset_instructions": "Unplug 5 minutes and restart.",
+      "reset_instructions": "Unplug the refrigerator for 5 minutes, then restore power. If 6E reappears within a day, reseat the sensor connector and replace the sensor — cooling is usually unaffected meanwhile.",
       "related_codes": [
         "1E",
         "2E"
@@ -10326,7 +10156,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, restart.",
+      "reset_instructions": "Unplug the dryer for 1 minute to clear the code, then restart. If E3 returns immediately, the outlet thermistor is still shorted — replace it before running another load.",
       "related_codes": [
         "E1",
         "E4"
@@ -10434,7 +10264,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, restart.",
+      "reset_instructions": "Unplug the dryer for 1 minute, then restart a timed-dry cycle. If E8 returns, the inlet thermistor reading is still out of range — replace the sensor before further use.",
       "related_codes": [
         "E1",
         "E4"
@@ -10448,7 +10278,7 @@
       "code": "E9",
       "aliases": [],
       "meaning": "Exhaust thermistor failure",
-      "detail": "The exhaust air thermistor has failed.",
+      "detail": "The exhaust air thermistor is returning an open or out-of-range signal, so the control cannot monitor exhaust temperature. The dryer may cut heat or stop mid-cycle to protect itself. A failed thermistor in the exhaust path is the usual cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -10486,7 +10316,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, restart.",
+      "reset_instructions": "Unplug the dryer for 1 minute and restart. If E9 reappears when the cycle begins, replace the exhaust thermistor — don't keep running the dryer with a failed exhaust sensor.",
       "related_codes": [
         "E1",
         "E8"
@@ -10500,7 +10330,7 @@
       "code": "E10",
       "aliases": [],
       "meaning": "Motor relay failure on control board",
-      "detail": "The relay controlling the drum motor on the main control board has failed.",
+      "detail": "The control board detected that the drum motor relay on the main board is stuck or no longer switching, so the motor cannot be reliably started or stopped. A burned relay contact on the board, often following a power surge, is the most common root cause.",
       "severity": "high",
       "category": "control_board",
       "causes": [
@@ -10553,14 +10383,22 @@
       "category": "maintenance",
       "causes": [
         {
-          "description": "Lint screen full per sensor or timer",
-          "frequency": 100
+          "description": "Lint screen cleaning reminder interval reached",
+          "frequency": 75
+        },
+        {
+          "description": "Lint screen or housing genuinely clogged",
+          "frequency": 25
         }
       ],
       "fixes": [
         {
           "title": "Clean lint screen",
-          "description": "Remove and clean thoroughly after every load."
+          "description": "Remove the screen, clear all lint, and wash with warm soapy water to remove fabric-softener film. Dry fully before reinstalling."
+        },
+        {
+          "title": "Vacuum the screen housing",
+          "description": "Use a vacuum crevice tool in the lint screen slot to pull out lint that has fallen past the screen into the housing."
         }
       ],
       "diy_difficulty": "easy",
@@ -11019,10 +10857,7 @@
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
       "reset_instructions": "After clearing blockage, press the pause/cancel button to reset, then restart cycle.",
-      "related_codes": [
-        "E21",
-        "E03"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If drain pump is replaced and E18 persists, control board drain relay needs testing."
     },
     {
@@ -11198,9 +11033,7 @@
       "pro_cost_lo": 150,
       "pro_cost_hi": 380,
       "reset_instructions": "Drain base, fix leak, allow to dry. Code clears when float sensor resets.",
-      "related_codes": [
-        "E13"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If no external leak is visible, internal tub or pump housing crack needs professional diagnosis."
     },
     {
@@ -11208,9 +11041,7 @@
       "brand": "bosch",
       "appliance": "dishwasher",
       "code": "E15",
-      "aliases": [
-        "E-15"
-      ],
+      "aliases": [],
       "meaning": "Leak protection activated — water detected in base tray",
       "detail": "The AquaStop anti-flood system has detected water in the base tray of the Bosch dishwasher. This is one of the most searched Bosch dishwasher error codes. The dishwasher will pump water out continuously and lock itself until the issue is resolved.",
       "severity": "high",
@@ -11280,9 +11111,7 @@
       "brand": "bosch",
       "appliance": "dishwasher",
       "code": "E24",
-      "aliases": [
-        "E-24"
-      ],
+      "aliases": [],
       "meaning": "Drain blocked — dishwasher not draining",
       "detail": "The Bosch dishwasher cannot drain water. This is a very common error often caused by a blocked drain filter or a kinked drain hose. It's usually a quick DIY fix.",
       "severity": "high",
@@ -11341,9 +11170,7 @@
       "brand": "bosch",
       "appliance": "dishwasher",
       "code": "E25",
-      "aliases": [
-        "E-25"
-      ],
+      "aliases": [],
       "meaning": "Drain pump or filter blocked — drain impeller obstructed",
       "detail": "The drain pump filter or pump impeller is physically blocked by debris. This is a more specific version of E24 pointing to the pump or filter area rather than the hose.",
       "severity": "high",
@@ -11397,9 +11224,7 @@
       "brand": "bosch",
       "appliance": "dishwasher",
       "code": "E01",
-      "aliases": [
-        "E-01"
-      ],
+      "aliases": [],
       "meaning": "Heating element or NTC sensor failure — water not heating",
       "detail": "The dishwasher cannot heat water to the target temperature. The heating element or the temperature sensor monitoring it has failed. Dishes will not be properly sanitized.",
       "severity": "high",
@@ -11445,9 +11270,7 @@
       "pro_cost_lo": 200,
       "pro_cost_hi": 400,
       "reset_instructions": "After replacement, run a test cycle on a short program.",
-      "related_codes": [
-        "E02"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If element and sensor both test OK, the control board heater relay has failed."
     },
     {
@@ -11455,9 +11278,7 @@
       "brand": "bosch",
       "appliance": "dishwasher",
       "code": "E09",
-      "aliases": [
-        "E-09"
-      ],
+      "aliases": [],
       "meaning": "Heating circuit failure — heater not functioning",
       "detail": "The heating circuit has an electrical fault. Similar to E01 but specifically indicates a relay or circuit board issue rather than the element itself.",
       "severity": "high",
@@ -11503,8 +11324,7 @@
       "pro_cost_hi": 480,
       "reset_instructions": "After repair, restart on a short test cycle.",
       "related_codes": [
-        "E01",
-        "E02"
+        "E01"
       ],
       "when_to_call_pro": "Control board replacement is complex. Professional diagnosis recommended to confirm it's the board and not a wiring issue."
     },
@@ -11513,11 +11333,9 @@
       "brand": "bosch",
       "appliance": "dishwasher",
       "code": "E05",
-      "aliases": [
-        "E-05"
-      ],
+      "aliases": [],
       "meaning": "Water shortage — insufficient water entering dishwasher",
-      "detail": "The dishwasher is not receiving adequate water to fill for the wash cycle.",
+      "detail": "The control did not detect the water level rising as expected during fill, so the cycle pauses or aborts to keep the circulation pump from running dry. A partially closed supply valve under the sink or a kinked inlet hose is the most common root cause.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -11565,9 +11383,7 @@
       "pro_cost_lo": 120,
       "pro_cost_hi": 250,
       "reset_instructions": "Restore water supply and press Start to resume.",
-      "related_codes": [
-        "E06"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If water supply is confirmed good and error persists, inlet valve replacement is needed."
     },
     {
@@ -11575,10 +11391,7 @@
       "brand": "bosch",
       "appliance": "oven",
       "code": "E002",
-      "aliases": [
-        "E-002",
-        "E002"
-      ],
+      "aliases": [],
       "meaning": "Heating element failure — oven not heating",
       "detail": "The bake or broil heating element has failed. The oven will not heat up, or heating will be uneven.",
       "severity": "high",
@@ -11634,9 +11447,7 @@
       "brand": "bosch",
       "appliance": "oven",
       "code": "E111",
-      "aliases": [
-        "E-111"
-      ],
+      "aliases": [],
       "meaning": "Oven temperature sensor failure — NTC sensor open circuit",
       "detail": "The oven temperature sensor (NTC probe) has failed. Without accurate temperature readings, the oven cannot regulate heat properly — it may overheat or not heat at all.",
       "severity": "medium",
@@ -11692,9 +11503,7 @@
       "brand": "bosch",
       "appliance": "oven",
       "code": "E132",
-      "aliases": [
-        "E-132"
-      ],
+      "aliases": [],
       "meaning": "Safety cutout tripped — oven overheated",
       "detail": "The oven exceeded its maximum safe operating temperature and the thermal safety cutout has tripped. This is a critical safety code. Do not continue using the oven until the underlying cause is found.",
       "severity": "critical",
@@ -11759,9 +11568,7 @@
       "brand": "kitchenaid",
       "appliance": "washer",
       "code": "F8E1",
-      "aliases": [
-        "F8 E1"
-      ],
+      "aliases": [],
       "meaning": "Low water supply — insufficient fill detected",
       "detail": "KitchenAid washers share the Whirlpool platform. F8E1 indicates the washer is not detecting adequate water fill within the timeout period. Supply valve, inlet screens, and water pressure are the first things to check.",
       "severity": "medium",
@@ -11817,9 +11624,7 @@
       "brand": "kitchenaid",
       "appliance": "washer",
       "code": "F9E1",
-      "aliases": [
-        "F9 E1"
-      ],
+      "aliases": [],
       "meaning": "Drain failure — water not draining",
       "detail": "The KitchenAid washer cannot drain within the expected time. The pump filter is almost always the culprit.",
       "severity": "high",
@@ -11876,9 +11681,7 @@
       "brand": "kitchenaid",
       "appliance": "washer",
       "code": "F5E2",
-      "aliases": [
-        "F5 E2"
-      ],
+      "aliases": [],
       "meaning": "Door lock failure",
       "detail": "The door lock cannot engage or disengage properly. The washer will not operate with an unlocked door.",
       "severity": "medium",
@@ -11938,7 +11741,7 @@
         "SUD"
       ],
       "meaning": "Excessive suds detected",
-      "detail": "Too much foam detected in the wash drum. Cycle paused while suds dissipate.",
+      "detail": "The washer has detected excessive foam in the drum and paused the cycle to let the suds break down — it may add rinse water to help. The cycle runs much longer than normal but resumes on its own. Using too much detergent, or non-HE detergent in an HE machine, is the cause in nearly every case.",
       "severity": "low",
       "category": "detergent",
       "causes": [
@@ -11979,9 +11782,7 @@
       "brand": "kitchenaid",
       "appliance": "dishwasher",
       "code": "7-1",
-      "aliases": [
-        "7 1"
-      ],
+      "aliases": [],
       "meaning": "Drain pump failure — dishwasher not draining",
       "detail": "The drain pump motor has failed or is blocked. Water remains standing in the tub.",
       "severity": "high",
@@ -12033,7 +11834,6 @@
       "pro_cost_hi": 290,
       "reset_instructions": "After clearing blockage, cancel and restart cycle.",
       "related_codes": [
-        "8-1",
         "6-2"
       ],
       "when_to_call_pro": "If pump motor tested failed, replacement needed."
@@ -12043,9 +11843,7 @@
       "brand": "kitchenaid",
       "appliance": "dishwasher",
       "code": "6-2",
-      "aliases": [
-        "6 2"
-      ],
+      "aliases": [],
       "meaning": "Stuck relay on control board",
       "detail": "A relay on the main control board is stuck in a closed or open position. This usually requires control board replacement.",
       "severity": "high",
@@ -12091,9 +11889,7 @@
       "brand": "kitchenaid",
       "appliance": "dishwasher",
       "code": "1-1",
-      "aliases": [
-        "1 1"
-      ],
+      "aliases": [],
       "meaning": "Thermistor failure — water temperature sensor fault",
       "detail": "The NTC thermistor measuring wash water temperature has failed. Heating function disabled.",
       "severity": "medium",
@@ -12133,10 +11929,8 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, run test cycle.",
-      "related_codes": [
-        "2-1"
-      ],
+      "reset_instructions": "Turn off power at the breaker for 60 seconds (most KitchenAid dishwashers are hardwired), then restore power. After replacing the thermistor, run a normal cycle and verify the water heats without 1-1 returning.",
+      "related_codes": [],
       "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
     },
     {
@@ -12144,9 +11938,7 @@
       "brand": "kitchenaid",
       "appliance": "refrigerator",
       "code": "SY EF",
-      "aliases": [
-        "SYEF"
-      ],
+      "aliases": [],
       "meaning": "Evaporator fan motor failure",
       "detail": "The evaporator fan in the freezer has stopped. Cold air cannot circulate to either compartment.",
       "severity": "high",
@@ -12199,9 +11991,7 @@
       "brand": "kitchenaid",
       "appliance": "refrigerator",
       "code": "SY CF",
-      "aliases": [
-        "SYCF"
-      ],
+      "aliases": [],
       "meaning": "Condenser fan motor failure",
       "detail": "The condenser fan at the back/bottom of the refrigerator has failed. Compressor will overheat.",
       "severity": "high",
@@ -12312,7 +12102,7 @@
       "code": "E11",
       "aliases": [],
       "meaning": "Fill time exceeded — water not filling",
-      "detail": "The washer did not reach the required water level within the fill time limit.",
+      "detail": "The pressure sensor did not register the target water level before the fill timer expired, so the control paused the cycle to avoid running dry. A closed or partially open supply valve, or sediment-clogged inlet screens, are the most common causes.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -12408,10 +12198,7 @@
       "pro_cost_lo": 150,
       "pro_cost_hi": 300,
       "reset_instructions": "Close door firmly and restart.",
-      "related_codes": [
-        "E42",
-        "E43"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If door is closed but E41 persists, lock solenoid has failed."
     },
     {
@@ -12465,8 +12252,7 @@
       "pro_cost_hi": 420,
       "reset_instructions": "Unplug 5 minutes. If error returns, door lock or board replacement needed.",
       "related_codes": [
-        "E41",
-        "E42"
+        "E41"
       ],
       "when_to_call_pro": "If both door lock and board are replaced and error continues, wiring harness has a fault."
     },
@@ -12523,7 +12309,7 @@
       "code": "E64",
       "aliases": [],
       "meaning": "Heating element failure",
-      "detail": "The dryer heating element has failed. The drum turns but produces no heat.",
+      "detail": "The control detected an open circuit in the heating element, so the drum turns but no heat is produced and clothes stay wet. An element coil burned through from age or from restricted exhaust airflow is by far the most common root cause.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -12577,9 +12363,7 @@
       "brand": "frigidaire",
       "appliance": "dishwasher",
       "code": "i20",
-      "aliases": [
-        "I20"
-      ],
+      "aliases": [],
       "meaning": "Drain problem — water not draining",
       "detail": "The Frigidaire dishwasher cannot drain water. Standing water remains in the tub.",
       "severity": "high",
@@ -12630,8 +12414,7 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After clearing blockage, cancel and restart.",
       "related_codes": [
-        "i30",
-        "ER"
+        "i30"
       ],
       "when_to_call_pro": "If pump motor fails, replace it."
     },
@@ -12640,9 +12423,7 @@
       "brand": "frigidaire",
       "appliance": "dishwasher",
       "code": "i30",
-      "aliases": [
-        "I30"
-      ],
+      "aliases": [],
       "meaning": "Leak detected in base",
       "detail": "Water has entered the base pan of the dishwasher, triggering the flood protection switch.",
       "severity": "high",
@@ -12703,11 +12484,9 @@
       "brand": "frigidaire",
       "appliance": "dishwasher",
       "code": "i10",
-      "aliases": [
-        "I10"
-      ],
+      "aliases": [],
       "meaning": "Water supply problem — insufficient fill",
-      "detail": "The dishwasher is not detecting adequate water fill.",
+      "detail": "The control did not detect the expected water level within the fill window, so the cycle pauses rather than run the wash pump dry. Dishes come out dirty or the cycle stalls early. A closed supply valve or kinked inlet hose is the most common cause.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -12750,7 +12529,7 @@
       "cost_hi": 70,
       "pro_cost_lo": 120,
       "pro_cost_hi": 240,
-      "reset_instructions": "Fix supply issue and restart.",
+      "reset_instructions": "Frigidaire dishwashers are often hardwired — switch off the breaker for 5 minutes to reset the control, restore power, then start a new cycle after confirming the supply valve is fully open.",
       "related_codes": [
         "i20"
       ],
@@ -12763,7 +12542,7 @@
       "code": "PF",
       "aliases": [],
       "meaning": "Power failure — cycle interrupted",
-      "detail": "Power was interrupted during the wash cycle.",
+      "detail": "Power to the dishwasher was interrupted mid-cycle, and the control displays PF so you know the load may not have finished. PF is a notice, not a fault — a brief outage or a tripped breaker is the cause, and the dishes may need rewashing.",
       "severity": "low",
       "category": "power",
       "causes": [
@@ -12778,8 +12557,12 @@
       ],
       "fixes": [
         {
-          "title": "Restart the cycle",
-          "description": "Press Start to run a new cycle."
+          "title": "Clear the code and restart",
+          "description": "Press Start/Cancel to clear PF, then start a new cycle to finish the interrupted load."
+        },
+        {
+          "title": "Check household power if recurring",
+          "description": "If PF appears often without known outages, check the breaker and the dishwasher's junction-box connections for looseness."
         }
       ],
       "diy_difficulty": "easy",
@@ -12854,9 +12637,7 @@
       "brand": "frigidaire",
       "appliance": "refrigerator",
       "code": "SY EF",
-      "aliases": [
-        "SYEF"
-      ],
+      "aliases": [],
       "meaning": "Evaporator fan motor failure",
       "detail": "The evaporator fan has stopped functioning. Without it, cold air cannot circulate and temperatures will rise.",
       "severity": "high",
@@ -13351,9 +13132,7 @@
       "brand": "maytag",
       "appliance": "washer",
       "code": "F9E1",
-      "aliases": [
-        "F9 E1"
-      ],
+      "aliases": [],
       "meaning": "Drain failure — water not draining",
       "detail": "Maytag washers share the Whirlpool platform. F9E1 means the machine cannot drain within the expected time. Pump filter clog is the most common cause.",
       "severity": "high",
@@ -13411,11 +13190,9 @@
       "brand": "maytag",
       "appliance": "washer",
       "code": "F8E1",
-      "aliases": [
-        "F8 E1"
-      ],
+      "aliases": [],
       "meaning": "Low water fill detected",
-      "detail": "The washer is not detecting adequate water during fill cycle.",
+      "detail": "The control opened the inlet valve but the pressure sensor never registered enough water within the allowed fill time, so the cycle pauses or aborts. A partly closed supply valve or clogged inlet hose screens are the most common causes — both fixable without parts.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -13469,11 +13246,9 @@
       "brand": "maytag",
       "appliance": "washer",
       "code": "F1E1",
-      "aliases": [
-        "F1 E1"
-      ],
+      "aliases": [],
       "meaning": "Main electronic control board failure",
-      "detail": "The primary control board has detected an internal fault.",
+      "detail": "The primary control board failed its internal self-check, so the washer halts and won't run cycles reliably. A failed onboard component (often a relay or capacitor) is the usual root cause, frequently triggered by a power surge or moisture reaching the board.",
       "severity": "high",
       "category": "control_board",
       "causes": [
@@ -13509,9 +13284,7 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 520,
       "reset_instructions": "Unplug 15 minutes. If error returns, board needs replacement.",
-      "related_codes": [
-        "F6E1"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "Control board replacement requires photographing all wiring before disconnecting."
     },
     {
@@ -13523,7 +13296,7 @@
         "5D"
       ],
       "meaning": "Excessive suds — too much detergent",
-      "detail": "Washer has detected oversudsing. Cycle paused.",
+      "detail": "The washer detected excess foam — usually via drag on the drum or pressure-sensor readings — and paused the cycle to run a suds-reduction routine. Using too much detergent, or any non-HE detergent in this high-efficiency machine, is the cause in nearly every case.",
       "severity": "low",
       "category": "detergent",
       "causes": [
@@ -13555,9 +13328,9 @@
       "cost_hi": 10,
       "pro_cost_lo": 0,
       "pro_cost_hi": 0,
-      "reset_instructions": "Clears automatically.",
+      "reset_instructions": "Wait — the washer runs a suds-reduction rinse and resumes on its own, usually within 30 minutes. To clear immediately, press Cancel, run a Rinse & Spin with no detergent, then restart the load.",
       "related_codes": [],
-      "when_to_call_pro": "Not a mechanical fault."
+      "when_to_call_pro": "SUD is almost never a service issue. Call a pro only if the code appears on every load with correct HE detergent dosing — that points to a failing pressure sensor or a drain restriction trapping suds."
     },
     {
       "id": "maytag-dryer-f01",
@@ -13608,9 +13381,7 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 520,
       "reset_instructions": "Unplug 15 minutes. If F01 returns immediately, board needs replacement.",
-      "related_codes": [
-        "F26"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If F01 persists on new board, there may be a wiring or power supply issue."
     },
     {
@@ -13620,7 +13391,7 @@
       "code": "F22",
       "aliases": [],
       "meaning": "Outlet thermistor (temperature sensor) failure",
-      "detail": "The exhaust temperature sensor has failed. Dryer cannot regulate heat safely.",
+      "detail": "The control is reading an open circuit from the exhaust thermistor, so it cannot measure outgoing air temperature or regulate heat safely — the dryer stops or refuses to heat. A failed thermistor is the most common cause; it's an inexpensive part on the blower housing.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -13659,9 +13430,7 @@
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
       "reset_instructions": "After replacement, unplug 1 minute then restart.",
-      "related_codes": [
-        "F25"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
     },
     {
@@ -13671,7 +13440,7 @@
       "code": "F06",
       "aliases": [],
       "meaning": "Drive motor failure — drum not turning",
-      "detail": "The drive motor has failed. The drum will not rotate.",
+      "detail": "The control commanded the drive motor but detected no rotation, so the drum will not turn and the cycle stops. Failed motor windings are the most common root cause, though a bad start capacitor or a tripped thermal overload on the motor can produce the same code.",
       "severity": "high",
       "category": "motor",
       "causes": [
@@ -13725,9 +13494,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F1-E0",
-      "aliases": [
-        "F1E0"
-      ],
+      "aliases": [],
       "meaning": "ERC board EEPROM checksum error — control board memory failure",
       "detail": "The Electronic Range Control board failed its internal memory checksum. This is usually caused by a power surge or age-related failure of the board's non-volatile memory. The oven will not operate normally with this fault active.",
       "severity": "high",
@@ -13767,8 +13534,7 @@
       "pro_cost_hi": 500,
       "reset_instructions": "Turn off circuit breaker 15 minutes. If F1-E0 returns, ERC board must be replaced.",
       "related_codes": [
-        "F1-E1",
-        "F1-E2"
+        "F1-E1"
       ],
       "models_affected": "Maytag MER and MGR series ranges",
       "when_to_call_pro": "Control board replacement requires handling multiple high-voltage connections. Professional installation is recommended."
@@ -13778,9 +13544,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F1-E1",
-      "aliases": [
-        "F1E1"
-      ],
+      "aliases": [],
       "meaning": "ERC board keypad stuck key — shorted keypad detected during power-up",
       "detail": "On power-up, the ERC board detected that a key on the control panel was already pressed (shorted). This prevents normal startup. Distinct from F2-E0 in that it is detected at power-on, not during normal operation.",
       "severity": "medium",
@@ -13833,9 +13597,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F2-E0",
-      "aliases": [
-        "F2E0"
-      ],
+      "aliases": [],
       "meaning": "Shorted keypad — stuck key during normal operation",
       "detail": "A key on the oven's keypad registered as continuously pressed for more than 60 seconds during normal operation. This is the most common oven control panel error on Maytag ranges built on the Whirlpool platform.",
       "severity": "low",
@@ -13889,9 +13651,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F2-E1",
-      "aliases": [
-        "F2E1"
-      ],
+      "aliases": [],
       "meaning": "Keypad disconnected — ribbon cable failure",
       "detail": "The ribbon cable or connection between the keypad and the ERC board has lost continuity. The ERC board can no longer communicate with the touchpad.",
       "severity": "medium",
@@ -13943,9 +13703,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F3-E0",
-      "aliases": [
-        "F3E0"
-      ],
+      "aliases": [],
       "meaning": "Oven temperature sensor open circuit",
       "detail": "The oven temperature sensor (RTD probe) has an open circuit. The oven will refuse to heat because it cannot safely regulate temperature without accurate sensor feedback. This is a very common Maytag range error.",
       "severity": "high",
@@ -14003,9 +13761,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F3-E1",
-      "aliases": [
-        "F3E1"
-      ],
+      "aliases": [],
       "meaning": "Oven temperature sensor short circuit",
       "detail": "The oven temperature sensor is reading near-zero resistance — a short circuit condition. The ERC board detects a falsely hot reading and shuts down heating to prevent runaway temperature.",
       "severity": "high",
@@ -14061,9 +13817,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F3-E2",
-      "aliases": [
-        "F3E2"
-      ],
+      "aliases": [],
       "meaning": "Oven over-temperature — exceeded safe operating limit",
       "detail": "The oven temperature exceeded the maximum safe operating limit, typically above 575°F (302°C) during normal cooking. The ERC board shut off all heating and requires a diagnosis before reuse.",
       "severity": "critical",
@@ -14125,9 +13879,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F5-E1",
-      "aliases": [
-        "F5E1"
-      ],
+      "aliases": [],
       "meaning": "Self-clean door latch failure — latch did not lock",
       "detail": "The door latch motor ran but the latch switch did not confirm a locked position within the required time. Self-clean cycle cannot start or is interrupted.",
       "severity": "medium",
@@ -14189,9 +13941,7 @@
       "brand": "maytag",
       "appliance": "oven",
       "code": "F9-E0",
-      "aliases": [
-        "F9E0"
-      ],
+      "aliases": [],
       "meaning": "Door latch during lock — general latch circuit fault",
       "detail": "A general fault with the door latch circuit occurred during a locking operation. Similar to F5-E1 but triggered from a different latch state.",
       "severity": "medium",
@@ -14701,7 +14451,7 @@
       "code": "F20",
       "aliases": [],
       "meaning": "Water supply error — no water detected",
-      "detail": "The washer is not detecting water entering the drum. Usually a supply issue.",
+      "detail": "On Whirlpool-built 110-series Kenmore washers, F20 means the control opened the inlet valve but detected no water entering the drum within the allowed fill time, so the cycle stops. A closed supply valve or clogged inlet hose screens cause most cases — no parts needed.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -14744,7 +14494,7 @@
       "cost_hi": 70,
       "pro_cost_lo": 120,
       "pro_cost_hi": 250,
-      "reset_instructions": "Fix supply and restart cycle.",
+      "reset_instructions": "Open both supply valves fully and straighten any kinked fill hoses, then press Pause/Cancel twice to clear the code. Unplug for 60 seconds if it persists, then restart the cycle.",
       "related_codes": [
         "F21"
       ],
@@ -14855,9 +14605,7 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 450,
       "reset_instructions": "Unplug 10 minutes, reduce load, restart.",
-      "related_codes": [
-        "SE"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If hall sensor replacement doesn't resolve LE, stator or main board needs testing."
     },
     {
@@ -14867,7 +14615,7 @@
       "code": "UE",
       "aliases": [],
       "meaning": "Unbalanced load (LG-platform Kenmore models)",
-      "detail": "The load is unevenly distributed. Spin cycle cannot complete safely.",
+      "detail": "On LG-built Kenmore washers, UE means the drum's vibration sensing detected an unevenly distributed load, so the spin cycle can't reach full speed safely and the washer keeps retrying. Items bunched to one side — a lone towel or bedspread — is the usual trigger.",
       "severity": "low",
       "category": "balance",
       "causes": [
@@ -14912,7 +14660,7 @@
         "1E"
       ],
       "meaning": "Water inlet error (LG-platform Kenmore models)",
-      "detail": "The washer cannot fill with water within the expected time.",
+      "detail": "On LG-built 796-series Kenmore washers, IE means the control opened the inlet valve but the water level didn't rise within the expected fill window, so the cycle halts. A partly closed supply valve or clogged inlet hose screens are the most common root causes.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -14955,7 +14703,7 @@
       "cost_hi": 70,
       "pro_cost_lo": 120,
       "pro_cost_hi": 230,
-      "reset_instructions": "Fix supply and restart.",
+      "reset_instructions": "Open both supply valves fully, check the fill hoses for kinks, and clean the inlet screens. Press Power off, wait 60 seconds, then power on and restart the cycle — IE clears once a normal fill is detected.",
       "related_codes": [
         "OE"
       ],
@@ -15014,7 +14762,6 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After clearing, run Spin Only cycle.",
       "related_codes": [
-        "E21",
         "E10"
       ],
       "when_to_call_pro": "If pump motor tested failed, replace it."
@@ -15069,7 +14816,7 @@
       "cost_hi": 75,
       "pro_cost_lo": 120,
       "pro_cost_hi": 250,
-      "reset_instructions": "Fix supply and restart.",
+      "reset_instructions": "Open both supply valves fully, then press Start/Pause to resume or cancel and restart the cycle. If E10 returns in the first minutes of fill, clean the inlet screens and retest.",
       "related_codes": [
         "E20"
       ],
@@ -15082,7 +14829,7 @@
       "code": "E40",
       "aliases": [],
       "meaning": "Door not closed or door lock failure",
-      "detail": "The washer's door has not been detected as fully closed and locked.",
+      "detail": "The door lock switch never signaled the control that the door is fully closed and locked, so the cycle will not start. Most often the door just needs a firmer push or laundry is caught in the gasket; a failed lock solenoid is the next most likely cause.",
       "severity": "medium",
       "category": "door",
       "causes": [
@@ -15122,9 +14869,7 @@
       "pro_cost_lo": 150,
       "pro_cost_hi": 320,
       "reset_instructions": "Close door firmly and restart.",
-      "related_codes": [
-        "E41"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If door closes but E40 persists, lock solenoid has failed."
     },
     {
@@ -15180,10 +14925,8 @@
       "cost_hi": 250,
       "pro_cost_lo": 250,
       "pro_cost_hi": 520,
-      "reset_instructions": "After repair, restart.",
-      "related_codes": [
-        "E51"
-      ],
+      "reset_instructions": "Unplug the washer for 10 minutes to reset the motor control, then restart on a spin-only cycle. If E50 returns as soon as the drum tries to turn, motor or board replacement is required.",
+      "related_codes": [],
       "when_to_call_pro": "Motor replacement requires significant disassembly."
     },
     {
@@ -15233,9 +14976,7 @@
       "pro_cost_lo": 200,
       "pro_cost_hi": 420,
       "reset_instructions": "Unplug 10 minutes. If E90 returns, wiring harness needs inspection.",
-      "related_codes": [
-        "E91"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If harness is intact, control board communication port has failed."
     },
     {
@@ -15245,7 +14986,7 @@
       "code": "E61",
       "aliases": [],
       "meaning": "Insufficient heating — dryer not reaching temperature",
-      "detail": "The dryer is running but not heating adequately. Clothes emerge still damp.",
+      "detail": "The control detected the drum reaching temperature too slowly or not at all, so cycles run long and clothes come out damp. A burned-out heating element is the most common root cause, followed by a high-limit thermostat tripped by a blocked vent.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -15294,7 +15035,7 @@
       "cost_hi": 90,
       "pro_cost_lo": 200,
       "pro_cost_hi": 400,
-      "reset_instructions": "After repair, run test cycle.",
+      "reset_instructions": "Unplug the dryer for 5 minutes, then run a timed-dry test on high heat. If E61 returns or the dryer still runs cool, test the heating element and high-limit thermostat before further use.",
       "related_codes": [
         "E62",
         "E64"
@@ -15308,7 +15049,7 @@
       "code": "E64",
       "aliases": [],
       "meaning": "Heating element failure — open circuit",
-      "detail": "The dryer heating element has burned through. No heat will be produced.",
+      "detail": "Current monitoring on the heater circuit shows an open circuit — the heating element has burned through, so the drum turns but no heat is produced. Age-related element burnout is the most common cause, often accelerated by restricted exhaust airflow.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -15347,8 +15088,7 @@
       "pro_cost_hi": 400,
       "reset_instructions": "After replacement, run test cycle.",
       "related_codes": [
-        "E61",
-        "E66"
+        "E61"
       ],
       "when_to_call_pro": "If element replaced and no heat, board heater relay has failed."
     },
@@ -15359,7 +15099,7 @@
       "code": "E62",
       "aliases": [],
       "meaning": "NTC temperature sensor failure",
-      "detail": "The dryer's temperature sensor (thermistor) has failed.",
+      "detail": "The control board is reading an open or out-of-range resistance from the NTC temperature sensor, so it cannot regulate drum heat. The dryer may run without heat or stop mid-cycle. A failed thermistor in the exhaust duct is the most common cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -15410,7 +15150,7 @@
       "code": "F11",
       "aliases": [],
       "meaning": "Pump fault — water not draining",
-      "detail": "The Miele washer pump has encountered a fault. Water is not draining correctly.",
+      "detail": "The control detected that water was not pumped out within the expected drain time — the drum still holds water when the pump should have emptied it, so the program stops with F11. The most common root cause is a pump filter clogged with lint or debris; a kinked drain hose or an object jamming the pump impeller follow close behind.",
       "severity": "high",
       "category": "drainage",
       "causes": [
@@ -15568,9 +15308,7 @@
       "pro_cost_lo": 200,
       "pro_cost_hi": 450,
       "reset_instructions": "Drain base, fix leak source, dry thoroughly. Sensor resets when base is dry.",
-      "related_codes": [
-        "F17"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "If no leak source found, internal hose or sump connection needs Miele authorized inspection."
     },
     {
@@ -15617,9 +15355,7 @@
       "pro_cost_lo": 300,
       "pro_cost_hi": 600,
       "reset_instructions": "Unplug 10 minutes. If F53 persists, contact Miele authorized service.",
-      "related_codes": [
-        "F32"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "Miele motor replacement is complex and typically requires factory-trained technicians. DIY motor replacement risks voiding the warranty."
     },
     {
@@ -15672,9 +15408,7 @@
       "pro_cost_lo": 200,
       "pro_cost_hi": 380,
       "reset_instructions": "After replacement, restart. Code clears after successful heated cycle.",
-      "related_codes": [
-        "F32"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "Miele thermistors are reliable. If new part fails quickly, there may be a wiring issue."
     },
     {
@@ -15683,13 +15417,65 @@
       "appliance": "dishwasher",
       "code": "F11",
       "aliases": [],
-      "meaning": "Water inlet timeout — dishwasher not filling",
-      "detail": "The Miele dishwasher did not reach the required water level within the fill time limit.",
+      "meaning": "Drainage fault — water not pumped out",
+      "detail": "The control commanded a drain but the water level in the sump didn't drop within the expected time, so the program halts with F11 and standing water remains in the tub. A clogged filter combination in the sump is by far the most common root cause, followed by a kinked drain hose or a failing drain pump.",
+      "severity": "high",
+      "category": "drainage",
+      "causes": [
+        {
+          "description": "Filter/sump clogged",
+          "frequency": 50
+        },
+        {
+          "description": "Drain hose kinked",
+          "frequency": 25
+        },
+        {
+          "description": "Drain pump failure",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the filters",
+          "description": "Miele dishwashers have a fine filter and coarse filter. Remove and clean both."
+        },
+        {
+          "title": "Check drain hose",
+          "description": "Ensure proper high-loop installation and no kinks."
+        },
+        {
+          "title": "Test drain pump",
+          "description": "If filter and hose are clear, pump may have failed.",
+          "parts": [
+            "Miele drain pump ($80–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 160,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Clean the filters and check the drain hose, then switch the dishwasher off at the unit, wait about 60 seconds, switch it back on, and restart on a short program — the fault clears once the sump drains normally.",
+      "related_codes": [
+        "F13"
+      ],
+      "when_to_call_pro": "Miele drain pump replacement is best handled by authorized service."
+    },
+    {
+      "id": "miele-dishwasher-f13",
+      "brand": "miele",
+      "appliance": "dishwasher",
+      "code": "F13",
+      "aliases": [],
+      "meaning": "Water intake fault — dishwasher not filling",
+      "detail": "The Miele dishwasher did not take in the required amount of water within the fill time limit, so the program stops with F13. The control monitors fill volume and pressure at the circulation system — a closed or partially open supply tap is the most common cause, followed by a blocked inlet screen or kinked hose.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
         {
-          "description": "Supply valve closed",
+          "description": "Supply valve closed or partially open",
           "frequency": 40
         },
         {
@@ -15731,63 +15517,11 @@
       "cost_hi": 100,
       "pro_cost_lo": 180,
       "pro_cost_hi": 380,
-      "reset_instructions": "Fix supply issue and restart.",
+      "reset_instructions": "Open the under-sink supply valve fully and straighten the inlet hose. Switch the dishwasher off at the unit, wait about 60 seconds, switch it back on, and start a fresh program — the fault clears once water flows normally.",
       "related_codes": [
-        "F12"
+        "F11"
       ],
       "when_to_call_pro": "If supply is confirmed good, Miele authorized service recommended for valve replacement."
-    },
-    {
-      "id": "miele-dishwasher-f13",
-      "brand": "miele",
-      "appliance": "dishwasher",
-      "code": "F13",
-      "aliases": [],
-      "meaning": "No discharge — drain problem",
-      "detail": "The Miele dishwasher cannot drain water within the expected time.",
-      "severity": "high",
-      "category": "drainage",
-      "causes": [
-        {
-          "description": "Filter/sump clogged",
-          "frequency": 50
-        },
-        {
-          "description": "Drain hose kinked",
-          "frequency": 25
-        },
-        {
-          "description": "Drain pump failure",
-          "frequency": 25
-        }
-      ],
-      "fixes": [
-        {
-          "title": "Clean the filters",
-          "description": "Miele dishwashers have a fine filter and coarse filter. Remove and clean both."
-        },
-        {
-          "title": "Check drain hose",
-          "description": "Ensure proper high-loop installation and no kinks."
-        },
-        {
-          "title": "Test drain pump",
-          "description": "If filter and hose are clear, pump may have failed.",
-          "parts": [
-            "Miele drain pump ($80–$160)"
-          ]
-        }
-      ],
-      "diy_difficulty": "moderate",
-      "cost_lo": 0,
-      "cost_hi": 160,
-      "pro_cost_lo": 200,
-      "pro_cost_hi": 400,
-      "reset_instructions": "After clearing, restart on a short program.",
-      "related_codes": [
-        "F14"
-      ],
-      "when_to_call_pro": "Miele drain pump replacement is best handled by authorized service."
     },
     {
       "id": "miele-dishwasher-f15",
@@ -15796,7 +15530,7 @@
       "code": "F15",
       "aliases": [],
       "meaning": "Heating issue — water not heating to target temperature",
-      "detail": "The dishwasher is not heating the wash water to the required temperature.",
+      "detail": "The control expected the wash water to reach its target temperature within a set time, but the temperature sensor never confirmed it, so the program halts with F15. Dishes come out poorly cleaned and unsanitized. A failed heating element is the leading cause; a faulty NTC sensor or heater relay are the alternatives.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -15839,9 +15573,7 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 500,
       "reset_instructions": "After repair, run full program to confirm.",
-      "related_codes": [
-        "F16"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "Heating component replacement on Miele requires care to maintain waterproof sealing."
     },
     {
@@ -15952,7 +15684,6 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After fixing supply, restart cycle.",
       "related_codes": [
-        "E4",
         "E8"
       ],
       "when_to_call_pro": "Speed Queen machines are built for longevity. If valve fails, genuine SQ parts are recommended."
@@ -15964,7 +15695,7 @@
       "code": "E8",
       "aliases": [],
       "meaning": "Drain pump fault — drainage problem",
-      "detail": "The drain pump has failed or is obstructed. Water is not draining correctly.",
+      "detail": "The control ran the drain pump but the water level didn't drop within the allowed time, so the cycle stops with E8 and the tub stays full. On these commercial-grade machines the most common root cause is lint, coins, or small items lodged in the pump filter or impeller rather than an actual pump motor failure.",
       "severity": "high",
       "category": "drainage",
       "causes": [
@@ -16054,9 +15785,7 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 600,
       "reset_instructions": "Unplug 10 minutes. If E2 returns, Speed Queen authorized service is recommended.",
-      "related_codes": [
-        "E6"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "Speed Queen's commercial heritage means complex motor faults are best handled by their dealer service network."
     },
     {
@@ -16218,10 +15947,8 @@
       "cost_hi": 200,
       "pro_cost_lo": 200,
       "pro_cost_hi": 420,
-      "reset_instructions": "After repair, run test cycle.",
-      "related_codes": [
-        "E5"
-      ],
+      "reset_instructions": "Unplug the dryer (or switch off its breaker) for 60 seconds, clear the lint screen and vent, then restore power and run a timed-dry test cycle to confirm the dryer heats normally before loading laundry.",
+      "related_codes": [],
       "when_to_call_pro": "If vent, element, and thermostat all check out, the control board heater relay needs testing."
     },
     {
@@ -16231,7 +15958,7 @@
       "code": "E3",
       "aliases": [],
       "meaning": "Thermistor failure — temperature sensor fault",
-      "detail": "The dryer's temperature sensor (thermistor) has failed.",
+      "detail": "The control board is reading an open or out-of-range resistance from the exhaust thermistor, so it can no longer regulate drum temperature and shuts the cycle down to prevent overheating. An open-circuit thermistor is the cause in most cases; a loose connector or chafed wiring accounts for the rest.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -16269,7 +15996,7 @@
       "cost_hi": 40,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, restart.",
+      "reset_instructions": "After replacing the thermistor or reseating its connector, unplug the dryer (or flip the breaker) for 60 seconds, restore power, and run a short heated cycle to confirm the code stays clear.",
       "related_codes": [
         "E1"
       ],
@@ -16280,9 +16007,7 @@
       "brand": "amana",
       "appliance": "washer",
       "code": "F9E1",
-      "aliases": [
-        "F9 E1"
-      ],
+      "aliases": [],
       "meaning": "Drain failure — cycle cannot complete",
       "detail": "Amana washers are built on the Whirlpool platform. F9E1 means the washer failed to drain within the expected time. Pump filter cleaning resolves this in most cases.",
       "severity": "high",
@@ -16339,11 +16064,9 @@
       "brand": "amana",
       "appliance": "washer",
       "code": "F8E1",
-      "aliases": [
-        "F8 E1"
-      ],
+      "aliases": [],
       "meaning": "Low water supply",
-      "detail": "The washer is not detecting sufficient water filling.",
+      "detail": "The control opened the fill valve but the pressure sensor never saw enough water arrive within the allowed fill time, so the cycle pauses or aborts. A partly closed supply valve or clogged inlet hose screens cause most cases and can be fixed without any parts.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -16386,7 +16109,7 @@
       "cost_hi": 70,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "Fix supply and press Start.",
+      "reset_instructions": "Open both supply valves fully and check the hoses for kinks, then unplug the washer for 60 seconds. Plug back in and press Start — F8E1 clears once the washer detects a normal fill.",
       "related_codes": [
         "F9E1"
       ],
@@ -16401,7 +16124,7 @@
         "5D"
       ],
       "meaning": "Excessive suds",
-      "detail": "Too much foam detected. Cycle paused while suds dissipate.",
+      "detail": "The washer detected excess foam in the tub and paused the cycle to run a suds-reduction routine before continuing. Using too much detergent, or any non-HE detergent in this high-efficiency machine, is the cause in nearly every case — it is not a mechanical fault.",
       "severity": "low",
       "category": "detergent",
       "causes": [
@@ -16433,9 +16156,9 @@
       "cost_hi": 10,
       "pro_cost_lo": 0,
       "pro_cost_hi": 0,
-      "reset_instructions": "Clears automatically.",
+      "reset_instructions": "Wait — the washer runs a suds-reduction rinse and resumes by itself, usually within 30 minutes. To clear it faster, press Cancel, run a Rinse & Spin with no detergent, then restart the load.",
       "related_codes": [],
-      "when_to_call_pro": "Not a mechanical fault."
+      "when_to_call_pro": "SUD rarely needs service. Call a pro only if it appears on every load despite correct HE detergent dosing — repeated false SUD codes point to a failing pressure sensor or a partial drain restriction trapping foam."
     },
     {
       "id": "amana-dryer-f01",
@@ -16446,7 +16169,7 @@
         "F1"
       ],
       "meaning": "Control board failure",
-      "detail": "The main electronic control board has failed.",
+      "detail": "The main electronic control board failed its internal self-check, so the dryer halts and won't respond normally. A failed onboard component (relay or capacitor) is the usual root cause, often triggered by a power surge — sometimes a long power cycle clears a transient fault.",
       "severity": "high",
       "category": "control_board",
       "causes": [
@@ -16492,7 +16215,7 @@
       "code": "F22",
       "aliases": [],
       "meaning": "Outlet thermistor failure",
-      "detail": "Exhaust temperature sensor has failed.",
+      "detail": "The control is reading an open or out-of-range circuit from the exhaust thermistor, so it can't measure outgoing air temperature or regulate heat safely — the dryer stops or won't heat. A failed thermistor is the most common cause; it's an inexpensive part in the exhaust duct.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -16635,7 +16358,7 @@
       "cost_hi": 90,
       "pro_cost_lo": 150,
       "pro_cost_hi": 300,
-      "reset_instructions": "Fix supply and restart.",
+      "reset_instructions": "Open both supply valves fully and clean the inlet screens. Unplug the washer for 60 seconds to clear the fault, plug back in, and restart the cycle — the code clears once the machine fills at a normal rate.",
       "related_codes": [
         "E5"
       ],
@@ -16787,9 +16510,7 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 600,
       "reset_instructions": "Unplug 10 minutes. If E2 returns, authorized service required.",
-      "related_codes": [
-        "E3"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "Fisher & Paykel motor systems are proprietary — authorized service is recommended."
     },
     {
@@ -16840,7 +16561,6 @@
       "pro_cost_hi": 400,
       "reset_instructions": "After clearing, restart cycle.",
       "related_codes": [
-        "U3",
         "U1"
       ],
       "when_to_call_pro": "Fisher & Paykel DishDrawer repair requires model-specific parts."
@@ -16952,9 +16672,7 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 500,
       "reset_instructions": "After repair, run full program.",
-      "related_codes": [
-        "F3"
-      ],
+      "related_codes": [],
       "when_to_call_pro": "Heating component replacement requires careful waterproof resealing."
     },
     {
@@ -17011,7 +16729,7 @@
       "cost_hi": 65,
       "pro_cost_lo": 120,
       "pro_cost_hi": 250,
-      "reset_instructions": "Fix supply and restart.",
+      "reset_instructions": "Open both supply valves fully and straighten the inlet hose. Unplug the washer for 60 seconds to clear the code, plug back in, and restart the cycle from the beginning.",
       "related_codes": [
         "E2"
       ],
@@ -17024,7 +16742,7 @@
       "code": "E2",
       "aliases": [],
       "meaning": "Drain error — water not draining",
-      "detail": "The Haier washer cannot drain water within the allowed time.",
+      "detail": "The control board started the drain pump but the pressure sensor still detected water in the tub after the allowed drain time, so the cycle pauses with E2. In most cases lint, coins, or debris clogging the pump filter is the root cause, followed by a kinked drain hose.",
       "severity": "high",
       "category": "drainage",
       "causes": [
@@ -17068,7 +16786,7 @@
       "cost_hi": 80,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After clearing, run Spin cycle.",
+      "reset_instructions": "After clearing the drain filter and hose, unplug the washer for 60 seconds, then run a Spin-only cycle to confirm the tub empties before starting a full wash.",
       "related_codes": [
         "E1"
       ],
@@ -17081,7 +16799,7 @@
       "code": "E4",
       "aliases": [],
       "meaning": "Door not closed or door lock failure",
-      "detail": "The washer cannot detect a properly closed and locked door.",
+      "detail": "The door lock circuit never reported a closed-and-locked state, so the control halts the cycle before filling — the washer will not run with an unverified door. Usually the door simply isn't latched fully or laundry is trapped in the seal; a failed lock solenoid is the common hardware cause.",
       "severity": "medium",
       "category": "door",
       "causes": [
@@ -17120,7 +16838,7 @@
       "cost_hi": 65,
       "pro_cost_lo": 150,
       "pro_cost_hi": 300,
-      "reset_instructions": "Close door and restart.",
+      "reset_instructions": "Open the door, clear any laundry from the gasket, then push the door closed firmly until it clicks. Unplug the washer for 60 seconds, restore power, and restart the cycle.",
       "related_codes": [],
       "when_to_call_pro": "If door closes but E4 persists, lock solenoid has failed."
     },
@@ -17131,7 +16849,7 @@
       "code": "E3",
       "aliases": [],
       "meaning": "Motor error — drive motor fault",
-      "detail": "The washing machine motor is not functioning correctly.",
+      "detail": "The control board lost proper feedback from the drive motor — it commanded the drum to turn but tachometer or current readings came back wrong, so the cycle stops to protect the motor. Most often the motor control board has failed; worn motor windings or a loose wiring harness are the other usual culprits.",
       "severity": "high",
       "category": "motor",
       "causes": [
@@ -17181,7 +16899,7 @@
       "code": "E7",
       "aliases": [],
       "meaning": "Water level sensor fault",
-      "detail": "The water level pressure sensor is not reading correctly.",
+      "detail": "The water level pressure sensor is sending readings outside the expected range, so the control can't tell how much water is in the tub and stops the cycle to avoid overfilling or running the heater dry. A kinked or disconnected pressure hose is common, but a failed sensor is the leading cause.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -17220,7 +16938,7 @@
       "cost_hi": 55,
       "pro_cost_lo": 150,
       "pro_cost_hi": 280,
-      "reset_instructions": "After repair, restart cycle.",
+      "reset_instructions": "After reseating the pressure hose or replacing the sensor, unplug the washer for 60 seconds to clear the fault from memory, plug back in, and start a new cycle to verify the level reading.",
       "related_codes": [
         "E1"
       ],
@@ -17909,7 +17627,6 @@
       "pro_cost_hi": 300,
       "reset_instructions": "Turn off the water supply, unplug for 5 minutes, then restart. Keep supply valves closed until the cause is found.",
       "related_codes": [
-        "OC",
         "4C",
         "E2"
       ],
@@ -17920,9 +17637,7 @@
       "brand": "samsung",
       "appliance": "dryer",
       "code": "1 AC",
-      "aliases": [
-        "1AC"
-      ],
+      "aliases": [],
       "meaning": "Air circulation error — insufficient airflow detected through the drum",
       "detail": "The dryer's sensors detect that air is not moving through the system at the expected rate. Samsung dryers monitor airflow indirectly via temperature rise; restricted exhaust makes the duct heat too quickly and trips 1 AC before a thermal cutoff blows.",
       "severity": "high",
@@ -17981,9 +17696,7 @@
       "brand": "samsung",
       "appliance": "dryer",
       "code": "Clg",
-      "aliases": [
-        "CLg"
-      ],
+      "aliases": [],
       "meaning": "Clog warning — exhaust duct restriction detected (early D80/D90 indicator)",
       "detail": "Clg is Samsung's clog-level warning shown on models that later report D80/D90/D95 percentages. It means the Vent Sensor test measured significantly restricted exhaust airflow. The dryer may still run, but drying times stretch and the fire risk rises with lint accumulation.",
       "severity": "medium",
@@ -18213,8 +17926,7 @@
       "pro_cost_hi": 260,
       "reset_instructions": "Power off at the breaker for 60 seconds, then rerun a cycle.",
       "related_codes": [
-        "3C",
-        "9E"
+        "3C"
       ],
       "when_to_call_pro": "Grinding or screeching from the pump along with nE means pump replacement — a job best left to a technician."
     },
@@ -18686,8 +18398,6 @@
       "pro_cost_hi": 800,
       "reset_instructions": "Unplug the refrigerator for 5 minutes and restore power. If 84E returns, do not keep power-cycling — diagnose the inverter.",
       "related_codes": [
-        "85E",
-        "86E",
         "26E"
       ],
       "when_to_call_pro": "If a new inverter board doesn't fix it, compressor replacement requires an EPA-certified sealed-system technician — get a quote before committing, as it can approach replacement cost."
@@ -20151,9 +19861,7 @@
       "brand": "whirlpool",
       "appliance": "refrigerator",
       "code": "18 C",
-      "aliases": [
-        "18C"
-      ],
+      "aliases": [],
       "meaning": "Ice maker fault — ice maker not cycling correctly",
       "detail": "The control has detected that the ice maker failed to complete its harvest cycle or its sensor reads out of range. Ice production stops or becomes intermittent while the rest of the refrigerator works normally.",
       "severity": "low",
@@ -21863,8 +21571,7 @@
       "reset_instructions": "Do not simply reset and resume — repair first, then restore the breaker and verify with an oven thermometer.",
       "related_codes": [
         "F1",
-        "F2",
-        "F11"
+        "F2"
       ],
       "when_to_call_pro": "Treat F10 as a call-a-pro code unless you can confidently test the sensor and verify the relay — the failure mode is dangerous."
     },
@@ -21917,7 +21624,6 @@
       "pro_cost_hi": 280,
       "reset_instructions": "Restore the breaker after replacement; F31 clears when the circuit reads normal resistance.",
       "related_codes": [
-        "F30",
         "F3",
         "F4"
       ],
@@ -22167,9 +21873,7 @@
       "brand": "electrolux",
       "appliance": "refrigerator",
       "code": "SY EF",
-      "aliases": [
-        "SY-EF"
-      ],
+      "aliases": [],
       "meaning": "Evaporator fan circuit failure",
       "detail": "The evaporator fan in the freezer compartment is not running or not reporting its speed back to the control. Without that fan, cold air never circulates — the freezer may stay cold near the coil while the fresh-food section warms up.",
       "severity": "high",
@@ -22227,9 +21931,7 @@
       "brand": "electrolux",
       "appliance": "refrigerator",
       "code": "SY CE",
-      "aliases": [
-        "SY-CE"
-      ],
+      "aliases": [],
       "meaning": "Communication error between control boards",
       "detail": "The main power board and the user interface/display board have lost communication. The display may go blank or freeze while the sealed system keeps running on its last known settings.",
       "severity": "medium",
@@ -22740,9 +22442,7 @@
       "brand": "amana",
       "appliance": "oven",
       "code": "F1E0",
-      "aliases": [
-        "F1-E0"
-      ],
+      "aliases": [],
       "meaning": "Oven control board internal fault (EEPROM/communication error)",
       "detail": "The electronic oven control failed its internal self-check — corrupted memory or a board-level communication fault. Amana ranges share the Whirlpool control platform, so the diagnosis mirrors Whirlpool F1-E0.",
       "severity": "medium",
@@ -22796,9 +22496,7 @@
       "brand": "amana",
       "appliance": "oven",
       "code": "F2E0",
-      "aliases": [
-        "F2-E0"
-      ],
+      "aliases": [],
       "meaning": "Shorted or stuck keypad detected",
       "detail": "The control senses a keypad key held or shorted continuously. Moisture behind the membrane after cleaning is a common trigger; an aging touchpad is the other.",
       "severity": "medium",
@@ -22856,9 +22554,7 @@
       "brand": "amana",
       "appliance": "oven",
       "code": "F9E0",
-      "aliases": [
-        "F9-E0"
-      ],
+      "aliases": [],
       "meaning": "Door latch fault — lock motor did not reach commanded position",
       "detail": "The motorized door lock ran but the lock switches never confirmed the locked or unlocked position. Self-clean can't start, or the door stays locked after cleaning.",
       "severity": "medium",
@@ -23023,9 +22719,7 @@
       "brand": "kitchenaid",
       "appliance": "oven",
       "code": "F2E0",
-      "aliases": [
-        "F2-E0"
-      ],
+      "aliases": [],
       "meaning": "Shorted keypad detected",
       "detail": "The oven control senses a key held or shorted continuously on the touch panel. KitchenAid ranges use the Whirlpool control platform; moisture behind the membrane or a worn touchpad are the usual causes.",
       "severity": "medium",
@@ -23084,9 +22778,7 @@
       "brand": "kitchenaid",
       "appliance": "oven",
       "code": "F2E1",
-      "aliases": [
-        "F2-E1"
-      ],
+      "aliases": [],
       "meaning": "Keypad cable unplugged or not detected",
       "detail": "The control board cannot see the touchpad at all — typically the ribbon cable has worked loose or its contacts have oxidized. The display may work while buttons do nothing.",
       "severity": "medium",
@@ -23144,9 +22836,7 @@
       "brand": "kitchenaid",
       "appliance": "oven",
       "code": "F6E0",
-      "aliases": [
-        "F6-E0"
-      ],
+      "aliases": [],
       "meaning": "Loss of communication between control boards",
       "detail": "The appliance manager and the user interface board have stopped communicating. The display may freeze or go blank; oven functions are blocked until the link is restored.",
       "severity": "medium",
@@ -23205,9 +22895,7 @@
       "brand": "kitchenaid",
       "appliance": "oven",
       "code": "F9E0",
-      "aliases": [
-        "F9-E0"
-      ],
+      "aliases": [],
       "meaning": "Door latch fault — lock motor position not confirmed",
       "detail": "The motorized door lock ran but never reached the commanded position according to its switches. Self-clean won't start, or the door remains locked after the cycle.",
       "severity": "medium",
@@ -24012,6 +23700,1049 @@
         "F33"
       ],
       "when_to_call_pro": "If descaling and a proper tank fit don't clear F10, the intake hardware needs Miele service."
+    },
+    {
+      "id": "samsung-washer-5c",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "5C",
+      "aliases": [],
+      "meaning": "Drain error — water not draining within the time limit",
+      "detail": "5C is the drain-failure code on current Samsung washers (older models display the same fault as 5E or OE). The control started the drain pump but the water level didn't drop within about 15 minutes, so the cycle stops with water still in the drum. A clogged debris filter is the most common cause by a wide margin.",
+      "severity": "high",
+      "category": "drainage",
+      "causes": [
+        {
+          "description": "Clogged drain pump (debris) filter",
+          "frequency": 45
+        },
+        {
+          "description": "Kinked, frozen, or improperly installed drain hose",
+          "frequency": 25
+        },
+        {
+          "description": "Drain hose inserted too far into standpipe (siphon/backflow)",
+          "frequency": 15
+        },
+        {
+          "description": "Drain pump failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the debris filter",
+          "description": "Open the small access door at the bottom front, place towels and a shallow pan, slowly unscrew the filter, and clear coins, lint, and hair. This alone fixes most 5C errors.",
+          "warning": "Drain water can be hot right after a cycle."
+        },
+        {
+          "title": "Check the drain hose",
+          "description": "Straighten any kinks behind the washer and confirm the hose enters the standpipe no more than 6 inches with an air gap."
+        },
+        {
+          "title": "Listen to the drain pump",
+          "description": "Start a Spin-only cycle and listen at the lower front. A humming pump with no water movement has a jammed impeller; silence points to a dead pump or board relay."
+        },
+        {
+          "title": "Replace the drain pump",
+          "description": "Remove the lower front panel, disconnect the hoses and harness, and swap the pump assembly.",
+          "parts": [
+            "Samsung drain pump ($35–$80)"
+          ],
+          "warning": "Unplug the washer before opening any panel."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 80,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After clearing the filter and hose, unplug the washer for 60 seconds, then run a Rinse+Spin cycle to confirm draining.",
+      "related_codes": [
+        "OE",
+        "LC",
+        "UE"
+      ],
+      "when_to_call_pro": "If the filter and hose are clear and the pump runs but 5C persists, the pressure sensor or its air hose may be misreading the water level — that diagnosis is worth a technician if you're not comfortable with a multimeter."
+    },
+    {
+      "id": "samsung-washer-lc",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "LC",
+      "aliases": [
+        "LC1",
+        "LE1"
+      ],
+      "meaning": "Leak detected — moisture sensed in the base pan",
+      "detail": "The leak sensor in the washer's base pan detected water where it shouldn't be. The machine stops and pumps out to protect your floor. The trigger is often a real leak (hose clamp, door boot, dispenser overflow), but oversudsing from too much detergent can push foam past seals and trip it too.",
+      "severity": "high",
+      "category": "leak",
+      "causes": [
+        {
+          "description": "Over-sudsing pushing foam past the tub seals",
+          "frequency": 30
+        },
+        {
+          "description": "Door boot gasket torn or fouled at the bottom fold",
+          "frequency": 25
+        },
+        {
+          "description": "Internal hose clamp or dispenser hose leaking",
+          "frequency": 25
+        },
+        {
+          "description": "Tub seal or drain pump housing leak",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reduce detergent and rerun",
+          "description": "Use HE detergent only, and less of it (2 tsp is enough for most loads). Run a Rinse+Spin and watch for suds — foam-triggered LC needs no parts."
+        },
+        {
+          "title": "Inspect the door boot",
+          "description": "Pull back the gasket folds and look for tears, pinholes at the bottom, and trapped debris.",
+          "parts": [
+            "Samsung door boot gasket ($40–$90)"
+          ]
+        },
+        {
+          "title": "Check under the machine",
+          "description": "Tip the washer back (two people) or pull it forward and look for drip trails from the dispenser hoses, inlet valve, and pump housing.",
+          "warning": "Unplug the washer and shut the water supply before tipping."
+        },
+        {
+          "title": "Dry the base pan",
+          "description": "Towel out the base pan so the sensor resets — LC repeats until the pan is dry even after the leak is fixed."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 90,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Fix the leak source, towel the base pan dry, then unplug for 60 seconds and restart. LC returns immediately if moisture remains at the sensor.",
+      "related_codes": [
+        "5C",
+        "OE"
+      ],
+      "when_to_call_pro": "If you can't find the leak source after checking the boot, hoses, and pump, a technician can run a pressurized fill test — persistent unexplained LC sometimes traces to a hairline tub crack."
+    },
+    {
+      "id": "samsung-dryer-ts",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "tS",
+      "aliases": [],
+      "meaning": "Thermistor short circuit — temperature sensor reading too low resistance",
+      "detail": "The control board reads the exhaust thermistor continuously to regulate heat. tS means the sensor circuit reads as shorted (near-zero resistance), so the dryer can't trust its temperature reading and stops heating. The thermistor itself or a pinched harness wire is almost always the cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed (shorted) thermistor",
+          "frequency": 60
+        },
+        {
+          "description": "Harness wire pinched or chafed to ground",
+          "frequency": 25
+        },
+        {
+          "description": "Connector corrosion at the sensor",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the thermistor",
+          "description": "Unplug the dryer, remove the back or lower front panel, and measure the thermistor on the heater/blower housing: about 10kΩ at room temperature. Near 0Ω confirms tS."
+        },
+        {
+          "title": "Inspect the harness",
+          "description": "Trace the two sensor wires for pinch points where panels were assembled, and check the connector pins."
+        },
+        {
+          "title": "Replace the thermistor",
+          "description": "Two screws and a connector — one of the cheapest, easiest dryer repairs.",
+          "parts": [
+            "Samsung dryer thermistor ($10–$25)"
+          ],
+          "warning": "Unplug the dryer before removing panels."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 10,
+      "cost_hi": 25,
+      "pro_cost_lo": 130,
+      "pro_cost_hi": 250,
+      "reset_instructions": "After replacement, plug back in and run a Time Dry cycle on medium heat to confirm normal operation.",
+      "related_codes": [
+        "tO",
+        "tE",
+        "HE"
+      ],
+      "when_to_call_pro": "If a new thermistor still reads shorted at the board connector, the harness or main board input has failed — meter the harness before buying a board."
+    },
+    {
+      "id": "samsung-dryer-to",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "tO",
+      "aliases": [],
+      "meaning": "Thermistor open circuit — temperature sensor disconnected or failed open",
+      "detail": "The opposite of tS: the control reads infinite resistance on the exhaust thermistor circuit, as if the sensor isn't there at all. Without a temperature reading the dryer refuses to heat. An unplugged connector or a failed-open thermistor are the usual causes.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed (open) thermistor",
+          "frequency": 55
+        },
+        {
+          "description": "Connector unplugged or backed-out pin",
+          "frequency": 30
+        },
+        {
+          "description": "Broken harness wire",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reseat the connector",
+          "description": "Unplug the dryer, open the access panel, and firmly reseat the thermistor connector — vibration works them loose, especially after a prior repair."
+        },
+        {
+          "title": "Test the thermistor",
+          "description": "Measure across the sensor: ~10kΩ at room temperature is healthy; an open (OL) reading confirms replacement."
+        },
+        {
+          "title": "Replace the thermistor",
+          "description": "Swap the sensor on the heater/blower housing.",
+          "parts": [
+            "Samsung dryer thermistor ($10–$25)"
+          ],
+          "warning": "Unplug the dryer before removing panels."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 10,
+      "cost_hi": 25,
+      "pro_cost_lo": 130,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Reseat or replace the sensor, then power the dryer and run a short heated cycle to confirm the code is gone.",
+      "related_codes": [
+        "tS",
+        "tE",
+        "HE"
+      ],
+      "when_to_call_pro": "If the sensor and harness both meter fine but tO persists, the main board's sensor input circuit is suspect."
+    },
+    {
+      "id": "samsung-dryer-dc",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "dC",
+      "aliases": [
+        "dE"
+      ],
+      "meaning": "Door open — door detected open during operation",
+      "detail": "The dryer's door switch reports the door open while a cycle is running, so the drum stops immediately. If the door is visibly closed, the switch, striker, or catch is the problem — a worn catch that lets the door drift open mid-cycle is common on heavily used machines.",
+      "severity": "low",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door not fully latched or popped open mid-cycle",
+          "frequency": 45
+        },
+        {
+          "description": "Worn door catch/strike",
+          "frequency": 30
+        },
+        {
+          "description": "Failed door switch",
+          "frequency": 20
+        },
+        {
+          "description": "Harness fault to door switch",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Close firmly and restart",
+          "description": "Push the door until it clicks solidly, then press Start. If it won't stay closed, the catch is worn."
+        },
+        {
+          "title": "Replace the door catch",
+          "description": "The plastic catch/strike kit is a 5-minute fix with a flat screwdriver.",
+          "parts": [
+            "Samsung dryer door catch kit ($8–$15)"
+          ]
+        },
+        {
+          "title": "Test the door switch",
+          "description": "Unplug the dryer, remove the top/front panel edge, and check switch continuity: closed door = closed circuit.",
+          "parts": [
+            "Samsung door switch ($12–$30)"
+          ],
+          "warning": "Unplug the dryer before testing the switch."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 8,
+      "cost_hi": 30,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 220,
+      "reset_instructions": "Close the door firmly and press Start/Pause. If the code persists with the door closed, power-cycle for 60 seconds.",
+      "related_codes": [
+        "tS",
+        "HC"
+      ],
+      "when_to_call_pro": "Door switch and catch replacements are easy DIY. Call a pro only if a new switch still won't register — that points to the control board."
+    },
+    {
+      "id": "samsung-dishwasher-4c",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "4C",
+      "aliases": [
+        "4E"
+      ],
+      "meaning": "Water supply error — dishwasher not filling",
+      "detail": "The dishwasher opened its inlet valve but didn't detect water arriving within the fill window. The cycle pauses with 4C (4E on older displays). Almost always a supply problem — a closed valve, low pressure, or a clogged inlet screen — rather than a failed part inside the machine.",
+      "severity": "medium",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Supply valve under the sink closed or partially open",
+          "frequency": 40
+        },
+        {
+          "description": "Clogged inlet screen at the valve",
+          "frequency": 25
+        },
+        {
+          "description": "Kinked supply line",
+          "frequency": 20
+        },
+        {
+          "description": "Failed water inlet valve",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Open the supply valve fully",
+          "description": "Check the shutoff under the sink — it should be fully counterclockwise. Half-open valves drop pressure below the fill threshold."
+        },
+        {
+          "title": "Check water pressure",
+          "description": "The dishwasher needs roughly 20 psi minimum. If the kitchen faucet runs weak too, the problem is upstream."
+        },
+        {
+          "title": "Clean the inlet screen",
+          "description": "Shut the supply, disconnect the fill line at the dishwasher's inlet valve, and clean the small mesh screen of scale and grit.",
+          "warning": "Put a towel down — the line holds water."
+        },
+        {
+          "title": "Replace the inlet valve",
+          "description": "If supply and screen are good but no water enters, swap the inlet valve (front lower panel, two wires and two connections).",
+          "parts": [
+            "Samsung dishwasher inlet valve ($25–$60)"
+          ],
+          "warning": "Switch off the breaker before opening the panel."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 60,
+      "pro_cost_lo": 130,
+      "pro_cost_hi": 260,
+      "reset_instructions": "Restore the water supply, then switch the breaker off for 60 seconds and run a short cycle to confirm filling.",
+      "related_codes": [
+        "LC",
+        "5C",
+        "HC"
+      ],
+      "when_to_call_pro": "If water pressure and the valve check out but 4C persists, the flow sensor or control board needs professional testing."
+    },
+    {
+      "id": "samsung-dishwasher-hc",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "HC",
+      "aliases": [],
+      "meaning": "High temperature heater error — water overheating detected",
+      "detail": "The dishwasher's temperature sensor reported wash water above the safe ceiling (roughly 176°F), so the control halts the cycle to protect the machine and your dishes. A heater relay stuck on, or a drifting thermistor falsely reading high, are the leading causes.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Thermistor drifted or failed (false high reading)",
+          "frequency": 45
+        },
+        {
+          "description": "Heater relay on the control board stuck closed",
+          "frequency": 35
+        },
+        {
+          "description": "Incoming water far above 120°F (water heater set too high)",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check your water heater setting",
+          "description": "If the house water heater is set above ~140°F, the dishwasher can overshoot during heated cycles. 120°F is the right setting."
+        },
+        {
+          "title": "Test the thermistor",
+          "description": "Switch off the breaker, pull the unit, and measure the sump thermistor against its spec (resistance falls as temperature rises). A drifted sensor causes false HC codes.",
+          "parts": [
+            "Samsung dishwasher thermistor ($15–$40)"
+          ]
+        },
+        {
+          "title": "Suspect the heater relay",
+          "description": "If the water is genuinely scalding at mid-cycle, the board's heater relay may be welded closed — the board needs replacement.",
+          "parts": [
+            "Samsung dishwasher main board ($80–$180)"
+          ],
+          "warning": "Heater circuits carry line voltage. Switch off the breaker before any testing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 180,
+      "pro_cost_lo": 180,
+      "pro_cost_hi": 380,
+      "reset_instructions": "Switch the breaker off for 60 seconds and rerun a normal cycle. If HC returns mid-cycle, stop using the dishwasher until diagnosed.",
+      "related_codes": [
+        "4C",
+        "LC",
+        "tE"
+      ],
+      "when_to_call_pro": "A genuinely overheating dishwasher is a safety issue — if the tub is scalding hot when HC appears, stop using it and have the heater circuit professionally diagnosed."
+    },
+    {
+      "id": "samsung-dishwasher-oc",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "OC",
+      "aliases": [
+        "oE"
+      ],
+      "meaning": "Over-level water error — too much water in the tub",
+      "detail": "The water level sensor detected more water than the program ever calls for. The dishwasher stops and runs its drain pump to bring the level down. A sticking inlet valve that doesn't close cleanly, or a misreading level sensor, are the usual causes.",
+      "severity": "high",
+      "category": "water_level",
+      "causes": [
+        {
+          "description": "Inlet valve not closing fully (debris or worn solenoid)",
+          "frequency": 45
+        },
+        {
+          "description": "Water level / pressure sensor misreading",
+          "frequency": 30
+        },
+        {
+          "description": "Drain restriction leaving water from the previous cycle",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Confirm it drains",
+          "description": "Cancel the cycle and let it pump out. If water remains, fix drainage first (filter, air gap, disposer connection) — leftover water plus a normal fill reads as overfill."
+        },
+        {
+          "title": "Watch the fill",
+          "description": "Start a cycle and watch whether water keeps trickling in after the fill should have stopped — that's a sticking inlet valve. Replace it.",
+          "parts": [
+            "Samsung dishwasher inlet valve ($25–$60)"
+          ]
+        },
+        {
+          "title": "Check the level sensor",
+          "description": "Inspect the sensor/air trap at the sump for gunk; a fouled air chamber misreports the level to the board.",
+          "warning": "Switch off the breaker before removing the kick plate."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 60,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Switch the breaker off for 60 seconds. The unit drains excess water automatically on the next power-up; run a short cycle to confirm normal fill.",
+      "related_codes": [
+        "4C",
+        "LC",
+        "5C"
+      ],
+      "when_to_call_pro": "If the valve and sensor both check out, water may be siphoning back in from the drain connection — a pro can verify the installation in one visit."
+    },
+    {
+      "id": "lg-washer-pf",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "PF",
+      "aliases": [],
+      "meaning": "Power failure — the cycle was interrupted by a loss of power",
+      "detail": "PF is informational: the washer lost power mid-cycle and is telling you the cycle didn't finish. A one-off PF after a storm or outage is nothing to worry about. Recurring PF codes with no outages point to a loose plug, a failing outlet, or an intermittent connection on the washer's power path.",
+      "severity": "low",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Genuine household power interruption",
+          "frequency": 60
+        },
+        {
+          "description": "Loose plug or worn outlet",
+          "frequency": 20
+        },
+        {
+          "description": "Tripping breaker / shared circuit overload",
+          "frequency": 15
+        },
+        {
+          "description": "Failing line filter or power cord",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clear and rerun",
+          "description": "Press Power, select a cycle, and restart — or use Rinse+Spin if the load was nearly done."
+        },
+        {
+          "title": "Check the plug and outlet",
+          "description": "Make sure the plug seats firmly and the outlet isn't loose or heat-discolored. Move the washer to its own outlet if it shares one."
+        },
+        {
+          "title": "Watch for a pattern",
+          "description": "If PF appears during spin specifically, the motor's current draw may be tripping a weak breaker — have the circuit checked."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 200,
+      "reset_instructions": "Press Power off and back on, reselect the cycle, and press Start. PF clears as soon as a new cycle begins.",
+      "related_codes": [
+        "OE",
+        "UE"
+      ],
+      "when_to_call_pro": "Recurring PF with no household outages deserves an electrician's look at the outlet and breaker before suspecting the washer's control board."
+    },
+    {
+      "id": "lg-dryer-te1",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "tE1",
+      "aliases": [
+        "tE2"
+      ],
+      "meaning": "Thermistor error — air temperature sensor out of range",
+      "detail": "The control board reads an implausible value from the air thermistor (tE1 = the exhaust/air sensor circuit; tE2 variants point at the inlet sensor on some models). Without a believable temperature signal the dryer won't heat. The sensor is cheap and the test takes five minutes with a multimeter.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed thermistor (open or shorted)",
+          "frequency": 55
+        },
+        {
+          "description": "Connector or harness fault",
+          "frequency": 25
+        },
+        {
+          "description": "Lint packed around the sensor skewing readings",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean around the sensor",
+          "description": "Unplug the dryer, remove the lower front or back panel, and vacuum lint from the thermistor on the blower/heater housing."
+        },
+        {
+          "title": "Test the thermistor",
+          "description": "Measure resistance at room temperature — roughly 10kΩ on LG dryers. Open or near-zero readings confirm replacement."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "One or two screws plus a connector.",
+          "parts": [
+            "LG dryer thermistor ($10–$30)"
+          ],
+          "warning": "Unplug the dryer before removing panels."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 10,
+      "cost_hi": 30,
+      "pro_cost_lo": 130,
+      "pro_cost_hi": 250,
+      "reset_instructions": "After cleaning or replacement, plug back in and run a Time Dry cycle on medium heat to verify the code is gone.",
+      "related_codes": [
+        "D80",
+        "nP",
+        "nF"
+      ],
+      "when_to_call_pro": "If a new thermistor reads correctly at the board connector but tE1 persists, the main board's sensor input has failed."
+    },
+    {
+      "id": "bosch-dishwasher-e22",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "code": "E22",
+      "aliases": [],
+      "meaning": "Residual water in the sump — filter or impeller area blocked",
+      "detail": "E22 means water remains in the sump after the drain step (distinct from E24/E25, which fire during draining). The filter unit is dirty or the area around the impeller is clogged so the last of the water can't reach the pump. Standing water in the filter well after every cycle is the classic symptom.",
+      "severity": "medium",
+      "category": "drainage",
+      "causes": [
+        {
+          "description": "Filter unit clogged with food debris",
+          "frequency": 50
+        },
+        {
+          "description": "Impeller cover area blocked (glass shards, fruit pits)",
+          "frequency": 30
+        },
+        {
+          "description": "Drain pump weak or partially jammed",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the filter unit",
+          "description": "Twist out the cylindrical filter in the tub floor, separate the coarse and fine elements, and rinse thoroughly."
+        },
+        {
+          "title": "Clear the pump well",
+          "description": "With the filter out, sponge out the water and check the well for debris. Pop the white impeller cover (it unsnaps) and clear glass or pits around the impeller.",
+          "warning": "Glass shards collect here — wear gloves."
+        },
+        {
+          "title": "Run a hot service wash",
+          "description": "Run the hottest short program empty with dishwasher cleaner to flush grease from the sump passages.",
+          "parts": [
+            "Dishwasher cleaner ($5–$10)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 15,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 230,
+      "reset_instructions": "Clean the filter and impeller area, then hold Start/Reset for 3–5 seconds to cancel and pump out, and run a short program to confirm.",
+      "related_codes": [
+        "E24",
+        "E25",
+        "E15"
+      ],
+      "when_to_call_pro": "If the sump is spotless and E22 continues, the drain pump is weakening — replacement is straightforward for a technician and borderline DIY."
+    },
+    {
+      "id": "bosch-dishwasher-e04",
+      "brand": "bosch",
+      "appliance": "dishwasher",
+      "code": "E04",
+      "aliases": [],
+      "meaning": "Water flow sensor fault — fill volume not being measured",
+      "detail": "The flow sensor (aquaflow meter) that counts water entering the machine isn't reporting plausible pulses, so the control can't meter the fill. The cycle may abort or fill erratically. Scale or debris jamming the sensor's paddle wheel is the usual cause; the sensor itself fails less often.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Scale or debris jamming the flow sensor wheel",
+          "frequency": 45
+        },
+        {
+          "description": "Flow sensor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Harness/connector fault to the sensor",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-cycle first",
+          "description": "Switch the unit off, wait 60 seconds, and rerun — transient sensor glitches clear with a reset."
+        },
+        {
+          "title": "Check the supply path",
+          "description": "Confirm good water pressure and clean the inlet screen — weak flow reads like a sensor fault."
+        },
+        {
+          "title": "Replace the flow sensor",
+          "description": "The sensor sits on the side of the unit near the inlet (accessed by removing the side or base panel). It's an inexpensive part but tight to reach.",
+          "parts": [
+            "Bosch flow sensor ($15–$40)"
+          ],
+          "warning": "Switch off the breaker and water supply before opening panels."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 40,
+      "pro_cost_lo": 140,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Switch off at the unit or breaker for 60 seconds, restore power, and start a fresh program.",
+      "related_codes": [
+        "E15",
+        "E24",
+        "E01"
+      ],
+      "when_to_call_pro": "Reaching the flow sensor requires partial disassembly on most models — if you're not comfortable opening the side panel, this one's a fair technician call."
+    },
+    {
+      "id": "maytag-dryer-f23",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "F23",
+      "aliases": [],
+      "meaning": "Exhaust thermistor short circuit",
+      "detail": "The control reads the exhaust temperature sensor as shorted (near-zero resistance), so it can't regulate heat and stops the cycle. Identical to Whirlpool's F23 — Maytag dryers share the platform. The thermistor is cheap; a pinched harness wire grounding out is the alternative.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Shorted exhaust thermistor",
+          "frequency": 60
+        },
+        {
+          "description": "Harness wire pinched to cabinet ground",
+          "frequency": 25
+        },
+        {
+          "description": "Moisture/corrosion at the sensor connector",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the thermistor",
+          "description": "Unplug the dryer, remove the lower access panel, and measure the sensor on the blower housing: ~10kΩ at room temperature; near 0Ω = replace."
+        },
+        {
+          "title": "Inspect the harness",
+          "description": "Check the two sensor wires along the blower housing for pinch points and chafed insulation."
+        },
+        {
+          "title": "Replace the thermistor",
+          "description": "Two screws and a connector swap.",
+          "parts": [
+            "Dryer thermistor (Whirlpool/Maytag) ($10–$25)"
+          ],
+          "warning": "Unplug the dryer before opening panels."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 10,
+      "cost_hi": 25,
+      "pro_cost_lo": 130,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug the dryer for 60 seconds after the repair and run a Timed Dry on medium heat to confirm.",
+      "related_codes": [
+        "F22",
+        "F01",
+        "F28"
+      ],
+      "when_to_call_pro": "If a new sensor still reads shorted at the board end of the harness, the wiring or board input is at fault — meter before buying a control board."
+    },
+    {
+      "id": "maytag-dryer-f28",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "F28",
+      "aliases": [],
+      "meaning": "Moisture sensor open circuit",
+      "detail": "The control lost the signal from the moisture sensor bars inside the drum, so sensor-dry cycles can't tell when clothes are dry. Cycles run far too long or stop early. The same F28 appears on Whirlpool-built dryers. Fabric-softener film insulating the bars, or a broken sensor wire, are the common causes.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Sensor bars coated with fabric softener film",
+          "frequency": 40
+        },
+        {
+          "description": "Broken wire between sensor bars and board",
+          "frequency": 35
+        },
+        {
+          "description": "Failed moisture sensor assembly",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the sensor bars",
+          "description": "Scrub the two metal strips inside the drum (usually below the door or on the lint screen housing) with rubbing alcohol to strip residue."
+        },
+        {
+          "title": "Check the connections",
+          "description": "Unplug the dryer and inspect the sensor harness from the bars to the control — connectors work loose where the bulkhead vibrates."
+        },
+        {
+          "title": "Replace the sensor assembly",
+          "description": "If cleaning and reseating don't restore sensing, swap the bar assembly.",
+          "parts": [
+            "Moisture sensor assembly ($20–$45)"
+          ],
+          "warning": "Unplug the dryer before removing the front panel."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 45,
+      "pro_cost_lo": 130,
+      "pro_cost_hi": 260,
+      "reset_instructions": "Clean the bars, unplug for 60 seconds, and run a sensor-dry cycle with a medium load to verify it ends when clothes are actually dry.",
+      "related_codes": [
+        "F22",
+        "F23",
+        "F01"
+      ],
+      "when_to_call_pro": "If timed cycles work but sensor cycles still misbehave after a new sensor, the control board's sensing circuit is suspect."
+    },
+    {
+      "id": "kenmore-washer-f1",
+      "brand": "kenmore",
+      "appliance": "washer",
+      "code": "F1",
+      "aliases": [],
+      "meaning": "Primary control board fault — board failed self-check",
+      "detail": "On Whirlpool-built Kenmore washers (110-prefix, including the Oasis/Cabrio top-load platform), F1 means the machine control board failed its own self-check or lost contact with a critical sensor input. The infamous 'Kenmore F1 error' on Oasis-era top-loaders was so common that the boards became a staple repair part.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Machine control board failure",
+          "frequency": 60
+        },
+        {
+          "description": "Pressure sensor hose disconnected from the board",
+          "frequency": 20
+        },
+        {
+          "description": "Connector backed out at the board",
+          "frequency": 15
+        },
+        {
+          "description": "Power surge damage",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-cycle the washer",
+          "description": "Unplug for 5 minutes and retry — a one-off F1 after a surge sometimes clears for good."
+        },
+        {
+          "title": "Reseat board connectors and the pressure hose",
+          "description": "Unplug the washer, open the console/rear panel, and firmly reseat every connector — especially the small clear pressure-sensor hose, which slips off and produces F1."
+        },
+        {
+          "title": "Replace the control board",
+          "description": "If F1 returns every cycle, replace the machine control. On Oasis/Cabrio-era models this is a well-documented 30-minute repair.",
+          "parts": [
+            "Machine control board ($90–$220)"
+          ],
+          "warning": "Unplug the washer before opening the console."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 90,
+      "cost_hi": 220,
+      "pro_cost_lo": 220,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug the washer for 5 minutes, plug back in, and start a Drain & Spin. Persistent F1 means the board needs attention — note whether it appears at the same point each cycle.",
+      "related_codes": [
+        "F21",
+        "F20"
+      ],
+      "when_to_call_pro": "Board replacement is DIY-feasible, but if your model number isn't matching replacement parts cleanly (Kenmore cross-referencing can be fiddly), a technician will know the equivalent Whirlpool part on sight."
+    },
+    {
+      "id": "frigidaire-dishwasher-uo",
+      "brand": "frigidaire",
+      "appliance": "dishwasher",
+      "code": "uo",
+      "aliases": [],
+      "meaning": "Vent open error — drying vent failed to close",
+      "detail": "Frigidaire dishwashers dry with a motorized vent that opens to release moist air. The 'uo' code means the control sees the vent stuck open when it should be closed — wash performance continues but drying and heat retention suffer, and the cycle flags the fault. A failed vent assembly or wax motor is the usual cause.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Vent/wax motor assembly failure",
+          "frequency": 55
+        },
+        {
+          "description": "Debris or grease jamming the vent flap",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring fault to the vent assembly",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-cycle",
+          "description": "Switch the breaker off for 60 seconds — if the vent was momentarily stuck, the reset clears it."
+        },
+        {
+          "title": "Inspect the vent",
+          "description": "Find the vent on the inner door (top corner on most models), and check the flap for grease or detergent buildup keeping it open."
+        },
+        {
+          "title": "Replace the vent assembly",
+          "description": "The vent and its wax-motor actuator replace as a unit from the inner door panel.",
+          "parts": [
+            "Frigidaire vent assembly ($25–$60)"
+          ],
+          "warning": "Switch off the breaker before removing the inner door screws."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 60,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 240,
+      "reset_instructions": "Switch the breaker off for 60 seconds and run a short cycle. The code clears once the control sees the vent close properly.",
+      "related_codes": [
+        "i20",
+        "i30",
+        "PF"
+      ],
+      "when_to_call_pro": "The dishwasher remains usable with 'uo' showing, so there's no urgency — but if dishes come out wet and the code persists after a new vent assembly, have the control board checked."
+    },
+    {
+      "id": "frigidaire-refrigerator-sy-cf",
+      "brand": "frigidaire",
+      "appliance": "refrigerator",
+      "code": "SY CF",
+      "aliases": [],
+      "meaning": "Communication failure between control boards",
+      "detail": "The user-interface board and the main control board stopped talking to each other. The display may freeze, and cooling control becomes unreliable. On Frigidaire refrigerators this is most often a connector or harness problem between the two boards — actual board failures are the minority of cases.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Loose or corroded harness connector between boards",
+          "frequency": 45
+        },
+        {
+          "description": "Main control board failure",
+          "frequency": 30
+        },
+        {
+          "description": "UI/display board failure",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring damage in the door hinge loom (dispenser models)",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-cycle",
+          "description": "Unplug the refrigerator for 5 minutes, then restore power — momentary comm glitches after outages clear with a reset."
+        },
+        {
+          "title": "Reseat the connectors",
+          "description": "Unplug the unit, remove the upper hinge cover / rear access panel, and reseat the communication harness connectors at both boards.",
+          "warning": "Unplug the refrigerator before opening any panel."
+        },
+        {
+          "title": "Replace the failing board",
+          "description": "If the code returns, the main board (back of the unit) is the more common culprit and the easier swap.",
+          "parts": [
+            "Frigidaire main control board ($80–$180)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 180,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Unplug the refrigerator for 5 minutes and restore power. Allow a few minutes for the boards to re-handshake before judging.",
+      "related_codes": [
+        "SY EF",
+        "H1"
+      ],
+      "when_to_call_pro": "Distinguishing a failed main board from a failed UI board needs a methodical swap or meter test — if a connector reseat doesn't fix it, a technician resolves it in one visit with both parts on hand."
+    },
+    {
+      "id": "whirlpool-washer-f8e2",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "F8E2",
+      "aliases": [],
+      "meaning": "Dispenser system fault — dispenser motor not reaching position",
+      "detail": "On Whirlpool front-loaders with motorized detergent dispensers, F8E2 means the dispenser motor couldn't reach its commanded position. Detergent or softener may not dispense, and the cycle pauses. Gummed-up detergent residue physically blocking the dispenser mechanism is the leading cause.",
+      "severity": "medium",
+      "category": "dispenser",
+      "causes": [
+        {
+          "description": "Detergent residue gumming the dispenser mechanism",
+          "frequency": 50
+        },
+        {
+          "description": "Dispenser actuator motor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Harness/connector fault to the dispenser",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Deep-clean the dispenser",
+          "description": "Remove the dispenser drawer, soak it in hot water, and scrub the housing cavity — hardened detergent jams the selector mechanism."
+        },
+        {
+          "title": "Cycle the dispenser",
+          "description": "Run a Clean Washer cycle after cleaning; listen for the dispenser motor stepping through positions at the start.",
+          "parts": [
+            "Affresh or washer cleaner ($4–$8)"
+          ]
+        },
+        {
+          "title": "Replace the dispenser actuator",
+          "description": "If the motor doesn't move or grinds, replace the dispenser motor/actuator assembly under the top panel.",
+          "parts": [
+            "Whirlpool dispenser actuator ($35–$80)"
+          ],
+          "warning": "Unplug the washer before removing the top panel."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 80,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Clean the dispenser, unplug the washer for 60 seconds, and run a short cycle. F8E2 clears once the dispenser completes its position check.",
+      "related_codes": [
+        "F8E1",
+        "F9E1",
+        "SUD"
+      ],
+      "when_to_call_pro": "If a cleaned and free-moving dispenser still throws F8E2, the actuator motor or its board driver has failed — the actuator is the cheaper first replacement."
     }
   ]
 }

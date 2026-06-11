@@ -298,7 +298,7 @@
       "name": "Oven Won't Turn On",
       "h1": "Oven Won't Turn On: Causes and Fixes",
       "answer": "An oven with a dead display usually has a power problem — a tripped breaker or a failed control board. If the display works but the oven won't respond, check for an active lock (control lock, self-clean lockout, or Sabbath mode) and reset power at the breaker.",
-      "categories": ["power", "control_panel", "control_board", "control", "door_latch", "safety"],
+      "categories": ["control_panel", "control_board", "control", "door_latch", "safety"],
       "checks": [
         "Dead display: check the breaker (ovens are 240V — both legs matter) and confirm the unit is getting power.",
         "Working display, no response: look for a Control Lock, Sabbath mode, or self-clean lockout indicator.",

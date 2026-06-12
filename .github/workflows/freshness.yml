@@ -1,0 +1,45 @@
+name: Freshness review (6-week content re-verification)
+
+# AEO best practice: re-verify top content every 6–8 weeks.
+# Runs every 6 weeks (cron approximation: 1st and 15th, gated by week check)
+# and opens a GitHub issue with the stalest pages to re-verify.
+on:
+  schedule:
+    - cron: '0 9 1 * *'   # 09:00 UTC on the 1st of every month
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate review queue
+        id: queue
+        run: |
+          node scripts/freshness-review.mjs --limit 30 --markdown > /tmp/queue.md
+          cat /tmp/queue.md
+
+      - name: Close previous freshness issues
+        run: |
+          gh issue list --repo "$GITHUB_REPOSITORY" --label freshness --state open --json number -q '.[].number' | \
+            xargs -I{} gh issue close {} --repo "$GITHUB_REPOSITORY" --comment "Superseded by this month's freshness queue." || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open freshness issue
+        run: |
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "Freshness review: $(date +%Y-%m) — re-verify stalest pages" \
+            --label freshness \
+            --body-file /tmp/queue.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

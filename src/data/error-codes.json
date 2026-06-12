@@ -155,6 +155,7 @@
         "washer",
         "dryer",
         "dishwasher",
+        "refrigerator",
         "oven",
         "microwave"
       ],
@@ -857,7 +858,9 @@
       "brand": "samsung",
       "appliance": "washer",
       "code": "CE",
-      "aliases": [],
+      "aliases": [
+        "E8"
+      ],
       "meaning": "Over-current motor protection — motor drawing excessive current",
       "detail": "The motor control board has detected that the motor is drawing more current than its rated maximum. This is a protective shutdown to prevent motor damage. An overloaded drum is the most common trigger, but motor or board failure can cause it without overloading.",
       "severity": "high",
@@ -18398,6 +18401,8 @@
       "pro_cost_hi": 800,
       "reset_instructions": "Unplug the refrigerator for 5 minutes and restore power. If 84E returns, do not keep power-cycling — diagnose the inverter.",
       "related_codes": [
+        "85E",
+        "86E",
         "26E"
       ],
       "when_to_call_pro": "If a new inverter board doesn't fix it, compressor replacement requires an EPA-certified sealed-system technician — get a quote before committing, as it can approach replacement cost."
@@ -23772,7 +23777,8 @@
       "code": "LC",
       "aliases": [
         "LC1",
-        "LE1"
+        "LE1",
+        "E9"
       ],
       "meaning": "Leak detected — moisture sensed in the base pan",
       "detail": "The leak sensor in the washer's base pan detected water where it shouldn't be. The machine stops and pumps out to protect your floor. The trigger is often a real leak (hose clamp, door boot, dispenser overflow), but oversudsing from too much detergent can push foam past seals and trip it too.",
@@ -24743,6 +24749,791 @@
         "SUD"
       ],
       "when_to_call_pro": "If a cleaned and free-moving dispenser still throws F8E2, the actuator motor or its board driver has failed — the actuator is the cheaper first replacement."
+    },
+    {
+      "id": "samsung-refrigerator-83e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "83E",
+      "aliases": [],
+      "meaning": "Compressor abnormal current detected",
+      "detail": "The inverter board measured current to the compressor outside its safe envelope and shut the compressor down to protect it. 83E frequently appears after a power outage or voltage sag rather than from a genuinely failed compressor — Samsung's own guidance is to power-reset first and only investigate hardware if it returns.",
+      "severity": "high",
+      "category": "compressor",
+      "causes": [
+        {
+          "description": "Power outage / voltage fluctuation event",
+          "frequency": 45
+        },
+        {
+          "description": "Inverter board fault",
+          "frequency": 30
+        },
+        {
+          "description": "Compressor winding fault",
+          "frequency": 15
+        },
+        {
+          "description": "Loose compressor connector",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset the unit",
+          "description": "Unplug the refrigerator (or breaker off) for 5 minutes, then restore power and give the compressor several minutes to restart."
+        },
+        {
+          "title": "Check for a pattern",
+          "description": "If 83E returns without any household power event, note when — startup vs steady-state points to inverter vs compressor."
+        },
+        {
+          "title": "Inspect connections",
+          "description": "Unplug the unit, remove the rear lower panel, and reseat the inverter-to-compressor connector.",
+          "warning": "Capacitors on the inverter board hold charge — don't probe the board itself."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 600,
+      "reset_instructions": "Unplug the refrigerator for 5 minutes and restore power. If 83E reappears within a day without a power event, stop resetting and get the inverter/compressor professionally diagnosed.",
+      "related_codes": [
+        "85E",
+        "86E",
+        "84E"
+      ],
+      "when_to_call_pro": "Compressor and inverter diagnosis needs a meter and experience — and Samsung's 10-year sealed-system warranty may cover it. Call Samsung support with your model and serial before paying out of pocket."
+    },
+    {
+      "id": "samsung-refrigerator-85e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "85E",
+      "aliases": [],
+      "meaning": "Compressor under-voltage error — supply voltage too low",
+      "detail": "The inverter detected supply voltage below its operating floor while driving the compressor. Brownouts, overloaded household circuits, and shared outlets are the common triggers; the refrigerator protects itself and retries. Persistent 85E with healthy household power points at the inverter board.",
+      "severity": "medium",
+      "category": "compressor",
+      "causes": [
+        {
+          "description": "Household brownout / low line voltage",
+          "frequency": 50
+        },
+        {
+          "description": "Overloaded or shared circuit",
+          "frequency": 25
+        },
+        {
+          "description": "Inverter board fault",
+          "frequency": 20
+        },
+        {
+          "description": "Loose power connection",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Unplug for 5 minutes and restore. 85E after a brownout clears for good once supply stabilizes."
+        },
+        {
+          "title": "Check the circuit",
+          "description": "Make sure the refrigerator has its own outlet — space heaters or microwaves sharing the circuit cause voltage dips under load."
+        },
+        {
+          "title": "Measure outlet voltage",
+          "description": "If comfortable, verify the outlet reads ~115–125V under load. Chronically low readings are an electrician problem, not a refrigerator problem."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 450,
+      "reset_instructions": "Unplug the refrigerator for 5 minutes and restore power. Track whether 85E coincides with heavy appliance use elsewhere in the house.",
+      "related_codes": [
+        "83E",
+        "86E"
+      ],
+      "when_to_call_pro": "If your outlet voltage is healthy and 85E keeps returning, the inverter board needs professional replacement — and chronic low household voltage deserves an electrician's visit either way."
+    },
+    {
+      "id": "samsung-refrigerator-86e",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "86E",
+      "aliases": [],
+      "meaning": "Compressor over-voltage error — supply voltage too high",
+      "detail": "The inverter detected supply voltage above its safe ceiling and stopped the compressor to protect it. Voltage spikes from grid switching, generator use, or wiring faults are typical triggers. As with the other power codes, a reset clears one-off events; recurrence means the supply or the inverter board needs attention.",
+      "severity": "medium",
+      "category": "compressor",
+      "causes": [
+        {
+          "description": "Voltage spike / grid switching event",
+          "frequency": 50
+        },
+        {
+          "description": "Generator or backup-power supply running high",
+          "frequency": 25
+        },
+        {
+          "description": "Inverter board fault",
+          "frequency": 20
+        },
+        {
+          "description": "House wiring fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Unplug for 5 minutes and restore power."
+        },
+        {
+          "title": "Check unusual power sources",
+          "description": "If running on a generator or battery backup, verify its output voltage — small generators commonly run high at light load."
+        },
+        {
+          "title": "Consider surge protection",
+          "description": "A surge-protected outlet or whole-home protector prevents repeat spikes from reaching the inverter.",
+          "parts": [
+            "Appliance-rated surge protector ($20–$50)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 50,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 450,
+      "reset_instructions": "Unplug the refrigerator for 5 minutes and restore power. If on generator power, switch back to mains before judging whether the code returns.",
+      "related_codes": [
+        "83E",
+        "85E"
+      ],
+      "when_to_call_pro": "Recurring 86E on normal mains power means either a wiring/voltage problem (electrician) or a failing inverter board (appliance technician). Don't keep resetting through it — over-voltage events stress the compressor."
+    },
+    {
+      "id": "bosch-refrigerator-e01",
+      "brand": "bosch",
+      "appliance": "refrigerator",
+      "code": "E01",
+      "aliases": [],
+      "meaning": "Refrigerator compartment temperature sensor fault",
+      "detail": "The control board is getting an open, shorted, or implausible reading from the fresh-food compartment temperature sensor. Without it, the control can't regulate fridge temperature accurately — expect the compartment to drift warm or cold. The sensor itself or its connector is almost always the cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed NTC temperature sensor",
+          "frequency": 55
+        },
+        {
+          "description": "Connector or harness fault",
+          "frequency": 30
+        },
+        {
+          "description": "Control board input fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Unplug the refrigerator for 60 seconds and restore power — a transient reading glitch clears with a reboot."
+        },
+        {
+          "title": "Note the symptoms",
+          "description": "Check actual fridge temperature with a thermometer. A compartment running notably warm or cold alongside E01 confirms the sensor."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "The fridge-compartment sensor sits behind an interior panel; replacement is a connector swap once the panel is off.",
+          "parts": [
+            "Bosch refrigerator NTC sensor ($15–$40)"
+          ],
+          "warning": "Unplug the refrigerator before removing interior panels."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug for 60 seconds and restore power. If E01 returns, the sensor needs testing — its resistance should change smoothly as it warms or cools.",
+      "related_codes": [
+        "E02",
+        "E03"
+      ],
+      "when_to_call_pro": "If a new sensor reads correctly but E01 persists, the control board's sensor input has failed — board diagnosis is a technician job."
+    },
+    {
+      "id": "bosch-refrigerator-e02",
+      "brand": "bosch",
+      "appliance": "refrigerator",
+      "code": "E02",
+      "aliases": [],
+      "meaning": "Freezer compartment temperature sensor fault",
+      "detail": "The freezer's temperature sensor is reading open, shorted, or implausible values. The control falls back to timed cooling, so the freezer may over-freeze or warm up unpredictably. As with E01, the sensor or its connector is the usual culprit and the fix is inexpensive.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed NTC temperature sensor",
+          "frequency": 55
+        },
+        {
+          "description": "Connector or harness fault (cold-side connections corrode)",
+          "frequency": 30
+        },
+        {
+          "description": "Control board input fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Unplug for 60 seconds and restore power."
+        },
+        {
+          "title": "Verify freezer temperature",
+          "description": "Use a thermometer — the freezer should hold 0°F (-18°C). Significant drift alongside E02 confirms the sensor."
+        },
+        {
+          "title": "Replace the sensor",
+          "description": "Access is behind the freezer's interior panel; the part clips to the evaporator area and plugs into the harness.",
+          "parts": [
+            "Bosch freezer NTC sensor ($15–$40)"
+          ],
+          "warning": "Unplug the refrigerator before removing the freezer panel."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug for 60 seconds and restore power. Watch freezer temperature for a few hours — drifting temps with the code back means replace the sensor.",
+      "related_codes": [
+        "E01",
+        "E03"
+      ],
+      "when_to_call_pro": "Food safety matters here: if the freezer can't hold temperature, move food to a backup freezer and prioritize the repair."
+    },
+    {
+      "id": "bosch-refrigerator-e03",
+      "brand": "bosch",
+      "appliance": "refrigerator",
+      "code": "E03",
+      "aliases": [],
+      "meaning": "Temperature-controlled drawer sensor fault",
+      "detail": "The sensor for the chiller / VitaFresh temperature-controlled drawer is reading out of range. Main fridge and freezer cooling continue normally, but the drawer can't hold its setpoint — produce or meat stored there may freeze or spoil faster than expected.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed drawer NTC sensor",
+          "frequency": 55
+        },
+        {
+          "description": "Connector or harness fault",
+          "frequency": 30
+        },
+        {
+          "description": "Damper/drawer control fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Unplug for 60 seconds and restore power."
+        },
+        {
+          "title": "Relocate sensitive food",
+          "description": "Until fixed, move meat/fish out of the drawer to the main compartment shelves where temperature control still works."
+        },
+        {
+          "title": "Replace the drawer sensor",
+          "description": "Behind the drawer's rear trim panel; clip and connector replacement.",
+          "parts": [
+            "Bosch NTC sensor ($15–$40)"
+          ],
+          "warning": "Unplug the refrigerator before removing trim panels."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 140,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug for 60 seconds and restore power. The code clears once the control reads a plausible drawer temperature.",
+      "related_codes": [
+        "E01",
+        "E02"
+      ],
+      "when_to_call_pro": "Because main cooling is unaffected, this repair isn't urgent — bundle it with any other service visit if you're not DIYing it."
+    },
+    {
+      "id": "miele-refrigerator-f1",
+      "brand": "miele",
+      "appliance": "refrigerator",
+      "code": "F1",
+      "aliases": [],
+      "meaning": "Refrigerator compartment sensor fault",
+      "detail": "The fridge-compartment temperature sensor is returning an implausible signal, so the control can't regulate the compartment accurately. Miele units typically keep cooling on a fallback program, but temperature drifts. Miele documents this as a fault requiring sensor access behind interior panels.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed compartment temperature sensor",
+          "frequency": 60
+        },
+        {
+          "description": "Connector or harness fault",
+          "frequency": 25
+        },
+        {
+          "description": "Electronic control input fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Switch the unit off, wait 60 seconds, and switch it back on — transient sensor glitches clear with a restart."
+        },
+        {
+          "title": "Monitor with a thermometer",
+          "description": "Confirm whether the compartment actually holds 37–40°F. Drift alongside F1 confirms a real sensor fault."
+        },
+        {
+          "title": "Book sensor replacement",
+          "description": "Miele's compartment sensors sit behind interior panels that aren't designed for customer removal."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Switch the appliance off for 60 seconds and back on. If F1 returns, note the actual compartment temperature for the technician.",
+      "related_codes": [
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "when_to_call_pro": "Miele recommends authorized service for sensor faults — interior panel access without the right procedure risks damaging the liner, and authorized parts keep the (long) Miele warranty intact."
+    },
+    {
+      "id": "miele-refrigerator-f2",
+      "brand": "miele",
+      "appliance": "refrigerator",
+      "code": "F2",
+      "aliases": [],
+      "meaning": "Evaporator sensor fault",
+      "detail": "The sensor on the evaporator coil is reading open, shorted, or out of range. The control uses this sensor to time defrost cycles, so a failure leads to frost buildup on the evaporator and gradually weakening cooling. A unit that cools poorly with F2 showing has likely already iced up.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed evaporator sensor",
+          "frequency": 55
+        },
+        {
+          "description": "Frost/ice damage to sensor wiring",
+          "frequency": 25
+        },
+        {
+          "description": "Connector fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Switch off for 60 seconds and back on."
+        },
+        {
+          "title": "Check for icing symptoms",
+          "description": "Weak cooling, a rear interior wall of frost, or a fan working loudly all suggest the defrost timing has already been affected."
+        },
+        {
+          "title": "Book service",
+          "description": "Evaporator sensor access requires opening the cooling-compartment panels — an authorized-service job on Miele units."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 220,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Switch the appliance off for 60 seconds and back on. If cooling is already weak, a full manual defrost (unit off, doors open, 24h) restores temporary performance until service.",
+      "related_codes": [
+        "F1",
+        "F3"
+      ],
+      "when_to_call_pro": "Evaporator-side work on Miele refrigeration is authorized-service territory. If cooling has degraded, don't delay — running iced-up stresses the compressor."
+    },
+    {
+      "id": "miele-refrigerator-f3",
+      "brand": "miele",
+      "appliance": "refrigerator",
+      "code": "F3",
+      "aliases": [],
+      "meaning": "Freezer compartment air sensor fault",
+      "detail": "The air-temperature sensor in the freezer compartment is returning an implausible value. The control can't verify the freezer is holding temperature, so it runs a fallback program. Food safety is the practical risk — the display can no longer be trusted to reflect real freezer temperature.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed freezer air sensor",
+          "frequency": 60
+        },
+        {
+          "description": "Connector/harness fault on the cold side",
+          "frequency": 25
+        },
+        {
+          "description": "Control input fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Switch off for 60 seconds and back on."
+        },
+        {
+          "title": "Verify with a thermometer",
+          "description": "Place a thermometer in the freezer — it should hold 0°F (-18°C). Use this, not the display, while the fault is active."
+        },
+        {
+          "title": "Book service",
+          "description": "Sensor replacement requires freezer panel access per Miele's service procedure."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Switch the appliance off for 60 seconds and back on. Keep a thermometer in the freezer until the sensor is replaced.",
+      "related_codes": [
+        "F1",
+        "F2",
+        "F4"
+      ],
+      "when_to_call_pro": "If the freezer can't verifiably hold 0°F, prioritize the service visit and avoid loading new unfrozen food in the meantime."
+    },
+    {
+      "id": "miele-refrigerator-f4",
+      "brand": "miele",
+      "appliance": "refrigerator",
+      "code": "F4",
+      "aliases": [],
+      "meaning": "Fan motor fault",
+      "detail": "An interior circulation fan isn't running as commanded. Cold air stops moving evenly, so some areas run cold while others warm up — the classic symptom is temperature stratification between shelves. Ice jamming the fan or a failed fan motor are the documented causes.",
+      "severity": "medium",
+      "category": "fan",
+      "causes": [
+        {
+          "description": "Fan motor failure",
+          "frequency": 45
+        },
+        {
+          "description": "Ice buildup jamming the fan",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring/connector fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Switch off for 60 seconds and back on; listen for the fan resuming."
+        },
+        {
+          "title": "Manual defrost if iced",
+          "description": "If you hear the fan straining or chirping, a full defrost (off, doors open, 24h) frees an ice-jammed blade."
+        },
+        {
+          "title": "Book fan replacement",
+          "description": "If the fan stays silent after a thaw and reset, the motor has failed."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 220,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Switch the appliance off for 60 seconds and back on. A 24-hour manual defrost is the one effective self-help step before service.",
+      "related_codes": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "when_to_call_pro": "Repeated fan icing means the defrost system needs diagnosis too — mention the history when booking Miele service so both get fixed in one visit."
+    },
+    {
+      "id": "ge-microwave-f1",
+      "brand": "ge",
+      "appliance": "microwave",
+      "code": "F1",
+      "aliases": [],
+      "meaning": "Open thermal sensor — cavity temperature not detected",
+      "detail": "GE documents F1 as an open thermal sensor: during convection, combination, or roast cooking the control expects the cavity to reach temperature within 15 minutes, and an open sensor circuit means it never sees the rise. Microwave-only cooking may still work; convection functions stop.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed (open) cavity thermal sensor",
+          "frequency": 60
+        },
+        {
+          "description": "Connector or harness fault",
+          "frequency": 25
+        },
+        {
+          "description": "Control board input fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clear and retry",
+          "description": "Press Cancel/Off to clear the code, then retry the convection function once — a one-off glitch clears."
+        },
+        {
+          "title": "Power-reset",
+          "description": "Switch the breaker (or unplug the unit) for 60 seconds."
+        },
+        {
+          "title": "Book sensor replacement",
+          "description": "The thermal sensor mounts on the cavity behind the outer case — microwave case removal carries shock risk even unplugged.",
+          "warning": "Microwave capacitors store a lethal charge after unplugging. Do not open the case."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Press Cancel/Off to clear the display, or power-cycle at the breaker for 60 seconds. F1 returning during convection cooking confirms the sensor.",
+      "related_codes": [
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "when_to_call_pro": "All internal microwave repairs are professional territory — the high-voltage capacitor can hold a lethal charge long after unplugging. The fix itself (a sensor swap) is quick for a technician."
+    },
+    {
+      "id": "ge-microwave-f2",
+      "brand": "ge",
+      "appliance": "microwave",
+      "code": "F2",
+      "aliases": [],
+      "meaning": "Shorted thermal sensor",
+      "detail": "The opposite of F1: the cavity thermal sensor circuit reads shorted, so the control sees a false high-temperature signal. The microwave may refuse convection functions or abort cooking. Sensor or harness replacement is the standard fix per GE's fault table.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Shorted cavity thermal sensor",
+          "frequency": 60
+        },
+        {
+          "description": "Pinched or chafed harness wire",
+          "frequency": 25
+        },
+        {
+          "description": "Control board fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clear and retry",
+          "description": "Press Cancel/Off, then retry. If F2 returns immediately, the short is hard."
+        },
+        {
+          "title": "Power-reset",
+          "description": "Breaker off (or unplug) for 60 seconds."
+        },
+        {
+          "title": "Book service",
+          "description": "Sensor and harness access requires opening the case — a technician job on microwaves.",
+          "warning": "Do not open a microwave case — the HV capacitor stores a lethal charge."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Press Cancel/Off to clear, or power-cycle at the breaker for 60 seconds.",
+      "related_codes": [
+        "F1",
+        "F3"
+      ],
+      "when_to_call_pro": "Same safety rule as every internal microwave fault: case-off work is for technicians. If the unit is over ~8 years old, replacement often beats the service call on countertop models — OTR models are usually worth fixing."
+    },
+    {
+      "id": "ge-microwave-f3",
+      "brand": "ge",
+      "appliance": "microwave",
+      "code": "F3",
+      "aliases": [],
+      "meaning": "Shorted touchpad — keypad fault",
+      "detail": "The control detects one or more keypad lines stuck closed, as if a button were held down permanently. Phantom button presses, an unresponsive pad, or continuous beeping accompany it. Moisture or grease wicking into the membrane keypad — common above a range — is the usual cause.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Moisture or grease in the membrane keypad",
+          "frequency": 50
+        },
+        {
+          "description": "Worn/shorted keypad membrane",
+          "frequency": 35
+        },
+        {
+          "description": "Control board fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Dry it out",
+          "description": "If the code appeared after heavy stovetop steaming or panel cleaning, power off at the breaker for a few hours and let the panel dry."
+        },
+        {
+          "title": "Power-reset",
+          "description": "Breaker off for 60 seconds, then retest each button row."
+        },
+        {
+          "title": "Replace the touchpad/control panel",
+          "description": "If specific buttons stay dead or phantom presses continue, the membrane assembly needs replacement.",
+          "warning": "Panel replacement requires case access — leave it to a technician."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 130,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Switch the breaker off for 60 seconds (longer if moisture is suspected — give it a few hours to dry), then restore power and test the keypad.",
+      "related_codes": [
+        "F1",
+        "F2"
+      ],
+      "when_to_call_pro": "On over-the-range models the touchpad assembly is usually worth replacing professionally; on budget countertop units the part plus labor often exceeds a new microwave."
+    },
+    {
+      "id": "ge-microwave-f4",
+      "brand": "ge",
+      "appliance": "microwave",
+      "code": "F4",
+      "aliases": [],
+      "meaning": "Open humidity sensor — sensor cooking disabled",
+      "detail": "GE's sensor-cook features (Popcorn, Reheat, Sensor Cook) read steam through a humidity sensor. F4 means that sensor circuit reads open, so sensor-cook modes fail or abort — manual time cooking keeps working normally. The sensor or its connector has failed.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Failed (open) humidity sensor",
+          "frequency": 60
+        },
+        {
+          "description": "Connector or harness fault",
+          "frequency": 25
+        },
+        {
+          "description": "Control board input fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Use manual modes meanwhile",
+          "description": "Time-based cooking is unaffected — the fault only blocks sensor-driven modes."
+        },
+        {
+          "title": "Power-reset",
+          "description": "Breaker off for 60 seconds and retry a sensor-cook mode."
+        },
+        {
+          "title": "Book sensor replacement",
+          "description": "The humidity sensor mounts in the vent path inside the case.",
+          "warning": "Internal access is technician-only — HV capacitor hazard."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 110,
+      "pro_cost_hi": 230,
+      "reset_instructions": "Press Cancel/Off to clear the code. The microwave remains fully usable in manual modes while you decide on the repair.",
+      "related_codes": [
+        "F1",
+        "F3"
+      ],
+      "when_to_call_pro": "Because manual cooking still works, this is the rare microwave fault you can reasonably live with — repair it opportunistically or when convenience matters."
+    },
+    {
+      "id": "whirlpool-microwave-f7",
+      "brand": "whirlpool",
+      "appliance": "microwave",
+      "code": "F7",
+      "aliases": [],
+      "meaning": "Inverter / magnetron power fault",
+      "detail": "On Whirlpool inverter-type microwaves, F7 means the control detected a problem delivering power to the magnetron — the inverter board reported a fault or the expected power draw never materialized. The unit may run but not heat, or abort with the code. A failed inverter board is the documented usual cause, sometimes with a visible burn spot on the board.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Inverter board failure",
+          "frequency": 55
+        },
+        {
+          "description": "Magnetron failure",
+          "frequency": 30
+        },
+        {
+          "description": "Harness fault between control and inverter",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power-reset",
+          "description": "Unplug (or breaker off) for 60 seconds — a transient inverter fault clears with a reboot."
+        },
+        {
+          "title": "Test heating",
+          "description": "Heat a cup of water for 60 seconds on high. Running-but-not-heating alongside F7 confirms the power path to the magnetron."
+        },
+        {
+          "title": "Book service",
+          "description": "Inverter and magnetron replacement are internal, high-voltage repairs.",
+          "warning": "Never open a microwave case — the capacitor holds a lethal charge after unplugging."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Unplug the microwave for 60 seconds and retest with a cup of water. If F7 returns or heating is weak, stop using it and have the inverter diagnosed.",
+      "related_codes": [],
+      "when_to_call_pro": "Magnetron/inverter repairs run $150–$350 with labor — worth it on built-in and OTR models, rarely on countertop units. Whirlpool magnetrons carry longer warranty terms on some models; check yours before paying."
     }
   ]
 }

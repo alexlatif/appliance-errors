@@ -35,3 +35,12 @@ install:
 # Type check
 check:
     npx tsc --noEmit
+
+# Measure content uniqueness (thin-page audit)
+measure:
+    node scripts/content-uniqueness.mjs
+
+# CI gate — fail if thin-page count regresses
+measure-ci:
+    node scripts/content-uniqueness.mjs --json > /tmp/uniqueness.json
+    node -e "const r=require('/tmp/uniqueness.json');const fail=r.thresholds.lt120>70;console.log('lt120:'+r.thresholds.lt120+' lt180:'+r.thresholds.lt180+' lt280:'+r.thresholds.lt280+' models_present:'+r.modelsAffected.present);if(fail){console.error('FAIL: too many thin pages');process.exit(1);}else{console.log('PASS');}"

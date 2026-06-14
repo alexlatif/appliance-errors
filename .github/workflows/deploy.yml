@@ -25,6 +25,11 @@ jobs:
       - name: Data integrity audit (deploy gate)
         run: node scripts/audit-data.mjs
 
+      - name: Content uniqueness audit (thin-page gate)
+        run: |
+          node scripts/content-uniqueness.mjs --json > /tmp/uniqueness.json
+          node -e "const r=require('/tmp/uniqueness.json');console.log('lt120:'+r.thresholds.lt120+' lt180:'+r.thresholds.lt180+' lt280:'+r.thresholds.lt280+' models_present:'+r.modelsAffected.present);if(r.thresholds.lt120>70){console.error('FAIL: thin-page regression');process.exit(1);}console.log('PASS');"
+
       - name: Build
         run: npm run build
 

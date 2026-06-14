@@ -2855,6 +2855,166 @@
       "when_to_call_pro": "If new panel doesn't resolve bE2, main board button interface failed."
     },
     {
+      "id": "samsung-dishwasher-9e",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "9E",
+      "aliases": [
+        "9C"
+      ],
+      "meaning": "Low water level error — dishwasher not filling enough",
+      "detail": "The dishwasher detects that the water level inside the tub is too low to run the cycle. Either not enough water is entering, or the level-sensing components believe the tub is under-filled. Samsung dishwashers feed from a small fill reservoir/case-break before the sump, so a clogged inlet, a partially closed supply, or a kinked fill hose commonly starves the wash.",
+      "severity": "medium",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Water supply valve partially closed or fill hose kinked",
+          "frequency": 35
+        },
+        {
+          "description": "Clogged inlet screen / fill reservoir",
+          "frequency": 30
+        },
+        {
+          "description": "Faulty water inlet valve",
+          "frequency": 20
+        },
+        {
+          "description": "Water level (case break) sensor or float fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the water supply",
+          "description": "Confirm the under-sink supply valve is fully open and the fill hose isn't kinked or crushed."
+        },
+        {
+          "title": "Clean the inlet screen",
+          "description": "Shut off water, disconnect the fill hose, and clear the inlet screen/filter of mineral debris.",
+          "warning": "Shut off the water supply before disconnecting the hose."
+        },
+        {
+          "title": "Run a clean test cycle",
+          "description": "Restart with a normal supply to confirm the tub fills. Persistent 9E after a clean fill points to the inlet valve or level sensor.",
+          "parts": [
+            "Samsung dishwasher water inlet valve ($30–$80)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 80,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Confirm the supply valve is open and the fill hose is clear, then power cycle. If 9E returns once filling begins, test the inlet valve.",
+      "related_codes": [
+        "LC",
+        "5C"
+      ],
+      "when_to_call_pro": "If supply and inlet screen are confirmed clear but 9E persists, the inlet valve or water-level sensor has failed and needs replacement."
+    },
+    {
+      "id": "samsung-dishwasher-be",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "bE",
+      "aliases": [
+        "bE1",
+        "6E"
+      ],
+      "meaning": "Button error — a control-panel key is stuck or shorted",
+      "detail": "The control board sees a panel button registering as continuously pressed. The dishwasher halts because it can't tell which command is real. A button physically stuck from spills or a failing membrane keypad is the usual cause; bE is the general button-error variant (bE1/bE2 indicate the specific key group).",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Button stuck from food/water splash",
+          "frequency": 50
+        },
+        {
+          "description": "Membrane keypad failure",
+          "frequency": 35
+        },
+        {
+          "description": "Control board button input shorted",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Wipe the button area",
+          "description": "Clean around the buttons with a dry cloth and free any physically stuck key."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes to clear a transient stuck-key reading."
+        },
+        {
+          "title": "Replace the control panel",
+          "description": "If a key stays stuck, the membrane/touch panel needs replacement.",
+          "parts": [
+            "Samsung dishwasher control panel ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 160,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug 5 minutes and clear any stuck button before restarting.",
+      "related_codes": [
+        "bE2"
+      ],
+      "when_to_call_pro": "If a new control panel doesn't resolve bE, the main board's button interface has failed."
+    },
+    {
+      "id": "samsung-dishwasher-ap",
+      "brand": "samsung",
+      "appliance": "dishwasher",
+      "code": "AP",
+      "aliases": [
+        "AP Mode"
+      ],
+      "meaning": "Access Point mode — Wi-Fi pairing, not a fault",
+      "detail": "AP indicates the dishwasher has entered Access Point (smart-pairing) mode so it can be connected to your home Wi-Fi through the SmartThings app. This is a normal connectivity state, not a malfunction — the dishwasher is broadcasting a temporary setup network. It typically appears when you start Wi-Fi setup or hold the connectivity button.",
+      "severity": "low",
+      "category": "normal",
+      "causes": [
+        {
+          "description": "Wi-Fi/SmartThings pairing intentionally started",
+          "frequency": 70
+        },
+        {
+          "description": "Connectivity button held long enough to enter AP mode",
+          "frequency": 25
+        },
+        {
+          "description": "Display showing AP after a power event during pairing",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Complete or cancel pairing",
+          "description": "Finish the SmartThings Wi-Fi setup to connect, or press the connectivity/Smart Control button to exit AP mode."
+        },
+        {
+          "title": "Power cycle to clear",
+          "description": "If you don't want to connect, unplug for 1 minute; the dishwasher returns to normal operation."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Either finish Wi-Fi setup in the SmartThings app or press the Smart Control button to leave AP mode. No repair is needed.",
+      "related_codes": [],
+      "when_to_call_pro": "AP is not a fault — a service call is unnecessary. Contact support only if the dishwasher will not exit AP mode after a power cycle."
+    },
+    {
       "id": "samsung-refrigerator-22e",
       "brand": "samsung",
       "appliance": "refrigerator",
@@ -3521,6 +3681,58 @@
         "25E"
       ],
       "when_to_call_pro": "If defrost sensor replaced and error recurs, the defrost heater is failing."
+    },
+    {
+      "id": "samsung-refrigerator-of-of",
+      "brand": "samsung",
+      "appliance": "refrigerator",
+      "code": "OF OF",
+      "aliases": [
+        "O FF",
+        "OFF OFF"
+      ],
+      "meaning": "Demo / Cooling Off (shop) mode — not a fault code",
+      "detail": "Your refrigerator is in Demo mode (also called Cooling Off or Shop mode). This is a showroom setting: the lights and display work normally but the compressor and cooling are intentionally disabled so the unit can be displayed without running. It is NOT a malfunction. It is usually triggered accidentally by holding the energy-saver/freezer buttons, or set at the store before delivery.",
+      "severity": "low",
+      "category": "normal",
+      "causes": [
+        {
+          "description": "Demo/Cooling Off mode accidentally activated",
+          "frequency": 70
+        },
+        {
+          "description": "Unit was left in shop mode from the retailer",
+          "frequency": 25
+        },
+        {
+          "description": "Power event during a button press",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Exit Demo mode",
+          "description": "Press and hold the two designated buttons together (commonly Energy Saver + Power Freeze, or Freezer + Fridge) until you hear a chime. Cooling resumes."
+        },
+        {
+          "title": "Try the extended combination",
+          "description": "If the first combination doesn't work, hold the three buttons your model specifies (often Button 1 + Button 2 + Button 4) until a chime sounds."
+        },
+        {
+          "title": "Check your model's manual",
+          "description": "Button labels vary by model; confirm the exact Demo-mode exit sequence for your unit."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Hold the designated button combination until a chime sounds to leave Demo/Cooling Off mode; the refrigerator will begin cooling again.",
+      "related_codes": [
+        "88-88"
+      ],
+      "when_to_call_pro": "OF OF is not a fault — no service is needed. Contact Samsung only if the unit will not exit demo mode using any documented button combination."
     },
     {
       "id": "samsung-oven-e-08",
@@ -6249,7 +6461,9 @@
       "brand": "lg",
       "appliance": "dishwasher",
       "code": "AE",
-      "aliases": [],
+      "aliases": [
+        "E1"
+      ],
       "meaning": "Leakage detected — water found in base tray",
       "detail": "The anti-flood device has detected water in the base tray of the dishwasher. This indicates a leak somewhere in the unit. The LG dishwasher will drain and shut down to prevent water damage.",
       "severity": "high",
@@ -7145,6 +7359,189 @@
         "Er FF"
       ],
       "when_to_call_pro": "If defrost sensor is fine and dS persists, defrost heater or control board defrost circuit has failed."
+    },
+    {
+      "id": "lg-refrigerator-er-rs",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "Er rS",
+      "aliases": [
+        "rS"
+      ],
+      "meaning": "Refrigerator (fresh-food) compartment sensor error",
+      "detail": "The control board is reading an open or shorted circuit from the thermistor that measures fresh-food compartment temperature. Without a valid reading the board runs cooling on a fallback schedule, so the refrigerator section drifts too warm or too cold. The sensor itself usually fails; corroded connectors in the cold, damp cabinet are the next most common cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Refrigerator thermistor failed (open/short)",
+          "frequency": 60
+        },
+        {
+          "description": "Connector corrosion or loose harness",
+          "frequency": 25
+        },
+        {
+          "description": "Harness pinched/broken behind the liner",
+          "frequency": 10
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes; a transient sensor misread may clear."
+        },
+        {
+          "title": "Inspect and reseat the connector",
+          "description": "Locate the fresh-food sensor connector and check for corrosion or a loose fit.",
+          "warning": "Unplug before opening interior panels."
+        },
+        {
+          "title": "Test and replace the sensor",
+          "description": "Compare resistance to spec (typically several kΩ near room temperature). Replace if out of range.",
+          "parts": [
+            "Multimeter",
+            "LG refrigerator temperature sensor ($15–$45)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 45,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug for 5 minutes. If Er rS returns, test the fresh-food sensor and reseat its connector before replacing.",
+      "related_codes": [
+        "Er FS",
+        "Er IS"
+      ],
+      "when_to_call_pro": "If the sensor reads in spec and the harness is sound but Er rS persists, the control board's sensor input has failed."
+    },
+    {
+      "id": "lg-refrigerator-er-hs",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "Er HS",
+      "aliases": [
+        "HS"
+      ],
+      "meaning": "Humidity sensor error",
+      "detail": "The control board cannot get a valid reading from the humidity sensor, which it uses to manage anti-condensation heaters and damper/airflow control. With the sensor out of range the board defaults its humidity logic, which can lead to sweating around door mullions or inconsistent compartment control. A failed sensor or a loose connector is the usual cause.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Humidity sensor failed",
+          "frequency": 60
+        },
+        {
+          "description": "Connector loose or corroded",
+          "frequency": 25
+        },
+        {
+          "description": "Harness damage",
+          "frequency": 10
+        },
+        {
+          "description": "Control board input fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes to clear a transient reading."
+        },
+        {
+          "title": "Reseat the sensor connector",
+          "description": "Locate the humidity sensor (near the fresh-food section/control housing) and reseat its connector.",
+          "warning": "Unplug before accessing interior wiring."
+        },
+        {
+          "title": "Replace the humidity sensor",
+          "description": "If reseating doesn't help, replace the sensor.",
+          "parts": [
+            "LG refrigerator humidity sensor ($20–$55)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 55,
+      "pro_cost_lo": 140,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Unplug for 5 minutes. If Er HS returns, reseat then replace the humidity sensor.",
+      "related_codes": [
+        "Er rS"
+      ],
+      "when_to_call_pro": "If a new humidity sensor doesn't clear Er HS, the control board's sensor circuit has failed."
+    },
+    {
+      "id": "lg-refrigerator-er-gf",
+      "brand": "lg",
+      "appliance": "refrigerator",
+      "code": "Er gF",
+      "aliases": [
+        "gF"
+      ],
+      "meaning": "Flow sensor error — low water pressure or flow meter fault",
+      "detail": "Er gF flags the water flow sensor (flow meter) on the dispenser/ice-maker line. The board uses it to measure how much water flows during a fill; if it sees no flow or an implausible count, it raises gF. Low household water pressure, a closed or kinked supply, or a clogged inlet are common causes, alongside a failed flow sensor. If the ice maker is overfilling, a stuck flow meter is the prime suspect.",
+      "severity": "medium",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Low house water pressure or supply valve not fully open",
+          "frequency": 35
+        },
+        {
+          "description": "Kinked or frozen water supply line",
+          "frequency": 25
+        },
+        {
+          "description": "Clogged inlet/filter restricting flow",
+          "frequency": 20
+        },
+        {
+          "description": "Flow sensor (meter) failed",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the water supply",
+          "description": "Confirm the saddle/supply valve is fully open and the line behind the fridge isn't kinked or frozen."
+        },
+        {
+          "title": "Replace a clogged water filter",
+          "description": "A heavily clogged filter restricts flow enough to trigger gF; install a fresh OEM filter.",
+          "parts": [
+            "LG refrigerator water filter ($30–$55)"
+          ]
+        },
+        {
+          "title": "Inspect the inlet valve and flow sensor",
+          "description": "If supply and filter are good, test the inlet valve and the flow meter for proper operation.",
+          "parts": [
+            "LG water inlet valve ($40–$110)"
+          ],
+          "warning": "Unplug and shut off water before servicing the valve."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 110,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Confirm the supply valve is fully open and the filter is fresh, then power cycle. If gF persists, test the inlet valve and flow sensor.",
+      "related_codes": [
+        "Er IF",
+        "Er IS"
+      ],
+      "when_to_call_pro": "If water pressure, filter, and inlet valve are confirmed good but Er gF persists, the flow sensor or its control board input has failed."
     },
     {
       "id": "lg-oven-f11",
@@ -9231,6 +9628,158 @@
       "when_to_call_pro": "If the load is balanced and the washer is level but F0E5 persists, the suspension or the off-balance sensor needs inspection."
     },
     {
+      "id": "whirlpool-washer-lf",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "LF",
+      "aliases": [
+        "Lo FL"
+      ],
+      "meaning": "Long fill — washer taking too long to fill",
+      "detail": "Per Whirlpool, LF (also shown as F8E1 or Lo FL) means the washer is not detecting the correct amount of incoming water within the allowed time, so the fill is taking too long. A closed or low-pressure supply, kinked or clogged inlet hoses, or a weak inlet valve are the usual causes. Both hot and cold valves must be open for the washer to fill correctly.",
+      "severity": "medium",
+      "category": "water_inlet",
+      "causes": [
+        {
+          "description": "Supply valves not fully open / low water pressure",
+          "frequency": 35
+        },
+        {
+          "description": "Inlet hoses kinked or screens clogged with debris",
+          "frequency": 30
+        },
+        {
+          "description": "Water inlet valve weak or failing",
+          "frequency": 25
+        },
+        {
+          "description": "Flow meter / pressure sensor fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the water supply",
+          "description": "Confirm both hot and cold supply valves are fully open and household pressure is adequate."
+        },
+        {
+          "title": "Inspect the fill hoses and screens",
+          "description": "Make sure the inlet hoses are not kinked, and clean the inlet screens of mineral build-up or debris.",
+          "warning": "Shut off the water before disconnecting hoses."
+        },
+        {
+          "title": "Replace the water inlet valve",
+          "description": "If supply and hoses are good but fill stays slow, replace the inlet valve.",
+          "parts": [
+            "Whirlpool washer inlet valve ($30–$80)"
+          ],
+          "warning": "Disconnect power and water before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 80,
+      "pro_cost_lo": 140,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Press Pause/Cancel twice and Power once to clear. Confirm both valves are open and hoses are clear, then restart.",
+      "related_codes": [
+        "F8E1"
+      ],
+      "when_to_call_pro": "If the supply, hoses, and inlet valve all check out and LF persists, the flow meter or control board needs diagnosis."
+    },
+    {
+      "id": "whirlpool-washer-rl",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "rL",
+      "aliases": [
+        "F34"
+      ],
+      "meaning": "Items detected during Clean Washer cycle — remove load",
+      "detail": "Per Whirlpool, rL (also shown as F-34) means items were detected in the drum during the Clean Washer cycle. The Clean Washer / affresh cycle must run empty, so the washer stops and prompts you to remove everything before continuing. It is an informational prompt, not a component fault.",
+      "severity": "low",
+      "category": "user_error",
+      "causes": [
+        {
+          "description": "Clothing or items left in the drum during the Clean Washer cycle",
+          "frequency": 90
+        },
+        {
+          "description": "Load-detect sensor misreading a residue or imbalance",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Remove all items",
+          "description": "Take all clothing and items out of the drum, then restart the Clean Washer cycle."
+        },
+        {
+          "title": "Power cycle the control",
+          "description": "If the drum is empty but rL persists, unplug the washer for 5 minutes to reset the control."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Remove everything from the drum and restart the Clean Washer cycle. If rL persists with an empty drum, unplug for 5 minutes.",
+      "related_codes": [],
+      "when_to_call_pro": "rL is a user prompt, not a fault. Service is only needed if it persists with a genuinely empty drum after a reset."
+    },
+    {
+      "id": "whirlpool-washer-det",
+      "brand": "whirlpool",
+      "appliance": "washer",
+      "code": "dET",
+      "aliases": [],
+      "meaning": "Detergent cartridge not detected — Load & Go dispenser",
+      "detail": "On washers with the Load & Go bulk-detergent dispenser, dET means the control ran its detergent-detection routine and could not detect the dispenser cartridge. This typically appears on the first cycles after setup or after the dispenser door has not been opened and closed. The washer can still run with manually added detergent.",
+      "severity": "low",
+      "category": "dispenser",
+      "causes": [
+        {
+          "description": "Dispenser cartridge not installed or not seated",
+          "frequency": 55
+        },
+        {
+          "description": "Dispenser door not opened/closed for several cycles",
+          "frequency": 25
+        },
+        {
+          "description": "Dispenser sensor / wiring fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Seat the cartridge",
+          "description": "Make sure the Load & Go cartridge is installed and fully seated, then open and close the dispenser door."
+        },
+        {
+          "title": "Run a few cycles",
+          "description": "The detection can take up to three cycles of opening and closing the dispenser door to register."
+        },
+        {
+          "title": "Check the dispenser sensor",
+          "description": "If dET persists with a seated cartridge, inspect the dispenser sensor and its wiring.",
+          "parts": [
+            "Multimeter"
+          ],
+          "warning": "Disconnect power before servicing."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 30,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Seat the Load & Go cartridge, open and close the dispenser door, and run a cycle. dET clears once detection succeeds.",
+      "related_codes": [],
+      "when_to_call_pro": "dET is informational. Service is only warranted if a seated cartridge is still not detected after several cycles."
+    },
+    {
       "id": "whirlpool-dryer-f01",
       "brand": "whirlpool",
       "appliance": "dryer",
@@ -10264,7 +10813,9 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F6E4",
-      "aliases": [],
+      "aliases": [
+        "6-4"
+      ],
       "meaning": "Wash heater or heating element failure",
       "detail": "The dishwasher is unable to heat water to the target wash temperature. Dishes will not be sanitized and drying performance will suffer.",
       "severity": "high",
@@ -10478,7 +11029,9 @@
       "appliance": "dishwasher",
       "code": "F6E1",
       "aliases": [
-        "F6E2"
+        "F6E2",
+        "6-1",
+        "6-2"
       ],
       "meaning": "Water heating failure — not reaching target temperature",
       "detail": "The control commanded the heater but water temperature never reached the programmed target within the allowed time. Dishes come out poorly washed and the cycle runs long or aborts. A burned-out heating element is the most common root cause, followed by a bad thermistor.",
@@ -10535,7 +11088,9 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F7E1",
-      "aliases": [],
+      "aliases": [
+        "7-1"
+      ],
       "meaning": "Circulation pump motor error",
       "detail": "The main wash circulation pump motor has failed or is drawing incorrect current.",
       "severity": "high",
@@ -10901,7 +11456,9 @@
       "brand": "whirlpool",
       "appliance": "dishwasher",
       "code": "F8E1",
-      "aliases": [],
+      "aliases": [
+        "8-1"
+      ],
       "meaning": "No / low water fill — slow or insufficient fill",
       "detail": "The dishwasher is filling too slowly or not reaching the required water level within the allowed time. Low supply pressure, a partially clogged inlet valve, or a float/flow-meter fault are the common causes.",
       "severity": "high",
@@ -11004,6 +11561,130 @@
         "F7E1"
       ],
       "when_to_call_pro": "If the diverter is clean and F9E2 persists, the diverter motor or control has failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f1e2",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F1E2",
+      "aliases": [
+        "1-2"
+      ],
+      "meaning": "Main control board / sensor circuit fault — electronic control failure",
+      "detail": "Shown as the 1-2 blink pair on LED models, F1E2 means the main control board detected an internal microprocessor or sensor-circuit fault it cannot recover from. In practice this code almost always traces back to a failed main control board — the sensor harness should be checked first, but when the wiring is sound the board is the fix.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Main control board failure",
+          "frequency": 70
+        },
+        {
+          "description": "Sensor harness between control and sensor damaged",
+          "frequency": 20
+        },
+        {
+          "description": "Power surge corrupted the control",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off power at the breaker for 60 seconds, then restore."
+        },
+        {
+          "title": "Inspect the sensor harness",
+          "description": "Check the harness between the control board and the temperature/turbidity sensor for damage, corrosion, or a loose connector.",
+          "parts": [
+            "Multimeter"
+          ],
+          "warning": "Disconnect power before servicing."
+        },
+        {
+          "title": "Replace the control board",
+          "description": "When the harness is sound and F1E2 returns, replace the main control board.",
+          "parts": [
+            "Whirlpool dishwasher control board ($90–$220)"
+          ],
+          "warning": "Disconnect power before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 90,
+      "cost_hi": 220,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Cut power at the breaker for 60 seconds. If F1E2 persists, the main control board needs to be replaced.",
+      "related_codes": [
+        "F1E1",
+        "F2E1"
+      ],
+      "when_to_call_pro": "F1E2 that returns after a power cycle and a good harness check means the main control board must be replaced."
+    },
+    {
+      "id": "whirlpool-dishwasher-f8e2",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F8E2",
+      "aliases": [
+        "8-2"
+      ],
+      "meaning": "Water inlet valve electrical fault — valve circuit problem",
+      "detail": "The control detected an electrical problem at the water inlet valve — the valve is not drawing the expected current, or its circuit is open or shorted. Fill is unreliable, so the dishwasher may not get enough water for a proper wash.",
+      "severity": "high",
+      "category": "water_inlet",
+      "causes": [
+        {
+          "description": "Inlet valve coil open or shorted",
+          "frequency": 45
+        },
+        {
+          "description": "Wiring / connector to the inlet valve faulty",
+          "frequency": 30
+        },
+        {
+          "description": "Inlet valve stuck while still powered",
+          "frequency": 15
+        },
+        {
+          "description": "Control board valve output failed",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off power at the breaker for 60 seconds, then restore."
+        },
+        {
+          "title": "Check the inlet valve wiring",
+          "description": "Inspect the harness and connector at the water inlet valve for damage or corrosion, and confirm the valve is getting power.",
+          "parts": [
+            "Multimeter"
+          ],
+          "warning": "Disconnect power and water before servicing."
+        },
+        {
+          "title": "Replace the water inlet valve",
+          "description": "If the valve coil is open/shorted or stuck while powered, replace it.",
+          "parts": [
+            "Whirlpool dishwasher inlet valve ($25–$60)"
+          ],
+          "warning": "Disconnect power and water before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 60,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Cut power 60 seconds. If F8E2 persists, check the inlet valve wiring and replace the inlet valve.",
+      "related_codes": [
+        "F8E1",
+        "F6E3"
+      ],
+      "when_to_call_pro": "If the inlet valve and its wiring test good and F8E2 persists, the control board valve output has failed."
     },
     {
       "id": "whirlpool-refrigerator-sy-ef",
@@ -12471,6 +13152,343 @@
         "F1"
       ],
       "when_to_call_pro": "Persistent F8 indicates the control board needs replacement."
+    },
+    {
+      "id": "whirlpool-oven-f2",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F2",
+      "aliases": [],
+      "meaning": "Oven temperature too high — over-temperature fault",
+      "detail": "A two-digit F2 indicates the Electronic Range Control sensed the oven temperature climbing too high. The control aborts heating to protect the oven. A shorted oven temperature sensor, a relay welded closed feeding the bake/broil element, or a control fault are the usual causes. Treat a true runaway temperature as a safety issue.",
+      "severity": "high",
+      "category": "overheating",
+      "causes": [
+        {
+          "description": "Oven temperature sensor (RTD) shorted, reading low",
+          "frequency": 40
+        },
+        {
+          "description": "Bake/broil relay welded closed on the control",
+          "frequency": 35
+        },
+        {
+          "description": "Control board fault",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off the circuit breaker for 5 minutes, then restore power."
+        },
+        {
+          "title": "Test the oven temperature sensor",
+          "description": "Check the RTD sensor resistance — roughly 1080–1100 ohms at room temperature; a shorted/low reading causes over-temp.",
+          "parts": [
+            "Multimeter",
+            "Whirlpool oven temperature sensor ($20–$50)"
+          ],
+          "warning": "Unplug oven before servicing."
+        },
+        {
+          "title": "Replace the control board",
+          "description": "If the sensor is good but an element stays powered, a welded relay on the ERC board is the cause.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing — do not keep operating an oven that overheats."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off the breaker for 5 minutes. If F2 returns or the oven overheats, stop using it and have the sensor and control board checked.",
+      "related_codes": [
+        "F3",
+        "F4"
+      ],
+      "when_to_call_pro": "An oven that actually overheats is a safety hazard. If a power cycle does not clear F2, stop using the oven until the sensor and control board are diagnosed."
+    },
+    {
+      "id": "whirlpool-oven-f3",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F3",
+      "aliases": [],
+      "meaning": "Open oven temperature sensor — sensor circuit open",
+      "detail": "A two-digit F3 indicates the Electronic Range Control sees an open circuit in the oven temperature sensor (RTD). With no valid temperature reading the oven cannot control heat and will not operate normally. A failed sensor or a broken connection in its harness is the usual cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Oven temperature sensor (RTD) failed open",
+          "frequency": 60
+        },
+        {
+          "description": "Sensor harness/connector broken or disconnected",
+          "frequency": 30
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off the circuit breaker for 5 minutes, then restore power."
+        },
+        {
+          "title": "Test the oven temperature sensor",
+          "description": "Check the RTD resistance — about 1080–1100 ohms at room temperature; an open/infinite reading confirms a failed sensor.",
+          "parts": [
+            "Multimeter",
+            "Whirlpool oven temperature sensor ($20–$50)"
+          ],
+          "warning": "Unplug oven before servicing."
+        },
+        {
+          "title": "Inspect the sensor harness",
+          "description": "Reconnect or repair a broken sensor connector at the back of the oven cavity.",
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 50,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Power cycle 5 minutes. If F3 persists, test and replace the oven temperature sensor.",
+      "related_codes": [
+        "F4",
+        "F2"
+      ],
+      "when_to_call_pro": "If the sensor reads correctly and the harness is sound but F3 persists, the control board sensor input has failed."
+    },
+    {
+      "id": "whirlpool-oven-f4",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F4",
+      "aliases": [],
+      "meaning": "Shorted oven temperature sensor — sensor reading short",
+      "detail": "A two-digit F4 indicates the Electronic Range Control sees a shorted oven temperature sensor (RTD) — a resistance far below the valid range. The control cannot trust the temperature reading and stops normal operation. A shorted sensor or a pinched/chafed harness shorting to ground is the usual cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Oven temperature sensor (RTD) shorted",
+          "frequency": 60
+        },
+        {
+          "description": "Sensor harness pinched / shorted to ground",
+          "frequency": 30
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off the circuit breaker for 5 minutes, then restore power."
+        },
+        {
+          "title": "Test the oven temperature sensor",
+          "description": "Check the RTD resistance — about 1080–1100 ohms at room temperature; a very low reading confirms a shorted sensor.",
+          "parts": [
+            "Multimeter",
+            "Whirlpool oven temperature sensor ($20–$50)"
+          ],
+          "warning": "Unplug oven before servicing."
+        },
+        {
+          "title": "Inspect the sensor harness",
+          "description": "Look for a pinched or chafed sensor wire shorting against the cavity or chassis.",
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 50,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Power cycle 5 minutes. If F4 persists, test and replace the oven temperature sensor.",
+      "related_codes": [
+        "F3",
+        "F2"
+      ],
+      "when_to_call_pro": "If the sensor reads correctly and the harness is sound but F4 persists, the control board sensor input has failed."
+    },
+    {
+      "id": "whirlpool-oven-f9",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F9",
+      "aliases": [],
+      "meaning": "Door latch fault — self-clean lock circuit",
+      "detail": "A two-digit F9 indicates a door latch (lock) circuit fault. The Electronic Range Control cannot confirm the motorized self-clean latch reached the commanded locked or unlocked position, so it will not run a self-clean cycle and may not bake. A stuck latch motor, a failed latch switch, or its wiring are the usual causes.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch motor or latch assembly failed",
+          "frequency": 50
+        },
+        {
+          "description": "Latch position switch fault",
+          "frequency": 30
+        },
+        {
+          "description": "Latch wiring/connector fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off the circuit breaker for 5 minutes, then restore power."
+        },
+        {
+          "title": "Inspect the latch mechanism",
+          "description": "Check that the self-clean latch moves freely and is not jammed.",
+          "warning": "Unplug oven before accessing the latch."
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "If the latch motor or switch has failed.",
+          "parts": [
+            "Whirlpool oven door latch assembly ($50–$130)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 130,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Power cycle 5 minutes. If F9 persists, inspect and replace the door latch assembly.",
+      "related_codes": [
+        "F5",
+        "F5-E0"
+      ],
+      "when_to_call_pro": "If the latch and its switch are good and F9 persists, the control board latch circuit has failed."
+    },
+    {
+      "id": "whirlpool-oven-f1-e9",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E9",
+      "aliases": [],
+      "meaning": "Control board software fault — stack overflow",
+      "detail": "An F1-E9 is reported by the appliance control board when its firmware hits a stack-overflow / internal software fault and cannot continue. Whirlpool's guidance is to reset power; when the fault returns it points to the control board or its associated wiring. It is part of the F1-E# control-board family.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Control board firmware/software fault",
+          "frequency": 55
+        },
+        {
+          "description": "Control board hardware failure",
+          "frequency": 30
+        },
+        {
+          "description": "Associated wiring/connector fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reset power",
+          "description": "Turn off the circuit breaker for at least 5 minutes, then restore power and retest."
+        },
+        {
+          "title": "Reseat control connectors",
+          "description": "Check the harness connections to the appliance control board.",
+          "warning": "Unplug oven before servicing."
+        },
+        {
+          "title": "Replace the control board",
+          "description": "If F1-E9 returns after a power reset, replace the appliance control board.",
+          "parts": [
+            "Whirlpool oven control board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off the breaker for 5 minutes. If F1-E9 persists, the control board needs to be replaced.",
+      "related_codes": [
+        "F1-E0",
+        "F1-E1",
+        "F1"
+      ],
+      "when_to_call_pro": "F1-E9 that returns after a power reset means the appliance control board must be replaced."
+    },
+    {
+      "id": "whirlpool-oven-f1-e3",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E3",
+      "aliases": [],
+      "meaning": "Wiring harness / cavity size mismatch",
+      "detail": "An F1-E3 indicates the control read a wiring-harness configuration (the model/cavity-size jumper or harness) that does not match the value previously stored in the control board's memory. This commonly appears after a control board is replaced with one not configured for the oven, or when the configuration harness is damaged or disconnected.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Replacement control board not configured for this model/cavity",
+          "frequency": 45
+        },
+        {
+          "description": "Configuration harness/jumper damaged or disconnected",
+          "frequency": 35
+        },
+        {
+          "description": "Control board memory fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reset power",
+          "description": "Turn off the circuit breaker for 5 minutes, then restore power and retest."
+        },
+        {
+          "title": "Check the configuration harness",
+          "description": "Verify the model/cavity-size jumper or configuration harness is connected and undamaged.",
+          "warning": "Unplug oven before servicing."
+        },
+        {
+          "title": "Use the correct control board",
+          "description": "If a board was just replaced, confirm it is the correct part configured for this oven's cavity size.",
+          "parts": [
+            "Whirlpool oven control board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Power cycle 5 minutes and confirm the configuration harness is connected. If F1-E3 followed a board swap, fit the correct configured board.",
+      "related_codes": [
+        "F1-E4",
+        "F1"
+      ],
+      "when_to_call_pro": "If the configuration harness is sound and the board is the correct part but F1-E3 persists, the control board has failed."
     },
     {
       "id": "ge-washer-e64",
@@ -14753,6 +15771,57 @@
       "reset_instructions": "Clean lint screen. LS clears after screen is cleaned.",
       "related_codes": [],
       "when_to_call_pro": "Not a fault. No service required."
+    },
+    {
+      "id": "ge-dryer-e14",
+      "brand": "ge",
+      "appliance": "dryer",
+      "code": "E14",
+      "aliases": [],
+      "meaning": "Stuck key on the control panel",
+      "detail": "The control detected one of the control-panel keys reading as pressed (stuck) for too long, so it cannot return to normal operation. Trapped debris or moisture under a key, or a failing membrane touchpad, is the usual cause.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "A control-panel key trapped by debris or moisture",
+          "frequency": 55
+        },
+        {
+          "description": "Membrane touchpad / keypad failure",
+          "frequency": 35
+        },
+        {
+          "description": "Touchpad ribbon or control board fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Wipe and free the keys",
+          "description": "Wipe the control panel with a barely-damp cloth, pressing each key gently to free a stuck one, and dry completely."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug the dryer for 30 seconds, then plug it back in."
+        },
+        {
+          "title": "Replace the touchpad/control panel",
+          "description": "If E14 returns, the membrane keypad or control panel has failed.",
+          "parts": [
+            "GE dryer control panel / touchpad ($60–$180)"
+          ],
+          "warning": "Unplug the dryer before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 180,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Wipe the panel and work each key to free a stuck button, then unplug for 30 seconds. If E14 persists, replace the touchpad.",
+      "related_codes": [],
+      "when_to_call_pro": "If cleaning and a power cycle do not clear E14, the membrane touchpad or control board needs replacement."
     },
     {
       "id": "ge-oven-f0",
@@ -18384,6 +19453,66 @@
       "when_to_call_pro": "If the element tests good but i60 persists, test the NTC temperature sensor and, if that's good, the control board."
     },
     {
+      "id": "frigidaire-dishwasher-ic0",
+      "brand": "frigidaire",
+      "appliance": "dishwasher",
+      "code": "iC0",
+      "aliases": [
+        "iCO"
+      ],
+      "meaning": "Communication error — touchpad/control not talking to main board",
+      "detail": "The electronic control system has lost reliable communication between the user-interface (touchpad) board and the main control board. The dishwasher can't coordinate the cycle without both boards exchanging data, so it stops. A loose or corroded ribbon/harness between the two boards is the most common — and most fixable — cause.",
+      "severity": "medium",
+      "category": "communication",
+      "causes": [
+        {
+          "description": "Loose or unseated ribbon/harness between UI and main board",
+          "frequency": 45
+        },
+        {
+          "description": "User-interface (touchpad) board failure",
+          "frequency": 25
+        },
+        {
+          "description": "Main control board failure",
+          "frequency": 20
+        },
+        {
+          "description": "Moisture/corrosion on a connector",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off the dishwasher's breaker (or unplug) for 5 minutes to clear a transient glitch."
+        },
+        {
+          "title": "Reseat the inter-board harness",
+          "description": "Open the door panel and firmly reseat the ribbon/harness between the touchpad and the main control board; check for corrosion.",
+          "warning": "Disconnect power before opening the door panel."
+        },
+        {
+          "title": "Replace the failed board",
+          "description": "If reseating doesn't help, the UI (touchpad) or main control board has failed.",
+          "parts": [
+            "Frigidaire dishwasher user interface board ($60–$170)",
+            "Main control board ($90–$230)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 230,
+      "pro_cost_lo": 140,
+      "pro_cost_hi": 330,
+      "reset_instructions": "Cut power for 5 minutes and reseat the harness between the touchpad and control board before restarting.",
+      "related_codes": [
+        "PF"
+      ],
+      "when_to_call_pro": "If reseating the harness doesn't resolve iC0, the touchpad or main control board needs replacement."
+    },
+    {
       "id": "frigidaire-refrigerator-h1",
       "brand": "frigidaire",
       "appliance": "refrigerator",
@@ -18494,6 +19623,67 @@
         "H1"
       ],
       "when_to_call_pro": "If ice accumulates again within weeks, defrost heater is failing."
+    },
+    {
+      "id": "frigidaire-refrigerator-sy-ce",
+      "brand": "frigidaire",
+      "appliance": "refrigerator",
+      "code": "SY CE",
+      "aliases": [
+        "5Y CE"
+      ],
+      "meaning": "Communication error between control boards",
+      "detail": "SY CE means the refrigerator's main control board has lost communication with the user-interface (touchpad/display) board. The control system can't coordinate cooling and display functions without the two boards exchanging data. A loose or corroded wiring harness between the boards is the most common cause, followed by a failed UI or main board.",
+      "severity": "medium",
+      "category": "communication",
+      "causes": [
+        {
+          "description": "Loose or corroded harness between UI and main board",
+          "frequency": 40
+        },
+        {
+          "description": "User-interface (touchpad/display) board failure",
+          "frequency": 25
+        },
+        {
+          "description": "Main control board failure",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring damage in the door or cabinet routing",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug the refrigerator for 5 minutes, then restore power — a transient communication glitch often clears."
+        },
+        {
+          "title": "Reseat the inter-board harness",
+          "description": "Access the UI board (usually in the dispenser/door or top control housing) and reseat the harness to the main board; check for corrosion or pinched wires.",
+          "warning": "Unplug the refrigerator before opening control housings."
+        },
+        {
+          "title": "Replace the failed board",
+          "description": "If reseating doesn't help, replace the user-interface board or the main control board.",
+          "parts": [
+            "Frigidaire refrigerator user interface board ($70–$200)",
+            "Main control board ($120–$300)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 300,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 360,
+      "reset_instructions": "Unplug for 5 minutes and reseat the harness between the UI and main control boards before restoring power.",
+      "related_codes": [
+        "SY EF",
+        "H1"
+      ],
+      "when_to_call_pro": "If power cycling and reseating the harness don't clear SY CE, the user-interface or main control board needs replacement."
     },
     {
       "id": "frigidaire-oven-f10",
@@ -20233,6 +21423,206 @@
         "F1E1"
       ],
       "when_to_call_pro": "Serial communication diagnosis is complex — professional service recommended."
+    },
+    {
+      "id": "maytag-washer-hc",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "HC",
+      "aliases": [],
+      "meaning": "Hot and cold water hoses reversed",
+      "detail": "Per Maytag, HC appears at the end of the wash cycle to indicate the cold water hose is connected to the hot water inlet and the hot water hose is connected to the cold water inlet. The washer fills at the wrong temperature, which affects wash performance. It is a plumbing connection error, not a component failure.",
+      "severity": "low",
+      "category": "water_inlet",
+      "causes": [
+        {
+          "description": "Inlet hoses connected to the wrong valves",
+          "frequency": 90
+        },
+        {
+          "description": "Reversed hot/cold supply at the household valves",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Swap the inlet hoses",
+          "description": "Turn off both supply valves and reconnect the hot hose to the hot inlet and the cold hose to the cold inlet.",
+          "warning": "Shut off both water valves before disconnecting hoses."
+        },
+        {
+          "title": "Confirm the household supply",
+          "description": "If the hoses are correct, verify the hot and cold household supply valves themselves are not reversed."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 80,
+      "pro_cost_hi": 160,
+      "reset_instructions": "Swap the hot and cold inlet hoses so each connects to the matching valve, then run a cycle. HC clears once the temperatures read correctly.",
+      "related_codes": [],
+      "when_to_call_pro": "HC is a plumbing connection error. Service is only needed if the hoses are correct but the washer still fills at the wrong temperature."
+    },
+    {
+      "id": "maytag-washer-lf",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "LF",
+      "aliases": [
+        "Lo FL"
+      ],
+      "meaning": "Long fill — washer taking too long to fill",
+      "detail": "Per Maytag, LF (also shown as Lo FL or F8 E1) means the fill cycle is taking too long — the washer is not detecting the correct amount of incoming water within the allowed time. Closed or low-pressure supply valves, kinked or clogged inlet hoses, or a weak inlet valve are the usual causes. Both hot and cold valves must be open.",
+      "severity": "medium",
+      "category": "water_inlet",
+      "causes": [
+        {
+          "description": "Supply valves not fully open / low water pressure",
+          "frequency": 35
+        },
+        {
+          "description": "Inlet hoses kinked or screens clogged",
+          "frequency": 30
+        },
+        {
+          "description": "Water inlet valve weak or failing",
+          "frequency": 25
+        },
+        {
+          "description": "Flow meter / pressure sensor fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the water supply",
+          "description": "Confirm both hot and cold supply valves are fully open and pressure is adequate."
+        },
+        {
+          "title": "Inspect the fill hoses and screens",
+          "description": "Make sure the inlet hoses are not kinked and clean the inlet screens of debris or mineral build-up.",
+          "warning": "Shut off the water before disconnecting hoses."
+        },
+        {
+          "title": "Replace the water inlet valve",
+          "description": "If supply and hoses are good but fill stays slow, replace the inlet valve.",
+          "parts": [
+            "Maytag washer inlet valve ($30–$80)"
+          ],
+          "warning": "Disconnect power and water before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 80,
+      "pro_cost_lo": 140,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Press Pause/Cancel twice and Power once to clear. Confirm both valves are open and hoses are clear, then restart.",
+      "related_codes": [
+        "F8E1"
+      ],
+      "when_to_call_pro": "If the supply, hoses, and inlet valve all check out and LF persists, the flow meter or control board needs diagnosis."
+    },
+    {
+      "id": "maytag-washer-ol",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "oL",
+      "aliases": [],
+      "meaning": "Overloaded — load too large for the basket",
+      "detail": "Per Maytag, oL means the load is too large (overloaded) for the washer to handle, often shown on top-load HE washers when the basket cannot move or balance the load. Oversudsing from too much detergent can produce the same symptom. The washer pauses to protect the drive system.",
+      "severity": "low",
+      "category": "unbalanced",
+      "causes": [
+        {
+          "description": "Load too large for the basket",
+          "frequency": 50
+        },
+        {
+          "description": "Load bunched or tangled to one side",
+          "frequency": 25
+        },
+        {
+          "description": "Too much detergent / oversudsing",
+          "frequency": 15
+        },
+        {
+          "description": "Load-sensing fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reduce the load",
+          "description": "Remove some items so the basket is no longer overfilled, then restart."
+        },
+        {
+          "title": "Redistribute and right-size",
+          "description": "Separate tangled items and avoid washing a single bulky item alone."
+        },
+        {
+          "title": "Use HE detergent correctly",
+          "description": "Use only HE detergent and the correct dose to avoid excess suds.",
+          "parts": [
+            "HE detergent"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 80,
+      "pro_cost_hi": 160,
+      "reset_instructions": "Remove some items to right-size the load, redistribute evenly, and restart the cycle.",
+      "related_codes": [
+        "SUD"
+      ],
+      "when_to_call_pro": "oL is normally a loading issue. Service is only needed if it persists with a correctly sized, balanced load."
+    },
+    {
+      "id": "maytag-washer-pf",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "PF",
+      "aliases": [],
+      "meaning": "Power failure — cycle interrupted by loss of power",
+      "detail": "PF (Power Failure) means the washer lost power during a running cycle. It is an informational alert, not a component fault — the cycle was interrupted and needs to be restarted. Frequent PF codes can point to a loose power connection or an unreliable outlet.",
+      "severity": "low",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Momentary power loss during the cycle",
+          "frequency": 70
+        },
+        {
+          "description": "Loose or damaged power cord / outlet connection",
+          "frequency": 20
+        },
+        {
+          "description": "Control board power-sense fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Restart the cycle",
+          "description": "Press START to resume or restart the interrupted cycle."
+        },
+        {
+          "title": "Check the power connection",
+          "description": "If PF recurs, confirm the cord is fully seated and the outlet is sound (no flickering or loose plug).",
+          "warning": "Unplug before inspecting the cord or outlet."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 80,
+      "pro_cost_hi": 180,
+      "reset_instructions": "Press START to restart the cycle. If PF keeps appearing without a known outage, check the cord and outlet.",
+      "related_codes": [],
+      "when_to_call_pro": "PF is informational. Repeated PF codes with no power outages suggest a loose connection or a control board power-sense fault."
     },
     {
       "id": "maytag-dryer-f01",
@@ -28200,7 +29590,8 @@
       "pro_cost_hi": 260,
       "reset_instructions": "Power off at the breaker for 60 seconds, then rerun a cycle.",
       "related_codes": [
-        "3C"
+        "3C",
+        "9E"
       ],
       "when_to_call_pro": "Grinding or screeching from the pump along with nE means pump replacement — a job best left to a technician."
     },

@@ -49,44 +49,125 @@ export function webSiteSchema(totalCodes: number): object {
   };
 }
 
+const USD = String.fromCharCode(36);
+
+const DIFFICULTY_TIME: Record<string, string> = {
+  easy: 'about 10–20 minutes',
+  moderate: 'roughly 30–60 minutes',
+  hard: '1–3 hours',
+  pro_only: 'a full service visit',
+};
+
+const DIFFICULTY_PHRASE: Record<string, string> = {
+  easy: 'a beginner-friendly job needing only basic hand tools',
+  moderate: 'a moderate job — a multimeter and some disassembly are usually involved',
+  hard: 'an advanced repair involving deeper disassembly or electrical testing',
+  pro_only: 'a repair most owners hand to a technician',
+};
+
+/** Human label for a raw category slug, used in synthesized prose. */
+function categoryWord(category: string): string {
+  const map: Record<string, string> = {
+    control_board: 'control-board',
+    control_panel: 'control-panel',
+    water_supply: 'water-supply',
+    water_inlet: 'water-inlet',
+    water_level: 'water-level',
+    temperature_sensor: 'temperature-sensor',
+    door_latch: 'door-latch',
+    door_lock: 'door-lock',
+    ice_maker: 'ice-maker',
+    user_error: 'usage',
+    user_interface: 'interface',
+  };
+  return map[category] ?? category.replace(/_/g, ' ');
+}
+
+/**
+ * Single source of truth for the page FAQ. Every answer is synthesized from
+ * per-code fields (causes/fixes/severity/cost/models) and is query-shaped, so
+ * the FAQ does not duplicate the page body verbatim and varies code to code.
+ * Used by BOTH faqSchema (JSON-LD) and the visible FAQ block so they match.
+ */
+export function errorCodeFaqs(
+  errorCode: ErrorCode,
+  brandName: string,
+  appName: string,
+): Array<{ q: string; a: string }> {
+  const code = errorCode.code;
+  const app = appName.toLowerCase();
+  const cat = categoryWord(errorCode.category);
+  const causes = [...(errorCode.causes ?? [])].sort((a, b) => b.frequency - a.frequency);
+  const fixes = errorCode.fixes ?? [];
+  const saving = errorCode.pro_cost_lo - errorCode.cost_lo;
+  const faqs: Array<{ q: string; a: string }> = [];
+
+  // Q1 — operational impact (from severity + category, not the meaning text)
+  const keepUsing =
+    errorCode.severity === 'critical'
+      ? `No — stop using the ${app} right away. ${code} is a critical ${cat} fault, and continuing to run it risks further damage or a safety hazard. Unplug it and resolve the fault before the next cycle.`
+      : errorCode.severity === 'high'
+      ? `It is not advisable. The ${app} may still power on, but running it while ${code} is active can worsen the ${cat} fault or damage related parts. Treat it as a soon-as-possible repair.`
+      : errorCode.severity === 'medium'
+      ? `You often can for a cycle or two, but the ${cat} issue behind ${code} will keep interrupting normal operation until it is fixed. Plan the repair rather than ignoring the code.`
+      : `Usually yes — ${code} is a low-severity ${cat} notice that rarely stops the ${app} from working, but clearing the underlying cause prevents it from escalating.`;
+  faqs.push({ q: `Can I keep using my ${brandName} ${appName} when error ${code} appears?`, a: keepUsing });
+
+  // Q2 — most common causes, ranked with real frequencies (data-grounded, unique per code)
+  if (causes.length > 0) {
+    const parts = causes.slice(0, 3).map((c, i) => {
+      const desc = c.description.charAt(0).toLowerCase() + c.description.slice(1);
+      return i === 0
+        ? `the most frequent is ${desc} (${c.frequency}% of cases)`
+        : `${desc} (${c.frequency}%)`;
+    });
+    const joined =
+      parts.length === 1
+        ? parts[0]
+        : `${parts.slice(0, -1).join(', ')}${parts.length > 2 ? ',' : ''} then ${parts[parts.length - 1]}`;
+    faqs.push({
+      q: `What most commonly causes ${code} on a ${brandName} ${appName}?`,
+      a: `Across reported ${brandName} ${app} repairs, ${joined}. Check them in that order before replacing any parts.`,
+    });
+  }
+
+  // Q3 — recurring after reset (references fixes by title, not the reset text verbatim)
+  if (fixes.length > 0) {
+    const firstTwo = fixes.slice(0, 2).map((f) => f.title.charAt(0).toLowerCase() + f.title.slice(1));
+    const fixOrder = firstTwo.length > 1 ? `${firstTwo[0]}, then ${firstTwo[1]}` : firstTwo[0];
+    faqs.push({
+      q: `${code} keeps coming back after a reset — what should I check next?`,
+      a: `A reset only clears the stored ${code} fault; if it returns, the ${cat} problem is still present. Move on to the physical checks — ${fixOrder} — since the code will reappear until the root cause is resolved. This is ${DIFFICULTY_PHRASE[errorCode.diy_difficulty] ?? 'a repair best matched to your comfort level'}.`,
+    });
+  }
+
+  // Q4 — cost (unique numbers per code)
+  faqs.push({
+    q: `How much does it cost to fix ${brandName} ${appName} error ${code}?`,
+    a: `A DIY repair typically runs ${USD}${errorCode.cost_lo}–${USD}${errorCode.cost_hi} in parts, versus ${USD}${errorCode.pro_cost_lo}–${USD}${errorCode.pro_cost_hi} for a professional service call${saving > 50 ? `, so handling it yourself saves around ${USD}${saving}` : ''}. Expect the work to take ${DIFFICULTY_TIME[errorCode.diy_difficulty] ?? 'a variable amount of time'}.`,
+  });
+
+  // Q5 — affected models (only when present; never fabricated)
+  if (errorCode.models_affected) {
+    faqs.push({
+      q: `Which ${brandName} ${appName} models show error ${code}?`,
+      a: `${code} is documented on ${errorCode.models_affected}. Other units sharing the same control platform can display it too, so the fixes here generally transfer across the series.`,
+    });
+  }
+
+  return faqs;
+}
+
 /** FAQPage — kept for crawl signals even though rich results retired May 2026 */
 export function faqSchema(errorCode: ErrorCode, brandName: string, appName: string): object {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `What does error code ${errorCode.code} mean on a ${brandName} ${appName}?`,
-        "acceptedAnswer": { "@type": "Answer", "text": errorCode.meaning }
-      },
-      {
-        "@type": "Question",
-        "name": `How do I fix ${brandName} ${appName} error code ${errorCode.code}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": errorCode.fixes.map((f, i) => `Step ${i+1}: ${f.title}. ${f.description}`).join(' ')
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `How do I clear error code ${errorCode.code} on my ${brandName} ${appName}?`,
-        "acceptedAnswer": { "@type": "Answer", "text": errorCode.reset_instructions }
-      },
-      {
-        "@type": "Question",
-        "name": `Is ${brandName} ${appName} error code ${errorCode.code} serious?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Error code ${errorCode.code} has ${errorCode.severity} severity. ${
-            errorCode.severity === 'critical' ? 'Stop using the appliance immediately — safety risk. Call a certified technician.' :
-            errorCode.severity === 'high' ? 'Continuing to run the appliance may cause additional damage. Repair soon.' :
-            errorCode.severity === 'medium' ? 'The appliance may still operate but the underlying issue should be fixed.' :
-            'Low severity — does not prevent normal operation but should be addressed.'
-          } DIY repair cost: ${errorCode.cost_lo}–${errorCode.cost_hi}. Professional repair: ${errorCode.pro_cost_lo}–${errorCode.pro_cost_hi}.`
-        }
-      }
-    ]
+    "mainEntity": errorCodeFaqs(errorCode, brandName, appName).map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   };
 }
 

@@ -13,7 +13,7 @@ import {
   getBrand, getApplianceType, getCode, getRelatedCodes, getCrossBrandCodes,
   getCodesByBrandAndAppliance, slugifyCode
 } from '../../../../utils/data';
-import { faqSchema, howToSchema, breadcrumbSchema, articleSchema } from '../../../../utils/schema';
+import { faqSchema, howToSchema, breadcrumbSchema, articleSchema, errorCodeFaqs } from '../../../../utils/schema';
 import { verifiedDate, verifiedDateHuman } from '../../../../utils/freshness';
 import { sourcesForBrand } from '../../../../utils/sources';
 
@@ -130,7 +130,6 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
         )}
       </div>
       <p class="text-gray-800 text-lg font-medium">{errorCode.meaning}</p>
-      <p class="text-gray-600 mt-1">{errorCode.detail}</p>
       <div class="mt-3 flex flex-wrap gap-6 text-sm text-gray-600">
         <span>💰 DIY cost: <strong>${errorCode.cost_lo}–${errorCode.cost_hi}</strong></span>
         <span>👨‍🔧 Pro cost: <strong>${errorCode.pro_cost_lo}–${errorCode.pro_cost_hi}</strong></span>
@@ -346,30 +345,7 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
     <section id="faqs" class="mb-10">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
       <div class="space-y-4">
-        {[
-          {
-            q: `What does error code ${errorCode.code} mean on a ${brandName} ${appName}?`,
-            a: errorCode.meaning
-          },
-          {
-            q: `How do I fix error code ${errorCode.code} on my ${brandName} ${appName}?`,
-            a: `Start by ${errorCode.fixes[0]?.description ?? 'checking the most common cause'}. If that doesn't resolve it, work through each step in the fix guide above.`
-          },
-          {
-            q: `How do I clear or reset error code ${errorCode.code}?`,
-            a: errorCode.reset_instructions
-          },
-          {
-            q: `Is error code ${errorCode.code} serious?`,
-            a: errorCode.severity === 'critical'
-              ? `Yes. This is a critical error. Stop using the appliance immediately to prevent damage or safety hazards.`
-              : errorCode.severity === 'high'
-              ? `This is a high-severity error. You should address it soon. Running the appliance may cause further damage.`
-              : errorCode.severity === 'medium'
-              ? `Medium severity. The appliance may still operate but the issue should be resolved to prevent further damage.`
-              : `Low severity. This is a minor issue that typically doesn't affect appliance operation but should be addressed.`
-          }
-        ].map(faq => (
+        {errorCodeFaqs(errorCode, brandName, appName).map(faq => (
           <details class="border border-gray-200 rounded-xl overflow-hidden group">
             <summary class="px-5 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 list-none flex justify-between items-center">
               {faq.q}

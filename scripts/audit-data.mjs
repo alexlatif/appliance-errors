@@ -30,8 +30,9 @@ for (const c of codes) {
   if (!typeSlugs.has(c.appliance)) err(`${tag}: unknown appliance '${c.appliance}'`);
   if (!c.meaning || c.meaning.length < 10) err(`${tag}: meaning too short`);
   if (!c.detail || c.detail.length < 80) warn(`${tag}: detail thin (${c.detail?.length ?? 0} chars)`);
-  if (!Array.isArray(c.causes) || c.causes.length < 2) warn(`${tag}: <2 causes`);
-  if (!Array.isArray(c.fixes) || c.fixes.length < 2) warn(`${tag}: <2 fix steps`);
+  const statusCode = c.category === 'normal';  // status indicators (Sabbath, Hot Surface, Cool Down…) legitimately have one cause/step
+  if (!statusCode && (!Array.isArray(c.causes) || c.causes.length < 2)) warn(`${tag}: <2 causes`);
+  if (!statusCode && (!Array.isArray(c.fixes) || c.fixes.length < 2)) warn(`${tag}: <2 fix steps`);
   if (!c.reset_instructions || c.reset_instructions.length < 30) warn(`${tag}: reset_instructions thin`);
   if (!c.when_to_call_pro || c.when_to_call_pro.length < 30) warn(`${tag}: when_to_call_pro thin`);
 

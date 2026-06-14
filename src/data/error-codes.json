@@ -854,6 +854,249 @@
       "when_to_call_pro": "If no button appears stuck and the error returns after a power cycle, the control board needs professional diagnosis."
     },
     {
+      "id": "samsung-washer-hc",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "HC",
+      "aliases": [
+        "HC1",
+        "HC2",
+        "HE3"
+      ],
+      "meaning": "Heating over-temperature error — water heated beyond safe limit",
+      "detail": "The control sensed the wash water (or, on combo washer-dryers, the drying air) climbing past its safe temperature, so it shut the heater off and stopped the cycle to prevent damage. A failed thermistor reading falsely, or a heater relay stuck closed, drives the temperature up uncontrolled.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Thermistor (temperature sensor) failure",
+          "frequency": 45
+        },
+        {
+          "description": "Heater relay stuck closed on control board",
+          "frequency": 30
+        },
+        {
+          "description": "Heating element fault",
+          "frequency": 15
+        },
+        {
+          "description": "Wiring/connector fault at the heater",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug the washer for 10 minutes. A one-time over-temp glitch may clear."
+        },
+        {
+          "title": "Test the thermistor",
+          "description": "Access the heater area and check the NTC sensor — roughly 10k ohms at room temperature. Out of spec = replace.",
+          "parts": [
+            "Multimeter",
+            "Samsung washer thermistor ($20–$50)"
+          ],
+          "warning": "Unplug before accessing the heater."
+        },
+        {
+          "title": "Inspect the heating element",
+          "description": "Check the element for continuity and signs of scaling or burn-through.",
+          "parts": [
+            "Samsung washer heating element ($40–$110)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 20,
+      "cost_hi": 110,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Unplug 10 minutes and restart. If HC returns once a heated cycle begins, test the thermistor first.",
+      "related_codes": [
+        "1C"
+      ],
+      "models_affected": "Samsung front-load washers and washer-dryer combos with heating",
+      "when_to_call_pro": "If the thermistor and element test good but HC persists, the control board heater relay is stuck and the board needs replacement."
+    },
+    {
+      "id": "samsung-washer-1c",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "1C",
+      "aliases": [
+        "1E",
+        "LC1"
+      ],
+      "meaning": "Water level sensor error — pressure (level) sensor fault",
+      "detail": "The washer can't trust its water-level reading. The pressure (level) sensor that tells the control how full the tub is has gone out of range, or its sensing hose is kinked or clogged. Without a reliable level reading the washer won't fill or drain safely.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure sensor failure",
+          "frequency": 45
+        },
+        {
+          "description": "Pressure (sensing) hose kinked or clogged",
+          "frequency": 35
+        },
+        {
+          "description": "Hose connection loose at sensor or tub",
+          "frequency": 15
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the sensing hose",
+          "description": "Locate the small clear hose from the tub to the level sensor. Straighten kinks and clear any sludge."
+        },
+        {
+          "title": "Blow test the sensor",
+          "description": "Disconnect the hose at the sensor and gently blow — you should hear a click as the diaphragm moves."
+        },
+        {
+          "title": "Replace the level sensor",
+          "description": "If it doesn't click or tests out of range, replace it.",
+          "parts": [
+            "Samsung water level sensor ($20–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 20,
+      "cost_hi": 60,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "Power off for 1 minute and restart. If 1C returns during fill, recheck the sensing hose for kinks before replacing the sensor.",
+      "related_codes": [
+        "PE",
+        "HC"
+      ],
+      "when_to_call_pro": "If a new sensor and clear hose don't resolve 1C, the control board pressure input has failed."
+    },
+    {
+      "id": "samsung-washer-9c1",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "9C1",
+      "aliases": [
+        "9C",
+        "2E"
+      ],
+      "meaning": "Power supply error — abnormal/low line voltage detected",
+      "detail": "The control measured the incoming voltage outside its acceptable window — usually low voltage, a brown-out, or an extension cord/loose outlet dropping voltage under load. The washer halts to protect the motor and electronics from running on bad power.",
+      "severity": "medium",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Low or unstable house voltage",
+          "frequency": 40
+        },
+        {
+          "description": "Extension cord or power strip in use",
+          "frequency": 25
+        },
+        {
+          "description": "Loose/worn wall outlet",
+          "frequency": 20
+        },
+        {
+          "description": "Control board voltage sensing fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Plug directly into the wall",
+          "description": "Remove any extension cord or power strip — plug the washer straight into a dedicated grounded outlet."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes, then restart."
+        },
+        {
+          "title": "Check outlet voltage",
+          "description": "Have an electrician confirm a steady ~120V (or ~240V where applicable) at the outlet under load."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Plug directly into a wall outlet (no extension cord), power cycle, and restart.",
+      "related_codes": [
+        "AE"
+      ],
+      "when_to_call_pro": "If voltage at the outlet is confirmed correct but 9C1 persists, the control board's voltage-sensing circuit has failed."
+    },
+    {
+      "id": "samsung-washer-ae",
+      "brand": "samsung",
+      "appliance": "washer",
+      "code": "AE",
+      "aliases": [
+        "AE6",
+        "AC"
+      ],
+      "meaning": "Communication error — main and sub control boards not talking",
+      "detail": "The main control board and the sub (display/UI) board have lost reliable communication. The washer can't coordinate the cycle without both boards exchanging data, so it stops. A loose harness between the two boards is the most common and most fixable cause.",
+      "severity": "medium",
+      "category": "communication",
+      "causes": [
+        {
+          "description": "Communication harness loose or damaged",
+          "frequency": 45
+        },
+        {
+          "description": "Sub/UI board failure",
+          "frequency": 25
+        },
+        {
+          "description": "Main control board failure",
+          "frequency": 20
+        },
+        {
+          "description": "Moisture/corrosion on a connector",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5–10 minutes. A transient communication glitch often clears."
+        },
+        {
+          "title": "Reseat the inter-board harness",
+          "description": "Remove the top/console panel and firmly reseat the ribbon/harness between the main and UI boards.",
+          "warning": "Unplug before opening the console."
+        },
+        {
+          "title": "Replace the failed board",
+          "description": "If reseating doesn't help, the UI or main board has failed.",
+          "parts": [
+            "Samsung washer UI board ($60–$160)",
+            "Main control board ($100–$250)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 250,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 350,
+      "reset_instructions": "Unplug 5–10 minutes and restart. If AE returns, reseat the harness between the control boards.",
+      "related_codes": [
+        "9C1"
+      ],
+      "when_to_call_pro": "If the harness is sound and reseating doesn't help, professional board diagnosis identifies which board has failed."
+    },
+    {
       "id": "samsung-washer-ce",
       "brand": "samsung",
       "appliance": "washer",
@@ -1640,6 +1883,243 @@
       "when_to_call_pro": "If duct is completely clear and code persists, the airflow sensor or control board may need replacement."
     },
     {
+      "id": "samsung-dryer-be2",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "bE2",
+      "aliases": [
+        "bE",
+        "b2"
+      ],
+      "meaning": "Button error — a control-panel key is stuck",
+      "detail": "The control sees a button held down continuously (more than ~30 seconds), so it locks out the keypad and won't start a cycle. A physically stuck button, or moisture/residue shorting the membrane, is almost always the cause — rarely the control board itself.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Button physically stuck",
+          "frequency": 50
+        },
+        {
+          "description": "Membrane keypad shorted by moisture/residue",
+          "frequency": 30
+        },
+        {
+          "description": "UI board fault",
+          "frequency": 15
+        },
+        {
+          "description": "Control board button interface fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Find the stuck button",
+          "description": "Press each button in turn and feel for one that sticks or doesn't spring back."
+        },
+        {
+          "title": "Clean the control panel",
+          "description": "Wipe around every button with a barely-damp cloth and dry fully — residue under a key registers as a press."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes to clear a transient bE2."
+        },
+        {
+          "title": "Replace the UI board",
+          "description": "If a button stays stuck or the error returns, replace the user-interface board.",
+          "parts": [
+            "Samsung dryer UI board ($50–$150)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 150,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug 5 minutes, free or clean the stuck button, then restart.",
+      "related_codes": [
+        "bC2"
+      ],
+      "when_to_call_pro": "If a new UI board doesn't clear bE2, the main board's button interface has failed."
+    },
+    {
+      "id": "samsung-dryer-9c1",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "9C1",
+      "aliases": [
+        "9C"
+      ],
+      "meaning": "Power supply error — abnormal/low line voltage",
+      "detail": "The dryer measured incoming voltage outside its safe window. The most common triggers are an extension cord, a power strip, or sharing a circuit — all of which sag the voltage under the dryer's load. On stacked washer/dryer kits, trying to control the dryer within ~5 seconds of powering the washer can also report 9C1.",
+      "severity": "medium",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Extension cord or power strip in use",
+          "frequency": 40
+        },
+        {
+          "description": "Shared/overloaded circuit",
+          "frequency": 25
+        },
+        {
+          "description": "Loose or worn outlet",
+          "frequency": 20
+        },
+        {
+          "description": "Control board voltage-sensing fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Plug directly into the wall",
+          "description": "Remove any extension cord/power strip — the dryer needs a dedicated grounded outlet."
+        },
+        {
+          "title": "Check the circuit",
+          "description": "Confirm the dryer is on its own circuit and the breaker isn't shared or undersized."
+        },
+        {
+          "title": "Verify outlet voltage",
+          "description": "Have an electrician confirm steady voltage at the outlet under load."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Plug directly into a dedicated wall outlet (no extension cord/strip), then restart.",
+      "related_codes": [
+        "9E1",
+        "FE"
+      ],
+      "when_to_call_pro": "If outlet voltage is confirmed correct but 9C1 persists, the control board's voltage-sensing circuit has failed."
+    },
+    {
+      "id": "samsung-dryer-9e1",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "9E1",
+      "aliases": [
+        "9E",
+        "2E"
+      ],
+      "meaning": "Line voltage abnormality — supply voltage out of range",
+      "detail": "A sister code to 9C1: the control detected the supply voltage too low or unstable to run safely. Same root causes — improper outlet wiring, extension cords, or a sagging shared circuit.",
+      "severity": "medium",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Low or unstable house voltage",
+          "frequency": 40
+        },
+        {
+          "description": "Extension cord/power strip",
+          "frequency": 30
+        },
+        {
+          "description": "Loose or miswired outlet",
+          "frequency": 20
+        },
+        {
+          "description": "Control board voltage-sensing fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Remove extension cords",
+          "description": "Plug straight into the wall outlet."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes, then restart."
+        },
+        {
+          "title": "Have the outlet checked",
+          "description": "An electrician should verify correct, stable voltage at the receptacle."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Plug directly into the wall, power cycle, and restart.",
+      "related_codes": [
+        "9C1",
+        "FE"
+      ],
+      "when_to_call_pro": "If the outlet checks out but 9E1 persists, the control board voltage-sensing circuit has failed."
+    },
+    {
+      "id": "samsung-dryer-ac",
+      "brand": "samsung",
+      "appliance": "dryer",
+      "code": "AC",
+      "aliases": [
+        "AC6"
+      ],
+      "meaning": "Communication error — main and sub control boards not communicating",
+      "detail": "The main control board and the sub (UI) board have lost reliable communication. Buttons may go unresponsive or the display may freeze. A loose inter-board harness is the most common and most fixable cause; a failed board is the next step.",
+      "severity": "medium",
+      "category": "communication",
+      "causes": [
+        {
+          "description": "Inter-board harness loose or damaged",
+          "frequency": 45
+        },
+        {
+          "description": "Sub/UI board failure",
+          "frequency": 25
+        },
+        {
+          "description": "Main control board failure",
+          "frequency": 20
+        },
+        {
+          "description": "Connector corrosion",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 10 minutes — a transient AC often clears."
+        },
+        {
+          "title": "Reseat the harness",
+          "description": "Open the console and firmly reseat the ribbon/harness between the main and UI boards.",
+          "warning": "Unplug before opening the console."
+        },
+        {
+          "title": "Replace the failed board",
+          "description": "If reseating doesn't help, replace the UI board first (cheaper), then the main board.",
+          "parts": [
+            "Samsung dryer sub-board ($50–$150)",
+            "Main control board ($100–$280)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 280,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Unplug 10 minutes and restart. If AC returns, reseat the harness between the control boards.",
+      "related_codes": [
+        "Et",
+        "bC2"
+      ],
+      "when_to_call_pro": "If the harness is sound, professional diagnosis identifies which board has failed."
+    },
+    {
       "id": "samsung-dryer-fe",
       "brand": "samsung",
       "appliance": "dryer",
@@ -1686,7 +2166,9 @@
       "pro_cost_lo": 200,
       "pro_cost_hi": 420,
       "reset_instructions": "Restore proper power source and unplug 5 minutes. Restart.",
-      "related_codes": [],
+      "related_codes": [
+        "9E"
+      ],
       "when_to_call_pro": "FE on utility power without a generator indicates a control board fault."
     },
     {
@@ -4030,6 +4512,218 @@
       "when_to_call_pro": "If the inlet valve is replaced and overflow continues, the pressure sensor needs replacement or the control board has a fault."
     },
     {
+      "id": "lg-washer-he",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "HE",
+      "aliases": [
+        "HE1",
+        "HE2"
+      ],
+      "meaning": "Heater error — water heater circuit fault",
+      "detail": "On LG washers with an internal water heater (steam and sanitary cycles), the control detected an abnormal heating circuit — the element isn't drawing current, or the thermistor never confirmed a temperature rise. The wash continues without heated water on most models, but steam/sanitize cycles are disabled.",
+      "severity": "medium",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heating element open circuit",
+          "frequency": 50
+        },
+        {
+          "description": "Thermistor (NTC) failure",
+          "frequency": 25
+        },
+        {
+          "description": "Heater wiring/connector loose",
+          "frequency": 15
+        },
+        {
+          "description": "Control board heater relay fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug the washer for 10 minutes. A transient HE from a one-time heating glitch may clear."
+        },
+        {
+          "title": "Test the heating element",
+          "description": "Access the element at the base of the tub and check continuity — an open element reads OL.",
+          "parts": [
+            "Multimeter",
+            "LG washer heating element ($40–$110)"
+          ],
+          "warning": "Unplug before accessing the element."
+        },
+        {
+          "title": "Test the thermistor",
+          "description": "Check the NTC sensor resistance — should read roughly 10k ohms at room temperature.",
+          "parts": [
+            "LG washer thermistor ($20–$45)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 20,
+      "cost_hi": 110,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Unplug 10 minutes and restart. If HE returns when a heated cycle begins, the element or thermistor needs testing.",
+      "related_codes": [
+        "tE"
+      ],
+      "models_affected": "LG front-load washers with steam/sanitary heating",
+      "when_to_call_pro": "If element and thermistor both test good but HE persists, the control board heater relay has failed."
+    },
+    {
+      "id": "lg-washer-ub",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "UB",
+      "aliases": [],
+      "meaning": "Unbalanced load — washer cannot distribute the load for spin",
+      "detail": "The washer tried to spin but the drum load is unevenly distributed, so it fills with water and re-tumbles to redistribute the items rather than risk a violent off-balance spin. After several failed balance attempts the cycle stops with UB. A single heavy item (bath mat, hoodie) or a not-quite-level machine is the usual cause.",
+      "severity": "low",
+      "category": "balance",
+      "causes": [
+        {
+          "description": "Single heavy/bulky item bunched on one side",
+          "frequency": 45
+        },
+        {
+          "description": "Too-small load can't balance",
+          "frequency": 25
+        },
+        {
+          "description": "Washer not level",
+          "frequency": 20
+        },
+        {
+          "description": "Worn suspension/dampers (older units)",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Redistribute the load",
+          "description": "Open the lid/door, separate tangled items, and add a couple of towels to balance a single bulky item."
+        },
+        {
+          "title": "Level the washer",
+          "description": "Check with a level front-to-back and side-to-side; adjust the leveling feet so the unit doesn't rock.",
+          "parts": [
+            "Adjustable wrench"
+          ]
+        },
+        {
+          "title": "Run a smaller, mixed load",
+          "description": "Loading to about 2/3 capacity with mixed item sizes lets the drum balance."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 200,
+      "reset_instructions": "Open the door, redistribute the laundry, close, and restart a Spin cycle. UB clears once the load balances.",
+      "related_codes": [
+        "LE"
+      ],
+      "when_to_call_pro": "If UB occurs on every load even when balanced and level, the suspension dampers or rotor position sensor may need professional inspection."
+    },
+    {
+      "id": "lg-washer-sud",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "SUD",
+      "aliases": [
+        "SD"
+      ],
+      "meaning": "Excess suds detected — too much foam in the tub",
+      "detail": "The washer sensed excessive foam and paused to run extra rinses and a foam-reduction routine before continuing. Too much detergent, non-HE detergent, or soft-water over-sudsing is almost always the cause — the foam interferes with draining and spin and can leak from the door.",
+      "severity": "low",
+      "category": "detergent",
+      "causes": [
+        {
+          "description": "Too much detergent",
+          "frequency": 45
+        },
+        {
+          "description": "Non-HE detergent used",
+          "frequency": 35
+        },
+        {
+          "description": "Soft water amplifying suds",
+          "frequency": 15
+        },
+        {
+          "description": "Drain restriction trapping foam",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Let the cycle run",
+          "description": "The washer will add rinses to clear the foam — this can take 30+ minutes. Don't interrupt it."
+        },
+        {
+          "title": "Use less HE detergent",
+          "description": "Switch to HE detergent and use only 1–2 teaspoons for a normal load. Most people use far too much.",
+          "parts": [
+            "HE detergent"
+          ]
+        },
+        {
+          "title": "Run a Tub Clean / rinse cycle",
+          "description": "Run an empty Tub Clean cycle to flush residual detergent from the system."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 150,
+      "reset_instructions": "Wait for the suds-reduction routine to finish, then restart. Reduce detergent next load.",
+      "related_codes": [
+        "IE",
+        "OE"
+      ],
+      "when_to_call_pro": "SUD is almost never a hardware fault. Call a pro only if it appears with correct HE detergent and a clear drain."
+    },
+    {
+      "id": "lg-washer-cd",
+      "brand": "lg",
+      "appliance": "washer",
+      "code": "CD",
+      "aliases": [],
+      "meaning": "Cool Down — washer-dryer combo lowering tub temperature (not a fault)",
+      "detail": "On LG washer-dryer combo units, Cd is a status message, not an error. After the drying phase the unit runs a cool-down to lower the temperature inside the tub before unlocking the door. It clears on its own.",
+      "severity": "low",
+      "category": "normal",
+      "causes": [
+        {
+          "description": "Normal cool-down at end of drying cycle",
+          "frequency": 100
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Wait for cool-down to finish",
+          "description": "Let the unit complete the cool-down — the door will unlock when it's done."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "No action needed. Cd clears automatically when the tub cools.",
+      "related_codes": [],
+      "models_affected": "LG washer-dryer combo units",
+      "when_to_call_pro": "Cd is not a fault. No service required."
+    },
+    {
       "id": "lg-washer-ce",
       "brand": "lg",
       "appliance": "washer",
@@ -4744,6 +5438,298 @@
         "F9"
       ],
       "when_to_call_pro": "Electrical faults (heater relays, control boards) require professional diagnosis if basic checks don't resolve the issue."
+    },
+    {
+      "id": "lg-dryer-d75",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "D75",
+      "aliases": [],
+      "meaning": "Exhaust duct ~75% blocked — airflow restriction warning",
+      "detail": "The dryer's flow sensor measured restricted airflow through the exhaust and estimates the duct is roughly 75% obstructed. Drying takes much longer and runs hotter. D75 is the first of LG's airflow-warning tier — left uncleared it climbs to d80/d90/d95 as the blockage worsens. Lint buildup in the duct, vent cap, or lint filter is almost always the cause.",
+      "severity": "medium",
+      "category": "airflow",
+      "causes": [
+        {
+          "description": "Lint clogged in exhaust duct",
+          "frequency": 55
+        },
+        {
+          "description": "Lint filter not cleaned",
+          "frequency": 20
+        },
+        {
+          "description": "Exterior vent flap stuck/blocked",
+          "frequency": 15
+        },
+        {
+          "description": "Crushed or kinked flexible transition hose",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the lint filter",
+          "description": "Remove and clean the lint screen before every load. A clogged screen alone can trigger D75."
+        },
+        {
+          "title": "Clear the full exhaust duct",
+          "description": "Disconnect the duct and clean its entire length plus the exterior vent cap with a vent brush.",
+          "parts": [
+            "Dryer vent brush kit ($15–$35)"
+          ]
+        },
+        {
+          "title": "Check the transition hose",
+          "description": "Replace any crushed or kinked flexible hose behind the dryer with rigid or semi-rigid duct.",
+          "parts": [
+            "Semi-rigid transition duct ($15–$30)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 35,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 200,
+      "reset_instructions": "Clean the lint filter and exhaust duct, then restart. D75 clears once airflow is restored.",
+      "related_codes": [
+        "D80",
+        "D90",
+        "D95"
+      ],
+      "when_to_call_pro": "If the duct and vent are verified clear but D75 returns, the flow sensor or blower wheel may need inspection."
+    },
+    {
+      "id": "lg-dryer-ps",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "PS",
+      "aliases": [],
+      "meaning": "Power supply error — improper voltage at the cord or terminal block",
+      "detail": "The dryer detected improper voltage reaching the control — typically a miswired power cord, a loose terminal-block connection, or a power-supply interruption. Electric dryers need 240V across two hot legs; if one leg is missing or the cord is wired wrong, PS appears.",
+      "severity": "high",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Power cord miswired or loose at terminal block",
+          "frequency": 40
+        },
+        {
+          "description": "Loose/burnt terminal block connection",
+          "frequency": 30
+        },
+        {
+          "description": "One 240V leg missing (breaker/outlet)",
+          "frequency": 25
+        },
+        {
+          "description": "Damaged power cord",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the breaker",
+          "description": "Confirm BOTH halves of the dryer's double-pole breaker are on. A half-tripped breaker leaves one leg dead."
+        },
+        {
+          "title": "Inspect the cord and terminal block",
+          "description": "Unplug, remove the terminal cover, and check that the cord wires are tight and undamaged on the block.",
+          "parts": [
+            "Nut driver"
+          ],
+          "warning": "Unplug the dryer before removing the terminal block cover."
+        },
+        {
+          "title": "Verify outlet voltage",
+          "description": "Have an electrician confirm 240V across the legs and 120V each leg to ground at the outlet."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Reset both halves of the breaker and confirm the cord is tight at the terminal block, then restart.",
+      "related_codes": [
+        "nP"
+      ],
+      "models_affected": "LG electric dryers",
+      "when_to_call_pro": "Open wiring inside the wall outlet or a damaged terminal block requires a licensed electrician."
+    },
+    {
+      "id": "lg-dryer-de",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "dE",
+      "aliases": [],
+      "meaning": "Door error — dryer door not fully closed",
+      "detail": "The control does not see the door latched, so it won't start the cycle. Usually the door simply isn't pushed fully shut, but a failed door switch or misaligned strike can cause dE with the door closed.",
+      "severity": "low",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door not fully closed",
+          "frequency": 50
+        },
+        {
+          "description": "Door switch failure",
+          "frequency": 30
+        },
+        {
+          "description": "Strike/latch misaligned",
+          "frequency": 15
+        },
+        {
+          "description": "Switch wiring fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Close the door firmly",
+          "description": "Push until it clicks. Check nothing (a dryer sheet, garment) is blocking the latch."
+        },
+        {
+          "title": "Test the door switch",
+          "description": "Open the door and press the switch plunger — listen for a click. No click or no continuity = failed switch.",
+          "parts": [
+            "Multimeter",
+            "LG dryer door switch ($15–$40)"
+          ]
+        },
+        {
+          "title": "Check strike alignment",
+          "description": "Confirm the door strike lines up with the latch; adjust if the door has sagged."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 200,
+      "reset_instructions": "Close the door firmly until it clicks, then press Start. If dE persists with the door shut, test the switch.",
+      "related_codes": [],
+      "when_to_call_pro": "If a new door switch doesn't clear dE, the control board door input has failed."
+    },
+    {
+      "id": "lg-dryer-te3",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "tE3",
+      "aliases": [],
+      "meaning": "Thermistor error — drying temperature sensor out of range",
+      "detail": "The thermistor (temperature sensor) reported a reading outside its valid range, so the control can't safely regulate heat. tE3 points specifically to the sensor circuit being open, shorted, or disconnected. The dryer stops to prevent over- or under-heating.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor failure (open/short)",
+          "frequency": 55
+        },
+        {
+          "description": "Thermistor connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness damaged",
+          "frequency": 15
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes — a transient sensor glitch may clear."
+        },
+        {
+          "title": "Reseat the thermistor connector",
+          "description": "Locate the thermistor on the blower housing and reseat its connector."
+        },
+        {
+          "title": "Test and replace the thermistor",
+          "description": "Check resistance against spec (varies by model). Out-of-range = replace.",
+          "parts": [
+            "Multimeter",
+            "LG dryer thermistor ($15–$40)"
+          ],
+          "warning": "Unplug before accessing the blower housing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug 5 minutes and restart. If tE3 returns, reseat then test the thermistor.",
+      "related_codes": [
+        "tE4",
+        "HS"
+      ],
+      "when_to_call_pro": "If a new thermistor and clean wiring don't resolve tE3, the control board sensor input has failed."
+    },
+    {
+      "id": "lg-dryer-te4",
+      "brand": "lg",
+      "appliance": "dryer",
+      "code": "tE4",
+      "aliases": [],
+      "meaning": "Thermistor error — secondary/outlet temperature sensor fault",
+      "detail": "A second temperature error in the tE family — the control sees the secondary (outlet) thermistor reading out of range or inconsistent with the inlet sensor. As with tE3, the dryer stops to avoid unsafe heating.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Secondary thermistor failure",
+          "frequency": 55
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness damaged",
+          "frequency": 15
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 5
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 5 minutes to clear a transient fault."
+        },
+        {
+          "title": "Inspect both thermistors",
+          "description": "Reseat connectors on the inlet and outlet thermistors; a mismatch between them can trigger tE4."
+        },
+        {
+          "title": "Test and replace the sensor",
+          "description": "Measure resistance against spec and replace the out-of-range thermistor.",
+          "parts": [
+            "Multimeter",
+            "LG dryer thermistor ($15–$40)"
+          ],
+          "warning": "Unplug before reaching into the blower housing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug 5 minutes and restart. If tE4 returns, reseat and test both thermistors.",
+      "related_codes": [
+        "tE3",
+        "HS"
+      ],
+      "when_to_call_pro": "If both thermistors test good but tE4 persists, the control board sensor input has failed."
     },
     {
       "id": "lg-dryer-hs",
@@ -5863,6 +6849,255 @@
         "Er FF"
       ],
       "when_to_call_pro": "If defrost sensor is fine and dS persists, defrost heater or control board defrost circuit has failed."
+    },
+    {
+      "id": "lg-oven-f11",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F11",
+      "aliases": [],
+      "meaning": "Heat error — oven failed to reach temperature in time",
+      "detail": "The oven did not reach the target temperature within the allowed preheat window (about 5 minutes to ~150°F), so the control aborts with F11. On gas ranges a weak or failed igniter is the usual culprit; on electric models a failed element or temperature sensor. A failing control board can also report F11.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Weak/failed igniter (gas models)",
+          "frequency": 40
+        },
+        {
+          "description": "Temperature sensor failure",
+          "frequency": 25
+        },
+        {
+          "description": "Bake/broil element failure (electric)",
+          "frequency": 20
+        },
+        {
+          "description": "Control board fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off the breaker for 5 minutes. A transient F11 from a one-time slow ignition may clear."
+        },
+        {
+          "title": "Test the temperature sensor",
+          "description": "At room temperature the sensor should read ~1,080 ohms. Open or out-of-spec = replace.",
+          "parts": [
+            "Multimeter",
+            "LG oven temperature sensor ($25–$55)"
+          ]
+        },
+        {
+          "title": "Inspect the igniter (gas)",
+          "description": "Watch ignition — a glow igniter that's dim/orange and slow to light the burner is failing.",
+          "parts": [
+            "LG oven igniter ($40–$90)"
+          ],
+          "warning": "Allow oven to cool and shut off gas before servicing the igniter."
+        },
+        {
+          "title": "Inspect the element (electric)",
+          "description": "Check the bake element for breaks or no continuity.",
+          "parts": [
+            "LG bake element ($30–$70)"
+          ]
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 25,
+      "cost_hi": 90,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Power off at the breaker for 5 minutes and retry a bake cycle. If F11 returns during preheat, test the sensor/igniter.",
+      "related_codes": [
+        "F1",
+        "F19"
+      ],
+      "models_affected": "LG electric (LRE/LSE) and gas (LRG/LSG) ranges",
+      "when_to_call_pro": "If the sensor and igniter/element all test good but F11 persists, the control board has failed."
+    },
+    {
+      "id": "lg-oven-f19",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "F19",
+      "aliases": [],
+      "meaning": "Temperature sensor error — sensor or wiring fault",
+      "detail": "The control detected the oven temperature sensor reading out of range — typically shorted, open, or with a damaged wiring run. On some LG models a stuck control key can also raise F19. The oven won't heat safely until the sensor circuit reads correctly.",
+      "severity": "high",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Temperature sensor short or open",
+          "frequency": 55
+        },
+        {
+          "description": "Sensor wiring harness damaged",
+          "frequency": 25
+        },
+        {
+          "description": "Stuck control key",
+          "frequency": 10
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off the breaker for 5 minutes, then retry."
+        },
+        {
+          "title": "Check for a stuck key",
+          "description": "Press each control-panel button to confirm none is sticking."
+        },
+        {
+          "title": "Test the sensor",
+          "description": "At room temperature, ~1,080 ohms. Near 0 = shorted, OL = open. Replace if out of spec.",
+          "parts": [
+            "Multimeter",
+            "LG oven temperature sensor ($25–$55)"
+          ],
+          "warning": "Allow oven to cool before reaching inside."
+        },
+        {
+          "title": "Inspect the wiring",
+          "description": "Trace the sensor harness for pinch points or chafing against the cavity."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 55,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Power off 5 minutes, then test the sensor. After replacing it, confirm with a 350°F bake cycle.",
+      "related_codes": [
+        "F1",
+        "F3",
+        "F11"
+      ],
+      "when_to_call_pro": "If a new sensor and clean wiring don't resolve F19, the control board sensor input has failed."
+    },
+    {
+      "id": "lg-oven-hs",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "HS",
+      "aliases": [
+        "H",
+        "Hot"
+      ],
+      "meaning": "Hot Surface indicator — surface still hot (not a fault)",
+      "detail": "HS is an informational indicator, not an error. It warns that a cooking surface or the oven cavity is still hot enough to cause burns. It clears on its own once the surface cools.",
+      "severity": "low",
+      "category": "normal",
+      "causes": [
+        {
+          "description": "Surface still above the hot-to-touch threshold",
+          "frequency": 100
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Allow the surface to cool",
+          "description": "Wait for the indicator to clear — keep hands and children away until it does."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "No action needed. HS clears automatically once the surface cools.",
+      "related_codes": [
+        "Sb"
+      ],
+      "when_to_call_pro": "HS is a safety indicator, not a fault. No service required."
+    },
+    {
+      "id": "lg-oven-pf",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "PF",
+      "aliases": [],
+      "meaning": "Power failure — unit lost power during operation (not a fault)",
+      "detail": "PF means the range experienced a power interruption — a brief outage, a tripped breaker, or a loose connection. On electric models the display turns back on showing PF so you know a cooking program was interrupted. It's a notice, not a hardware fault.",
+      "severity": "low",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Brief power outage",
+          "frequency": 70
+        },
+        {
+          "description": "Tripped breaker",
+          "frequency": 20
+        },
+        {
+          "description": "Loose power connection",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clear the code",
+          "description": "Press Clear/Off (or Cancel) to dismiss PF and resume normal use."
+        },
+        {
+          "title": "Check the breaker",
+          "description": "If PF recurs, confirm the range's breaker isn't tripping and the terminal-block connections are tight.",
+          "warning": "Unplug or shut off the breaker before checking the terminal block."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 150,
+      "reset_instructions": "Press Clear/Off. PF clears once power is stable.",
+      "related_codes": [
+        "Sb"
+      ],
+      "when_to_call_pro": "PF is normally not a fault. Call a pro only if it recurs without any outage — a wiring or board issue may be present."
+    },
+    {
+      "id": "lg-oven-sb",
+      "brand": "lg",
+      "appliance": "oven",
+      "code": "Sb",
+      "aliases": [],
+      "meaning": "Sabbath Mode active — controls intentionally disabled (not a fault)",
+      "detail": "Sb indicates Sabbath Mode is turned on. In this mode the oven keeps a set bake temperature with the display, tones, and most controls disabled for religious observance. It is not an error. Note: after a power failure the display returns in Sabbath mode with the oven off.",
+      "severity": "low",
+      "category": "normal",
+      "causes": [
+        {
+          "description": "Sabbath Mode enabled",
+          "frequency": 100
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Exit Sabbath Mode",
+          "description": "Press and hold the Sabbath/Clock controls per your model's manual until Sb clears (typically a 3-second hold)."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 0,
+      "reset_instructions": "Hold the Sabbath/Clock button combination to exit. Sb is not a fault.",
+      "related_codes": [
+        "PF"
+      ],
+      "when_to_call_pro": "Sb is a feature, not a fault. No service required."
     },
     {
       "id": "lg-oven-f1",
@@ -8224,6 +9459,389 @@
       "when_to_call_pro": "CAL is not a fault. No parts needed."
     },
     {
+      "id": "whirlpool-dishwasher-f1e1",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F1E1",
+      "aliases": [],
+      "meaning": "Control board / thermistor stuck — electronic control fault",
+      "detail": "The main control board has detected a stuck relay or a thermistor reading that is electronically impossible, indicating an internal control fault. The dishwasher will not run cycles reliably.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Main control board failure",
+          "frequency": 60
+        },
+        {
+          "description": "Thermistor wiring short to board",
+          "frequency": 25
+        },
+        {
+          "description": "Power surge corrupted control",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off power at the breaker for 60 seconds, then restore."
+        },
+        {
+          "title": "Check thermistor wiring",
+          "description": "Inspect the thermistor harness for shorts or pinched wires to the board.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the control board",
+          "description": "If F1E1 returns, the main control board has failed.",
+          "parts": [
+            "Whirlpool dishwasher control board ($90–$220)"
+          ],
+          "warning": "Disconnect power before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 90,
+      "cost_hi": 220,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 420,
+      "reset_instructions": "Cut power at the breaker for 60 seconds. If F1E1 persists, replace the control board.",
+      "related_codes": [
+        "F3E1",
+        "F2E1"
+      ],
+      "when_to_call_pro": "Persistent F1E1 after a power cycle indicates the control board must be replaced."
+    },
+    {
+      "id": "whirlpool-dishwasher-f2e1",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F2E1",
+      "aliases": [],
+      "meaning": "User interface stuck key — button held or touchpad fault",
+      "detail": "The control detected a stuck key on the user interface — a button reading as pressed for too long. This is usually a stuck membrane button or a failed UI board.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Stuck button on touchpad",
+          "frequency": 55
+        },
+        {
+          "description": "UI board failure",
+          "frequency": 30
+        },
+        {
+          "description": "Moisture behind control panel",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off power at the breaker for 60 seconds."
+        },
+        {
+          "title": "Press each button",
+          "description": "Work each button to free a stuck key, and dry any moisture behind the panel."
+        },
+        {
+          "title": "Replace the UI board",
+          "description": "If a button stays stuck, replace the user interface board.",
+          "parts": [
+            "Whirlpool dishwasher UI board ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Cut power 60 seconds. Work each button. If F2E1 persists, replace the UI board.",
+      "related_codes": [
+        "F2E2",
+        "F1E1"
+      ],
+      "when_to_call_pro": "If a new UI board and F2E1 persists, the main board UI port has failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f5e1",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F5E1",
+      "aliases": [],
+      "meaning": "Door switch fault — control cannot confirm door state",
+      "detail": "The door switch (door latch switch) is not reporting the correct open/closed state to the control, so the dishwasher will not start or stops mid-cycle. A failed latch switch or its wiring is the usual cause.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch switch failure",
+          "frequency": 50
+        },
+        {
+          "description": "Door not latching fully",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring to door switch damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the door latches firmly",
+          "description": "Ensure the door clicks shut and the latch engages."
+        },
+        {
+          "title": "Test the door switch",
+          "description": "Test continuity of the door latch switch as the door is latched.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "If the switch has failed.",
+          "parts": [
+            "Whirlpool dishwasher door latch ($30–$80)"
+          ],
+          "warning": "Disconnect power before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 80,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Cut power 60 seconds. Check the door latches firmly. Replace latch switch if F5E1 persists.",
+      "related_codes": [
+        "F5E2"
+      ],
+      "when_to_call_pro": "If the latch switch is good and F5E1 persists, the control board door input has failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f5e2",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F5E2",
+      "aliases": [],
+      "meaning": "Door will not latch / lock — latch mechanism fault",
+      "detail": "The control cannot confirm the door has latched and locked. The dishwasher will not begin a cycle because it cannot verify the door is secure.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch mechanism stuck or broken",
+          "frequency": 50
+        },
+        {
+          "description": "Latch alignment / obstruction",
+          "frequency": 30
+        },
+        {
+          "description": "Latch switch wiring fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check for obstructions",
+          "description": "Make sure no rack, dish, or item blocks the door from latching."
+        },
+        {
+          "title": "Inspect the latch mechanism",
+          "description": "Look for a broken or sticking latch."
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "If the latch is broken.",
+          "parts": [
+            "Whirlpool dishwasher door latch ($30–$80)"
+          ],
+          "warning": "Disconnect power before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 80,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Clear obstructions and cut power 60 seconds. Replace the latch if F5E2 persists.",
+      "related_codes": [
+        "F5E1"
+      ],
+      "when_to_call_pro": "If the latch is sound and F5E2 persists, the control board latch input has failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f6e3",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F6E3",
+      "aliases": [],
+      "meaning": "No water detected — inlet / fill problem",
+      "detail": "The control did not detect water entering the tub within the expected time, so it aborts to avoid running dry. A closed supply valve, clogged inlet valve, or kinked fill line is the usual cause.",
+      "severity": "high",
+      "category": "water_inlet",
+      "causes": [
+        {
+          "description": "Water inlet valve clogged or failed",
+          "frequency": 45
+        },
+        {
+          "description": "Supply shutoff closed or low pressure",
+          "frequency": 30
+        },
+        {
+          "description": "Fill line kinked / float stuck",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the water supply",
+          "description": "Confirm the under-sink supply valve is fully open and the fill line is not kinked."
+        },
+        {
+          "title": "Clean the inlet valve screen",
+          "description": "Shut off water, disconnect the fill line, and clean the inlet valve screen.",
+          "warning": "Shut off the water supply first."
+        },
+        {
+          "title": "Replace the water inlet valve",
+          "description": "If the valve is clogged or not opening.",
+          "parts": [
+            "Whirlpool dishwasher inlet valve ($25–$60)"
+          ],
+          "warning": "Disconnect power and water before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 60,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Confirm supply valve open, clean the inlet screen, cut power 60 seconds. Replace inlet valve if F6E3 persists.",
+      "related_codes": [
+        "F8E1",
+        "F9E2"
+      ],
+      "when_to_call_pro": "If water supply and inlet valve are good and F6E3 persists, the flow meter or control has failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f8e1",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F8E1",
+      "aliases": [],
+      "meaning": "No / low water fill — slow or insufficient fill",
+      "detail": "The dishwasher is filling too slowly or not reaching the required water level within the allowed time. Low supply pressure, a partially clogged inlet valve, or a float/flow-meter fault are the common causes.",
+      "severity": "high",
+      "category": "water_inlet",
+      "causes": [
+        {
+          "description": "Water inlet valve partially clogged or weak",
+          "frequency": 45
+        },
+        {
+          "description": "Low household water pressure",
+          "frequency": 30
+        },
+        {
+          "description": "Flow meter / float fault",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check water pressure and supply",
+          "description": "Confirm the supply valve is fully open and pressure is adequate."
+        },
+        {
+          "title": "Clean the inlet valve screen",
+          "description": "Shut off water and clean the inlet valve inlet screen.",
+          "warning": "Shut off the water supply first."
+        },
+        {
+          "title": "Replace the water inlet valve",
+          "description": "If the valve is weak or clogged.",
+          "parts": [
+            "Whirlpool dishwasher inlet valve ($25–$60)"
+          ],
+          "warning": "Disconnect power and water before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 60,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Confirm supply pressure, clean the inlet screen, cut power 60 seconds. Replace inlet valve if F8E1 persists.",
+      "related_codes": [
+        "F6E3",
+        "F9E2"
+      ],
+      "when_to_call_pro": "If supply and valve are good and F8E1 persists, the flow meter or control has failed."
+    },
+    {
+      "id": "whirlpool-dishwasher-f9e2",
+      "brand": "whirlpool",
+      "appliance": "dishwasher",
+      "code": "F9E2",
+      "aliases": [],
+      "meaning": "Diverter motor fault — diverter stuck or not detected",
+      "detail": "The diverter motor, which directs spray pressure between the upper and lower wash arms, is not operating correctly or its position cannot be detected. Wash performance suffers because spray is not distributed properly.",
+      "severity": "medium",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Diverter motor failure",
+          "frequency": 50
+        },
+        {
+          "description": "Diverter disk stuck with debris",
+          "frequency": 30
+        },
+        {
+          "description": "Diverter wiring / position sensor fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the sump and diverter area",
+          "description": "Remove the filter and clear debris around the diverter disk.",
+          "warning": "Use gloves — glass may be present."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Cut power at the breaker for 60 seconds."
+        },
+        {
+          "title": "Replace the diverter motor",
+          "description": "If the diverter does not actuate.",
+          "parts": [
+            "Whirlpool dishwasher diverter motor ($30–$80)"
+          ],
+          "warning": "Disconnect power before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 30,
+      "cost_hi": 80,
+      "pro_cost_lo": 180,
+      "pro_cost_hi": 360,
+      "reset_instructions": "Clean the diverter area and cut power 60 seconds. Replace the diverter motor if F9E2 persists.",
+      "related_codes": [
+        "F7E1"
+      ],
+      "when_to_call_pro": "If the diverter is clean and F9E2 persists, the diverter motor or control has failed."
+    },
+    {
       "id": "whirlpool-refrigerator-sy-ef",
       "brand": "whirlpool",
       "appliance": "refrigerator",
@@ -8827,6 +10445,868 @@
         "F5-E1"
       ],
       "when_to_call_pro": "If new latch and F9E0 persists, ERC board has failed."
+    },
+    {
+      "id": "whirlpool-oven-f1-e0",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E0",
+      "aliases": [],
+      "meaning": "EEPROM communication error — control board memory fault",
+      "detail": "The Electronic Range Control (ERC) board cannot communicate with its onboard EEPROM memory chip. The control's stored settings and calibration data are unreadable.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "EEPROM chip or control board failure",
+          "frequency": 70
+        },
+        {
+          "description": "Power surge corrupted communication",
+          "frequency": 20
+        },
+        {
+          "description": "Loose internal board connection",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off the circuit breaker for 5 minutes, then restore power. A surge-induced F1E0 often clears."
+        },
+        {
+          "title": "Check incoming voltage",
+          "description": "Verify a stable 240V supply. Brownouts can corrupt EEPROM comms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "If F1E0 returns, the control board EEPROM has failed and the board must be replaced.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. If F1E0 persists, replace ERC board.",
+      "related_codes": [
+        "F1-E1",
+        "F1-E2"
+      ],
+      "models_affected": "Whirlpool, KitchenAid, Maytag ovens sharing the same ERC platform",
+      "when_to_call_pro": "If power cycling does not clear F1E0, the control board needs replacement."
+    },
+    {
+      "id": "whirlpool-oven-f1-e1",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E1",
+      "aliases": [],
+      "meaning": "EEPROM checksum error — corrupted control memory",
+      "detail": "The data stored in the ERC board's EEPROM failed its checksum verification, meaning the stored calibration or configuration data has been corrupted.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Corrupted EEPROM data",
+          "frequency": 65
+        },
+        {
+          "description": "Power surge",
+          "frequency": 25
+        },
+        {
+          "description": "Control board failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes. A one-time corruption can clear on reboot."
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "If F1E1 returns, the EEPROM data cannot be restored in the field and the board must be replaced.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. If F1E1 persists, replace ERC board.",
+      "related_codes": [
+        "F1-E0",
+        "F1-E2"
+      ],
+      "when_to_call_pro": "Persistent F1E1 means corrupted control memory — replace the ERC board."
+    },
+    {
+      "id": "whirlpool-oven-f1-e2",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E2",
+      "aliases": [],
+      "meaning": "UL A/D error — microprocessor analog-to-digital fault",
+      "detail": "The control board's microprocessor is unable to perform analog-to-digital conversions correctly (the 'UL' or upper-limit watchdog circuit). The board cannot reliably read its sensor inputs.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Control board microprocessor failure",
+          "frequency": 70
+        },
+        {
+          "description": "Power supply instability",
+          "frequency": 20
+        },
+        {
+          "description": "Internal board fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "An A/D conversion fault is internal to the control board and not field-repairable.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. If F1E2 persists, replace ERC board.",
+      "related_codes": [
+        "F1-E0",
+        "F1-E1"
+      ],
+      "when_to_call_pro": "F1E2 is an internal control fault — replace the ERC board."
+    },
+    {
+      "id": "whirlpool-oven-f1-e4",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E4",
+      "aliases": [],
+      "meaning": "Model ID error — control not configured for this model",
+      "detail": "The ERC board's stored model identification does not match the appliance, or the model ID resistor/jumper has been read incorrectly. The control cannot apply the correct operating parameters.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Model ID resistor/jumper fault",
+          "frequency": 45
+        },
+        {
+          "description": "Replacement board not configured for this model",
+          "frequency": 35
+        },
+        {
+          "description": "EEPROM corruption",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Verify correct replacement board",
+          "description": "If F1E4 appeared after a board swap, confirm the part number matches your exact model."
+        },
+        {
+          "title": "Replace with correct ERC board",
+          "description": "Install a board configured for your model number.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Verify the control board matches your model.",
+      "related_codes": [
+        "F1-E0",
+        "F1-E5"
+      ],
+      "when_to_call_pro": "If the correct board is installed and F1E4 persists, the model ID circuit has failed."
+    },
+    {
+      "id": "whirlpool-oven-f1-e5",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E5",
+      "aliases": [],
+      "meaning": "Calibration shifted — stored temperature calibration out of range",
+      "detail": "The oven's stored temperature calibration values have shifted outside the acceptable range stored in the control's EEPROM, so the control can no longer trust its temperature calibration.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "EEPROM calibration data shifted",
+          "frequency": 60
+        },
+        {
+          "description": "Power surge",
+          "frequency": 25
+        },
+        {
+          "description": "Control board failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Re-run oven temperature calibration",
+          "description": "If your model supports user calibration offset, reset it to 0 and re-test."
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "If F1E5 returns, the calibration data is unrecoverable.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Reset calibration offset if persistent.",
+      "related_codes": [
+        "F1-E0",
+        "F1-E4"
+      ],
+      "when_to_call_pro": "Persistent F1E5 after power cycling indicates the control board must be replaced."
+    },
+    {
+      "id": "whirlpool-oven-f1-e6",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1-E6",
+      "aliases": [],
+      "meaning": "Latch signal mismatch — door latch feedback disagrees with control",
+      "detail": "The door-latch position signal received by the control does not match the commanded latch state. The control sees conflicting information about whether the self-clean latch is locked.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door latch switch failure or misalignment",
+          "frequency": 50
+        },
+        {
+          "description": "Latch motor fault",
+          "frequency": 30
+        },
+        {
+          "description": "Wiring between latch and board damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Inspect the latch assembly",
+          "description": "Check that the latch moves freely and its position switch actuates correctly."
+        },
+        {
+          "title": "Replace the door latch assembly",
+          "description": "If the latch switch feedback is faulty.",
+          "parts": [
+            "Whirlpool oven door latch ($50–$120)"
+          ],
+          "warning": "Unplug oven before accessing latch."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Power cycle 5 minutes. If F1E6 returns, inspect and replace the door latch.",
+      "related_codes": [
+        "F5-E0",
+        "F5-E1",
+        "F9-E0"
+      ],
+      "when_to_call_pro": "If a new latch and F1E6 persists, the control board latch input has failed."
+    },
+    {
+      "id": "whirlpool-oven-f2-e5",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F2-E5",
+      "aliases": [],
+      "meaning": "Cancel key drive line open — control panel fault",
+      "detail": "The Cancel key drive line on the control panel is open, so the control cannot scan the Cancel/Off key. This typically points to a touchpad or ribbon-cable fault.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Touchpad/keypad failure",
+          "frequency": 55
+        },
+        {
+          "description": "Ribbon cable open or disconnected",
+          "frequency": 30
+        },
+        {
+          "description": "Control board key-scan circuit fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Reseat the ribbon cable",
+          "description": "Reconnect the touchpad ribbon cable to the control board."
+        },
+        {
+          "title": "Replace the keypad/touchpad",
+          "description": "If F2E5 persists, the membrane keypad has failed.",
+          "parts": [
+            "Whirlpool oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Power cycle 5 minutes. Reseat ribbon cable. If F2E5 persists, replace touchpad.",
+      "related_codes": [
+        "F2-E0",
+        "F2-E1",
+        "F2-E6"
+      ],
+      "when_to_call_pro": "If a new touchpad and F2E5 persists, the control board has failed."
+    },
+    {
+      "id": "whirlpool-oven-f2-e6",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F2-E6",
+      "aliases": [],
+      "meaning": "Cancel key drive line open — control panel fault (variant)",
+      "detail": "Like F2E5, the Cancel key drive line is open and the control cannot read the Cancel/Off key. The fault is in the touchpad, ribbon cable, or control key-scan circuit.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Touchpad/keypad failure",
+          "frequency": 55
+        },
+        {
+          "description": "Ribbon cable open or disconnected",
+          "frequency": 30
+        },
+        {
+          "description": "Control board key-scan circuit fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Reseat the ribbon cable",
+          "description": "Reconnect the touchpad ribbon cable to the control board."
+        },
+        {
+          "title": "Replace the keypad/touchpad",
+          "description": "If F2E6 persists, replace the membrane keypad.",
+          "parts": [
+            "Whirlpool oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Power cycle 5 minutes. Reseat ribbon cable. If F2E6 persists, replace touchpad.",
+      "related_codes": [
+        "F2-E0",
+        "F2-E1",
+        "F2-E5"
+      ],
+      "when_to_call_pro": "If a new touchpad and F2E6 persists, the control board has failed."
+    },
+    {
+      "id": "whirlpool-oven-f4-e1",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F4-E1",
+      "aliases": [],
+      "meaning": "Meat probe defect — temperature probe fault",
+      "detail": "The control detected a fault on the meat/temperature probe circuit — typically a shorted probe or probe jack. The probe reading is outside the valid range.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Meat probe shorted or damaged",
+          "frequency": 50
+        },
+        {
+          "description": "Probe jack/receptacle fault",
+          "frequency": 30
+        },
+        {
+          "description": "Probe left plugged in or wiring fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Remove the meat probe",
+          "description": "Unplug the probe from the oven jack. If the error clears, the probe is faulty."
+        },
+        {
+          "title": "Inspect the probe jack",
+          "description": "Check the receptacle inside the cavity for damage or food debris."
+        },
+        {
+          "title": "Replace the meat probe",
+          "description": "Use a replacement probe matched to your model.",
+          "parts": [
+            "Whirlpool oven meat probe ($20–$45)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 20,
+      "cost_hi": 45,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Unplug the meat probe. Power cycle 5 minutes. Replace probe if F4E1 persists.",
+      "related_codes": [
+        "F3-E0",
+        "F3-E1"
+      ],
+      "when_to_call_pro": "If a new probe and F4E1 persists, the probe jack or control input has failed."
+    },
+    {
+      "id": "whirlpool-oven-f6-e0",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F6-E0",
+      "aliases": [],
+      "meaning": "Return line not connected — control wiring fault",
+      "detail": "The control board's keypad return (scan) line is not connected, so the control cannot complete its key-scan matrix. This usually indicates a disconnected ribbon cable or control wiring fault.",
+      "severity": "medium",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Ribbon cable disconnected",
+          "frequency": 50
+        },
+        {
+          "description": "Control board wiring/connector fault",
+          "frequency": 35
+        },
+        {
+          "description": "Control board failure",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Reseat all control connectors",
+          "description": "Reconnect the keypad ribbon cable and verify control board harness connections."
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "If the wiring is sound and F6E0 persists, the control board has failed.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. Reseat ribbon cable and control connectors.",
+      "related_codes": [
+        "F2-E1"
+      ],
+      "when_to_call_pro": "If all connections are secure and F6E0 persists, replace the control board."
+    },
+    {
+      "id": "whirlpool-oven-f7-e1",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F7-E1",
+      "aliases": [],
+      "meaning": "Common switch wire defective — function key fault",
+      "detail": "The common (shared) switch wire serving the function keys is defective, so the control reads a stuck or shorted function key. The fault is in the touchpad or its wiring.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Touchpad/keypad failure",
+          "frequency": 55
+        },
+        {
+          "description": "Ribbon cable damaged",
+          "frequency": 30
+        },
+        {
+          "description": "Control board key-scan fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Reseat and inspect the ribbon cable",
+          "description": "Look for cracks or damage in the touchpad ribbon cable."
+        },
+        {
+          "title": "Replace the keypad/touchpad",
+          "description": "If F7E1 persists, the membrane keypad common wire has failed.",
+          "parts": [
+            "Whirlpool oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Power cycle 5 minutes. If F7E1 persists, replace the touchpad.",
+      "related_codes": [
+        "F2-E0",
+        "F7"
+      ],
+      "when_to_call_pro": "If a new touchpad and F7E1 persists, the control board has failed."
+    },
+    {
+      "id": "whirlpool-oven-f0",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F0",
+      "aliases": [],
+      "meaning": "Control board failure",
+      "detail": "A two-digit F0 indicates a general Electronic Range Control board fault detected during self-diagnostics. On older Whirlpool ERC controls this is a catch-all control failure code.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Control board failure",
+          "frequency": 70
+        },
+        {
+          "description": "Power surge",
+          "frequency": 20
+        },
+        {
+          "description": "Loose control connection",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes, then restore power."
+        },
+        {
+          "title": "Reseat control connectors",
+          "description": "Check the control board harness connections."
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "If F0 persists after power cycling, replace the control board.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. If F0 persists, replace ERC board.",
+      "related_codes": [
+        "F1",
+        "F8"
+      ],
+      "when_to_call_pro": "Persistent F0 indicates the control board needs replacement."
+    },
+    {
+      "id": "whirlpool-oven-f1",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F1",
+      "aliases": [],
+      "meaning": "Control board failure",
+      "detail": "A two-digit F1 indicates a general control failure detected by the Electronic Range Control. On controls that report sub-codes, this corresponds to the F1-E# family of EEPROM/microprocessor faults.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Control board / EEPROM failure",
+          "frequency": 70
+        },
+        {
+          "description": "Power surge",
+          "frequency": 20
+        },
+        {
+          "description": "Loose control connection",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Reseat control connectors",
+          "description": "Check the control board harness connections."
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "If F1 persists, the control board has failed.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. If F1 persists, replace ERC board.",
+      "related_codes": [
+        "F1-E0",
+        "F1-E1",
+        "F0"
+      ],
+      "when_to_call_pro": "Persistent F1 indicates the control board needs replacement."
+    },
+    {
+      "id": "whirlpool-oven-f5",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F5",
+      "aliases": [],
+      "meaning": "Control failure — door/latch circuit",
+      "detail": "A two-digit F5 indicates a control failure associated with the door switch and self-clean latch circuit. On controls that report sub-codes this maps to the F5-E# door/latch family.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door switch or latch failure",
+          "frequency": 50
+        },
+        {
+          "description": "Latch wiring fault",
+          "frequency": 30
+        },
+        {
+          "description": "Control board fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Check door and latch",
+          "description": "Ensure the door closes fully and the latch moves freely."
+        },
+        {
+          "title": "Replace door latch or switch",
+          "description": "If the latch or door switch has failed.",
+          "parts": [
+            "Whirlpool oven door latch ($50–$120)",
+            "Whirlpool oven door switch ($15–$40)"
+          ],
+          "warning": "Unplug oven before accessing latch."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 120,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Power cycle 5 minutes. Check door and latch operation.",
+      "related_codes": [
+        "F5-E0",
+        "F5-E1"
+      ],
+      "when_to_call_pro": "If the latch and switch are good and F5 persists, the control board has failed."
+    },
+    {
+      "id": "whirlpool-oven-f7",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F7",
+      "aliases": [],
+      "meaning": "Function key stuck or shorted",
+      "detail": "A two-digit F7 indicates a stuck or shorted function key on the control panel. The control detects a key held closed and cannot return to normal operation.",
+      "severity": "low",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Function key stuck from debris",
+          "frequency": 50
+        },
+        {
+          "description": "Membrane keypad failure",
+          "frequency": 35
+        },
+        {
+          "description": "Ribbon cable/control fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the control panel",
+          "description": "Wipe around all buttons with a barely-damp cloth and dry completely."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Replace the keypad/touchpad",
+          "description": "If F7 returns, the membrane keypad has failed.",
+          "parts": [
+            "Whirlpool oven touchpad ($60–$160)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 160,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Clean panel, power cycle 5 minutes. If F7 persists, replace touchpad.",
+      "related_codes": [
+        "F7-E1",
+        "F2-E0"
+      ],
+      "when_to_call_pro": "If a new touchpad and F7 persists, the control board has failed."
+    },
+    {
+      "id": "whirlpool-oven-f8",
+      "brand": "whirlpool",
+      "appliance": "oven",
+      "code": "F8",
+      "aliases": [],
+      "meaning": "Control board failure",
+      "detail": "A two-digit F8 indicates a control board failure, often an EEPROM or analog reference fault detected during self-diagnostics. On sub-code controls this maps to internal control faults.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Control board / EEPROM failure",
+          "frequency": 70
+        },
+        {
+          "description": "Power surge",
+          "frequency": 20
+        },
+        {
+          "description": "Internal board fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Turn off circuit breaker 5 minutes."
+        },
+        {
+          "title": "Check incoming voltage",
+          "description": "Verify a stable 240V supply.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the ERC board",
+          "description": "If F8 persists, the control board has failed.",
+          "parts": [
+            "Whirlpool ERC board ($150–$380)"
+          ],
+          "warning": "Unplug oven before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 150,
+      "cost_hi": 380,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Turn off circuit breaker 5 minutes. If F8 persists, replace ERC board.",
+      "related_codes": [
+        "F0",
+        "F1"
+      ],
+      "when_to_call_pro": "Persistent F8 indicates the control board needs replacement."
     },
     {
       "id": "ge-washer-e64",
@@ -13287,7 +15767,9 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 520,
       "reset_instructions": "Unplug 15 minutes. If error returns, board needs replacement.",
-      "related_codes": [],
+      "related_codes": [
+        "F6E1"
+      ],
       "when_to_call_pro": "Control board replacement requires photographing all wiring before disconnecting."
     },
     {
@@ -13334,6 +15816,832 @@
       "reset_instructions": "Wait — the washer runs a suds-reduction rinse and resumes on its own, usually within 30 minutes. To clear immediately, press Cancel, run a Rinse & Spin with no detergent, then restart the load.",
       "related_codes": [],
       "when_to_call_pro": "SUD is almost never a service issue. Call a pro only if the code appears on every load with correct HE detergent dosing — that points to a failing pressure sensor or a drain restriction trapping suds."
+    },
+    {
+      "id": "maytag-washer-f5e2",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F5E2",
+      "aliases": [],
+      "meaning": "Lid will not lock — latch blocked or failed",
+      "detail": "On these Whirlpool VMW-platform washers, F5E2 means the lid lock could not engage, usually because something is blocking the latch or the lid lock assembly has failed. The washer will not spin until the lid locks.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Obstruction in the lid latch/strike",
+          "frequency": 40
+        },
+        {
+          "description": "Lid lock assembly failure",
+          "frequency": 40
+        },
+        {
+          "description": "Wiring to lid lock damaged",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clear the latch area",
+          "description": "Make sure nothing blocks the lid from closing fully and the strike enters the lock cleanly."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute, then restore power."
+        },
+        {
+          "title": "Replace the lid lock assembly",
+          "description": "If the lock will not engage.",
+          "parts": [
+            "Maytag washer lid lock assembly ($40–$110)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 110,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Clear the latch, unplug 1 minute. Replace the lid lock if F5E2 persists.",
+      "related_codes": [
+        "F5E1",
+        "F5E3"
+      ],
+      "when_to_call_pro": "If a new lid lock and F5E2 persists, the control board lock output has failed."
+    },
+    {
+      "id": "maytag-washer-f5e1",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F5E1",
+      "aliases": [],
+      "meaning": "Lid lock fault — cannot lock or unlock",
+      "detail": "The washer cannot confirm the lid is locked or unlocked. Most often the lid lock, lid switch, or control panel is at fault, or the lid is not fully closed.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Lid lock / lid switch failure",
+          "frequency": 50
+        },
+        {
+          "description": "Lid not closing fully",
+          "frequency": 30
+        },
+        {
+          "description": "Control board lock circuit fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the lid closes fully",
+          "description": "Ensure no laundry or object blocks the lid."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Replace the lid lock assembly",
+          "description": "If the lock or switch has failed.",
+          "parts": [
+            "Maytag washer lid lock assembly ($40–$110)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 110,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Close the lid fully, unplug 1 minute. Replace the lid lock if F5E1 persists.",
+      "related_codes": [
+        "F5E2",
+        "F5E3"
+      ],
+      "when_to_call_pro": "If a new lid lock and F5E1 persists, the control board lock circuit has failed."
+    },
+    {
+      "id": "maytag-washer-f5e3",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F5E3",
+      "aliases": [],
+      "meaning": "Lid will not unlock — latch or control fault",
+      "detail": "The washer cannot unlock the lid after a cycle, typically due to a stuck door latch or a control board fault. The lid stays locked and the machine cannot complete.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Lid lock mechanism stuck",
+          "frequency": 50
+        },
+        {
+          "description": "Lid lock assembly failure",
+          "frequency": 30
+        },
+        {
+          "description": "Control board unlock circuit fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1–2 minutes to release the lock, then restore power."
+        },
+        {
+          "title": "Inspect the lock mechanism",
+          "description": "Look for a jammed or broken latch."
+        },
+        {
+          "title": "Replace the lid lock assembly",
+          "description": "If the lock will not release.",
+          "parts": [
+            "Maytag washer lid lock assembly ($40–$110)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 110,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Unplug 1–2 minutes to release the lock. Replace the lid lock if F5E3 persists.",
+      "related_codes": [
+        "F5E1",
+        "F5E2"
+      ],
+      "when_to_call_pro": "If a new lid lock and F5E3 persists, the control board unlock circuit has failed."
+    },
+    {
+      "id": "maytag-washer-f7e1",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F7E1",
+      "aliases": [],
+      "meaning": "Motor / basket speed sensor fault — drive system",
+      "detail": "The control cannot read the motor or basket speed correctly. On top-load VMW washers this often involves the shifter (mode shifter actuator) that engages wash versus spin, or the motor speed sensor.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Shifter / mode actuator failure",
+          "frequency": 40
+        },
+        {
+          "description": "Motor speed sensor fault",
+          "frequency": 35
+        },
+        {
+          "description": "Drive motor or wiring fault",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Check the shifter / drive coupling",
+          "description": "Listen for the shifter engaging; inspect the drive system for failure."
+        },
+        {
+          "title": "Replace the shifter or motor",
+          "description": "If the shifter actuator or motor has failed.",
+          "parts": [
+            "Maytag washer shift actuator ($40–$90)",
+            "Maytag washer drive motor ($120–$280)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 40,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 1 minute. If F7E1 persists, inspect the shifter and drive motor.",
+      "related_codes": [
+        "F7E3",
+        "F7E6",
+        "F7E7"
+      ],
+      "when_to_call_pro": "Drive system diagnosis is complex — professional service recommended."
+    },
+    {
+      "id": "maytag-washer-f7e3",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F7E3",
+      "aliases": [],
+      "meaning": "Motor / drive system fault — basket not reaching speed",
+      "detail": "The motor control detected a drive-system problem — the basket could not be driven correctly, often due to the drive coupling, shifter, or a mechanical bind.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Drive coupling / shifter fault",
+          "frequency": 40
+        },
+        {
+          "description": "Motor control fault",
+          "frequency": 35
+        },
+        {
+          "description": "Mechanical bind in the drive system",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check for a bind",
+          "description": "Remove the load and spin the basket by hand to feel for binding."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Inspect and replace the drive components",
+          "description": "Inspect the shifter, coupling, and motor.",
+          "parts": [
+            "Maytag washer shift actuator ($40–$90)",
+            "Maytag washer drive motor ($120–$280)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 40,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 1 minute, check for a mechanical bind. Inspect the drive system if F7E3 persists.",
+      "related_codes": [
+        "F7E1",
+        "F7E6"
+      ],
+      "when_to_call_pro": "Drive system diagnosis is complex — professional service recommended."
+    },
+    {
+      "id": "maytag-washer-f7e6",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F7E6",
+      "aliases": [],
+      "meaning": "Motor control fault — drive electronics error",
+      "detail": "The motor control unit reported an internal fault driving the motor. The basket cannot be driven reliably and the cycle stops.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Motor control unit failure",
+          "frequency": 50
+        },
+        {
+          "description": "Motor winding / wiring fault",
+          "frequency": 30
+        },
+        {
+          "description": "Drive motor failure",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Inspect motor wiring",
+          "description": "Check the harness between the control and the motor for damage.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the motor control or motor",
+          "description": "If the drive electronics have failed.",
+          "parts": [
+            "Maytag washer motor control unit ($120–$300)",
+            "Maytag washer drive motor ($120–$280)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 120,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 1 minute. If F7E6 persists, the motor control unit likely needs replacement.",
+      "related_codes": [
+        "F7E1",
+        "F7E7"
+      ],
+      "when_to_call_pro": "Motor control replacement is complex — professional service recommended."
+    },
+    {
+      "id": "maytag-washer-f7e7",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F7E7",
+      "aliases": [],
+      "meaning": "Motor unable to reach target speed",
+      "detail": "The drive motor could not reach the commanded speed within the allowed time. An overloaded or unbalanced basket, a drive fault, or a motor control problem can cause this.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Overloaded or unbalanced load",
+          "frequency": 35
+        },
+        {
+          "description": "Drive coupling / shifter fault",
+          "frequency": 35
+        },
+        {
+          "description": "Motor control fault",
+          "frequency": 30
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Redistribute the load",
+          "description": "Remove some items and rebalance, then restart."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Inspect the drive system",
+          "description": "Check the shifter, coupling, and motor if F7E7 persists.",
+          "parts": [
+            "Maytag washer shift actuator ($40–$90)",
+            "Maytag washer drive motor ($120–$280)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 40,
+      "cost_hi": 280,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Rebalance the load and unplug 1 minute. Inspect the drive system if F7E7 persists.",
+      "related_codes": [
+        "F7E1",
+        "F7E6"
+      ],
+      "when_to_call_pro": "If the load is balanced and F7E7 persists, the drive system needs professional diagnosis."
+    },
+    {
+      "id": "maytag-washer-f8e2",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F8E2",
+      "aliases": [],
+      "meaning": "Dispenser fault — detergent dispenser system error",
+      "detail": "The control detected a problem with the dispenser system (the dispenser motor/valve that releases detergent, bleach, or softener). The wrong amount may be dispensed, or the dispenser cannot be verified.",
+      "severity": "low",
+      "category": "dispenser",
+      "causes": [
+        {
+          "description": "Dispenser motor / actuator failure",
+          "frequency": 45
+        },
+        {
+          "description": "Dispenser clogged with residue",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring to dispenser fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the dispenser",
+          "description": "Remove and rinse the dispenser drawer and clear any detergent residue."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Replace the dispenser assembly",
+          "description": "If the dispenser motor or actuator has failed.",
+          "parts": [
+            "Maytag washer dispenser assembly ($40–$120)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 40,
+      "cost_hi": 120,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Clean the dispenser and unplug 1 minute. Replace the dispenser if F8E2 persists.",
+      "related_codes": [
+        "F8E1"
+      ],
+      "when_to_call_pro": "If the dispenser is clean and F8E2 persists, the dispenser actuator or control has failed."
+    },
+    {
+      "id": "maytag-washer-f2e3",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F2E3",
+      "aliases": [],
+      "meaning": "Control / user interface fault — communication mismatch",
+      "detail": "F2E3 indicates an issue with the appliance control unit, the user interface, or the wiring between them — the two are not communicating consistently. Button presses may not register or cycles may not start.",
+      "severity": "medium",
+      "category": "control_panel",
+      "causes": [
+        {
+          "description": "Wiring/connector between control and UI loose",
+          "frequency": 50
+        },
+        {
+          "description": "User interface board failure",
+          "frequency": 30
+        },
+        {
+          "description": "Main control board fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Reseat the UI connector",
+          "description": "Check and firmly reseat the harness between the user interface and the main control."
+        },
+        {
+          "title": "Replace the user interface board",
+          "description": "If the connection is sound but F2E3 persists.",
+          "parts": [
+            "Maytag washer user interface board ($60–$170)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 60,
+      "cost_hi": 170,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Unplug 1 minute and reseat the UI connector. Replace the UI board if F2E3 persists.",
+      "related_codes": [
+        "F1E1"
+      ],
+      "when_to_call_pro": "If a new UI board and F2E3 persists, the main control board has failed."
+    },
+    {
+      "id": "maytag-washer-f3e1",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F3E1",
+      "aliases": [],
+      "meaning": "Water level / pressure sensor fault",
+      "detail": "The control is reading an out-of-range value from the water-level pressure sensor, so it cannot measure the water level accurately. Fill and drain decisions become unreliable.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure sensor failure",
+          "frequency": 45
+        },
+        {
+          "description": "Air hose to pressure sensor kinked or clogged",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring to sensor fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the pressure (air) hose",
+          "description": "Inspect the hose from the tub to the sensor for kinks, leaks, or clogs."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Replace the pressure sensor",
+          "description": "If the sensor has failed.",
+          "parts": [
+            "Maytag washer pressure sensor ($25–$70)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 70,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Check the air hose and unplug 1 minute. Replace the pressure sensor if F3E1 persists.",
+      "related_codes": [
+        "F8E1"
+      ],
+      "when_to_call_pro": "If the hose is clear and F3E1 persists, the pressure sensor or control has failed."
+    },
+    {
+      "id": "maytag-washer-f6e1",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F6E1",
+      "aliases": [],
+      "meaning": "Communication error — main control to motor control",
+      "detail": "The main control board and the motor control unit have lost reliable communication. The drive cannot be commanded correctly and the cycle stops.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Wiring/connector between control boards loose or damaged",
+          "frequency": 50
+        },
+        {
+          "description": "Motor control unit failure",
+          "frequency": 30
+        },
+        {
+          "description": "Main control board failure",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Reseat the inter-board harness",
+          "description": "Check and reseat the connectors between the main control and the motor control.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the failed board",
+          "description": "If the harness is good, replace the motor control or main control.",
+          "parts": [
+            "Maytag washer motor control unit ($120–$300)",
+            "Maytag washer control board ($100–$300)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 1 minute and reseat the inter-board harness. Replace a board if F6E1 persists.",
+      "related_codes": [
+        "F1E1",
+        "F7E6"
+      ],
+      "when_to_call_pro": "Inter-board communication diagnosis is complex — professional service recommended."
+    },
+    {
+      "id": "maytag-washer-f20",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F20",
+      "aliases": [],
+      "meaning": "No water detected — fill failure",
+      "detail": "On these Whirlpool-platform front-load washers, F20 (FH on older models) means no water or insufficient water was detected entering the tub. A closed supply, clogged inlet screens, or a failed inlet valve are the usual causes.",
+      "severity": "high",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Supply valves closed or low pressure",
+          "frequency": 35
+        },
+        {
+          "description": "Inlet screens clogged",
+          "frequency": 30
+        },
+        {
+          "description": "Inlet valve failure",
+          "frequency": 20
+        },
+        {
+          "description": "Pressure sensor / air hose fault",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the supply valves",
+          "description": "Confirm both hot and cold valves are fully open."
+        },
+        {
+          "title": "Clean the inlet screens",
+          "description": "Shut off water, disconnect the hoses, and clean the mesh inlet screens.",
+          "warning": "Shut off the water supply first."
+        },
+        {
+          "title": "Test the inlet valve",
+          "description": "Test the inlet valve solenoids for continuity.",
+          "parts": [
+            "Maytag washer inlet valve ($35–$80)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 35,
+      "cost_hi": 80,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 300,
+      "reset_instructions": "Confirm supply open and clean inlet screens. Hold Start to resume. Replace inlet valve if F20 persists.",
+      "related_codes": [
+        "F8E1",
+        "F22"
+      ],
+      "when_to_call_pro": "If supply and valve are good and F20 persists, the pressure sensor or control has failed."
+    },
+    {
+      "id": "maytag-washer-f22",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F22",
+      "aliases": [],
+      "meaning": "Door lock fault — door will not lock",
+      "detail": "On these Whirlpool-platform front-load washers, F22 means the door lock did not engage. The washer will not start a cycle until the door is confirmed locked.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door lock assembly failure",
+          "frequency": 45
+        },
+        {
+          "description": "Door not closing fully / strike misaligned",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring to door lock fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Close the door firmly",
+          "description": "Ensure the door clicks shut and nothing blocks the strike."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Replace the door lock assembly",
+          "description": "If the lock will not engage.",
+          "parts": [
+            "Maytag washer door lock assembly ($50–$130)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 130,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Close the door firmly and unplug 1 minute. Replace the door lock if F22 persists.",
+      "related_codes": [
+        "F26",
+        "F20"
+      ],
+      "when_to_call_pro": "If a new door lock and F22 persists, the control board lock circuit has failed."
+    },
+    {
+      "id": "maytag-washer-f26",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F26",
+      "aliases": [],
+      "meaning": "Door switch error — door state not detected",
+      "detail": "On these Whirlpool-platform front-load washers, F26 indicates the door switch did not report the door opening/closing as expected, so the control cannot verify the door state.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door switch / lock failure",
+          "frequency": 50
+        },
+        {
+          "description": "Wiring to door switch fault",
+          "frequency": 30
+        },
+        {
+          "description": "Control board door input fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Open and close the door",
+          "description": "Cycle the door a few times so the switch registers; ensure it closes fully."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Replace the door lock/switch assembly",
+          "description": "If the switch has failed.",
+          "parts": [
+            "Maytag washer door lock assembly ($50–$130)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 50,
+      "cost_hi": 130,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 320,
+      "reset_instructions": "Cycle the door and unplug 1 minute. Replace the door switch if F26 persists.",
+      "related_codes": [
+        "F22"
+      ],
+      "when_to_call_pro": "If a new door switch and F26 persists, the control board door input has failed."
+    },
+    {
+      "id": "maytag-washer-f28",
+      "brand": "maytag",
+      "appliance": "washer",
+      "code": "F28",
+      "aliases": [],
+      "meaning": "Serial communication error — control boards not communicating",
+      "detail": "On these Whirlpool-platform front-load washers, F28 means the central control unit and the motor control unit have lost serial communication. The drive cannot be commanded and the cycle stops.",
+      "severity": "high",
+      "category": "control_board",
+      "causes": [
+        {
+          "description": "Wiring/connector between control boards loose or damaged",
+          "frequency": 50
+        },
+        {
+          "description": "Motor control unit failure",
+          "frequency": 30
+        },
+        {
+          "description": "Central control unit failure",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Unplug for 1 minute."
+        },
+        {
+          "title": "Reseat the inter-board harness",
+          "description": "Check and reseat the serial connectors between the central control and the motor control.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the failed control unit",
+          "description": "If the harness is good, replace the motor control or central control.",
+          "parts": [
+            "Maytag washer motor control unit ($120–$300)",
+            "Maytag washer control board ($100–$300)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 300,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "Unplug 1 minute and reseat the serial harness. Replace a control unit if F28 persists.",
+      "related_codes": [
+        "F6E1",
+        "F1E1"
+      ],
+      "when_to_call_pro": "Serial communication diagnosis is complex — professional service recommended."
     },
     {
       "id": "maytag-dryer-f01",
@@ -13384,7 +16692,9 @@
       "pro_cost_lo": 250,
       "pro_cost_hi": 520,
       "reset_instructions": "Unplug 15 minutes. If F01 returns immediately, board needs replacement.",
-      "related_codes": [],
+      "related_codes": [
+        "F26"
+      ],
       "when_to_call_pro": "If F01 persists on new board, there may be a wiring or power supply issue."
     },
     {
@@ -13491,6 +16801,562 @@
         "F01"
       ],
       "when_to_call_pro": "Drive motor replacement requires significant disassembly."
+    },
+    {
+      "id": "maytag-dryer-af",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "AF",
+      "aliases": [],
+      "meaning": "Restricted airflow — blocked vent (safety shutdown)",
+      "detail": "The dryer detected insufficient airflow through the exhaust. This is a safety alert — running with a blocked vent causes overheating and is a fire risk. A clogged lint screen or blocked exhaust duct is the usual cause.",
+      "severity": "high",
+      "category": "airflow",
+      "causes": [
+        {
+          "description": "Clogged lint screen",
+          "frequency": 40
+        },
+        {
+          "description": "Blocked or crushed exhaust duct",
+          "frequency": 35
+        },
+        {
+          "description": "Long/kinked vent run or blocked outdoor flap",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the lint screen",
+          "description": "Remove and clean the lint filter every load."
+        },
+        {
+          "title": "Clear the exhaust duct",
+          "description": "Disconnect and clean the full vent run and the outdoor flapper.",
+          "warning": "Unplug the dryer before disconnecting the duct."
+        },
+        {
+          "title": "Check the vent length",
+          "description": "Excessive duct length or too many bends restricts airflow."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 30,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 200,
+      "reset_instructions": "Clean the lint screen and exhaust duct, then restart.",
+      "related_codes": [
+        "F30"
+      ],
+      "when_to_call_pro": "If airflow is clear and AF persists, the airflow/moisture sensor or control has failed."
+    },
+    {
+      "id": "maytag-dryer-e1",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "E1",
+      "aliases": [],
+      "meaning": "Thermistor open circuit — temperature sensor failure",
+      "detail": "The control is reading an open circuit (very high resistance, typically over 50k ohms) from the thermistor, so it cannot measure air temperature and stops heating. A failed thermistor or a loose connector is the usual cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open circuit",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring damaged by heat",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the thermistor",
+          "description": "At room temperature the thermistor should read roughly 10k ohms. Infinite resistance = open.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check the connector",
+          "description": "Reseat the thermistor connector."
+        },
+        {
+          "title": "Replace the thermistor",
+          "description": "Located on the blower housing or exhaust duct.",
+          "parts": [
+            "Maytag dryer thermistor ($15–$40)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing the thermistor, unplug 1 minute then restart.",
+      "related_codes": [
+        "E2",
+        "F22",
+        "F24"
+      ],
+      "when_to_call_pro": "If a new thermistor and E1 persists, the control board sensor input has failed."
+    },
+    {
+      "id": "maytag-dryer-e2",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "E2",
+      "aliases": [],
+      "meaning": "Thermistor short circuit — temperature sensor failure",
+      "detail": "The control is reading a shorted thermistor (very low resistance, typically under 500 ohms), so the temperature reading is invalid. A shorted thermistor or pinched wiring is the usual cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor shorted",
+          "frequency": 70
+        },
+        {
+          "description": "Wiring pinched/shorted to chassis",
+          "frequency": 20
+        },
+        {
+          "description": "Control board sensor circuit fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the thermistor",
+          "description": "Room temperature should read ~10k ohms. Near 0 ohms = shorted.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Inspect the wiring",
+          "description": "Look for pinched or melted wiring shorting the thermistor."
+        },
+        {
+          "title": "Replace the thermistor",
+          "description": "A shorted thermistor cannot be repaired.",
+          "parts": [
+            "Maytag dryer thermistor ($15–$40)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing the thermistor, unplug 1 minute then restart.",
+      "related_codes": [
+        "E1",
+        "F22",
+        "F24"
+      ],
+      "when_to_call_pro": "If a new thermistor reads shorted, the wiring harness has a short to ground."
+    },
+    {
+      "id": "maytag-dryer-f24",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "F24",
+      "aliases": [],
+      "meaning": "Inlet thermistor failure — temperature sensor fault",
+      "detail": "The control is reading an out-of-range resistance from the inlet thermistor, so it cannot measure incoming air temperature and regulate heat safely. A failed thermistor or a loose connector is the most common cause.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Inlet thermistor out of range",
+          "frequency": 70
+        },
+        {
+          "description": "Connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Wiring damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the thermistor",
+          "description": "At room temperature the thermistor should read roughly 10k ohms.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Reseat the connector",
+          "description": "Check the inlet thermistor connector."
+        },
+        {
+          "title": "Replace the thermistor",
+          "description": "Install a new inlet thermistor.",
+          "parts": [
+            "Maytag dryer thermistor ($15–$40)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 15,
+      "cost_hi": 40,
+      "pro_cost_lo": 150,
+      "pro_cost_hi": 280,
+      "reset_instructions": "After replacing the thermistor, unplug 1 minute then restart.",
+      "related_codes": [
+        "F22",
+        "E1",
+        "E2"
+      ],
+      "when_to_call_pro": "If a new thermistor and F24 persists, the control board sensor input has failed."
+    },
+    {
+      "id": "maytag-dryer-f26",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "F26",
+      "aliases": [],
+      "meaning": "Drive motor failure — drum not turning",
+      "detail": "The control commanded the drive motor but detected no rotation, so the drum will not turn and the cycle stops. Failed motor windings are the most common cause, though a bad start switch or a tripped thermal overload can produce the same code.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Motor winding failure",
+          "frequency": 50
+        },
+        {
+          "description": "Start switch / capacitor failure",
+          "frequency": 30
+        },
+        {
+          "description": "Thermal overload tripped",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the drive motor",
+          "description": "Test the motor windings for continuity.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Check the thermal overload",
+          "description": "Press the reset button on the motor if present."
+        },
+        {
+          "title": "Replace the drive motor",
+          "description": "Remove the drum to access the motor.",
+          "parts": [
+            "Maytag dryer drive motor ($100–$250)"
+          ],
+          "warning": "Unplug first."
+        }
+      ],
+      "diy_difficulty": "hard",
+      "cost_lo": 100,
+      "cost_hi": 250,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 520,
+      "reset_instructions": "After motor replacement, restart.",
+      "related_codes": [
+        "F06",
+        "F01"
+      ],
+      "when_to_call_pro": "Drive motor replacement requires significant disassembly."
+    },
+    {
+      "id": "maytag-dryer-f29",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "F29",
+      "aliases": [],
+      "meaning": "Moisture sensor failure — auto-dry not working",
+      "detail": "The control detected an implausible reading from the moisture sensor bars inside the drum, so auto-dry cycles cannot judge when clothes are dry — loads stop damp or run far too long. Fabric-softener residue coating the metal bars is the most common cause.",
+      "severity": "low",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Softener residue on sensor bars",
+          "frequency": 50
+        },
+        {
+          "description": "Moisture sensor wiring fault",
+          "frequency": 30
+        },
+        {
+          "description": "Control board sensor input fault",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the sensor bars",
+          "description": "Wipe the metal moisture sensor strips inside the drum with a little rubbing alcohol."
+        },
+        {
+          "title": "Use timed dry as a workaround",
+          "description": "Auto-dry depends on the sensor; timed dry bypasses it."
+        },
+        {
+          "title": "Check sensor wiring / replace sensor",
+          "description": "If cleaning does not help, inspect the wiring or replace the sensor.",
+          "parts": [
+            "Maytag dryer moisture sensor ($20–$50)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 50,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Clean the moisture sensor bars and restart on auto-dry.",
+      "related_codes": [
+        "F30"
+      ],
+      "when_to_call_pro": "If cleaned and F29 persists, the moisture sensor or control board input has failed."
+    },
+    {
+      "id": "maytag-dryer-f30",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "F30",
+      "aliases": [],
+      "meaning": "Restricted airflow / moisture sensor — stored airflow fault",
+      "detail": "The stored F30 fault indicates restricted airflow or an airflow/moisture sensing problem detected during a cycle. It commonly accompanies the AF alert when the exhaust is blocked.",
+      "severity": "medium",
+      "category": "airflow",
+      "causes": [
+        {
+          "description": "Clogged lint screen or exhaust duct",
+          "frequency": 45
+        },
+        {
+          "description": "Restricted/long vent run",
+          "frequency": 30
+        },
+        {
+          "description": "Moisture/airflow sensor fault",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the lint screen and duct",
+          "description": "Clear the lint filter and the full exhaust run.",
+          "warning": "Unplug before disconnecting the duct."
+        },
+        {
+          "title": "Check the vent length",
+          "description": "Reduce excessive duct length or bends."
+        },
+        {
+          "title": "Inspect the airflow/moisture sensor",
+          "description": "If airflow is clear, check the sensor and wiring.",
+          "parts": [
+            "Maytag dryer moisture sensor ($20–$50)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 50,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Clean the lint screen and exhaust duct, then restart.",
+      "related_codes": [
+        "AF",
+        "F29"
+      ],
+      "when_to_call_pro": "If airflow is clear and F30 persists, the airflow/moisture sensor or control has failed."
+    },
+    {
+      "id": "maytag-dryer-f31",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "F31",
+      "aliases": [],
+      "meaning": "L2 line voltage / heating circuit fault",
+      "detail": "On Maytag dryers, F31 indicates an L2 (line 2) voltage supply problem reaching the control board — the heater cannot turn on. A tripped breaker leg, a failed high-limit thermostat, an open heating element, or wiring is the usual cause.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "One 240V breaker leg tripped / low line voltage",
+          "frequency": 35
+        },
+        {
+          "description": "High-limit thermostat or thermal fuse open",
+          "frequency": 30
+        },
+        {
+          "description": "Heating element open",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring fault to heater",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Check the circuit breaker",
+          "description": "Both legs of the 240V double breaker must be on. Reset fully if one tripped."
+        },
+        {
+          "title": "Test the high-limit thermostat and thermal fuse",
+          "description": "Check both for continuity; an open device kills the heat circuit.",
+          "parts": [
+            "Multimeter",
+            "Maytag dryer thermal fuse ($10–$25)"
+          ],
+          "warning": "Unplug before servicing."
+        },
+        {
+          "title": "Test the heating element",
+          "description": "Check the element for continuity; replace if open.",
+          "parts": [
+            "Maytag dryer heating element ($45–$120)"
+          ],
+          "warning": "Unplug before servicing."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 10,
+      "cost_hi": 120,
+      "pro_cost_lo": 180,
+      "pro_cost_hi": 360,
+      "reset_instructions": "Reset both breaker legs and unplug 1 minute. Test the heat circuit if F31 persists.",
+      "related_codes": [
+        "L2"
+      ],
+      "when_to_call_pro": "If line voltage is good and F31 persists, the heating circuit or control board has failed."
+    },
+    {
+      "id": "maytag-dryer-l2",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "L2",
+      "aliases": [
+        "LO"
+      ],
+      "meaning": "Low or no line voltage — heater cannot turn on",
+      "detail": "An L2 (Low or No Line Voltage) alert means the dryer is not receiving full power — typically one leg of the 240V supply is missing, so the drum may turn but the heater will not work. A tripped breaker leg or a loose connection at the breaker or outlet is the usual cause.",
+      "severity": "high",
+      "category": "power",
+      "causes": [
+        {
+          "description": "One 240V breaker leg tripped",
+          "frequency": 45
+        },
+        {
+          "description": "Loose connection at breaker or outlet",
+          "frequency": 30
+        },
+        {
+          "description": "House wiring / supply fault",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Reset the circuit breaker",
+          "description": "Fully switch the dryer's double breaker off then on — both legs must be live."
+        },
+        {
+          "title": "Check the outlet and cord connection",
+          "description": "Confirm the power cord is fully seated and the terminal block is tight.",
+          "parts": [
+            "Multimeter"
+          ],
+          "warning": "Unplug before checking the terminal block."
+        },
+        {
+          "title": "Have the supply inspected",
+          "description": "Persistent L2 after resetting points to a house wiring or breaker fault.",
+          "warning": "Electrical supply faults should be inspected by an electrician."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 20,
+      "pro_cost_lo": 100,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Reset both legs of the breaker and restart. Check the cord and terminal block if L2 persists.",
+      "related_codes": [
+        "F31"
+      ],
+      "when_to_call_pro": "If the breaker and cord are good and L2 persists, have an electrician check the 240V supply."
+    },
+    {
+      "id": "maytag-dryer-pf",
+      "brand": "maytag",
+      "appliance": "dryer",
+      "code": "PF",
+      "aliases": [],
+      "meaning": "Power failure — cycle interrupted by loss of power",
+      "detail": "PF (Power Failure) means the dryer lost power during a running cycle. It is an informational alert, not a fault — the cycle was interrupted and needs to be restarted.",
+      "severity": "low",
+      "category": "power",
+      "causes": [
+        {
+          "description": "Power outage or brief interruption",
+          "frequency": 60
+        },
+        {
+          "description": "Loose power cord / outlet connection",
+          "frequency": 25
+        },
+        {
+          "description": "Breaker tripped momentarily",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Restart the cycle",
+          "description": "Press Start to resume or restart the cycle."
+        },
+        {
+          "title": "Check the cord and outlet",
+          "description": "If PF recurs, ensure the power cord is fully seated and the outlet is sound.",
+          "warning": "Unplug before checking the terminal block."
+        },
+        {
+          "title": "Check the breaker",
+          "description": "A breaker that trips repeatedly indicates an electrical fault to investigate."
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 20,
+      "pro_cost_lo": 0,
+      "pro_cost_hi": 150,
+      "reset_instructions": "Press Start to restart the cycle. PF clears on its own.",
+      "related_codes": [
+        "L2"
+      ],
+      "when_to_call_pro": "PF is not a fault. Call a pro only if it recurs with stable household power — that points to a loose connection or control fault."
     },
     {
       "id": "maytag-oven-f1-e0",
@@ -15415,6 +19281,809 @@
       "when_to_call_pro": "Miele thermistors are reliable. If new part fails quickly, there may be a wiring issue."
     },
     {
+      "id": "miele-washer-f1",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F1",
+      "aliases": [
+        "F01"
+      ],
+      "meaning": "NTC temperature sensor short-circuited",
+      "detail": "The control read the water/heating NTC temperature sensor (or its wiring) as short-circuited, so heating is disabled and the program stops with F1. At about 68°F the sensor should read roughly 14.5k ohms — a reading far below that points to a shorted thermistor, a pinched harness, or moisture in a connector.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor internally shorted",
+          "frequency": 55
+        },
+        {
+          "description": "Connector wet or corroded",
+          "frequency": 25
+        },
+        {
+          "description": "Wiring harness chafed/pinched",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the wall, wait 5 minutes, switch back on — a transient moisture short can clear."
+        },
+        {
+          "title": "Inspect sensor connector",
+          "description": "Check for water ingress or corrosion at the NTC plug and dry it out."
+        },
+        {
+          "title": "Test the thermistor",
+          "description": "At room temp it should read ~14.5k ohms; near 0 ohms confirms a short.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the NTC sensor",
+          "description": "Fit a genuine Miele thermistor if the part is shorted.",
+          "parts": [
+            "Miele NTC thermistor ($25–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 60,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 380,
+      "reset_instructions": "Switch off at the wall, wait 5 minutes, restart. If F1 returns, the sensor or wiring needs attention.",
+      "related_codes": [
+        "F2",
+        "F20"
+      ],
+      "when_to_call_pro": "If the new sensor faults immediately, a wiring or board issue is likely — Miele authorized service recommended."
+    },
+    {
+      "id": "miele-washer-f2",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F2",
+      "aliases": [
+        "F02"
+      ],
+      "meaning": "NTC temperature sensor open-circuited",
+      "detail": "The control read the water/heating NTC temperature sensor (or its leads) as open-circuited — the opposite of F1 — so it cannot confirm water temperature and stops with F2. An open circuit usually means a broken thermistor element, a disconnected plug, or a severed lead.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Thermistor open internally",
+          "frequency": 55
+        },
+        {
+          "description": "Connector unplugged or loose",
+          "frequency": 25
+        },
+        {
+          "description": "Lead broken/severed",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the wall, wait 5 minutes, switch back on."
+        },
+        {
+          "title": "Reseat the connector",
+          "description": "Confirm the NTC plug is fully seated on both the sensor and the board."
+        },
+        {
+          "title": "Test the thermistor",
+          "description": "An infinite/open reading at room temp confirms the sensor is open.",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the NTC sensor",
+          "description": "Fit a genuine Miele thermistor.",
+          "parts": [
+            "Miele NTC thermistor ($25–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 60,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 380,
+      "reset_instructions": "Switch off at the wall, wait 5 minutes, restart. If F2 persists, replace the sensor.",
+      "related_codes": [
+        "F1",
+        "F20"
+      ],
+      "when_to_call_pro": "Persistent F2 after a new sensor points to harness or board damage — Miele authorized service recommended."
+    },
+    {
+      "id": "miele-washer-f15",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F15",
+      "aliases": [],
+      "meaning": "Hot water intake fault",
+      "detail": "On hot-and-cold fill models the machine did not detect correct flow or temperature on the hot-water feed within the fill window, so the program stops with F15. A closed or restricted hot supply, a kinked hot hose, or a faulty hot inlet valve are the usual causes.",
+      "severity": "medium",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Hot supply valve closed or restricted",
+          "frequency": 40
+        },
+        {
+          "description": "Hot inlet hose kinked",
+          "frequency": 25
+        },
+        {
+          "description": "Hot inlet valve failure",
+          "frequency": 25
+        },
+        {
+          "description": "Inlet screen blocked",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Open the hot tap fully",
+          "description": "Confirm the hot-water stopcock under the sink is fully open."
+        },
+        {
+          "title": "Straighten/clean the hose",
+          "description": "Trace the hot hose for kinks and clean the mesh screen at the inlet."
+        },
+        {
+          "title": "Replace the hot inlet valve",
+          "description": "If supply is good but the fault stays, the valve has failed.",
+          "parts": [
+            "Miele inlet valve ($50–$100)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 100,
+      "pro_cost_lo": 180,
+      "pro_cost_hi": 380,
+      "reset_instructions": "Open the hot supply, straighten the hose, switch off ~60 seconds, restart.",
+      "related_codes": [],
+      "when_to_call_pro": "If the hot supply is confirmed good, Miele authorized service recommended for valve replacement."
+    },
+    {
+      "id": "miele-washer-f20",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F20",
+      "aliases": [],
+      "meaning": "Heating fault — water not reaching target temperature",
+      "detail": "The control expected the wash water to reach its target temperature within a set time but the NTC never confirmed it, so the program halts with F20 and washes run cold. A failed heating element is the leading cause, followed by the NTC sensor or the heater relay on the board.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heating element failure",
+          "frequency": 55
+        },
+        {
+          "description": "NTC temperature sensor failure",
+          "frequency": 25
+        },
+        {
+          "description": "Heater relay on board failed",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the heating element",
+          "description": "Disconnect and check continuity — a typical element reads ~20–30 ohms; open means failed.",
+          "parts": [
+            "Miele washer heater ($60–$140)"
+          ]
+        },
+        {
+          "title": "Test the NTC sensor",
+          "description": "Confirm the thermistor reads in range (see F1/F2).",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Replace the failed component",
+          "description": "Fit a genuine element or sensor as diagnosed."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 140,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "After repair, run a heated cycle to confirm the fault clears.",
+      "related_codes": [
+        "F1",
+        "F2"
+      ],
+      "when_to_call_pro": "Heater replacement on Miele washers requires care with the seal and harness — authorized service recommended."
+    },
+    {
+      "id": "miele-washer-f34",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F34",
+      "aliases": [],
+      "meaning": "Door lock fault — door will not lock",
+      "detail": "The machine could not confirm the door lock engaged, so for safety it will not start and shows F34. A door not fully latched is the most common trigger, followed by a failed interlock or a wiring fault to the lock.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door not fully closed/latched",
+          "frequency": 40
+        },
+        {
+          "description": "Door interlock failure",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring to lock damaged",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Close the door firmly",
+          "description": "Press the door until it clicks; clear any laundry trapped in the seal."
+        },
+        {
+          "title": "Inspect the latch and striker",
+          "description": "Check the striker hook and lock cavity for damage or obstruction."
+        },
+        {
+          "title": "Replace the door lock",
+          "description": "If the door is shut but F34 stays, the interlock has likely failed.",
+          "parts": [
+            "Miele door interlock ($60–$130)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 130,
+      "pro_cost_lo": 180,
+      "pro_cost_hi": 360,
+      "reset_instructions": "Close the door firmly, switch off ~60 seconds, restart. If F34 returns, the lock needs service.",
+      "related_codes": [
+        "F35"
+      ],
+      "when_to_call_pro": "Miele door interlock replacement is best handled by authorized service to keep the safety circuit intact."
+    },
+    {
+      "id": "miele-washer-f35",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F35",
+      "aliases": [],
+      "meaning": "Door unlock fault — door will not release",
+      "detail": "At the end of the cycle the control could not confirm the door lock released, so it holds F35 and keeps the door shut. A failed lock mechanism or its wiring is the usual cause; the door stays locked until the fault is cleared or the lock is replaced.",
+      "severity": "medium",
+      "category": "door",
+      "causes": [
+        {
+          "description": "Door lock mechanism jammed/failed",
+          "frequency": 55
+        },
+        {
+          "description": "Wiring to lock damaged",
+          "frequency": 25
+        },
+        {
+          "description": "Control relay for lock failed",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the wall, wait 5 minutes, switch on — the lock may release on reset."
+        },
+        {
+          "title": "Use the emergency release",
+          "description": "If fitted, use the manual lock release behind the lower flap to free the door.",
+          "warning": "Only after the drum has stopped and water is drained."
+        },
+        {
+          "title": "Replace the door lock",
+          "description": "A lock that will not release needs replacement.",
+          "parts": [
+            "Miele door interlock ($60–$130)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 130,
+      "pro_cost_lo": 180,
+      "pro_cost_hi": 360,
+      "reset_instructions": "Power off 5 minutes; if the door frees but F35 returns, the lock needs replacement.",
+      "related_codes": [
+        "F34"
+      ],
+      "when_to_call_pro": "If the door stays locked with water inside, contact Miele authorized service rather than forcing it."
+    },
+    {
+      "id": "miele-washer-f39",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F39",
+      "aliases": [],
+      "meaning": "Electronic unit fault — main control failure",
+      "detail": "The control electronics reported an internal fault and the program stops with F39. This points at the main electronic unit (control board) rather than a single sensor or motor, and usually needs board-level diagnosis.",
+      "severity": "high",
+      "category": "control",
+      "causes": [
+        {
+          "description": "Main control board fault",
+          "frequency": 65
+        },
+        {
+          "description": "Internal connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Power supply disturbance",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the wall for 5–10 minutes to clear a transient board fault."
+        },
+        {
+          "title": "Check supply quality",
+          "description": "Confirm the machine is on a sound circuit, not a weak extension or unstable supply."
+        },
+        {
+          "title": "Board diagnosis/replacement",
+          "description": "Persistent F39 indicates the electronic unit needs Miele diagnosis.",
+          "parts": [
+            "Miele control board ($150–$350)"
+          ]
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 550,
+      "reset_instructions": "Switch off 5–10 minutes and restart. If F39 persists, the control unit needs service.",
+      "related_codes": [
+        "F41",
+        "F43",
+        "F45"
+      ],
+      "when_to_call_pro": "Control-board faults on Miele washers require authorized service — board coding and calibration are model-specific."
+    },
+    {
+      "id": "miele-washer-f41",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F41",
+      "aliases": [],
+      "meaning": "Faulty electronic memory — incorrect data",
+      "detail": "The control read invalid data from its electronic memory (EEPROM), so it cannot run reliably and stops with F41. This is a board-level fault — corrupted or failing memory on the main electronic unit.",
+      "severity": "high",
+      "category": "control",
+      "causes": [
+        {
+          "description": "EEPROM data corrupted",
+          "frequency": 60
+        },
+        {
+          "description": "Memory chip failing",
+          "frequency": 25
+        },
+        {
+          "description": "Power loss during a write",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the wall for several minutes; an occasional glitch may clear."
+        },
+        {
+          "title": "Board re-coding/replacement",
+          "description": "Persistent F41 means the electronic unit needs reprogramming or replacement by Miele.",
+          "parts": [
+            "Miele control board ($150–$350)"
+          ]
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 550,
+      "reset_instructions": "Switch off several minutes and restart. If F41 persists, the control unit needs service.",
+      "related_codes": [
+        "F39",
+        "F43",
+        "F45"
+      ],
+      "when_to_call_pro": "EEPROM faults require Miele service — the board must be coded to the specific model."
+    },
+    {
+      "id": "miele-washer-f43",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F43",
+      "aliases": [],
+      "meaning": "Appliance model not programmed",
+      "detail": "The control electronics are not coded to a specific model, so the machine does not know its own configuration and stops with F43. This typically appears after a board replacement that was not programmed, or after a memory fault wiped the model code.",
+      "severity": "high",
+      "category": "control",
+      "causes": [
+        {
+          "description": "Replacement board not coded to model",
+          "frequency": 60
+        },
+        {
+          "description": "Model data lost from memory",
+          "frequency": 30
+        },
+        {
+          "description": "Programming interrupted",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Confirm recent board work",
+          "description": "F43 almost always follows a control-board swap that skipped the model coding step."
+        },
+        {
+          "title": "Program the control",
+          "description": "The electronic unit must be coded to the exact model by Miele service tooling."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 450,
+      "reset_instructions": "F43 is not user-resettable — the control must be programmed to the model by Miele service.",
+      "related_codes": [
+        "F39",
+        "F41",
+        "F45"
+      ],
+      "when_to_call_pro": "Model coding requires Miele service tooling — always authorized service."
+    },
+    {
+      "id": "miele-washer-f45",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F45",
+      "aliases": [],
+      "meaning": "Defective Flash RAM — incorrect data supplied",
+      "detail": "The control detected a fault in its Flash RAM and is being supplied incorrect data, so it halts with F45. Like F41/F43 this is a fault inside the main electronic unit rather than a mechanical part.",
+      "severity": "high",
+      "category": "control",
+      "causes": [
+        {
+          "description": "Flash RAM failure",
+          "frequency": 60
+        },
+        {
+          "description": "Firmware corrupted",
+          "frequency": 25
+        },
+        {
+          "description": "Power disturbance during write",
+          "frequency": 15
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the wall for several minutes to attempt a clear."
+        },
+        {
+          "title": "Board diagnosis/replacement",
+          "description": "Persistent F45 means the electronic unit needs reflashing or replacement by Miele.",
+          "parts": [
+            "Miele control board ($150–$350)"
+          ]
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 550,
+      "reset_instructions": "Switch off several minutes and restart. If F45 persists, the control unit needs service.",
+      "related_codes": [
+        "F39",
+        "F41",
+        "F43"
+      ],
+      "when_to_call_pro": "Flash RAM faults require Miele service — reflashing/coding is model-specific."
+    },
+    {
+      "id": "miele-washer-f50",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F50",
+      "aliases": [],
+      "meaning": "Drive fault — motor or drive electronics",
+      "detail": "The control detected a fault in the drive system and stops with F50. Miele motors are brushless and durable, so the fault often sits in the motor control electronics or wiring rather than the motor windings themselves; severe overloading can also trigger it.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Motor control electronics fault",
+          "frequency": 45
+        },
+        {
+          "description": "Motor winding or hall-sensor fault",
+          "frequency": 30
+        },
+        {
+          "description": "Extreme overload jamming the drum",
+          "frequency": 15
+        },
+        {
+          "description": "Wiring to motor damaged",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle and reduce load",
+          "description": "Unplug for 10 minutes and remove some laundry — a transient drive fault may clear."
+        },
+        {
+          "title": "Check the drum turns freely",
+          "description": "With power off, confirm nothing is jamming the drum or belt."
+        },
+        {
+          "title": "Drive diagnosis",
+          "description": "Persistent F50 needs board/motor diagnosis by Miele."
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 300,
+      "pro_cost_hi": 600,
+      "reset_instructions": "Unplug 10 minutes and restart with a lighter load. If F50 persists, the drive needs service.",
+      "related_codes": [
+        "F53",
+        "F56"
+      ],
+      "when_to_call_pro": "Drive electronics and motor work on Miele washers require authorized technicians."
+    },
+    {
+      "id": "miele-washer-f51",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F51",
+      "aliases": [],
+      "meaning": "Pressure/level sensor fault",
+      "detail": "The control received an implausible reading from the water-level pressure sensor, so it cannot judge fill or drain accurately and stops with F51. A blocked or split pressure hose, debris in the chamber, or a failed sensor are the usual causes.",
+      "severity": "medium",
+      "category": "sensor",
+      "causes": [
+        {
+          "description": "Pressure hose blocked or split",
+          "frequency": 40
+        },
+        {
+          "description": "Pressure chamber clogged with debris",
+          "frequency": 30
+        },
+        {
+          "description": "Level sensor failure",
+          "frequency": 30
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Inspect the pressure hose",
+          "description": "Check the thin hose between the tub chamber and the sensor for kinks, splits, or trapped water."
+        },
+        {
+          "title": "Clear the pressure chamber",
+          "description": "Clean any soap/debris build-up that can block the air column."
+        },
+        {
+          "title": "Replace the level sensor",
+          "description": "If the hose and chamber are clear, the sensor has likely failed.",
+          "parts": [
+            "Miele pressure/level sensor ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 90,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Clear the pressure hose/chamber, switch off ~60 seconds, restart.",
+      "related_codes": [
+        "F50",
+        "F56"
+      ],
+      "when_to_call_pro": "If the fault persists after cleaning and a new sensor, Miele authorized service recommended."
+    },
+    {
+      "id": "miele-washer-f56",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F56",
+      "aliases": [],
+      "meaning": "Spin fault — final spin speed below 400 rpm",
+      "detail": "The drum never reached the required final spin speed (under ~400 rpm), so the load comes out wetter than expected and the machine flags F56. Severe imbalance, an overload, or a drive/sensor issue keeps the spin from ramping up.",
+      "severity": "medium",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Unbalanced or overloaded drum",
+          "frequency": 40
+        },
+        {
+          "description": "Drive/motor losing torque",
+          "frequency": 30
+        },
+        {
+          "description": "Speed sensor reading low",
+          "frequency": 20
+        },
+        {
+          "description": "Suspension/bearing drag",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Redistribute the load",
+          "description": "Open the door, rebalance bulky items, and avoid overloading."
+        },
+        {
+          "title": "Run a spin-only cycle",
+          "description": "Test whether a balanced load spins up correctly."
+        },
+        {
+          "title": "Drive/sensor diagnosis",
+          "description": "If a balanced load still fails, the drive or speed sensor needs checking."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 60,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Rebalance the load and run a spin-only cycle. If F56 persists with a balanced load, service is needed.",
+      "related_codes": [
+        "F50",
+        "F53"
+      ],
+      "when_to_call_pro": "Persistent low-spin faults with a balanced load point to drive or bearing issues — Miele service recommended."
+    },
+    {
+      "id": "miele-washer-f63",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F63",
+      "aliases": [],
+      "meaning": "Water path control unit fault",
+      "detail": "The control could not correctly operate or confirm the water-path control unit (the valve/diverter assembly that routes water through the detergent and rinse paths), so it stops with F63. A jammed diverter, a wiring fault, or a failed control unit are the usual causes.",
+      "severity": "high",
+      "category": "control",
+      "causes": [
+        {
+          "description": "Water path/diverter unit failure",
+          "frequency": 55
+        },
+        {
+          "description": "Wiring to the unit damaged",
+          "frequency": 25
+        },
+        {
+          "description": "Scale or debris jamming the diverter",
+          "frequency": 20
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the wall for several minutes to clear a transient fault."
+        },
+        {
+          "title": "Check for limescale",
+          "description": "In hard-water areas, scale can jam the diverter — descaling may help."
+        },
+        {
+          "title": "Replace the water path unit",
+          "description": "If the diverter is jammed or the unit failed, it needs replacement.",
+          "parts": [
+            "Miele water path/diverter unit ($90–$200)"
+          ]
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Switch off several minutes and restart. If F63 persists, the water-path unit needs service.",
+      "related_codes": [
+        "F39"
+      ],
+      "when_to_call_pro": "The water-path control unit is a sealed assembly best replaced by Miele authorized service."
+    },
+    {
+      "id": "miele-washer-f65",
+      "brand": "miele",
+      "appliance": "washer",
+      "code": "F65",
+      "aliases": [],
+      "meaning": "Drum lighting cap missing",
+      "detail": "The control detected that the drum interior lighting cap/cover is missing or not correctly fitted and flags F65. This is a minor, mostly cosmetic fault around the drum light — it does not affect the wash, but the machine reports it for completeness.",
+      "severity": "low",
+      "category": "lighting",
+      "causes": [
+        {
+          "description": "Drum light cap not fitted/missing",
+          "frequency": 70
+        },
+        {
+          "description": "Drum light wiring/connector loose",
+          "frequency": 20
+        },
+        {
+          "description": "Light module fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Refit the lighting cap",
+          "description": "Check the drum interior light cover is present and clicked into place."
+        },
+        {
+          "title": "Reseat the connector",
+          "description": "If the cap is present, reseat the light module connector."
+        },
+        {
+          "title": "Replace the light module",
+          "description": "If the lamp/module has failed, fit a genuine replacement.",
+          "parts": [
+            "Miele drum light module ($20–$60)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 60,
+      "pro_cost_lo": 120,
+      "pro_cost_hi": 250,
+      "reset_instructions": "Refit the lighting cap, switch off ~60 seconds, restart.",
+      "related_codes": [],
+      "when_to_call_pro": "F65 is minor — only call a pro if the light module itself has failed and you are not comfortable replacing it."
+    },
+    {
       "id": "miele-dishwasher-f11",
       "brand": "miele",
       "appliance": "dishwasher",
@@ -15630,6 +20299,281 @@
         "F11"
       ],
       "when_to_call_pro": "Miele flow meters are repairable. Authorized Miele service recommended."
+    },
+    {
+      "id": "miele-dishwasher-f12",
+      "brand": "miele",
+      "appliance": "dishwasher",
+      "code": "F12",
+      "aliases": [],
+      "meaning": "Water intake fault at the start of a step",
+      "detail": "The dishwasher failed to take in the required water at the start of a program step, so it stops with F12. It is closely related to F13 (which faults later in the step) and almost always traces to the supply side — a closed or restricted tap, a kinked hose, or a blocked inlet screen.",
+      "severity": "medium",
+      "category": "water_supply",
+      "causes": [
+        {
+          "description": "Supply valve closed or partially open",
+          "frequency": 40
+        },
+        {
+          "description": "Inlet hose kinked",
+          "frequency": 30
+        },
+        {
+          "description": "Inlet screen blocked",
+          "frequency": 20
+        },
+        {
+          "description": "Water inlet valve failure",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Open the supply tap",
+          "description": "Confirm the under-sink valve is fully open and water pressure is adequate."
+        },
+        {
+          "title": "Straighten the inlet hose",
+          "description": "Trace the hose from wall to unit for kinks."
+        },
+        {
+          "title": "Clean the inlet screen",
+          "description": "Unscrew the supply hose and clean the mesh screen at the inlet port."
+        },
+        {
+          "title": "Replace the inlet valve",
+          "description": "If supply is good but F12 stays, the valve has likely failed.",
+          "parts": [
+            "Miele inlet valve ($50–$100)"
+          ]
+        }
+      ],
+      "diy_difficulty": "easy",
+      "cost_lo": 0,
+      "cost_hi": 100,
+      "pro_cost_lo": 180,
+      "pro_cost_hi": 380,
+      "reset_instructions": "Open the tap fully and straighten the hose, then switch off ~60 seconds, switch back on, and restart on a short program.",
+      "related_codes": [
+        "F13"
+      ],
+      "when_to_call_pro": "If the supply is confirmed good, Miele authorized service recommended for valve replacement."
+    },
+    {
+      "id": "miele-dishwasher-f14",
+      "brand": "miele",
+      "appliance": "dishwasher",
+      "code": "F14",
+      "aliases": [],
+      "meaning": "Heater pressure switch fault",
+      "detail": "The control could not get a valid signal from the heater pressure switch — the safety switch that confirms water is circulating before the heater is energized — so it stops with F14 to protect the heating circuit. A blocked or split pressure hose, debris in the circulation path, or a failed switch are the usual causes.",
+      "severity": "medium",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heater pressure switch failure",
+          "frequency": 45
+        },
+        {
+          "description": "Pressure hose blocked or split",
+          "frequency": 30
+        },
+        {
+          "description": "Debris in circulation/sump path",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clean the filters and sump",
+          "description": "Remove and rinse the filter combination so the circulation path is clear."
+        },
+        {
+          "title": "Inspect the pressure hose",
+          "description": "Check the hose to the pressure switch for kinks, splits, or trapped water."
+        },
+        {
+          "title": "Replace the pressure switch",
+          "description": "If hose and path are clear, the switch has likely failed.",
+          "parts": [
+            "Miele heater pressure switch ($40–$90)"
+          ]
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 0,
+      "cost_hi": 90,
+      "pro_cost_lo": 200,
+      "pro_cost_hi": 400,
+      "reset_instructions": "Clean the filters, check the pressure hose, switch off ~60 seconds, then restart on a short program.",
+      "related_codes": [
+        "F15",
+        "F24"
+      ],
+      "when_to_call_pro": "Pressure-switch and heating-circuit work is best handled by Miele authorized service."
+    },
+    {
+      "id": "miele-dishwasher-f24",
+      "brand": "miele",
+      "appliance": "dishwasher",
+      "code": "F24",
+      "aliases": [],
+      "meaning": "Heating circuit fault — heater relay or temperature sensor",
+      "detail": "The control expected the heater to bring the water to temperature but the heating circuit did not respond as expected, so it stops with F24. The fault sits in the heating circuit — most often the heater relay on the board, the NTC temperature sensor, or the heating element itself.",
+      "severity": "high",
+      "category": "heating",
+      "causes": [
+        {
+          "description": "Heater relay on board failed",
+          "frequency": 40
+        },
+        {
+          "description": "NTC temperature sensor fault",
+          "frequency": 30
+        },
+        {
+          "description": "Heating element failure",
+          "frequency": 30
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Test the NTC sensor",
+          "description": "Confirm the temperature sensor reads in range (~14.5k ohms cold).",
+          "parts": [
+            "Multimeter"
+          ]
+        },
+        {
+          "title": "Test the heating element",
+          "description": "Check element continuity — open means failed.",
+          "parts": [
+            "Miele dishwasher heater ($60–$130)"
+          ]
+        },
+        {
+          "title": "Board/relay diagnosis",
+          "description": "A failed heater relay on the control needs board-level diagnosis."
+        }
+      ],
+      "diy_difficulty": "moderate",
+      "cost_lo": 25,
+      "cost_hi": 130,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Switch off ~60 seconds and restart on a full program to confirm heating.",
+      "related_codes": [
+        "F14",
+        "F15"
+      ],
+      "when_to_call_pro": "Heater relay and element work require care with the waterproof sealing — Miele authorized service recommended."
+    },
+    {
+      "id": "miele-dishwasher-f78",
+      "brand": "miele",
+      "appliance": "dishwasher",
+      "code": "F78",
+      "aliases": [],
+      "meaning": "Circulation pump / frequency converter fault",
+      "detail": "The control detected a fault driving the circulation pump (the pump that sprays water through the arms during the wash), often reported by its frequency converter, so the program stops with F78 and dishes are left unwashed. A blocked or jammed pump impeller, a wiring fault, or a failed converter/pump are the usual causes.",
+      "severity": "high",
+      "category": "motor",
+      "causes": [
+        {
+          "description": "Circulation pump impeller jammed by debris",
+          "frequency": 40
+        },
+        {
+          "description": "Frequency converter/pump electronics fault",
+          "frequency": 35
+        },
+        {
+          "description": "Wiring to the pump damaged",
+          "frequency": 25
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Clear debris from the sump",
+          "description": "Remove the filters and check the sump and spray-arm feed for glass, seeds, or labels."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the unit for several minutes to clear a transient drive fault."
+        },
+        {
+          "title": "Replace the circulation pump",
+          "description": "If the impeller is jammed/failed or the converter is faulty, the pump needs replacement.",
+          "parts": [
+            "Miele circulation pump ($120–$250)"
+          ]
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Clear the sump and switch off several minutes. If F78 persists, the circulation pump needs service.",
+      "related_codes": [
+        "F11"
+      ],
+      "when_to_call_pro": "Circulation pump replacement on Miele dishwashers is a sealed-system job for authorized service."
+    },
+    {
+      "id": "miele-dishwasher-f84",
+      "brand": "miele",
+      "appliance": "dishwasher",
+      "code": "F84",
+      "aliases": [],
+      "meaning": "Slide-shutter positioning fault during water intake",
+      "detail": "The control could not confirm the correct position of the slide shutter / diverter that directs water during intake, so it stops with F84. It is closely related to the F63 water-path fault — the diverter valve, its position sensing, or the control electronics are the usual causes; excess detergent foam can also confuse the positioning.",
+      "severity": "high",
+      "category": "control",
+      "causes": [
+        {
+          "description": "Diverter/slide-shutter mechanism fault",
+          "frequency": 45
+        },
+        {
+          "description": "Position sensing or wiring fault",
+          "frequency": 30
+        },
+        {
+          "description": "Excess detergent foam disrupting positioning",
+          "frequency": 15
+        },
+        {
+          "description": "Control board fault",
+          "frequency": 10
+        }
+      ],
+      "fixes": [
+        {
+          "title": "Use the correct detergent dose",
+          "description": "Excess or wrong detergent can foam and disrupt the shutter — run a rinse and dose correctly."
+        },
+        {
+          "title": "Power cycle",
+          "description": "Switch off at the unit for several minutes to clear a transient fault."
+        },
+        {
+          "title": "Diverter/board diagnosis",
+          "description": "Persistent F84 needs the diverter valve and control electronics checked by Miele.",
+          "parts": [
+            "Miele diverter/slide-shutter unit ($90–$200)"
+          ]
+        }
+      ],
+      "diy_difficulty": "pro_only",
+      "cost_lo": 0,
+      "cost_hi": 0,
+      "pro_cost_lo": 250,
+      "pro_cost_hi": 500,
+      "reset_instructions": "Run a rinse with the correct detergent dose and power off several minutes. If F84 persists, the diverter/control needs service.",
+      "related_codes": [],
+      "when_to_call_pro": "Diverter and control-board faults on Miele dishwashers require authorized service."
     },
     {
       "id": "speedqueen-washer-e3",

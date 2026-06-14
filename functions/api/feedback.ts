@@ -1,3 +1,4 @@
+/// <reference types="@cloudflare/workers-types" />
 /**
  * Cloudflare Pages Function — /api/feedback
  * POST {id, vote: "yes"|"no"} → increments KV counter
@@ -32,12 +33,16 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   // Consumed by scripts/fetch-feedback.mjs at build time so aggregated
   // success rates get baked into the static HTML (crawlable first-party data).
   if (url.searchParams.get('all') === '1') {
+    const kv: KVNamespace = env.FEEDBACK;
     const stats: Record<string, { yes: number; no: number }> = {};
     let cursor: string | undefined;
     do {
-      const list = await env.FEEDBACK.list({ limit: 1000, cursor });
+      const list: KVNamespaceListResult<unknown, string> = await kv.list({ limit: 1000, cursor });
       const pairs = await Promise.all(
-        list.keys.map(async (k) => [k.name, parseInt((await env.FEEDBACK!.get(k.name)) ?? '0', 10)] as const),
+        list.keys.map(async (k): Promise<readonly [string, number]> => [
+          k.name,
+          parseInt((await kv.get(k.name)) ?? '0', 10),
+        ]),
       );
       for (const [key, count] of pairs) {
         const sep = key.lastIndexOf(':');
@@ -45,7 +50,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
         const id = key.slice(0, sep);
         const vote = key.slice(sep + 1);
         if (vote !== 'yes' && vote !== 'no') continue;
-        (stats[id] ??= { yes: 0, no: 0 })[vote] = count;
+        (stats[id] ??= { yes: 0, no: 0 })[vote as 'yes' | 'no'] = count;
       }
       cursor = list.list_complete ? undefined : list.cursor;
     } while (cursor);
@@ -61,9 +66,9 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   return json({ yes: parseInt(yes ?? '0', 10), no: parseInt(no ?? '0', 10) });
 };
 
-function json(data: unknown, status = 200): Response {
+function json(data: unknown, status = 200, cacheControl = 'no-store'): Response {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': cacheControl },
   });
 }

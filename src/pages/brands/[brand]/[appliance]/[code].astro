@@ -101,7 +101,7 @@ const severityColors: Record<string, string> = {
 const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
 ---
 
-<BaseLayout {title} {description} {schemas}>
+<BaseLayout {title} {description} {schemas} ogImage={`/images/og/${errorCode.id}.png`}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <BreadcrumbNav items={[
       { label: 'Home', href: '/' },

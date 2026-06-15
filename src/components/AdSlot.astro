@@ -1,13 +1,36 @@
 ---
+// AdSlot — one place to wire real AdSense ad-unit IDs.
+//
+// Slot IDs come from env by PLACEMENT so the operator sets real IDs once
+// (Cloudflare Pages → Settings → Env vars, or .env locally) instead of
+// hunting through templates:
+//   PUBLIC_AD_SLOT_TOP     — leaderboard above the fold
+//   PUBLIC_AD_SLOT_MID     — in-content rectangle
+//   PUBLIC_AD_SLOT_BOTTOM  — end-of-content rectangle
+//   PUBLIC_AD_SLOT_LIST    — hub/listing pages
+// Until those are set, we fall back to placeholders so the build is stable,
+// but placeholder units DO NOT serve real ads — create the units in AdSense
+// and set the four env vars to start earning.
 export interface Props {
-  slot_id: string;
+  placement?: 'top' | 'mid' | 'bottom' | 'list';
+  slot_id?: string; // explicit override (rarely needed)
   style?: 'leaderboard' | 'rectangle' | 'sidebar' | 'in-article';
   layout?: string;
 }
-const { slot_id, style = 'rectangle', layout } = Astro.props;
+const { placement = 'mid', slot_id, style = 'rectangle', layout } = Astro.props;
 
 const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 const isDev = import.meta.env.DEV;
+
+// Resolve slot: explicit override → env by placement → placeholder fallback.
+const PLACEHOLDER = { top: '1234567890', mid: '0987654321', bottom: '1122334455', list: '5566778899' };
+const envSlot = {
+  top: import.meta.env.PUBLIC_AD_SLOT_TOP,
+  mid: import.meta.env.PUBLIC_AD_SLOT_MID,
+  bottom: import.meta.env.PUBLIC_AD_SLOT_BOTTOM,
+  list: import.meta.env.PUBLIC_AD_SLOT_LIST,
+}[placement];
+const slot = slot_id || envSlot || PLACEHOLDER[placement];
 
 const dims: Record<string, string> = {
   leaderboard: 'min-h-[90px]',
@@ -16,16 +39,15 @@ const dims: Record<string, string> = {
   'in-article': 'min-h-[280px]',
 };
 
-// Don't render ad markup if no publisher ID configured.
-const shouldRender = !!client && !!slot_id;
+const shouldRender = !!client && !!slot;
 ---
 {shouldRender && (
-  <div class={`w-full ${dims[style]} my-6 flex justify-center`} data-ad-slot={slot_id}>
+  <div class={`w-full ${dims[style]} my-6 flex justify-center`} data-ad-slot={slot}>
     <ins
       class="adsbygoogle"
       style="display:block; width:100%;"
       data-ad-client={client}
-      data-ad-slot={slot_id}
+      data-ad-slot={slot}
       data-ad-format={style === 'in-article' ? 'fluid' : 'auto'}
       data-ad-layout={layout}
       data-full-width-responsive="true"

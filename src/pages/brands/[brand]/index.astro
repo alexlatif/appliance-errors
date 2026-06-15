@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SeverityBadge from '../../../components/SeverityBadge.astro';
 import BreadcrumbNav from '../../../components/BreadcrumbNav.astro';
+import AdSlot from '../../../components/AdSlot.astro';
 import {
   brands, applianceTypes, getBrand, getBrandAppliances,
   getCodesByBrand, getCodesByBrandAndAppliance, getTopCodesForBrand
@@ -96,6 +97,8 @@ const schemas = [
         })}
       </div>
     </section>
+
+    <AdSlot placement="list" style="leaderboard" />
 
     <!-- Brand explainer — adds content depth for SEO -->
     <section class="mb-10 bg-gray-50 rounded-2xl p-6 border border-gray-200">

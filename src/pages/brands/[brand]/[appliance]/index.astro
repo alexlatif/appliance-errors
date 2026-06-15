@@ -3,6 +3,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import SeverityBadge from '../../../../components/SeverityBadge.astro';
 import DifficultyBadge from '../../../../components/DifficultyBadge.astro';
 import BreadcrumbNav from '../../../../components/BreadcrumbNav.astro';
+import AdSlot from '../../../../components/AdSlot.astro';
 import {
   brands, applianceTypes, getBrand, getApplianceType,
   getCodesByBrandAndAppliance
@@ -119,6 +120,8 @@ const schemas = [
         </table>
       </div>
     </div>
+
+    <AdSlot placement="list" style="leaderboard" />
 
     <!-- High priority section -->
     {(bySeverity.critical.length + bySeverity.high.length) > 0 && (

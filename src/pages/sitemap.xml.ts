@@ -25,6 +25,9 @@ export const GET: APIRoute = () => {
   urls.push(url('/', 1.0, siteLatest, 'weekly'));
   urls.push(url('/about/', 0.4, SITE_LAUNCH, 'yearly'));
   urls.push(url('/editorial-policy/', 0.4, siteLatest, 'yearly'));
+  urls.push(url('/contact/', 0.3, SITE_LAUNCH, 'yearly'));
+  urls.push(url('/privacy/', 0.3, SITE_LAUNCH, 'yearly'));
+  urls.push(url('/terms/', 0.3, SITE_LAUNCH, 'yearly'));
   urls.push(url('/tools/error-code-lookup/', 0.8, siteLatest, 'weekly'));
 
   // Brand index

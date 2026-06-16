@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brands } from '../utils/data';
+
+// Top brands to offer as recovery links from a 404.
+const topBrands = ['samsung', 'lg', 'whirlpool', 'ge', 'bosch', 'frigidaire', 'maytag', 'kenmore'];
+const recovery = topBrands
+  .map((slug) => brands.find((b) => b.slug === slug))
+  .filter((b): b is NonNullable<typeof b> => Boolean(b));
+---
+
+<BaseLayout
+  title="Page Not Found (404) | ApplianceErrors.com"
+  description="That page does not exist. Search our appliance error code database or browse by brand."
+  noindex={true}
+>
+  <div class="max-w-2xl mx-auto px-4 py-20 text-center">
+    <p class="text-6xl font-bold text-brand-600 font-mono">404</p>
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mt-4">This page doesn't exist</h1>
+    <p class="text-gray-600 mt-3">
+      The error code or page you were looking for isn't here. Try searching by code, or jump to a brand below.
+    </p>
+
+    <form action="/tools/error-code-lookup/" method="get" class="mt-8 flex gap-2 max-w-md mx-auto">
+      <input
+        type="text"
+        name="q"
+        placeholder="Enter an error code, e.g. OE, F21, 4C…"
+        class="flex-1 rounded-lg border border-gray-300 px-4 py-3 text-gray-800 focus:border-brand-500 focus:outline-none"
+      />
+      <button type="submit" class="rounded-lg bg-brand-600 px-5 py-3 font-semibold text-white hover:bg-brand-700">
+        Search
+      </button>
+    </form>
+
+    <div class="mt-10">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Browse by brand</p>
+      <div class="flex flex-wrap justify-center gap-2">
+        {recovery.map((b) => (
+          <a
+            href={`/brands/${b.slug}/`}
+            class="rounded-lg border border-gray-200 px-4 py-2 text-brand-600 hover:border-brand-400 hover:shadow-sm transition-all"
+          >
+            {b.name}
+          </a>
+        ))}
+        <a
+          href="/brands/"
+          class="rounded-lg border border-gray-200 px-4 py-2 text-gray-600 hover:border-brand-400 transition-all"
+        >
+          All brands →
+        </a>
+      </div>
+    </div>
+
+    <a href="/" class="inline-block mt-10 text-sm text-brand-600 hover:underline">← Back to homepage</a>
+  </div>
+</BaseLayout>

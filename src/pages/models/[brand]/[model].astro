@@ -8,6 +8,7 @@ import {
   getBrand, getApplianceType, getCodesByBrandAndAppliance, slugifyCode
 } from '../../../utils/data';
 import { breadcrumbSchema, itemListSchema } from '../../../utils/schema';
+import { focus } from '../../../utils/focus';
 
 interface Model {
   slug: string; model: string; brand: string; appliance: string;
@@ -57,7 +58,7 @@ const schemas = [
 ];
 ---
 
-<BaseLayout {title} {description} {schemas}>
+<BaseLayout {title} {description} {schemas} noindex={focus.modelsNoindex()}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <BreadcrumbNav items={[
       { label: 'Home', href: '/' },

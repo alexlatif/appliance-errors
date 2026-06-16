@@ -16,6 +16,7 @@ import {
 import { faqSchema, howToSchema, breadcrumbSchema, articleSchema, errorCodeFaqs } from '../../../../utils/schema';
 import { verifiedDate, verifiedDateHuman } from '../../../../utils/freshness';
 import { sourcesForBrand } from '../../../../utils/sources';
+import { focus } from '../../../../utils/focus';
 
 // Short appliance names for <title> (saves chars vs "Washing Machine", "Refrigerator")
 const APP_SHORT: Record<string,string> = {
@@ -101,7 +102,7 @@ const severityColors: Record<string, string> = {
 const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
 ---
 
-<BaseLayout {title} {description} {schemas} ogImage={`/images/og/${errorCode.id}.png`}>
+<BaseLayout {title} {description} {schemas} ogImage={`/images/og/${errorCode.id}.png`} noindex={focus.isPageNoindex(errorCode.id)}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <BreadcrumbNav items={[
       { label: 'Home', href: '/' },

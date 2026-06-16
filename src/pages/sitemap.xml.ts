@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { brands, errorCodes, applianceTypes, slugifyCode, getCodesByBrand, getCodesByBrandAndAppliance } from '../utils/data';
 import { verifiedDate, latestVerified } from '../utils/freshness';
+import { focus } from '../utils/focus';
 import modelsData from '../data/models.json';
 import proceduresData from '../data/procedures.json';
 import symptomsData from '../data/symptoms.json';
@@ -39,8 +40,10 @@ export const GET: APIRoute = () => {
     urls.push(url(`/appliances/${at.slug}/`, 0.8, codes.length ? latestVerified(codes) : SITE_LAUNCH));
   }
 
-  // Brand hubs + brand × appliance hubs — lastmod = newest child code
+  // Brand hubs + brand × appliance hubs — focus-tier brands only (long-tail
+  // brands stay indexable but are kept out of the sitemap to concentrate crawl).
   for (const brand of brands) {
+    if (focus.isBrandSitemapExcluded(brand.slug)) continue;
     const brandCodes = getCodesByBrand(brand.slug);
     urls.push(url(`/brands/${brand.slug}/`, 0.8, brandCodes.length ? latestVerified(brandCodes) : SITE_LAUNCH));
     for (const app of brand.appliances) {
@@ -49,10 +52,12 @@ export const GET: APIRoute = () => {
     }
   }
 
-  // Individual error code pages (highest SEO value) — real per-code verified date
+  // Individual error code pages — skip noindexed (consolidate) + long-tail brands;
+  // boost A_INVEST (proven demand) to top priority.
   for (const ec of errorCodes) {
+    if (focus.isPageNoindex(ec.id) || focus.isBrandSitemapExcluded(ec.brand)) continue;
     const slug = slugifyCode(ec.code);
-    urls.push(url(`/brands/${ec.brand}/${ec.appliance}/${slug}/`, 0.9, verifiedDate(ec)));
+    urls.push(url(`/brands/${ec.brand}/${ec.appliance}/${slug}/`, focus.isInvest(ec.id) ? 1.0 : 0.9, verifiedDate(ec)));
   }
 
   // Cross-brand disambiguation pages (codes spanning 2+ brand/appliance combos)
@@ -70,9 +75,9 @@ export const GET: APIRoute = () => {
     }
   }
 
-  // Model pages
+  // Model pages — excluded from sitemap when the family is noindexed (crawl drain).
   const models = (modelsData as { models: { slug: string; brand: string; appliance: string }[] }).models;
-  if (models.length > 0) {
+  if (models.length > 0 && !focus.modelsNoindex()) {
     urls.push(url('/models/', 0.7, siteLatest, 'weekly'));
     for (const m of models) {
       const codes = getCodesByBrandAndAppliance(m.brand, m.appliance);
@@ -83,6 +88,7 @@ export const GET: APIRoute = () => {
   // Diagnostic-mode + reset procedure pages
   const procedures = (proceduresData as { procedures: { brand: string; appliance: string }[] }).procedures;
   for (const p of procedures) {
+    if (focus.isBrandSitemapExcluded(p.brand)) continue;
     const codes = getCodesByBrandAndAppliance(p.brand, p.appliance);
     const lastmod = codes.length ? latestVerified(codes) : SITE_LAUNCH;
     urls.push(url(`/brands/${p.brand}/${p.appliance}/diagnostic-mode/`, 0.7, lastmod));

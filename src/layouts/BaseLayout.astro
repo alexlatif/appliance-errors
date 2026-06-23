@@ -10,6 +10,11 @@ export interface Props {
 
 const { title, description, canonical, schemas = [], noindex = false, ogImage } = Astro.props;
 const OG_IMAGE = ogImage ? new URL(ogImage, 'https://applianceerrors.com').href : 'https://applianceerrors.com/og-image.png';
+// Footer "Popular Codes" — data-driven from the highest-volume demand-core
+// pages so every page passes internal-link equity into the focus codes that
+// are stuck "discovered – not indexed" (2026-06-22 indexing-throttle fix).
+import popularCodes from '../data/popular-codes.json';
+const footerCodes = (popularCodes as { brand: string; appliance: string; code: string; label: string }[]).slice(0, 6);
 const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
 const ADSENSE_CLIENT = 'ca-pub-9323140183656137'; // hardcoded — must appear on every page
 ---
@@ -163,11 +168,9 @@ const ADSENSE_CLIENT = 'ca-pub-9323140183656137'; // hardcoded — must appear o
       <div>
         <h3 class="text-white font-semibold mb-3">Popular Codes</h3>
         <ul class="space-y-1 text-sm">
-          <li><a href="/brands/lg/dryer/d80/" class="hover:text-white">LG Dryer D80</a></li>
-          <li><a href="/brands/lg/dryer/d90/" class="hover:text-white">LG Dryer D90</a></li>
-          <li><a href="/brands/samsung/dishwasher/lc/" class="hover:text-white">Samsung Dishwasher LC</a></li>
-          <li><a href="/brands/whirlpool/dryer/f01/" class="hover:text-white">Whirlpool Dryer F01</a></li>
-          <li><a href="/brands/bosch/dishwasher/e15/" class="hover:text-white">Bosch Dishwasher E15</a></li>
+          {footerCodes.map(c => (
+            <li><a href={`/brands/${c.brand}/${c.appliance}/${c.code}/`} class="hover:text-white">{c.label}</a></li>
+          ))}
         </ul>
       </div>
       <div>

@@ -1,0 +1,98 @@
+[
+  {
+    "brand": "lg",
+    "appliance": "dryer",
+    "code": "gas",
+    "label": "LG Dryer GAS",
+    "desc": "Gas supply error — no gas detected (gas dryer models only)",
+    "volume": 12100
+  },
+  {
+    "brand": "lg",
+    "appliance": "dryer",
+    "code": "d80",
+    "label": "LG Dryer D80",
+    "desc": "Duct blockage detected — exhaust duct 80% blocked",
+    "volume": 6600
+  },
+  {
+    "brand": "samsung",
+    "appliance": "washer",
+    "code": "4c",
+    "label": "Samsung Washer 4C",
+    "desc": "Water supply not detected",
+    "volume": 5400
+  },
+  {
+    "brand": "bosch",
+    "appliance": "dishwasher",
+    "code": "e15",
+    "label": "Bosch Dishwasher E15",
+    "desc": "Leak protection activated — water detected in base tray",
+    "volume": 4400
+  },
+  {
+    "brand": "bosch",
+    "appliance": "dishwasher",
+    "code": "e24",
+    "label": "Bosch Dishwasher E24",
+    "desc": "Drain blocked — dishwasher not draining",
+    "volume": 4400
+  },
+  {
+    "brand": "lg",
+    "appliance": "washer",
+    "code": "ue",
+    "label": "LG Washer UE",
+    "desc": "Unbalanced load — cannot complete spin cycle",
+    "volume": 2900
+  },
+  {
+    "brand": "lg",
+    "appliance": "dryer",
+    "code": "d90",
+    "label": "LG Dryer D90",
+    "desc": "Duct blockage detected — exhaust duct 90% blocked",
+    "volume": 2900
+  },
+  {
+    "brand": "lg",
+    "appliance": "washer",
+    "code": "oe",
+    "label": "LG Washer OE",
+    "desc": "Drainage error — water not draining within expected time",
+    "volume": 1900
+  },
+  {
+    "brand": "samsung",
+    "appliance": "washer",
+    "code": "ub",
+    "label": "Samsung Washer UB",
+    "desc": "Unbalanced load — drum cannot reach spin speed safely",
+    "volume": 1900
+  },
+  {
+    "brand": "samsung",
+    "appliance": "washer",
+    "code": "u6",
+    "label": "Samsung Washer U6",
+    "desc": "Unbalance error variant — repeated failed redistribution att",
+    "volume": 1900
+  },
+  {
+    "brand": "bosch",
+    "appliance": "dishwasher",
+    "code": "e22",
+    "label": "Bosch Dishwasher E22",
+    "desc": "Residual water in the sump — filter or impeller area blocked",
+    "volume": 1900
+  },
+  {
+    "brand": "bosch",
+    "appliance": "dishwasher",
+    "code": "e25",
+    "label": "Bosch Dishwasher E25",
+    "desc": "Drain pump or filter blocked — drain impeller obstructed",
+    "volume": 1600
+  }
+]

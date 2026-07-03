@@ -5,6 +5,7 @@ import SeverityBadge from '../../components/SeverityBadge.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { errorCodes, getBrand, getApplianceType, slugifyCode } from '../../utils/data';
 import { breadcrumbSchema, itemListSchema } from '../../utils/schema';
+import { focus } from '../../utils/focus';
 
 function normalize(code: string): string {
   return code.toUpperCase().replace(/[-\s]/g, '');
@@ -35,8 +36,25 @@ const { codes, displayCode } = Astro.props;
 const brandCount = new Set(codes.map(c => c.brand)).size;
 const applianceCount = new Set(codes.map(c => c.appliance)).size;
 
-const title = `${displayCode} Error Code — What It Means on ${brandCount} Brands | ApplianceErrors.com`;
-const description = `Error code ${displayCode} appears on ${brandCount} appliance brand${brandCount > 1 ? 's' : ''}. Find your brand and appliance to see exactly what ${displayCode} means and how to fix it.`;
+// CTR fix (2026-06-26): the generic "What It Means on N Brands" title was vague,
+// had a grammar bug ("on 1 Brands"), and matched no real query intent — page-1
+// impressions earned ~0 clicks. Lead with the appliance type(s) + real brand names
+// + an action word so the snippet matches "<brand> <appliance> <code>" queries.
+const brandNames = [...new Set(codes.map(c => getBrand(c.brand)?.name ?? c.brand))];
+const appNames = [...new Set(codes.map(c => getApplianceType(c.appliance)?.name ?? c.appliance))];
+const appLabel = appNames.length === 1 ? appNames[0] : 'Appliance';
+// Keep the visible title under ~60 chars (Google truncates beyond that). Lead with
+// the high-intent tokens (code + appliance + "Causes & Fix"); only append brand names
+// when there are 1-2 (the case where they sharpen intent-match without overflowing).
+// No "| ApplianceErrors.com" suffix here — the SERP already shows the domain, and the
+// 22 chars are better spent on the brand list. Meta lists all brands for the long tail.
+const brandDescList = brandNames.length <= 3 ? brandNames.join(', ') : `${brandNames.slice(0, 3).join(', ')} & more`;
+const titleBase = `${displayCode} ${appLabel} Error Code — Causes & Fix`;
+// Append brand names only when 1-2 AND the result stays under ~60 chars (Google's
+// visible-title cutoff); long appliance labels like "Washing Machine" + 2 brands overflow.
+const brandTitleSuffix = brandNames.length <= 2 ? ` (${brandNames.join(', ')})` : '';
+const title = (titleBase + brandTitleSuffix).length <= 60 ? titleBase + brandTitleSuffix : titleBase;
+const description = `${displayCode} error on ${brandDescList} ${appLabel.toLowerCase()}${brandNames.length > 1 ? 's' : ''}: what it means, likely causes, and the DIY fix. Find your exact brand below.`;
 
 const listItems = codes.map(c => {
   const b = getBrand(c.brand);
@@ -65,7 +83,7 @@ for (const c of codes) {
 }
 ---
 
-<BaseLayout {title} {description} {schemas}>
+<BaseLayout {title} {description} {schemas} noindex={focus.errorDisambigNoindex(codeSlug!)}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <BreadcrumbNav items={[
       { label: 'Home', href: '/' },

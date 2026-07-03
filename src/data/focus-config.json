@@ -23,8 +23,14 @@
     "fisher-paykel"
   ],
   "familyPolicy": {
-    "models": "noindex"
+    "models": "noindex",
+    "errorDisambig": "noindex"
   },
+  "modelsIndexAllowlist": [
+    "ge/pvd28bynfs",
+    "ge/gfe26jymfs"
+  ],
+  "errorDisambigIndexAllowlist": [],
   "noindexPageIds": [
     "samsung-refrigerator-40e",
     "samsung-refrigerator-14e",

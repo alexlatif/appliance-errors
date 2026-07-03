@@ -39,7 +39,7 @@ const brandGroups = [...byBrand.entries()]
   .filter(g => g.brand)
   .sort((a, b) => b.codes.length - a.codes.length);
 
-const title = `${symptom.name} — Error Codes & Fixes by Brand | ApplianceErrors.com`;
+const title = `${symptom.name} — Error Codes & Fixes by Brand`;
 const description = symptom.answer.length > 150 ? symptom.answer.slice(0, 147) + '…' : symptom.answer;
 
 const schemas = [

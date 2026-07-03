@@ -34,7 +34,10 @@ for (const c of codes) bySeverity[c.severity]?.push(c);
 const appName = appType?.name ?? appSlug!;
 const hasProcedures = (proceduresData as { procedures: { brand: string; appliance: string }[] }).procedures
   .some(p => p.brand === brandSlug && p.appliance === appSlug);
-const title = `${brand.name} ${appName} Error Codes — Complete List & Fixes | ApplianceErrors.com`;
+// Length-aware: long brands (e.g. "Fisher & Paykel") + "Washing Machine" overflow ~60 chars.
+const _btitleFull = `${brand.name} ${appName} Error Codes — Complete List & Fixes`;
+// <=56 source chars leaves headroom for &->&amp; HTML expansion the audit counts.
+const title = _btitleFull.length <= 56 ? _btitleFull : `${brand.name} ${appName} Error Codes & Fixes`;
 const description = `All ${brand.name} ${appName.toLowerCase()} error codes with meanings and step-by-step repair guides. ${codes.length} codes covered.`;
 
 const schemas = [
@@ -45,9 +48,22 @@ const schemas = [
     { name: `${appName} Error Codes`, url: `/brands/${brandSlug}/${appSlug}/` },
   ])
 ];
+
+// ── Unique hub overview, derived from THIS brand+appliance's real code set ──────
+// Turns thin category hubs (few codes → short table) into pages with genuine,
+// non-templated prose: the numbers/categories vary per page, so no two read alike.
+const catCount = new Map<string, number>();
+for (const c of codes) catCount.set(c.category, (catCount.get(c.category) ?? 0) + 1);
+const topCats = [...catCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3)
+  .map(([cat, n]) => ({ label: cat.replace(/_/g, ' '), n }));
+const catList = topCats.map(c => `${c.label} (${c.n})`).join(', ');
+const diyCount = codes.filter(c => !['professional', 'expert', 'pro'].includes(c.diy_difficulty)).length;
+const seriousCount = codes.filter(c => c.severity === 'critical' || c.severity === 'high').length;
+const costLo = codes.length ? Math.min(...codes.map(c => c.cost_lo)) : 0;
+const proHi = codes.length ? Math.max(...codes.map(c => c.pro_cost_hi)) : 0;
 ---
 
-<BaseLayout {title} {description} {schemas}>
+<BaseLayout {title} {description} {schemas} noindex={codes.length === 0}>
   <div class="max-w-6xl mx-auto px-4 py-8">
     <BreadcrumbNav items={[
       { label: 'Home', href: '/' },
@@ -63,6 +79,33 @@ const schemas = [
         <p class="text-gray-600 mt-1">{codes.length} error codes with causes and step-by-step fixes</p>
       </div>
     </div>
+
+    {codes.length > 0 && (
+      <div class="max-w-none text-gray-700 leading-relaxed mb-8 space-y-3">
+        <p>
+          Your <strong>{brand.name} {appName.toLowerCase()}</strong> uses {codes.length} distinct
+          error code{codes.length > 1 ? 's' : ''} to flag faults before they turn into a full
+          breakdown.{topCats.length > 0 && ` The most common cluster around ${catList}.`} Of these,
+          about <strong>{diyCount}</strong> can usually be cleared at home without a technician, while{' '}
+          <strong>{seriousCount}</strong> point to more serious faults that may warrant a professional.
+          Typical repair costs on this appliance run from <strong>${costLo}</strong> for simple DIY
+          fixes up to <strong>${proHi}</strong> for professional component replacement.
+        </p>
+        <p>
+          Find your code in the table below for its exact meaning, the most likely causes ranked by
+          how often they're the culprit, a step-by-step fix, the parts you may need, and a clear
+          call on when it's worth phoning a repair pro.
+        </p>
+        {codes.length <= 6 && (
+          <p>
+            Documented {brand.name} {appName.toLowerCase()} codes on this page:{' '}
+            {codes.map((c, i) => (
+              <>{i > 0 ? '; ' : ''}<strong class="font-mono">{c.code}</strong> — {c.meaning.toLowerCase()}</>
+            ))}.
+          </p>
+        )}
+      </div>
+    )}
 
     {hasProcedures && (
       <div class="flex flex-wrap gap-3 mb-8">

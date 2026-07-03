@@ -66,8 +66,8 @@ const avgSaving = Math.max(0, Math.round(((overallPro.lo + overallPro.hi) - (ove
 
 const easyShare = Math.round(100 * codes.filter(c => c.diy_difficulty === 'easy' || c.diy_difficulty === 'moderate').length / codes.length);
 
-const title = `${appName} Repair Cost Guide ${CURRENT_YEAR} — DIY vs Pro by Problem | ApplianceErrors.com`;
-const description = `Average ${appName.toLowerCase()} repair costs: $${overallDiy.lo}–$${overallDiy.hi} DIY vs $${overallPro.lo}–$${overallPro.hi} professional, broken down by problem type and brand from ${codes.length} documented error codes.`;
+const title = `${appName} Repair Cost Guide ${CURRENT_YEAR} — DIY vs Pro`;
+const description = `Average ${appName.toLowerCase()} repair costs: $${overallDiy.lo}–$${overallDiy.hi} DIY vs $${overallPro.lo}–$${overallPro.hi} pro, by problem type — from ${codes.length} documented error codes.`;
 
 const faqs = [
   { q: `How much does ${appName.toLowerCase()} repair cost?`,

@@ -48,7 +48,9 @@ export const GET: APIRoute = () => {
     urls.push(url(`/brands/${brand.slug}/`, 0.8, brandCodes.length ? latestVerified(brandCodes) : SITE_LAUNCH));
     for (const app of brand.appliances) {
       const appCodes = getCodesByBrandAndAppliance(brand.slug, app);
-      urls.push(url(`/brands/${brand.slug}/${app}/`, 0.7, appCodes.length ? latestVerified(appCodes) : SITE_LAUNCH));
+      // Skip empty category hubs (no codes → thin content, noindexed at render).
+      if (appCodes.length === 0) continue;
+      urls.push(url(`/brands/${brand.slug}/${app}/`, 0.7, latestVerified(appCodes)));
     }
   }
 
@@ -68,9 +70,13 @@ export const GET: APIRoute = () => {
     groups.get(key)!.push(c);
   }
   const crossBrandKeys = [...groups.entries()].filter(([, cs]) => cs.length >= 2);
+  // The /error/[code] disambiguation pages are thin navigational aggregators;
+  // when the family is noindexed keep them out of the sitemap too (index the
+  // browsable /error/ hub only). Allowlisted slugs stay in.
+  const indexableCross = crossBrandKeys.filter(([key]) => !focus.errorDisambigNoindex(key.toLowerCase()));
   if (crossBrandKeys.length > 0) {
     urls.push(url('/error/', 0.8, siteLatest, 'weekly'));
-    for (const [key, cs] of crossBrandKeys) {
+    for (const [key, cs] of indexableCross) {
       urls.push(url(`/error/${key.toLowerCase()}/`, 0.7, latestVerified(cs)));
     }
   }

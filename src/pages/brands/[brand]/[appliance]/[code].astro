@@ -72,7 +72,9 @@ const partSelectUrl = `https://www.partselect.com/PartSearchResults.aspx?SearchT
 const repairClinicUrl = `https://www.repairclinic.com/Shop-For-Parts/a/~/${encodeURIComponent(brandName + '-' + appShort)}`;
 
 // Code-first title — ≤65 chars. "D80 Error Code — LG Dryer Fix | ApplianceErrors.com" = 51 chars
-const title = `${errorCode.code} Error Code — ${brandShort} ${appShort} Fix | ApplianceErrors.com`;
+// Lead with brand + appliance + code to match the dominant "<brand> <appliance> <code>"
+// search pattern; no site-name suffix (SERP shows the domain) to stay under ~60 chars.
+const title = `${brandShort} ${appShort} ${errorCode.code} Error — Causes & Fix`;
 
 // Description ≤155 chars — meaning truncated, punchy suffix
 const meaningTrunc = errorCode.meaning.length > 90

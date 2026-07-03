@@ -29,8 +29,8 @@ const codes = getCodesByBrandAndAppliance(proc.brand, proc.appliance);
 // Codes whose reset instructions are most searched (high severity first)
 const commonCodes = codes.slice(0, 8);
 
-const title = `How to Reset a ${brand.name} ${appName} (Clear Error Codes) | ApplianceErrors.com`;
-const description = `${proc.reset.summary} Step-by-step reset instructions for ${brand.name} ${appName.toLowerCase()} error codes.`;
+const title = `How to Reset a ${brand.name} ${appName} (Clear Error Codes)`;
+const description = `Step-by-step instructions to reset a ${brand.name} ${appName.toLowerCase()} and clear error codes. ${proc.reset.summary}`.slice(0, 158);
 
 const schemas = [
   breadcrumbSchema([

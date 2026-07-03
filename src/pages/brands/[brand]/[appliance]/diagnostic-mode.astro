@@ -29,7 +29,7 @@ const appName = appType?.name ?? proc.appliance;
 const codes = getCodesByBrandAndAppliance(proc.brand, proc.appliance);
 const topCodes = codes.filter(c => c.severity === 'high' || c.severity === 'critical').slice(0, 6);
 
-const title = `How to Enter ${brand.name} ${appName} Diagnostic Mode | ApplianceErrors.com`;
+const title = `How to Enter ${brand.name} ${appName} Diagnostic Mode`;
 const description = `Step-by-step guide to entering diagnostic (service) mode on a ${brand.name} ${appName.toLowerCase()}, reading stored error codes, and running component tests.`;
 
 const schemas = [

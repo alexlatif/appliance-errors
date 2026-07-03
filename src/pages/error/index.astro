@@ -17,7 +17,7 @@ const crossBrand = [...groups.entries()]
   .filter(([, g]) => g.count >= 2)
   .sort((a, b) => b[1].count - a[1].count);
 
-const title = `Appliance Error Code Lookup by Code — ${crossBrand.length} Shared Codes | ApplianceErrors.com`;
+const title = `Appliance Error Code Lookup — ${crossBrand.length} Shared Codes`;
 const description = `Don't know your brand's exact code page? Look up any appliance error code — ${crossBrand.length} codes shared across multiple brands, disambiguated by brand and appliance type.`;
 
 const schemas = [

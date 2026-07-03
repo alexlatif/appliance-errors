@@ -37,8 +37,8 @@ const commonCodes = model.common_codes
   .filter((c): c is NonNullable<typeof c> => c !== undefined);
 const otherCodes = allCodes.filter(c => !commonCodes.includes(c));
 
-const title = `${model.model} Error Codes — ${brand.name} ${appName} | ApplianceErrors.com`;
-const description = `Error codes for the ${brand.name} ${model.model} ${appName.toLowerCase()} (${model.years}): the ${commonCodes.length} most common codes on this model plus the full ${brand.name} ${appName.toLowerCase()} code list.`;
+const title = `${model.model} Error Codes — ${brand.name} ${appName}`;
+const description = `The ${commonCodes.length} most common error codes on the ${brand.name} ${model.model} ${appName.toLowerCase()} (${model.years}), with meanings and fixes, plus the full ${brand.name} code list.`.slice(0, 150);
 
 const schemas = [
   breadcrumbSchema([
@@ -58,7 +58,7 @@ const schemas = [
 ];
 ---
 
-<BaseLayout {title} {description} {schemas} noindex={focus.modelsNoindex()}>
+<BaseLayout {title} {description} {schemas} noindex={focus.modelNoindex(model.brand, model.slug)}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <BreadcrumbNav items={[
       { label: 'Home', href: '/' },

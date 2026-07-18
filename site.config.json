@@ -1,0 +1,13 @@
+{
+  "name": "ApplianceErrors",
+  "site": "https://applianceerrors.com",
+  "contactEmail": "hello@applianceerrors.com",
+  "ga4": "G-6DC15QRJVP",
+  "ga4Property": "540958023",
+  "adsense": "ca-pub-9323140183656137",
+  "indexnow": "ae4f9b2c7d1e3a6f8b0c5d7e9f2a4b6c",
+  "verified": true,
+  "verifiedDate": "2026-06-09",
+  "verifiedNote": "Error-code meanings and severities are aligned with manufacturer service literature and authoritative appliance-repair references; per-code verified dates tracked in src/data/verified-dates.json.",
+  "disclaimer": "Error-code meanings, causes and fixes are aligned with manufacturer service documentation and reputable repair references; codes can differ between model revisions, so always confirm against your appliance's service manual and exercise caution (disconnect power/water) before any DIY repair."
+}

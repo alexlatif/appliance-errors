@@ -17,6 +17,7 @@ import { faqSchema, howToSchema, breadcrumbSchema, articleSchema, errorCodeFaqs 
 import { verifiedDate, verifiedDateHuman } from '../../../../utils/freshness';
 import { sourcesForBrand } from '../../../../utils/sources';
 import { focus } from '../../../../utils/focus';
+import titleOverrides from '../../../../data/title-overrides.json';
 
 // Short appliance names for <title> (saves chars vs "Washing Machine", "Refrigerator")
 const APP_SHORT: Record<string,string> = {
@@ -74,13 +75,15 @@ const repairClinicUrl = `https://www.repairclinic.com/Shop-For-Parts/a/~/${encod
 // Code-first title — ≤65 chars. "D80 Error Code — LG Dryer Fix | ApplianceErrors.com" = 51 chars
 // Lead with brand + appliance + code to match the dominant "<brand> <appliance> <code>"
 // search pattern; no site-name suffix (SERP shows the domain) to stay under ~60 chars.
-const title = `${brandShort} ${appShort} ${errorCode.code} Error — Causes & Fix`;
+// Hand-curated CTR overrides (title-overrides.json) win over the template.
+const override = (titleOverrides.codePages as Record<string, { title?: string; description?: string }>)[errorCode.id];
+const title = override?.title ?? `${brandShort} ${appShort} ${errorCode.code} Error — Causes & Fix`;
 
 // Description ≤155 chars — meaning truncated, punchy suffix
 const meaningTrunc = errorCode.meaning.length > 90
   ? errorCode.meaning.slice(0, 87) + '…'
   : errorCode.meaning;
-const description = `${meaningTrunc}. DIY fix for ${brandName} ${appShort} error ${errorCode.code}: causes, steps & parts.`;
+const description = override?.description ?? `${meaningTrunc}. DIY fix for ${brandName} ${appShort} error ${errorCode.code}: causes, steps & parts.`;
 
 const schemas = [
   faqSchema(errorCode, brandName, appName),
@@ -133,6 +136,16 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
         )}
       </div>
       <p class="text-gray-800 text-lg font-medium">{errorCode.meaning}</p>
+      {/* GEO answer block: one self-contained, quotable sentence an AI Overview
+          can cite verbatim — code + brand + appliance + top cause + first fix. */}
+      {errorCode.causes.length > 0 && errorCode.fixes.length > 0 && (
+        <p class="mt-2 text-gray-700">
+          The most common cause of the {errorCode.code} error on a {brandName} {appName.toLowerCase()} is
+          {' '}{errorCode.causes[0].description.charAt(0).toLowerCase() + errorCode.causes[0].description.slice(1)}
+          {errorCode.causes[0].frequency ? ` (~${errorCode.causes[0].frequency}% of cases)` : ''};
+          start with: {errorCode.fixes[0].title.toLowerCase()}.
+        </p>
+      )}
       <div class="mt-3 flex flex-wrap gap-6 text-sm text-gray-600">
         <span>💰 DIY cost: <strong>${errorCode.cost_lo}–${errorCode.cost_hi}</strong></span>
         <span>👨‍🔧 Pro cost: <strong>${errorCode.pro_cost_lo}–${errorCode.pro_cost_hi}</strong></span>
@@ -180,6 +193,12 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
       {errorCode.models_affected && (
         <div class="mt-4 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 text-sm text-blue-800">
           <strong>Models affected:</strong> {errorCode.models_affected}
+        </div>
+      )}
+
+      {errorCode.real_world_notes && (
+        <div class="mt-4 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700">
+          <strong>What owners report:</strong> {errorCode.real_world_notes}
         </div>
       )}
     </section>

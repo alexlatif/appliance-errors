@@ -6,6 +6,7 @@ import AdSlot from '../../components/AdSlot.astro';
 import { errorCodes, getBrand, getApplianceType, slugifyCode } from '../../utils/data';
 import { breadcrumbSchema, itemListSchema } from '../../utils/schema';
 import { focus } from '../../utils/focus';
+import titleOverrides from '../../data/title-overrides.json';
 
 function normalize(code: string): string {
   return code.toUpperCase().replace(/[-\s]/g, '');
@@ -53,8 +54,10 @@ const titleBase = `${displayCode} ${appLabel} Error Code — Causes & Fix`;
 // Append brand names only when 1-2 AND the result stays under ~60 chars (Google's
 // visible-title cutoff); long appliance labels like "Washing Machine" + 2 brands overflow.
 const brandTitleSuffix = brandNames.length <= 2 ? ` (${brandNames.join(', ')})` : '';
-const title = (titleBase + brandTitleSuffix).length <= 60 ? titleBase + brandTitleSuffix : titleBase;
-const description = `${displayCode} error on ${brandDescList} ${appLabel.toLowerCase()}${brandNames.length > 1 ? 's' : ''}: what it means, likely causes, and the DIY fix. Find your exact brand below.`;
+// Hand-curated CTR overrides (title-overrides.json) win over the template.
+const override = (titleOverrides.errorPages as Record<string, { title?: string; description?: string }>)[codeSlug!];
+const title = override?.title ?? ((titleBase + brandTitleSuffix).length <= 60 ? titleBase + brandTitleSuffix : titleBase);
+const description = override?.description ?? `${displayCode} error on ${brandDescList} ${appLabel.toLowerCase()}${brandNames.length > 1 ? 's' : ''}: what it means, likely causes, and the DIY fix. Find your exact brand below.`;
 
 const listItems = codes.map(c => {
   const b = getBrand(c.brand);

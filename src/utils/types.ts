@@ -50,6 +50,8 @@ export interface ErrorCode {
   related_codes: string[];
   models_affected?: string;
   when_to_call_pro: string;
+  /** Owner-experience notes from the enrichment pipeline (Phase 2). */
+  real_world_notes?: string;
 }
 
 export interface SiteData {

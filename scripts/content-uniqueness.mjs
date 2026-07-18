@@ -106,6 +106,7 @@ function codeSpecificText(code) {
     code.reset_instructions,
     code.when_to_call_pro,
     code.models_affected,
+    code.real_world_notes,
     `DIY cost ${code.cost_lo} ${code.cost_hi}`,
     `professional repair cost ${code.pro_cost_lo} ${code.pro_cost_hi}`,
   ].join(' ');

@@ -289,7 +289,7 @@
         "4C2"
       ],
       "meaning": "Water supply not detected",
-      "detail": "Your Samsung washer cannot sense adequate water pressure from the supply lines. The machine detects insufficient water flow when attempting to fill. This is one of the most common Samsung washer errors and is usually caused by a simple supply issue rather than a hardware failure.",
+      "detail": "The control board monitors the flow sensor and fill timing during the intake step. If water level fails to rise adequately within an expected window, it logs 4C (older units show 4E). Unlike a drain fault, 4C fires only during filling, and unlike leak-related codes it points to inadequate incoming flow. Both hot and cold supply are checked, so a single closed valve or clogged inlet screen can trigger it before the inlet valve solenoid is ever suspect.",
       "severity": "medium",
       "category": "water_supply",
       "causes": [
@@ -345,7 +345,9 @@
         "HE",
         "nF"
       ],
-      "when_to_call_pro": "Call a technician if you have confirmed water supply is good (pressure OK, valves open, hoses clear) but the error persists — the control board or water inlet valve needs professional diagnosis."
+      "when_to_call_pro": "Call a technician if you have confirmed water supply is good (pressure OK, valves open, hoses clear) but the error persists — the control board or water inlet valve needs professional diagnosis.",
+      "models_affected": "Samsung front-load and top-load washers across most series, including models such as WF45T6000AW, WF45R6100AP, WF42H5000AW, WA50R5400AV, WA45T3200AW, WF50BG8300AV, WV60M9900AV, and WA54R7600AV",
+      "real_world_notes": "Owners commonly report 4C appearing right at the start of a cycle, often after the washer was moved and a hose got kinked, or after a plumbing shutoff was only partly reopened. Cleaning the mesh inlet screens frequently resolves it, and some report the code was a false alarm during periods of temporarily low household water pressure."
     },
     {
       "id": "samsung-washer-ue",
@@ -1589,7 +1591,7 @@
         "bE3"
       ],
       "meaning": "Specific button on control panel shorted",
-      "detail": "A specific button on the control panel is registering as continuously pressed (shorted). bE2 and bE3 pinpoint different specific buttons compared to the generic bE code.",
+      "detail": "The control board continuously scans the button matrix on the control panel. bE2 and bE3 fire when the board reads a specific button as held down for longer than a valid press, indicating a short in that key's input line. Unlike the generic bE code, these variants identify which individual button is stuck. The most common trigger is detergent or moisture bridging the membrane contacts, distinguishing a cleanable fault from a failed UI board that reads the input as permanently closed.",
       "severity": "low",
       "category": "control_panel",
       "causes": [
@@ -1632,7 +1634,9 @@
       "related_codes": [
         "bE"
       ],
-      "when_to_call_pro": "If UI board replacement doesn't resolve bE2/bE3, the main control board keypad interface has failed."
+      "when_to_call_pro": "If UI board replacement doesn't resolve bE2/bE3, the main control board keypad interface has failed.",
+      "models_affected": "Samsung washers with electronic touch/button control panels, both front-load and top-load models across recent generations",
+      "real_world_notes": "Owners commonly report this code appearing after a cycle where detergent or water splashed onto the panel, and many find that wiping the panel and firmly pressing each button clears it. It can also be falsely triggered by residual moisture, so letting the panel dry after unplugging often resolves it without any parts."
     },
     {
       "id": "samsung-washer-e7",
@@ -4724,7 +4728,7 @@
       "code": "OE",
       "aliases": [],
       "meaning": "Drainage error — water not draining within expected time",
-      "detail": "The LG washer is unable to drain water within the programmed time. This will result in standing water in the drum and a halted cycle. The pump filter is usually the culprit — it's a 10-minute DIY fix that most people overlook.",
+      "detail": "OE fires when the control board doesn't sense the water level dropping to empty within the allotted drain window. It monitors the pressure sensor during the pump phase; if the level stays high past the timeout, the cycle halts with standing water. This differs from LE, which flags a drain-pump motor lock or overload rather than a drainage timeout — OE is about flow, not the motor's electrical condition, though a failed pump can trigger either.",
       "severity": "high",
       "category": "drainage",
       "causes": [
@@ -4776,7 +4780,9 @@
       "related_codes": [
         "LE"
       ],
-      "when_to_call_pro": "If the pump filter is clean and hose is clear but no draining occurs and the pump is silent, the pump motor needs replacement."
+      "when_to_call_pro": "If the pump filter is clean and hose is clear but no draining occurs and the pump is silent, the pump motor needs replacement.",
+      "models_affected": "Most LG front-load and top-load washers across recent model generations, including front-loaders like the WM3900HWA, WM4000HBA, WM4500HBA, and WM8100HVA and top-loaders such as the WT7300CW, WT7900HBA, and WM3400CW.",
+      "real_world_notes": "Owners commonly report OE appearing mid-cycle after heavier loads or when the pump filter hasn't been cleaned in a while, and clearing that filter often resolves it quickly. A kinked drain hose or a drain hose pushed too far down the standpipe can also falsely trigger the code."
     },
     {
       "id": "lg-washer-ue",
@@ -4785,7 +4791,7 @@
       "code": "UE",
       "aliases": [],
       "meaning": "Unbalanced load — cannot complete spin cycle",
-      "detail": "The washer's sensors detected that the laundry load is unevenly distributed, making it unsafe to run the spin cycle at high speed. LG washers will make several attempts to redistribute the load by adding water and slowly tumbling before displaying UE.",
+      "detail": "UE fires when the drum's balance-sensing system detects uneven weight distribution as spin speed ramps up. The control monitors motor load and drum wobble; if imbalance exceeds a safe threshold, it halts acceleration, adds water, and re-tumbles to reposition items. UE appears only after several failed redistribution attempts. It differs from mechanical fault codes because it signals a load-distribution issue rather than a motor, drainage, or sensor failure — though chronic UE can point to worn suspension components.",
       "severity": "low",
       "category": "balance",
       "causes": [
@@ -4830,7 +4836,9 @@
       "pro_cost_hi": 180,
       "reset_instructions": "Open the door, redistribute laundry, then press Start/Pause to resume. The error clears automatically after successful rebalancing.",
       "related_codes": [],
-      "when_to_call_pro": "If UE occurs consistently with normal loads, the shock absorbers or spider arm (drum bearing) may need replacement."
+      "when_to_call_pro": "If UE occurs consistently with normal loads, the shock absorbers or spider arm (drum bearing) may need replacement.",
+      "models_affected": "Both front-load models (e.g. WM3900HWA, WM4000HBA, WM4500HBA, WM8100HVA) and top-load models (e.g. WT7300CW, WT7900HBA); the UE code appears across LG's washer lineup, though top-load and front-load balancing behavior differs slightly.",
+      "real_world_notes": "Owners commonly report UE with bulky single items like comforters, bath mats, or a lone pair of jeans that clump to one side. Redistributing the load or adding a few towels to balance usually clears it right away; if it keeps happening with normal, well-spread loads, worn shocks are often the culprit."
     },
     {
       "id": "lg-washer-ie",
@@ -5716,7 +5724,7 @@
       "code": "D80",
       "aliases": [],
       "meaning": "Duct blockage detected — exhaust duct 80% blocked",
-      "detail": "LG's Flow Sense sensor has detected that your dryer's exhaust duct is approximately 80% blocked. Airflow is significantly reduced, causing longer dry times, overheating risk, and potential fire hazard. This is the single most-searched LG dryer error code with nearly 10,000 searches per month.",
+      "detail": "D80 is a Flow Sense diagnostic reading, not a hard fault. LG's control board monitors airflow and back-pressure through the exhaust; when it calculates roughly 80% restriction, it displays D80 as a warning while the cycle continues. It reflects reduced airflow from accumulated lint or duct issues rather than a component failure. It differs from D90 and D95, which indicate progressively worse blockage (about 90% and 95%) and greater overheating risk.",
       "severity": "medium",
       "category": "airflow",
       "causes": [
@@ -5775,7 +5783,9 @@
         "D90",
         "D95"
       ],
-      "when_to_call_pro": "If the duct is completely clean and the code persists, the Flow Sense sensor itself may have failed. Professional diagnosis needed."
+      "when_to_call_pro": "If the duct is completely clean and the code persists, the Flow Sense sensor itself may have failed. Professional diagnosis needed.",
+      "models_affected": "LG dryers equipped with the Flow Sense duct-monitoring system, including models such as DLEX3900W, DLE3500W, DLEX4500B, DLE7150W, and DLG3601W",
+      "real_world_notes": "Owners commonly report D80 appearing partway through or at the end of a cycle, often after skipped duct cleanings, and it sometimes clears simply by emptying a full lint filter or straightening a kinked hose behind the unit. A stuck exterior vent flap or a bird nest can trigger it even when the indoor duct looks clean."
     },
     {
       "id": "lg-dryer-d90",
@@ -5784,7 +5794,7 @@
       "code": "D90",
       "aliases": [],
       "meaning": "Duct blockage detected — exhaust duct 90% blocked",
-      "detail": "LG's Flow Sense system has detected a critical 90% duct blockage. At this level, the dryer will reduce heat output or stop the cycle entirely to prevent overheating and fire risk. The D90 code is more urgent than D80 and requires immediate attention. This is the second most-searched LG dryer error with nearly 3,000 monthly searches.",
+      "detail": "The D90 code is generated by LG's Flow Sense system, which uses a duct sensor to gauge restriction in the exhaust path. When the control board calculates roughly 90% blockage, it interprets airflow as dangerously low and cuts or reduces heat to avoid overheating. Unlike D80, which warns of moderate restriction while allowing continued drying, D90 signals a critical condition. It differs from a heating or thermistor fault because the trigger is airflow-based, not element-based.",
       "severity": "high",
       "category": "airflow",
       "causes": [
@@ -5840,7 +5850,9 @@
         "D80",
         "D95"
       ],
-      "when_to_call_pro": "If duct cleaning doesn't clear the code, the Flow Sense sensor may have failed, or you may need a professional duct cleaning service for complex wall-routed duct runs."
+      "when_to_call_pro": "If duct cleaning doesn't clear the code, the Flow Sense sensor may have failed, or you may need a professional duct cleaning service for complex wall-routed duct runs.",
+      "models_affected": "LG dryers equipped with the Flow Sense duct-monitoring system, including models such as DLEX3900W, DLE3500W, DLEX4500B, DLE7150W, and DLG3601W",
+      "real_world_notes": "Owners commonly report D90 appearing gradually after months of skipped duct cleaning, often alongside longer cycles and hot, damp laundry. A clogged lint filter, a snow- or debris-blocked exterior vent cap, or a crushed flexible duct behind the dryer can falsely inflate the reading. The frequent quick win is a full duct-to-cap cleaning, after which an Air Only run clears the code."
     },
     {
       "id": "lg-dryer-d95",
@@ -6409,7 +6421,7 @@
       "code": "GAS",
       "aliases": [],
       "meaning": "Gas supply error — no gas detected (gas dryer models only)",
-      "detail": "The gas dryer is not detecting a gas flame during ignition attempts. This can indicate the gas supply is off or the igniter/gas valve has failed.",
+      "detail": "On gas models, the control monitors for a confirmed flame during the ignition sequence. The igniter first glows to reach ignition temperature, then the gas valve coils open to release gas. If no flame is sensed within the allotted ignition attempts, the GAS code fires. Unlike a general heating fault, this code specifically points to the gas delivery or ignition chain — supply valve, igniter, or valve coils — rather than thermistors, thermostats, or the electric heating element.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -6462,8 +6474,9 @@
       "pro_cost_hi": 450,
       "reset_instructions": "Restore gas supply and restart.",
       "related_codes": [],
-      "models_affected": "LG gas dryer models (DLGX series with gas)",
-      "when_to_call_pro": "Any gas dryer repair involving the gas valve, igniter, or burner assembly should be performed by a qualified technician if you are not experienced with gas appliances."
+      "models_affected": "LG gas dryer models only, such as the DLG3601W; electric models (DLEX/DLE series) do not display this code",
+      "when_to_call_pro": "Any gas dryer repair involving the gas valve, igniter, or burner assembly should be performed by a qualified technician if you are not experienced with gas appliances.",
+      "real_world_notes": "Owners commonly report this appearing after moving the dryer or after gas service work, when the shutoff valve was left partly closed. A frequent quick win is simply confirming the valve behind the dryer is fully open and that other gas appliances still work; if the igniter glows but no flame appears, the gas valve coils are the usual suspect."
     },
     {
       "id": "lg-dryer-dh",
@@ -13663,7 +13676,7 @@
       "code": "E64",
       "aliases": [],
       "meaning": "Heater open circuit — heating element has failed",
-      "detail": "The wash water heater has an open circuit, meaning the heating element is burned through. The washer can still run cold water cycles, but hot and warm water settings will not work, and some sanitize cycles will be disabled.",
+      "detail": "The control board monitors the wash-water heating element's circuit resistance during hot, warm, and sanitize cycles. When it measures an open circuit rather than the expected 20–30 ohms, it fires E64, indicating the element has burned through, its wiring is broken, or the heater relay isn't completing the loop. Unlike E61, which points to a heater that runs but fails to reach temperature, E64 reflects a total loss of electrical continuity, so no heat is produced at all.",
       "severity": "high",
       "category": "heating",
       "causes": [
@@ -13710,7 +13723,9 @@
       "related_codes": [
         "E61"
       ],
-      "when_to_call_pro": "Heating element access requires significant disassembly. Professional service is recommended if you're not experienced."
+      "when_to_call_pro": "Heating element access requires significant disassembly. Professional service is recommended if you're not experienced.",
+      "models_affected": "GE front-load washers with an internal water heating circuit, such as the GFW550SSNWW, GFW650SSNWW, and GFW850SPNRS; top-load models without a heater (e.g. GTW465ASNWW) generally do not report this code",
+      "real_world_notes": "Owners commonly report E64 appearing only on hot or sanitize cycles while cold washes run normally, which can make it easy to overlook at first. Before condemning the element, it's worth checking the two heater wires, since a loose or corroded connection sometimes triggers the same code and is a much quicker fix."
     },
     {
       "id": "ge-washer-e61",
@@ -17369,7 +17384,7 @@
       "code": "E15",
       "aliases": [],
       "meaning": "Leak protection activated — water detected in base tray",
-      "detail": "The AquaStop anti-flood system has detected water in the base tray of the Bosch dishwasher. This is one of the most searched Bosch dishwasher error codes. The dishwasher will pump water out continuously and lock itself until the issue is resolved.",
+      "detail": "E15 fires when a polystyrene float in the base tray rises against a microswitch, telling the control board that water has pooled beneath the tub. The board triggers AquaStop, running the drain pump continuously and locking the cycle until the tray is dry and the float drops. Unlike E24/E25, which point to blocked or restricted drainage through the pump and hose, E15 specifically indicates water has escaped the sealed circuit into the base — from a leak, overfill, or even heavy condensation.",
       "severity": "high",
       "category": "leak",
       "causes": [
@@ -17430,7 +17445,9 @@
         "E24",
         "E25"
       ],
-      "when_to_call_pro": "If E15 recurs after drying and the door seal is intact, there is an internal water leak (cracked sump, hose, or pump) requiring professional inspection."
+      "when_to_call_pro": "If E15 recurs after drying and the door seal is intact, there is an internal water leak (cracked sump, hose, or pump) requiring professional inspection.",
+      "models_affected": "Virtually all Bosch dishwashers equipped with the AquaStop anti-flood system, including models such as SHEM63W55N, SHPM65Z55N, SHXM4AY55N, SHEM3AY55N, SHP878ZD5N, and SHX878ZD5N.",
+      "real_world_notes": "Owners commonly report E15 appearing suddenly mid-cycle, sometimes with a running pump that won't stop. A frequent false trigger is steam or condensation after a hot cycle rather than an actual leak, so many find that simply tilting to drain and letting the base dry overnight clears it; if it returns quickly, suspect a real leak."
     },
     {
       "id": "bosch-dishwasher-e24",
@@ -17439,7 +17456,7 @@
       "code": "E24",
       "aliases": [],
       "meaning": "Drain blocked — dishwasher not draining",
-      "detail": "The Bosch dishwasher cannot drain water. This is a very common error often caused by a blocked drain filter or a kinked drain hose. It's usually a quick DIY fix.",
+      "detail": "E24 fires when the control board detects that standing water is not clearing within the expected drain cycle time — the pump runs but the water level sensor still reads full. It points specifically to a physical restriction in the drain path (filter, hose, disposal port, or impeller) rather than an electrical pump fault. This distinguishes it from E25, which typically flags a pump or drain-cover issue, and E15, which signals water in the base pan.",
       "severity": "high",
       "category": "drainage",
       "causes": [
@@ -17489,7 +17506,9 @@
         "E25",
         "E15"
       ],
-      "when_to_call_pro": "If the filter and hose are clear but the pump still doesn't drain (you can hear it trying), the pump motor has failed."
+      "when_to_call_pro": "If the filter and hose are clear but the pump still doesn't drain (you can hear it trying), the pump motor has failed.",
+      "models_affected": "Most Bosch dishwashers that report numeric E-codes, including the SHEM63W55N, SHPM65Z55N, SHXM4AY55N, SHEM3AY55N, SHP878ZD5N, and SHX878ZD5N.",
+      "real_world_notes": "Owners commonly report E24 appearing mid-cycle with a pool of water left in the tub, and clearing the coarse and mesh filters often resolves it right away. A frequent false trigger is a newly installed garbage disposal whose knockout plug was never removed, or a high-loop drain hose that got kinked when the unit was pushed back into place."
     },
     {
       "id": "bosch-dishwasher-e25",
@@ -21620,7 +21639,7 @@
       "code": "F26",
       "aliases": [],
       "meaning": "Door switch error — door state not detected",
-      "detail": "On these Whirlpool-platform front-load washers, F26 indicates the door switch did not report the door opening/closing as expected, so the control cannot verify the door state.",
+      "detail": "F26 fires when the control board expects to see a change in door state — typically the door being opened before a cycle — but the door switch never reports that transition within the allotted window. The board reads the switch input to confirm the door is genuinely closed and locked before allowing operation. A failed switch, broken or corroded wiring, or a faulty control input all leave the door state ambiguous. This differs from F22, which reflects a lock-mechanism failure once the door is already shut.",
       "severity": "medium",
       "category": "door",
       "causes": [
@@ -21664,7 +21683,9 @@
       "related_codes": [
         "F22"
       ],
-      "when_to_call_pro": "If a new door switch and F26 persists, the control board door input has failed."
+      "when_to_call_pro": "If a new door switch and F26 persists, the control board door input has failed.",
+      "models_affected": "Front-load washers on the Whirlpool control platform, such as the MHW6630HW; the code is specific to front-loaders with a door lock/switch assembly rather than top-load models.",
+      "real_world_notes": "Owners commonly report F26 appearing at the start of a cycle, sometimes after slamming the door too quickly or when it isn't pushed fully shut. A frequent quick win is simply opening and firmly reclosing the door a few times, or briefly unplugging the machine; if it returns repeatedly, the door lock assembly is the usual culprit."
     },
     {
       "id": "maytag-washer-f28",
@@ -21991,7 +22012,7 @@
       "code": "F22",
       "aliases": [],
       "meaning": "Outlet thermistor (temperature sensor) failure",
-      "detail": "The control is reading an open circuit from the exhaust thermistor, so it cannot measure outgoing air temperature or regulate heat safely — the dryer stops or refuses to heat. A failed thermistor is the most common cause; it's an inexpensive part on the blower housing.",
+      "detail": "F22 fires when the control detects an out-of-range or open resistance reading from the outlet (exhaust) thermistor, the sensor that tracks outgoing air temperature. Because the board can no longer confirm safe heat levels, it halts drying or refuses to heat. This differs from a shorted-sensor reading and from thermal-fuse or heating-element faults; F22 points specifically at the thermistor circuit — the sensor itself, a loose connector, or heat-damaged wiring on the blower housing.",
       "severity": "medium",
       "category": "sensor",
       "causes": [
@@ -22031,7 +22052,9 @@
       "pro_cost_hi": 280,
       "reset_instructions": "After replacement, unplug 1 minute then restart.",
       "related_codes": [],
-      "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed."
+      "when_to_call_pro": "If new thermistor and error persists, control board sensor input failed.",
+      "models_affected": "Maytag electric and gas dryers with electronic controls that monitor exhaust air temperature, including models such as MEDC465HW, MED7230HW, and MED4500MW",
+      "real_world_notes": "Owners commonly report this code appearing mid-cycle or when the dryer runs but won't heat, and it often clears after reseating the thermistor connector. A quick resistance check at room temperature (roughly 10k–12k ohms) usually confirms whether the inexpensive sensor is the culprit before ordering parts."
     },
     {
       "id": "maytag-dryer-f06",
@@ -25125,7 +25148,7 @@
       "code": "E51",
       "aliases": [],
       "meaning": "Drive motor triac short-circuit on the control board",
-      "detail": "The triac that switches power to the drive motor is shorted, so the board can no longer control the motor safely. The drum may not spin, or the board shuts down to protect itself.",
+      "detail": "E51 fires when the control board detects that the triac switching power to the drive motor has failed shorted (closed), leaving the board unable to stop or modulate current to the motor. The board typically halts operation to protect itself, so the drum may not spin. Unlike E52 or E53, which point to motor tachometer or feedback signal faults, E51 indicates a hardware short in the board's motor-drive circuit, often triggered by a shorted motor winding, wiring fault, or surge.",
       "severity": "high",
       "category": "control_board",
       "causes": [
@@ -25177,7 +25200,9 @@
         "E52",
         "E53"
       ],
-      "when_to_call_pro": "Always confirm the motor is not shorted before replacing the board, or the new board may fail too."
+      "when_to_call_pro": "Always confirm the motor is not shorted before replacing the board, or the new board may fail too.",
+      "models_affected": "Electrolux front-load washers using the main control board with a triac-driven drive motor, including models such as EFLS627UTT and ELFW7637AT",
+      "real_world_notes": "Owners commonly report this code appearing at the start of or during the spin phase, sometimes with the drum failing to turn. Because a shorted motor can destroy a replacement board, many find it worth confirming motor winding resistance before ordering parts; a simple 10-minute unplug reset occasionally clears a one-off surge-related trip but rarely fixes a genuinely shorted triac."
     },
     {
       "id": "electrolux-washer-e52",
@@ -30540,7 +30565,7 @@
       "code": "F6",
       "aliases": [],
       "meaning": "Overcurrent error — excessive current detected in the motor drive circuit",
-      "detail": "The main board's drive circuit detected current beyond safe limits while powering the direct-drive motor. This protects the board's IPM (inverter power module) from burning out. Causes range from a shorted stator winding to a failing board.",
+      "detail": "F6 fires when the main board's inverter power module measures motor-drive current above its safe threshold, tripping a hardware protection to keep the IPM from failing. Unlike LE (locked/overloaded motor) or CE (a sustained overcurrent LG flags separately), F6 is an instantaneous overcurrent spike in the drive stage. It typically points to a shorted stator winding, a Hall-sensor timing fault feeding the drive bad commutation data, a harness short, or degradation within the board's own power section.",
       "severity": "high",
       "category": "motor",
       "causes": [
@@ -30593,7 +30618,9 @@
         "LE",
         "CE"
       ],
-      "when_to_call_pro": "Distinguishing a bad stator from a bad board requires meter work on live components — most owners should call a technician."
+      "when_to_call_pro": "Distinguishing a bad stator from a bad board requires meter work on live components — most owners should call a technician.",
+      "models_affected": "LG direct-drive washers, both front-load and top-load models (for example the WM3900HWA, WM4000HBA, WM4500HBA, WM8100HVA front-loaders and the WT7300CW, WT7900HBA top-loaders)",
+      "real_world_notes": "Owners commonly report F6 appearing mid-cycle, often during spin ramp-up when motor current peaks, and a single trip sometimes clears after a ten-minute power cycle. A one-time jam or heavy unbalanced load can trigger it falsely, but repeated F6 codes usually indicate a genuine stator or board fault and shouldn't be retried repeatedly."
     },
     {
       "id": "lg-washer-cl",
@@ -35666,7 +35693,7 @@
       "code": "F33",
       "aliases": [],
       "meaning": "Electronic control fault — safety shutdown",
-      "detail": "The oven's electronic control detected an internal fault and performed a safety shutdown. This is a control-module-level error: heating is blocked until the fault clears or the module is repaired.",
+      "detail": "F33 fires when the oven's electronic control runs its internal self-check and finds a fault it can't recover from — typically a failed component on the control board, corrupted firmware memory after a surge or brownout, or a bad internal connector. The control responds by blocking all heating as a safety measure. Unlike a sensor-specific code such as F10, F33 points at the control module itself rather than a probe or heating element, which is why a persistent F33 usually means module repair or replacement.",
       "severity": "high",
       "category": "control",
       "causes": [
@@ -35710,7 +35737,9 @@
       "related_codes": [
         "F10"
       ],
-      "when_to_call_pro": "Miele control modules are model-coded — a returning F33 should go to Miele service or an authorized tech."
+      "when_to_call_pro": "Miele control modules are model-coded — a returning F33 should go to Miele service or an authorized tech.",
+      "models_affected": "Miele wall ovens and range ovens with electronic control modules, roughly mid-2000s onward",
+      "real_world_notes": "Owners commonly report F33 appearing suddenly after a power outage, storm, or flickering supply, and a full breaker-off reset of about ten minutes often clears these one-off cases. If the code returns quickly after resetting, it typically indicates the control module itself needs service rather than a passing glitch."
     },
     {
       "id": "miele-oven-f10",
@@ -36879,7 +36908,7 @@
       "code": "85E",
       "aliases": [],
       "meaning": "Compressor under-voltage error — supply voltage too low",
-      "detail": "The inverter detected supply voltage below its operating floor while driving the compressor. Brownouts, overloaded household circuits, and shared outlets are the common triggers; the refrigerator protects itself and retries. Persistent 85E with healthy household power points at the inverter board.",
+      "detail": "The inverter control monitors the DC bus and incoming line voltage while driving the compressor. When it measures supply below the operating floor needed to run the motor safely, it posts 85E, halts the compressor, and retries once conditions stabilize. This distinguishes it from over-voltage or drive-current faults in the related 83E/86E family, which trace to the motor windings or inverter output rather than the incoming mains itself.",
       "severity": "medium",
       "category": "compressor",
       "causes": [
@@ -36924,7 +36953,9 @@
         "83E",
         "86E"
       ],
-      "when_to_call_pro": "If your outlet voltage is healthy and 85E keeps returning, the inverter board needs professional replacement — and chronic low household voltage deserves an electrician's visit either way."
+      "when_to_call_pro": "If your outlet voltage is healthy and 85E keeps returning, the inverter board needs professional replacement — and chronic low household voltage deserves an electrician's visit either way.",
+      "models_affected": "Samsung refrigerators with a digital inverter compressor, including models such as RF28R7351SG, RF263BEAESR, RF23M8070SR, RS27T5200SR, and RF27T5201SR",
+      "real_world_notes": "Owners commonly report 85E appearing during summer brownouts or when a microwave, space heater, or other heavy load shares the refrigerator's circuit. It often clears on its own once line voltage recovers, and many find the quick win is simply giving the fridge its own dedicated outlet after a power reset."
     },
     {
       "id": "samsung-refrigerator-86e",

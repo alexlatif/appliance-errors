@@ -1,0 +1,63 @@
+{
+  "_note": "Hand-curated <title>/<meta description> overrides for CTR harvesting on page-1 pages. Keys: codePages by errorCode.id, errorPages by normalized disambig slug. Absent key = template default. Keep titles ≤60 chars, accurate to error-codes.json meanings. Log every change in docs/experiment-log.md.",
+  "codePages": {
+    "ge-washer-e64": {
+      "title": "GE Washing Machine E64 Error: Failed Heater — DIY Fix",
+      "description": "E64 means the heating element has an open circuit. How to test the heater, the replacement part, and repair cost for GE washers."
+    },
+    "samsung-washer-be2": {
+      "title": "Samsung Washer bE2: Stuck Button Error — Easy Fix",
+      "description": "bE2 means a control-panel button is shorted or stuck. The 5-minute panel check, reset steps, and when the board needs replacing."
+    },
+    "maytag-washer-f26": {
+      "title": "Maytag Washer F26: Door Switch Error — How to Fix",
+      "description": "F26 means the washer can't detect the door state. Door-switch test, reset steps, part number guidance, and repair cost."
+    },
+    "lg-washer-f6": {
+      "title": "LG Washer F6 Error: Motor Overcurrent — Causes & Fix",
+      "description": "F6 means excess current in the motor drive circuit. Step-by-step checks from reset to motor/board, with DIY vs pro repair costs."
+    },
+    "miele-oven-f33": {
+      "title": "Miele Oven F33 Fault: Control Shutdown — What to Do",
+      "description": "F33 is an electronic-control safety shutdown. What triggers it, the reset that clears it, and when to call Miele service."
+    },
+    "maytag-dryer-f22": {
+      "title": "Maytag Dryer F22: Thermistor Failure — DIY Fix",
+      "description": "F22 means the outlet temperature sensor failed. How to test the thermistor, the replacement part, and repair cost for Maytag dryers."
+    },
+    "electrolux-washer-e51": {
+      "title": "Electrolux Washer E51: Motor Triac Fault — Fix Guide",
+      "description": "E51 means a motor-triac short on the control board. Diagnostic steps, board repair vs replacement, and expected costs."
+    },
+    "samsung-refrigerator-85e": {
+      "title": "Samsung Fridge 85E: Low Voltage Error — What to Do",
+      "description": "85E means the compressor supply voltage is too low. Power checks to run first, when it self-clears, and when to call a pro."
+    }
+  },
+  "errorPages": {
+    "e11": {
+      "title": "E11 Error Code: Frigidaire & Electrolux — Meaning & Fix",
+      "description": "E11 on a washer means a fill problem; on dryers and ovens it differs. Pick your brand and appliance for the exact E11 meaning and fix."
+    },
+    "e41": {
+      "title": "E41 Washer Error: Door Not Closed — Simple Fix",
+      "description": "E41 on Frigidaire and Electrolux washers means the door isn't detected as shut. The latch checks and fix, brand by brand."
+    },
+    "cf": {
+      "title": "CF Error on Refrigerators: What It Means & the Fix",
+      "description": "CF on Whirlpool means board communication failure; on Kenmore a condenser fan fault. Pick your fridge for the exact fix."
+    },
+    "e01": {
+      "title": "E01 Error Code: Bosch, Electrolux & Broan — Fixes",
+      "description": "E01 differs by appliance: dishwasher heating, dryer door lock, range-hood fan overload. Pick your appliance for the exact E01 fix."
+    },
+    "f9": {
+      "title": "F9 Error Code: Dryer & Oven Meanings — Fix by Brand",
+      "description": "F9 on LG dryers is a thermistor failure; on LG, Whirlpool and GE ovens a control or door-latch fault. Find your F9 fix by brand."
+    },
+    "6e": {
+      "title": "6E Refrigerator Error: Sensor Fault — Samsung & GE Fix",
+      "description": "6E on Samsung and GE refrigerators means an ambient/humidity sensor failure. The sensor test, part, and repair cost for each brand."
+    }
+  }
+}

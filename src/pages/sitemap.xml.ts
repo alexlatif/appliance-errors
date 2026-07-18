@@ -42,22 +42,30 @@ export const GET: APIRoute = () => {
 
   // Brand hubs + brand × appliance hubs — focus-tier brands only (long-tail
   // brands stay indexable but are kept out of the sitemap to concentrate crawl).
+  // Exception: an excluded brand's appliance hub earns a slot when it parents
+  // an A_INVEST page (page-level demand trumps brand-level policy — e.g. the
+  // GE dishwasher hub reached pos ~10 while its brand was sitemap-excluded).
   for (const brand of brands) {
-    if (focus.isBrandSitemapExcluded(brand.slug)) continue;
+    const excluded = focus.isBrandSitemapExcluded(brand.slug);
     const brandCodes = getCodesByBrand(brand.slug);
-    urls.push(url(`/brands/${brand.slug}/`, 0.8, brandCodes.length ? latestVerified(brandCodes) : SITE_LAUNCH));
+    if (!excluded) {
+      urls.push(url(`/brands/${brand.slug}/`, 0.8, brandCodes.length ? latestVerified(brandCodes) : SITE_LAUNCH));
+    }
     for (const app of brand.appliances) {
       const appCodes = getCodesByBrandAndAppliance(brand.slug, app);
       // Skip empty category hubs (no codes → thin content, noindexed at render).
       if (appCodes.length === 0) continue;
+      if (excluded && !appCodes.some(c => focus.isInvest(c.id))) continue;
       urls.push(url(`/brands/${brand.slug}/${app}/`, 0.7, latestVerified(appCodes)));
     }
   }
 
-  // Individual error code pages — skip noindexed (consolidate) + long-tail brands;
-  // boost A_INVEST (proven demand) to top priority.
+  // Individual error code pages — skip noindexed (consolidate) pages, and
+  // long-tail brands UNLESS the page itself is A_INVEST (proven demand);
+  // boost A_INVEST to top priority.
   for (const ec of errorCodes) {
-    if (focus.isPageNoindex(ec.id) || focus.isBrandSitemapExcluded(ec.brand)) continue;
+    if (focus.isPageNoindex(ec.id)) continue;
+    if (focus.isBrandSitemapExcluded(ec.brand) && !focus.isInvest(ec.id)) continue;
     const slug = slugifyCode(ec.code);
     urls.push(url(`/brands/${ec.brand}/${ec.appliance}/${slug}/`, focus.isInvest(ec.id) ? 1.0 : 0.9, verifiedDate(ec)));
   }
@@ -81,11 +89,17 @@ export const GET: APIRoute = () => {
     }
   }
 
-  // Model pages — excluded from sitemap when the family is noindexed (crawl drain).
+  // Model pages — excluded from sitemap when the family is noindexed (crawl
+  // drain), except allowlisted traffic-proven models which stay indexable and
+  // therefore belong in the sitemap too.
   const models = (modelsData as { models: { slug: string; brand: string; appliance: string }[] }).models;
-  if (models.length > 0 && !focus.modelsNoindex()) {
-    urls.push(url('/models/', 0.7, siteLatest, 'weekly'));
-    for (const m of models) {
+  const modelsFamilyNoindexed = focus.modelsNoindex();
+  const sitemapModels = modelsFamilyNoindexed
+    ? models.filter(m => !focus.modelNoindex(m.brand, m.slug))
+    : models;
+  if (sitemapModels.length > 0) {
+    if (!modelsFamilyNoindexed) urls.push(url('/models/', 0.7, siteLatest, 'weekly'));
+    for (const m of sitemapModels) {
       const codes = getCodesByBrandAndAppliance(m.brand, m.appliance);
       urls.push(url(`/models/${m.brand}/${m.slug}/`, 0.7, codes.length ? latestVerified(codes) : SITE_LAUNCH));
     }

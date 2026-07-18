@@ -1,0 +1,7 @@
+{
+  "_note": "Real AdSense ad-unit slot IDs (AdSense → Ads → By ad unit → create 3 display units). Committed (slot ids are not secrets) so CI builds serve them. Empty string = placement renders NO ad markup at all — never placeholders.",
+  "top": "",
+  "mid": "",
+  "bottom": "",
+  "list": ""
+}

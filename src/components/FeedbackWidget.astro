@@ -23,6 +23,18 @@ const { codeId } = Astro.props;
     Thanks for letting us know. If the steps above didn't work, see
     <a href="#when-to-call-pro" class="text-brand-600 hover:underline">when to call a professional</a>.
   </p>
+  <div class="hidden mt-3" data-feedback-reasons>
+    <p class="text-sm text-gray-600 mb-2">What went wrong? (one tap helps us fix this guide)</p>
+    <div class="flex flex-wrap gap-2">
+      <button data-reason="didnt-work" class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-100 transition-colors">Tried the steps, still erroring</button>
+      <button data-reason="wrong-info" class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-100 transition-colors">Info doesn't match my machine</button>
+      <button data-reason="different-model" class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-100 transition-colors">My model is different</button>
+      <button data-reason="called-pro" class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-100 transition-colors">Calling a pro instead</button>
+    </div>
+  </div>
+  <p class="hidden text-sm text-gray-600 mt-2" data-feedback-reason-thanks>
+    ✓ Noted — we'll use this to improve the guide.
+  </p>
 </div>
 
 <script>
@@ -32,10 +44,22 @@ const { codeId } = Astro.props;
     const buttons = box.querySelector<HTMLElement>('[data-feedback-buttons]')!;
     const thanks = box.querySelector<HTMLElement>('[data-feedback-thanks]')!;
     const sorry = box.querySelector<HTMLElement>('[data-feedback-sorry]')!;
+    const reasons = box.querySelector<HTMLElement>('[data-feedback-reasons]')!;
+    const reasonThanks = box.querySelector<HTMLElement>('[data-feedback-reason-thanks]')!;
 
-    function showResult(vote: string) {
+    function showResult(vote: string, askReason = false) {
       buttons.classList.add('hidden');
       (vote === 'yes' ? thanks : sorry).classList.remove('hidden');
+      // Reason follow-up only right after a fresh "no" vote (not on revisit).
+      if (vote === 'no' && askReason) reasons.classList.remove('hidden');
+    }
+
+    function post(body: object) {
+      fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      }).catch(() => {});
     }
 
     const prior = localStorage.getItem(key);
@@ -45,15 +69,20 @@ const { codeId } = Astro.props;
       btn.addEventListener('click', () => {
         const vote = btn.dataset.vote!;
         localStorage.setItem(key, vote);
-        showResult(vote);
+        showResult(vote, true);
         // GA4 event — works even if the KV endpoint is down
         try { (window as any).gtag?.('event', 'fix_feedback', { code_id: id, vote }); } catch {}
-        // Durable count via Pages Function (fire-and-forget)
-        fetch('/api/feedback', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id, vote }),
-        }).catch(() => {});
+        post({ id, vote });
+      });
+    });
+
+    reasons.querySelectorAll<HTMLButtonElement>('button[data-reason]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const reason = btn.dataset.reason!;
+        reasons.classList.add('hidden');
+        reasonThanks.classList.remove('hidden');
+        try { (window as any).gtag?.('event', 'fix_feedback_reason', { code_id: id, reason }); } catch {}
+        post({ id, reason });
       });
     });
   });

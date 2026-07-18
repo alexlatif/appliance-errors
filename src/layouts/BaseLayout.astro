@@ -254,5 +254,27 @@ const ADSENSE_CLIENT = 'ca-pub-9323140183656137'; // hardcoded — must appear o
       });
     });
   </script>
+<!-- Workflow analytics: one delegated listener labels the interactions GA4's
+     enhanced measurement can't distinguish — affiliate outbound clicks, search
+     result clicks (with the query), and in-page navigation by section. -->
+<script is:inline>
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a || typeof gtag !== 'function') return;
+    try {
+      var url = new URL(a.href, location.href);
+      if (/partselect|repairclinic|amazon\./.test(url.hostname)) {
+        gtag('event', 'affiliate_click', { retailer: url.hostname.replace(/^www\./, ''), from_page: location.pathname });
+      } else if (a.closest('#search-container')) {
+        var q = document.querySelector('#search-container input');
+        gtag('event', 'site_search_click', { search_term: q && q.value ? q.value.slice(0, 60) : '', to_page: url.pathname });
+      } else if (url.hostname === location.hostname && url.pathname !== location.pathname) {
+        var sec = a.closest('section[id], nav, footer, header');
+        var zone = sec ? (sec.id || sec.tagName.toLowerCase()) : 'body';
+        gtag('event', 'internal_nav', { zone: zone, to_page: url.pathname, from_page: location.pathname });
+      }
+    } catch (_) {}
+  }, { passive: true });
+</script>
 </body>
 </html>

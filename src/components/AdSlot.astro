@@ -1,16 +1,14 @@
 ---
 // AdSlot — one place to wire real AdSense ad-unit IDs.
 //
-// Slot IDs come from env by PLACEMENT so the operator sets real IDs once
-// (Cloudflare Pages → Settings → Env vars, or .env locally) instead of
-// hunting through templates:
-//   PUBLIC_AD_SLOT_TOP     — leaderboard above the fold
-//   PUBLIC_AD_SLOT_MID     — in-content rectangle
-//   PUBLIC_AD_SLOT_BOTTOM  — end-of-content rectangle
-//   PUBLIC_AD_SLOT_LIST    — hub/listing pages
-// Until those are set, we fall back to placeholders so the build is stable,
-// but placeholder units DO NOT serve real ads — create the units in AdSense
-// and set the four env vars to start earning.
+// Slot resolution: explicit prop → env (PUBLIC_AD_SLOT_*) → committed
+// src/data/ad-slots.json. NO placeholder fallback: an unset placement
+// renders NOTHING — broken <ins> units with fake slot ids fire failed ad
+// requests on every page and read as a broken site to AdSense review.
+// To go live: create the units in AdSense (Ads → By ad unit) and paste the
+// slot ids into ad-slots.json (committed; CI builds pick them up).
+import adSlots from '../data/ad-slots.json';
+
 export interface Props {
   placement?: 'top' | 'mid' | 'bottom' | 'list';
   slot_id?: string; // explicit override (rarely needed)
@@ -22,15 +20,14 @@ const { placement = 'mid', slot_id, style = 'rectangle', layout } = Astro.props;
 const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 const isDev = import.meta.env.DEV;
 
-// Resolve slot: explicit override → env by placement → placeholder fallback.
-const PLACEHOLDER = { top: '1234567890', mid: '0987654321', bottom: '1122334455', list: '5566778899' };
 const envSlot = {
   top: import.meta.env.PUBLIC_AD_SLOT_TOP,
   mid: import.meta.env.PUBLIC_AD_SLOT_MID,
   bottom: import.meta.env.PUBLIC_AD_SLOT_BOTTOM,
   list: import.meta.env.PUBLIC_AD_SLOT_LIST,
 }[placement];
-const slot = slot_id || envSlot || PLACEHOLDER[placement];
+const jsonSlot = (adSlots as Record<string, string>)[placement] || undefined;
+const slot = slot_id || envSlot || jsonSlot;
 
 const dims: Record<string, string> = {
   leaderboard: 'min-h-[90px]',

@@ -10,16 +10,24 @@ interface Env {
 }
 
 const ID_RE = /^[a-z0-9-]{3,80}$/;
+// One-tap "why didn't it work" reasons (sent separately after a `no` vote,
+// so the vote counter is never double-incremented).
+const REASONS = ['didnt-work', 'wrong-info', 'different-model', 'called-pro'] as const;
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   if (!env.FEEDBACK) return json({ error: 'feedback store not configured' }, 503);
-  let body: { id?: string; vote?: string };
+  let body: { id?: string; vote?: string; reason?: string };
   try { body = await request.json(); } catch { return json({ error: 'bad json' }, 400); }
-  const { id, vote } = body;
-  if (!id || !ID_RE.test(id) || (vote !== 'yes' && vote !== 'no')) {
+  const { id, vote, reason } = body;
+  if (!id || !ID_RE.test(id)) return json({ error: 'invalid payload' }, 400);
+  let key: string;
+  if (vote === 'yes' || vote === 'no') {
+    key = `${id}:${vote}`;
+  } else if (reason && (REASONS as readonly string[]).includes(reason)) {
+    key = `${id}:no:${reason}`; // reason follow-up, counted separately
+  } else {
     return json({ error: 'invalid payload' }, 400);
   }
-  const key = `${id}:${vote}`;
   const current = parseInt((await env.FEEDBACK.get(key)) ?? '0', 10);
   await env.FEEDBACK.put(key, String(current + 1));
   return json({ ok: true });
@@ -34,7 +42,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   // success rates get baked into the static HTML (crawlable first-party data).
   if (url.searchParams.get('all') === '1') {
     const kv: KVNamespace = env.FEEDBACK;
-    const stats: Record<string, { yes: number; no: number }> = {};
+    const stats: Record<string, { yes: number; no: number; reasons?: Record<string, number> }> = {};
     let cursor: string | undefined;
     do {
       const list: KVNamespaceListResult<unknown, string> = await kv.list({ limit: 1000, cursor });
@@ -45,6 +53,13 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
         ]),
       );
       for (const [key, count] of pairs) {
+        // Key shapes: `${id}:yes` | `${id}:no` | `${id}:no:${reason}`
+        const reasonMatch = key.match(/^(.+):no:([a-z-]+)$/);
+        if (reasonMatch) {
+          const s = (stats[reasonMatch[1]] ??= { yes: 0, no: 0 });
+          (s.reasons ??= {})[reasonMatch[2]] = count;
+          continue;
+        }
         const sep = key.lastIndexOf(':');
         if (sep < 0) continue;
         const id = key.slice(0, sep);

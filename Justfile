@@ -24,6 +24,11 @@ deploy:
     npm run build
     npx wrangler pages deploy ./dist --project-name appliance-errors
 
+# The working deploy path: push to alexlatif/appliance-errors — its Actions
+# workflow holds the CF Pages token (no local wrangler auth exists).
+deploy-live MSG="site update":
+    chmod +x scripts/deploy-live.sh && ./scripts/deploy-live.sh "{{MSG}}"
+
 # Count total error codes
 count:
     cat src/data/error-codes.json | node -e "const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')); console.log('Codes:', d.error_codes.length, '| Brands:', d.brands.length)"

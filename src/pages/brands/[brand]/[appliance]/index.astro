@@ -10,6 +10,7 @@ import {
 } from '../../../../utils/data';
 import { breadcrumbSchema } from '../../../../utils/schema';
 import proceduresData from '../../../../data/procedures.json';
+import symptomsData from '../../../../data/symptoms.json';
 
 export async function getStaticPaths() {
   const paths = [];
@@ -184,5 +185,29 @@ const proHi = codes.length ? Math.max(...codes.map(c => c.pro_cost_hi)) : 0;
         </div>
       </section>
     )}
+
+    <!-- No code on the display? Symptom + cost entry points for this appliance -->
+    {(() => {
+      const appSymptoms = (symptomsData as { symptoms: { slug: string; appliance: string; name?: string; title?: string }[] })
+        .symptoms.filter((s) => s.appliance === appSlug && !s.slug.endsWith('-error-codes'));
+      return appSymptoms.length > 0 && (
+        <section class="mb-8">
+          <h2 class="text-xl font-bold text-gray-900 mb-3">No Code on the Display?</h2>
+          <p class="text-gray-600 text-sm mb-4">Start from what the {appName.toLowerCase()} is doing instead:</p>
+          <div class="flex flex-wrap gap-2">
+            {appSymptoms.map((s) => (
+              <a href={`/symptoms/${s.appliance}/${s.slug}/`}
+                 class="px-4 py-2 rounded-lg border border-gray-300 text-sm text-gray-700 hover:border-brand-400 hover:text-brand-700 hover:bg-brand-50 transition-colors">
+                {(s.name ?? s.title ?? s.slug.replaceAll('-', ' '))}
+              </a>
+            ))}
+            <a href={`/costs/${appSlug}/`}
+               class="px-4 py-2 rounded-lg border border-gray-300 text-sm text-gray-700 hover:border-brand-400 hover:text-brand-700 hover:bg-brand-50 transition-colors">
+              💰 {appName} repair costs
+            </a>
+          </div>
+        </section>
+      );
+    })()}
   </div>
 </BaseLayout>

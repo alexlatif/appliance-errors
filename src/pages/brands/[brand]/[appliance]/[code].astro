@@ -17,6 +17,7 @@ import { faqSchema, howToSchema, breadcrumbSchema, articleSchema, errorCodeFaqs 
 import { verifiedDate, verifiedDateHuman } from '../../../../utils/freshness';
 import { sourcesForBrand } from '../../../../utils/sources';
 import { focus } from '../../../../utils/focus';
+import { symptomForCode, hasProcedure } from '../../../../utils/related-content';
 import titleOverrides from '../../../../data/title-overrides.json';
 
 // Short appliance names for <title> (saves chars vs "Washing Machine", "Refrigerator")
@@ -97,6 +98,9 @@ const schemas = [
   ]),
   articleSchema(errorCode, brandName, appName, lastVerified),
 ];
+
+const symptomLink = symptomForCode(errorCode);
+const procedureExists = hasProcedure(brandSlug!, appSlug!);
 
 const severityColors: Record<string, string> = {
   low: 'border-green-200 bg-green-50',
@@ -245,6 +249,28 @@ const costSaving = errorCode.pro_cost_lo - errorCode.cost_lo;
       <p class="text-sm text-gray-500 mt-3">
         Note: If the error returns after resetting, the underlying issue has not been resolved. Work through the fix steps above.
       </p>
+      {(procedureExists || symptomLink) && (
+        <div class="mt-4 flex flex-wrap gap-3 text-sm">
+          {procedureExists && (
+            <a href={`/brands/${brandSlug}/${appSlug}/reset/`}
+               class="px-4 py-2 rounded-lg border border-gray-300 text-brand-700 hover:border-brand-400 hover:bg-brand-50 transition-colors">
+              Full {brandName} {appShort.toLowerCase()} reset guide →
+            </a>
+          )}
+          {procedureExists && (
+            <a href={`/brands/${brandSlug}/${appSlug}/diagnostic-mode/`}
+               class="px-4 py-2 rounded-lg border border-gray-300 text-brand-700 hover:border-brand-400 hover:bg-brand-50 transition-colors">
+              Enter diagnostic mode →
+            </a>
+          )}
+          {symptomLink && (
+            <a href={symptomLink.url}
+               class="px-4 py-2 rounded-lg border border-gray-300 text-brand-700 hover:border-brand-400 hover:bg-brand-50 transition-colors">
+              Symptom guide: {symptomLink.label} →
+            </a>
+          )}
+        </div>
+      )}
     </section>
 
     <!-- Feedback: did this fix work? -->

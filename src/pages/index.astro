@@ -2,9 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SearchBox from '../components/SearchBox.astro';
 import AdSlot from '../components/AdSlot.astro';
-import { brands, applianceTypes, totalCodeCount } from '../utils/data';
+import { brands, applianceTypes, totalCodeCount, errorCodes } from '../utils/data';
 import { webSiteSchema } from '../utils/schema';
 import popularCodes from '../data/popular-codes.json';
+
+// Top searched codes per brand (from popular-codes volume data) — surfaces
+// deep pages directly on the brand grid.
+const topCodesByBrand = new Map<string, typeof popularCodes>();
+for (const p of [...popularCodes].sort((a, b) => (b.volume ?? 0) - (a.volume ?? 0))) {
+  const list = topCodesByBrand.get(p.brand) ?? [];
+  if (list.length < 3) { list.push(p); topCodesByBrand.set(p.brand, list); }
+}
+const codeCountByAppliance = new Map<string, number>();
+for (const c of errorCodes) codeCountByAppliance.set(c.appliance, (codeCountByAppliance.get(c.appliance) ?? 0) + 1);
 
 const tc = totalCodeCount();
 // ≤65 chars
@@ -53,6 +63,16 @@ const schemas = [webSiteSchema(tc)];  // Organization injected sitewide by BaseL
         </a>
       ))}
     </div>
+    {/* Most-searched codes surfaced per brand — one tap from landing to fix */}
+    <div class="mt-6 flex flex-wrap items-center gap-2 text-sm">
+      <span class="text-gray-500">Jump straight to a fix:</span>
+      {[...topCodesByBrand.entries()].flatMap(([, items]) => items).slice(0, 9).map(item => (
+        <a href={`/brands/${item.brand}/${item.appliance}/${item.code}/`}
+           class="px-3 py-1.5 rounded-full border border-gray-300 text-gray-700 hover:border-brand-400 hover:text-brand-700 hover:bg-brand-50 transition-colors font-mono text-xs">
+          {item.label}
+        </a>
+      ))}
+    </div>
   </section>
 
   <!-- Appliance type grid -->
@@ -65,6 +85,9 @@ const schemas = [webSiteSchema(tc)];  // Organization injected sitewide by BaseL
              class="group bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-md transition-all text-center">
             <div class="text-3xl mb-2">{type.icon}</div>
             <div class="font-semibold text-gray-800 group-hover:text-brand-600 text-sm">{type.name}</div>
+            {(codeCountByAppliance.get(type.slug) ?? 0) > 0 && (
+              <div class="text-xs text-gray-500 mt-1">{codeCountByAppliance.get(type.slug)} codes</div>
+            )}
           </a>
         ))}
       </div>
@@ -132,7 +155,21 @@ const schemas = [webSiteSchema(tc)];  // Organization injected sitewide by BaseL
       Modern appliances have built-in self-diagnostic systems. When something goes wrong — a clogged drain, a failed sensor, a faulty motor — the machine stops running and displays an error code on the screen. These codes are not random: each one points to a specific subsystem that has failed or detected a problem.
     </p>
     <p class="text-gray-700 leading-relaxed mb-4">
-      The challenge is that each manufacturer uses its own code system. <strong>Samsung uses number codes like 4C, 5E, and 22E</strong>. <strong>LG uses letters like OE, LE, and DE</strong>. <strong>Whirlpool uses F-codes like F8E1 and F1E2</strong>. GE uses short codes like F2 and F3. Even two appliances from the same brand can use completely different codes depending on the model year. This makes looking up codes confusing and time-consuming.
+      The challenge is that each manufacturer uses its own code system. <strong>Samsung uses number codes like
+      <a href="/brands/samsung/washer/4c/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">4C</a>,
+      <a href="/brands/samsung/washer/oe/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">5E</a>, and
+      <a href="/brands/samsung/refrigerator/22e/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">22E</a></strong>.
+      <strong>LG uses letters like
+      <a href="/brands/lg/washer/oe/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">OE</a>,
+      <a href="/brands/lg/washer/le/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">LE</a>, and
+      <a href="/brands/lg/washer/de/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">DE</a></strong>.
+      <strong>Whirlpool uses F-codes like
+      <a href="/brands/whirlpool/washer/f8e1/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">F8E1</a> and
+      <a href="/brands/whirlpool/washer/f1e2/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">F1E2</a></strong>.
+      GE uses short codes like
+      <a href="/brands/ge/oven/f2/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">F2</a> and
+      <a href="/brands/ge/oven/f3/" class="text-brand-700 underline decoration-brand-300 hover:decoration-brand-600">F3</a>.
+      Even two appliances from the same brand can use completely different codes depending on the model year. This makes looking up codes confusing and time-consuming.
     </p>
     <p class="text-gray-700 leading-relaxed mb-6">
       ApplianceErrors.com aggregates manufacturer service documentation across every major brand and translates it into plain English. Every error code page explains what triggered the code, lists the most common causes in order of likelihood, provides a step-by-step DIY repair guide, and tells you when the repair genuinely requires a professional.
@@ -166,18 +203,18 @@ const schemas = [webSiteSchema(tc)];  // Organization injected sitewide by BaseL
 
       <div class="grid sm:grid-cols-2 gap-4">
         {[
-          { label: 'LG Dryer D80', note: 'duct blocked 80% — cleaning kit $15–$35 vs $150+ service call', diy: true },
-          { label: 'Samsung Dishwasher LC', note: 'flood sensor triggered — often a $0 fix', diy: true },
-          { label: 'Whirlpool Washer F8E1', note: 'water inlet valve $25–$45 vs $200 service call', diy: true },
-          { label: 'Samsung Fridge 22E', note: 'ice maker fan motor $30–$70, moderate DIY', diy: true },
+          { label: 'LG Dryer D80', note: 'duct blocked 80% — cleaning kit $15–$35 vs $150+ service call', href: '/brands/lg/dryer/d80/' },
+          { label: 'Samsung Dishwasher LC', note: 'flood sensor triggered — often a $0 fix', href: '/brands/samsung/dishwasher/lc/' },
+          { label: 'Whirlpool Washer F8E1', note: 'water inlet valve $25–$45 vs $200 service call', href: '/brands/whirlpool/washer/f8e1/' },
+          { label: 'Samsung Fridge 22E', note: 'ice maker fan motor $30–$70, moderate DIY', href: '/brands/samsung/refrigerator/22e/' },
         ].map(item => (
-          <div class="flex items-start gap-3 bg-white rounded-xl p-4 border border-gray-200">
-            <span class="text-green-500 text-xl flex-shrink-0 mt-0.5">{item.diy ? '✅' : '⚠️'}</span>
+          <a href={item.href} class="group flex items-start gap-3 bg-white rounded-xl p-4 border border-gray-200 hover:border-brand-400 hover:shadow-md transition-all">
+            <span class="text-green-500 text-xl flex-shrink-0 mt-0.5">✅</span>
             <div>
-              <div class="font-semibold text-gray-900">{item.label}</div>
+              <div class="font-semibold text-gray-900 group-hover:text-brand-600">{item.label}</div>
               <div class="text-sm text-gray-500">{item.note}</div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

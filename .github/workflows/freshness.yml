@@ -14,22 +14,9 @@ permissions:
 
 jobs:
   freshness:
-    runs-on: ci
+    runs-on: ubuntu-latest
     steps:
-      - name: Require the cluster and install pinned GitHub CLI
-        env:
-          RUNNER_ENVIRONMENT: ${{ runner.environment }}
-        run: |
-          set -eu
-          test "$RUNNER_ENVIRONMENT" = self-hosted
-          tools="$RUNNER_TEMP/cluster-tools"
-          mkdir -p "$tools"
-          curl --fail --location --retry 3 https://github.com/cli/cli/releases/download/v2.104.0/gh_2.104.0_linux_amd64.tar.gz -o "$tools/gh.tar.gz"
-          echo "98cb101ad87dbbd3f6b2f2bfcbd43197ccd07643140121d8a9cfaa91eadbc24e  $tools/gh.tar.gz" | sha256sum -c -
-          tar -xzf "$tools/gh.tar.gz" --strip-components=2 -C "$tools" gh_2.104.0_linux_amd64/bin/gh
-          "$tools/gh" --version
-          echo "$tools" >> "$GITHUB_PATH"
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
